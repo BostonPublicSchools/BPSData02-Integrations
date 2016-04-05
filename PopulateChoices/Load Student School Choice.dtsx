@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{7D188ED9-5363-44D5-A94E-B65DF39EF41E}">
+  DTS:VersionBuild="56"
+  DTS:VersionGUID="{7A837700-20EB-48C0-A266-4181664D2FA5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAo53+rVOKPkWBGeG8+pCQeAAAAAASAAACgAAAAEAAAAETJe9Y6Ej6uMl8f2VUKwwwYAAAAD3E3Wqy4nRq8kcK3JMfmsDMtEhdlX/BCFAAAAJZtmE6abDzBX46ebdhafLB8HLKk</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAo170D+7Wwmiv+IxFqYS4yAAAAAASAAACgAAAAEAAAAOK/gS9OlHQGgEvNGpAX2kIYAAAAVzfw5bDp3lbyGjAyrzkk9y+RYd7uEgToFAAAAARPAsMOkhP5OKK+C8OKNGHjUy+o</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAArI4nxKvCP36+/CiwXIB2bAAAAAASAAACgAAAAEAAAAA0VloySMseANn+nxBxGJ/4YAAAAJxXV1b6E+ev+7D6hVjV76CeFX62X/SReFAAAANPkyZwsOPWfAupIwjpqu/kBoZTY</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABQ76YtjycIYsiTuEcLPT04AAAAAASAAACgAAAAEAAAAKpMQGPb74h1pItVT9kDyXgYAAAAoZDX7cmxdNWbiOq6aOq8Mt15/juA1YlQFAAAABxHaxbSwzKu0x8/lc/D9Dbn3xZJ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -619,11 +619,11 @@
                       externalMetadataColumnId="Package\dftFindLatestCall\Flat File Destination Student.Inputs[Flat File Destination Input].ExternalColumns[sscId]"
                       lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscId]" />
                     <inputColumn
-                      refId="Package\dftFindLatestCall\Flat File Destination Student.Inputs[Flat File Destination Input].Columns[sscCallID]"
+                      refId="Package\dftFindLatestCall\Flat File Destination Student.Inputs[Flat File Destination Input].Columns[sscCallId]"
                       cachedDataType="i4"
-                      cachedName="sscCallID"
+                      cachedName="sscCallId"
                       externalMetadataColumnId="Package\dftFindLatestCall\Flat File Destination Student.Inputs[Flat File Destination Input].ExternalColumns[sscCallID]"
-                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallID]" />
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]" />
                     <inputColumn
                       refId="Package\dftFindLatestCall\Flat File Destination Student.Inputs[Flat File Destination Input].Columns[sscSchool]"
                       cachedCodepage="1252"
@@ -2176,19 +2176,22 @@ where [refTable].[Sch] = ? and [refTable].[ProgramCode] = ? and [refTable].[Grad
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  SSS_OID ,
         s.STD_ID_LOCAL ,
+        STC_OID ,
         STC_ID ,
         SKL_SCHOOL_ID ,
 		SCA_GRADE_LEVEL ,
         SCA_PROGRAM_CODE ,
         NULLIF(SSS_FIELDB_004, '') ReviewStatus ,
         NULLIF(SSS_FIELDA_011, '') ReviewDate ,
-        DATEADD(S, SSS_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') SSS_LAST_MODIFIED
+        DATEADD(S, SSS_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') SSS_LAST_MODIFIED ,
+        NULLIF(SSS_FIELDA_001, '') Rank 
 FROM    dbo.STUDENT s
         JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
                                  AND ISNUMERIC(STC_FIELDD_019) = 1
                                  AND ISNULL(STC_FIELDD_019, '') = 2
                                  AND STC_STD_OID = s.STD_OID
         JOIN dbo.STUDENT_SCHOOL_CHOICE ON SSS_STC_OID = STC_OID
+										AND SSS_FIELDB_001  = 'schoolsNext'
         JOIN dbo.SCHOOL_CAPACITY ON SCA_OID = SSS_SCA_OID
         JOIN dbo.SCHOOL ON SKL_OID = SCA_SKL_OID
 		JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID
@@ -2200,19 +2203,22 @@ FROM    dbo.STUDENT s
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  SSS_OID ,
         s.STD_ID_LOCAL ,
+        STC_OID ,
         STC_ID ,
         SKL_SCHOOL_ID ,
 		SCA_GRADE_LEVEL ,
         SCA_PROGRAM_CODE ,
         NULLIF(SSS_FIELDB_004, '') ReviewStatus ,
         NULLIF(SSS_FIELDA_011, '') ReviewDate ,
-        DATEADD(S, SSS_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') SSS_LAST_MODIFIED
+        DATEADD(S, SSS_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') SSS_LAST_MODIFIED ,
+        NULLIF(SSS_FIELDA_001, '') Rank 
 FROM    dbo.STUDENT s
         JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
                                  AND ISNUMERIC(STC_FIELDD_019) = 1
                                  AND ISNULL(STC_FIELDD_019, '') = 2
                                  AND STC_STD_OID = s.STD_OID
         JOIN dbo.STUDENT_SCHOOL_CHOICE ON SSS_STC_OID = STC_OID
+										AND SSS_FIELDB_001  = 'schoolsNext'
         JOIN dbo.SCHOOL_CAPACITY ON SCA_OID = SSS_SCA_OID
         JOIN dbo.SCHOOL ON SKL_OID = SCA_SKL_OID
 		JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID
@@ -2248,7 +2254,7 @@ where [refTable].[SSS_OID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SSS_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_ID_LOCAL" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STC_ID" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SKL_SCHOOL_ID" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SCA_GRADE_LEVEL" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SCA_PROGRAM_CODE" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ReviewStatus" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ReviewDate" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SSS_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SSS_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_ID_LOCAL" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STC_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STC_ID" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SKL_SCHOOL_ID" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SCA_GRADE_LEVEL" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SCA_PROGRAM_CODE" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ReviewStatus" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ReviewDate" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SSS_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Rank" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -3136,15 +3142,6 @@ sscId = ?;</property>
                       name="sscId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscCallID]"
-                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallID]"
-                      name="sscCallID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscSchool]"
                       codePage="1252"
                       dataType="str"
@@ -3214,6 +3211,33 @@ sscId = ?;</property>
                       lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscReviewDate]"
                       name="sscReviewDate"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscSccId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscSccId]"
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscSccId]"
+                      name="sscSccId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscCallId]"
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]"
+                      name="sscCallId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscRank]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscRank]"
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscRank]"
+                      name="sscRank"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3221,10 +3245,6 @@ sscId = ?;</property>
                       refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscId]"
                       dataType="i4"
                       name="sscId" />
-                    <externalMetadataColumn
-                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscCallID]"
-                      dataType="i4"
-                      name="sscCallID" />
                     <externalMetadataColumn
                       refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscSchool]"
                       codePage="1252"
@@ -3260,6 +3280,18 @@ sscId = ?;</property>
                       refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscReviewDate]"
                       dataType="dbDate"
                       name="sscReviewDate" />
+                    <externalMetadataColumn
+                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscSccId]"
+                      dataType="i4"
+                      name="sscSccId" />
+                    <externalMetadataColumn
+                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscCallId]"
+                      dataType="i4"
+                      name="sscCallId" />
+                    <externalMetadataColumn
+                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].ExternalColumns[sscRank]"
+                      dataType="i4"
+                      name="sscRank" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3273,10 +3305,15 @@ sscId = ?;</property>
                       lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscId]"
                       name="sscId" />
                     <outputColumn
-                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscCallID]"
+                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscSccId]"
                       dataType="i4"
-                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscCallID]"
-                      name="sscCallID" />
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscSccId]"
+                      name="sscSccId" />
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscCallId]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscCallId]"
+                      name="sscCallId" />
                     <outputColumn
                       refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscSchool]"
                       codePage="1252"
@@ -3307,6 +3344,11 @@ sscId = ?;</property>
                       dataType="dbTimeStamp"
                       lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscSSS_LAST_MODIFIED]"
                       name="sscSSS_LAST_MODIFIED" />
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscRank]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscRank]"
+                      name="sscRank" />
                     <outputColumn
                       refId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Error Output].Columns[sscReviewStatus]"
                       codePage="1252"
@@ -3363,10 +3405,10 @@ sscId = ?;</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\dftFindLatestCall\uaNo Match Output.Inputs[Union All Input 2].Columns[sscCallID]"
+                      refId="Package\dftFindLatestCall\uaNo Match Output.Inputs[Union All Input 2].Columns[sscCallId]"
                       cachedDataType="i4"
-                      cachedName="sscCallID"
-                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallID]">
+                      cachedName="sscCallId"
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]">
                       <properties>
                         <property
                           containsID="true"
@@ -3583,10 +3625,10 @@ sscId = ?;</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\dftFindLatestCall\uaNo Match Output.Inputs[Union All Input 3].Columns[sscCallID]"
+                      refId="Package\dftFindLatestCall\uaNo Match Output.Inputs[Union All Input 3].Columns[sscCallId]"
                       cachedDataType="i4"
-                      cachedName="sscCallID"
-                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallID]">
+                      cachedName="sscCallId"
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]">
                       <properties>
                         <property
                           containsID="true"
@@ -3963,6 +4005,893 @@ sscId = ?;</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\dftTransferCase"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{467AD12B-C6DC-4C83-96AD-A1810A618A4E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dftTransferCase"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dftTransferCase\csLast Modified Changed"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="csLast Modified Changed"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dftTransferCase\csLast Modified Changed.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftTransferCase\csLast Modified Changed.Inputs[Conditional Split Input].Columns[STC_LAST_MODIFIED]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STC_LAST_MODIFIED"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_LAST_MODIFIED]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\csLast Modified Changed.Inputs[Conditional Split Input].Columns[sccSTC_LAST_MODIFIED]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="sccSTC_LAST_MODIFIED"
+                      lineageId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Match Output].Columns[sccSTC_LAST_MODIFIED]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftTransferCase\csLast Modified Changed.Outputs[Last Modified Changed]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Last Modified Changed"
+                  synchronousInputId="Package\dftTransferCase\csLast Modified Changed.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_LAST_MODIFIED]} != #{Package\dftTransferCase\lStudentCase.Outputs[Lookup Match Output].Columns[sccSTC_LAST_MODIFIED]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">STC_LAST_MODIFIED != sccSTC_LAST_MODIFIED</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftTransferCase\csLast Modified Changed.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\dftTransferCase\csLast Modified Changed.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftTransferCase\csLast Modified Changed.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\dftTransferCase\csLast Modified Changed.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftTransferCase\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftTransferCase\lStudentCase"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="lStudentCase"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Eligibility].[StudentChoiceCase]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[StudentChoiceCase]) [refTable]
+where [refTable].[sccSTC_OID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sccId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTC_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTD_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccLastUpdate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTC_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccRound" dataType="DT_WSTR" length="2" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccCaseType" dataType="DT_STR" length="60" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftTransferCase\lStudentCase.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dftTransferCase\lStudentCase.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftTransferCase\lStudentCase.Inputs[Lookup Input].Columns[STC_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="STC_OID"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">sccSTC_OID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dftTransferCase\lStudentCase.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Match Output].Columns[sccId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Match Output].Columns[sccId]"
+                      name="sccId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">sccId</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Match Output].Columns[sccSTC_LAST_MODIFIED]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Match Output].Columns[sccSTC_LAST_MODIFIED]"
+                      name="sccSTC_LAST_MODIFIED"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">sccSTC_LAST_MODIFIED</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftTransferCase\lStudentCase.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dftTransferCase\lStudentCase.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dftTransferCase\lStudentCase.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="odcUpdate EligiblityStudentChoiceCase"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE Eligibility.StudentChoiceCase
+SET
+sccSTC_OID = ? ,
+sccSTD_OID = ? ,
+sccSTC_LAST_MODIFIED = ? ,
+sccRound = ? ,
+sccCaseType = ? ,
+sccLastUpdate = GETDATE()
+WHERE
+sccId = ?;
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].Columns[sccId]"
+                      cachedDataType="i4"
+                      cachedName="sccId"
+                      externalMetadataColumnId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Match Output].Columns[sccId]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].Columns[DDX_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="DDX_NAME"
+                      externalMetadataColumnId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[DDX_NAME]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].Columns[STC_FIELDD_019]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="STC_FIELDD_019"
+                      externalMetadataColumnId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_FIELDD_019]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].Columns[STC_LAST_MODIFIED]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STC_LAST_MODIFIED"
+                      externalMetadataColumnId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_LAST_MODIFIED]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].Columns[STC_STD_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="STC_STD_OID"
+                      externalMetadataColumnId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_STD_OID]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].Columns[STC_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="STC_OID"
+                      externalMetadataColumnId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="14"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="14"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="dbTimeStamp"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="2"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftTransferCase\oddStudentChoiceCase"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="oddStudentChoiceCase"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Eligibility].[StudentChoiceCase]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftTransferCase\oddStudentChoiceCase.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].Columns[STC_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="STC_OID"
+                      externalMetadataColumnId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccSTC_OID]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].Columns[STC_STD_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="STC_STD_OID"
+                      externalMetadataColumnId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccSTD_OID]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_STD_OID]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].Columns[STC_FIELDD_019]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="STC_FIELDD_019"
+                      externalMetadataColumnId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccRound]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_FIELDD_019]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].Columns[DDX_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="DDX_NAME"
+                      externalMetadataColumnId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccCaseType]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[DDX_NAME]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].Columns[STC_LAST_MODIFIED]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STC_LAST_MODIFIED"
+                      externalMetadataColumnId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccSTC_LAST_MODIFIED]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_LAST_MODIFIED]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccId]"
+                      dataType="i4"
+                      name="sccId" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccSTC_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="sccSTC_OID" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccSTD_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="sccSTD_OID" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccLastUpdate]"
+                      dataType="dbTimeStamp"
+                      name="sccLastUpdate" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccRound]"
+                      dataType="wstr"
+                      length="2"
+                      name="sccRound" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccCaseType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="sccCaseType" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccSTC_LAST_MODIFIED]"
+                      dataType="dbTimeStamp"
+                      name="sccSTC_LAST_MODIFIED" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftTransferCase\oddStudentChoiceCase.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\oddStudentChoiceCase.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\oddStudentChoiceCase.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftTransferCase\odsSIS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="odsSIS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT
+        STC_OID ,
+        STC_STD_OID ,
+        DATEADD(S, STC_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') STC_LAST_MODIFIED ,
+		CAST(STC_FIELDD_019 AS NCHAR(2)) STC_FIELDD_019 ,
+        DDX_NAME
+FROM    dbo.STUDENT s
+        JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
+                                 AND ISNUMERIC(STC_FIELDD_019) = 1
+                                 AND ISNULL(STC_FIELDD_019, '') = 2
+                                 AND STC_STD_OID = s.STD_OID
+        JOIN dbo.DATA_DICTIONARY_EXTENDED ON DDX_OID = STC_DDX_OID
+        JOIN dbo.STUDENT_SCHOOL_CHOICE ON SSS_STC_OID = STC_OID
+                                          AND SSS_FIELDB_001 = 'schoolsNext'
+        JOIN dbo.SCHOOL_CAPACITY ON SCA_OID = SSS_SCA_OID
+        JOIN dbo.SCHOOL ON SKL_OID = SCA_SKL_OID
+        JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID
+                                                 AND CTX_CONTEXT_ID = '2016-2017';</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftTransferCase\odsSIS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.23.12.31.x2data.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.23.12.31.x2data.BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_OID]"
+                      length="14"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]"
+                      name="STC_OID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_STD_OID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_STD_OID]"
+                      length="14"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_STD_OID]"
+                      name="STC_STD_OID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_FIELDD_019]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_FIELDD_019]"
+                      length="2"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_FIELDD_019]"
+                      name="STC_FIELDD_019"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[DDX_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[DDX_NAME]"
+                      length="60"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[DDX_NAME]"
+                      name="DDX_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_LAST_MODIFIED]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_LAST_MODIFIED]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_LAST_MODIFIED]"
+                      name="STC_LAST_MODIFIED"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="STC_OID" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_STD_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="STC_STD_OID" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_FIELDD_019]"
+                      dataType="wstr"
+                      length="2"
+                      name="STC_FIELDD_019" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[DDX_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="DDX_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_LAST_MODIFIED]"
+                      dataType="dbTimeStamp"
+                      name="STC_LAST_MODIFIED" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_OID]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_OID]"
+                      name="STC_OID" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_STD_OID]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_STD_OID]"
+                      name="STC_STD_OID" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_LAST_MODIFIED]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_LAST_MODIFIED]"
+                      name="STC_LAST_MODIFIED" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_FIELDD_019]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_FIELDD_019]"
+                      name="STC_FIELDD_019" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[DDX_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[DDX_NAME]"
+                      name="DDX_NAME" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dftTransferCase.Paths[Last Modified Changed]"
+              endId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input]"
+              name="Last Modified Changed"
+              startId="Package\dftTransferCase\csLast Modified Changed.Outputs[Last Modified Changed]" />
+            <path
+              refId="Package\dftTransferCase.Paths[Lookup Match Output]"
+              endId="Package\dftTransferCase\csLast Modified Changed.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\dftTransferCase\lStudentCase.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\dftTransferCase.Paths[Lookup No Match Output]"
+              endId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\dftTransferCase\lStudentCase.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\dftTransferCase.Paths[OLE DB Source Output]"
+              endId="Package\dftTransferCase\lStudentCase.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\dftTransferChoice"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -4063,6 +4992,165 @@ sscId = ?;</property>
                       refId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftTransferChoice\lStudentChoiceCase"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="lStudentChoiceCase"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Eligibility].[StudentChoiceCase]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[StudentChoiceCase]) [refTable]
+where [refTable].[sccSTC_OID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sccId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTC_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTD_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccLastUpdate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTC_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccRound" dataType="DT_WSTR" length="2" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccCaseType" dataType="DT_STR" length="60" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftTransferChoice\lStudentChoiceCase.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dftTransferChoice\lStudentChoiceCase.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftTransferChoice\lStudentChoiceCase.Inputs[Lookup Input].Columns[STC_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="STC_OID"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">sccSTC_OID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="RedirectRow"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dftTransferChoice\lStudentChoiceCase.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Match Output].Columns[sccId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Match Output].Columns[sccId]"
+                      name="sccId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">sccId</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dftTransferChoice\lStudentChoiceCase.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dftTransferChoice\lStudentChoiceCase.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4262,6 +5350,7 @@ where [refTable].[sscSSS_OID] = ?</property>
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE Eligibility.StudentSchoolChoice
 SET
+sscRank = ?,
 sscSSS_LAST_MODIFIED = ? ,
 sscReviewStatus = ? ,
 sscReviewDate = ? ,
@@ -4290,11 +5379,19 @@ sscId = ?;</property>
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[sscId]"
-                      cachedDataType="i4"
-                      cachedName="sscId"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscId]" />
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[Rank]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Rank"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[Rank]" />
+                    <inputColumn
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[SSS_LAST_MODIFIED]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SSS_LAST_MODIFIED"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]" />
                     <inputColumn
                       refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[ReviewDate]"
                       cachedCodepage="1252"
@@ -4309,20 +5406,20 @@ sscId = ?;</property>
                       cachedDataType="str"
                       cachedLength="25"
                       cachedName="ReviewStatus"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewStatus]" />
                     <inputColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[SSS_LAST_MODIFIED]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="SSS_LAST_MODIFIED"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]" />
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[sscId]"
+                      cachedDataType="i4"
+                      cachedName="sscId"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      dataType="dbTimeStamp"
+                      dataType="i4"
                       name="Param_0">
                       <properties>
                         <property
@@ -4333,9 +5430,7 @@ sscId = ?;</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
+                      dataType="dbTimeStamp"
                       name="Param_1">
                       <properties>
                         <property
@@ -4346,7 +5441,9 @@ sscId = ?;</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      dataType="dbDate"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
                       name="Param_2">
                       <properties>
                         <property
@@ -4357,8 +5454,19 @@ sscId = ?;</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      dataType="i4"
+                      dataType="dbDate"
                       name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -4502,6 +5610,20 @@ sscId = ?;</property>
                       cachedName="SSS_LAST_MODIFIED"
                       externalMetadataColumnId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscSSS_LAST_MODIFIED]"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]" />
+                    <inputColumn
+                      refId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].Columns[sccId]"
+                      cachedDataType="i4"
+                      cachedName="sccId"
+                      externalMetadataColumnId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscSccId]"
+                      lineageId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Match Output].Columns[sccId]" />
+                    <inputColumn
+                      refId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].Columns[Rank]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Rank"
+                      externalMetadataColumnId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscRank]"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[Rank]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4509,10 +5631,6 @@ sscId = ?;</property>
                       refId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscId]"
                       dataType="i4"
                       name="sscId" />
-                    <externalMetadataColumn
-                      refId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscCallID]"
-                      dataType="i4"
-                      name="sscCallID" />
                     <externalMetadataColumn
                       refId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscSchool]"
                       codePage="1252"
@@ -4548,6 +5666,18 @@ sscId = ?;</property>
                       refId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscReviewDate]"
                       dataType="dbDate"
                       name="sscReviewDate" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscSccId]"
+                      dataType="i4"
+                      name="sscSccId" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscCallId]"
+                      dataType="i4"
+                      name="sscCallId" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input].ExternalColumns[sscRank]"
+                      dataType="i4"
+                      name="sscRank" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4603,19 +5733,22 @@ sscId = ?;</property>
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  SSS_OID ,
         s.STD_ID_LOCAL ,
+        STC_OID ,
         STC_ID ,
         SKL_SCHOOL_ID ,
 		SCA_GRADE_LEVEL ,
         SCA_PROGRAM_CODE ,
         NULLIF(SSS_FIELDB_004, '') ReviewStatus ,
         NULLIF(SSS_FIELDA_011, '') ReviewDate ,
-        DATEADD(S, SSS_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') SSS_LAST_MODIFIED
+        DATEADD(S, SSS_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') SSS_LAST_MODIFIED ,
+        NULLIF(SSS_FIELDA_001, '') Rank 
 FROM    dbo.STUDENT s
         JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
                                  AND ISNUMERIC(STC_FIELDD_019) = 1
                                  AND ISNULL(STC_FIELDD_019, '') = 2
                                  AND STC_STD_OID = s.STD_OID
         JOIN dbo.STUDENT_SCHOOL_CHOICE ON SSS_STC_OID = STC_OID
+										AND SSS_FIELDB_001  = 'schoolsNext'
         JOIN dbo.SCHOOL_CAPACITY ON SCA_OID = SSS_SCA_OID
         JOIN dbo.SCHOOL ON SKL_OID = SCA_SKL_OID
 		JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID
@@ -4751,6 +5884,27 @@ FROM    dbo.STUDENT s
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SCA_GRADE_LEVEL]"
                       name="SCA_GRADE_LEVEL"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_OID]"
+                      length="14"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]"
+                      name="STC_OID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[Rank]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[Rank]"
+                      length="10"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[Rank]"
+                      name="Rank"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4805,6 +5959,17 @@ FROM    dbo.STUDENT s
                       dataType="str"
                       length="20"
                       name="SCA_GRADE_LEVEL" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="STC_OID" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[Rank]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Rank" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -4825,6 +5990,12 @@ FROM    dbo.STUDENT s
                       length="32"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STD_ID_LOCAL]"
                       name="STD_ID_LOCAL" />
+                    <outputColumn
+                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_OID]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_OID]"
+                      name="STC_OID" />
                     <outputColumn
                       refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_ID]"
                       codePage="1252"
@@ -4873,6 +6044,13 @@ FROM    dbo.STUDENT s
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[SSS_LAST_MODIFIED]"
                       name="SSS_LAST_MODIFIED" />
                     <outputColumn
+                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[Rank]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[Rank]"
+                      name="Rank" />
+                    <outputColumn
                       refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -4902,13 +6080,18 @@ FROM    dbo.STUDENT s
               name="Lookup Match Output"
               startId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output]" />
             <path
+              refId="Package\dftTransferChoice.Paths[Lookup Match Output1]"
+              endId="Package\dftTransferChoice\lStudentSchoolChoice.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\dftTransferChoice.Paths[Lookup No Match Output]"
               endId="Package\dftTransferChoice\oddStudentSchoolChoice.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\dftTransferChoice.Paths[OLE DB Source Output]"
-              endId="Package\dftTransferChoice\lStudentSchoolChoice.Inputs[Lookup Input]"
+              endId="Package\dftTransferChoice\lStudentChoiceCase.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output]" />
           </paths>
@@ -4925,6 +6108,14 @@ FROM    dbo.STUDENT s
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\dftFindLatestCall" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4733BE43-5791-4E32-812C-25D52DD85201}"
+      DTS:From="Package\dftTransferCase"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\dftTransferChoice" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -4937,18 +6128,18 @@ FROM    dbo.STUDENT s
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="157,42"
           Id="Package\dftFindLatestCall"
-          TopLeft="334,186" />
+          TopLeft="350,300" />
         <NodeLayout
           Size="162,42"
           Id="Package\dftTransferChoice"
-          TopLeft="329,108" />
+          TopLeft="345,222" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="411.25,150">
+          TopLeft="427.25,264">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4968,6 +6159,32 @@ FROM    dbo.STUDENT s
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="153,42"
+          Id="Package\dftTransferCase"
+          TopLeft="344,110" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="423.25,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -4979,11 +6196,11 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="331,42"
           Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
-          TopLeft="436,103" />
+          TopLeft="392,103" />
         <NodeLayout
           Size="171,42"
           Id="Package\dftFindLatestCall\uaNo Match Output"
-          TopLeft="1395,207" />
+          TopLeft="1325,211" />
         <NodeLayout
           Size="293,42"
           Id="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL"
@@ -4991,15 +6208,15 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="235,42"
           Id="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice"
-          TopLeft="81,17" />
+          TopLeft="32,16" />
         <NodeLayout
           Size="384,42"
           Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case"
-          TopLeft="901,101" />
+          TopLeft="791,101" />
         <NodeLayout
           Size="296,42"
           Id="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case"
-          TopLeft="1059,313" />
+          TopLeft="777,312" />
         <NodeLayout
           Size="358,42"
           Id="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Program Last Call"
@@ -5007,11 +6224,11 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="284,42"
           Id="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults"
-          TopLeft="460,225" />
+          TopLeft="416,225" />
         <NodeLayout
           Size="310,42"
           Id="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case"
-          TopLeft="1002,206" />
+          TopLeft="772,202" />
         <NodeLayout
           Size="374,42"
           Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Program Max CallID"
@@ -5019,15 +6236,15 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="270,42"
           Id="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice"
-          TopLeft="471,328" />
+          TopLeft="427,328" />
         <NodeLayout
           Size="414,42"
           Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Student Program Max CallID"
-          TopLeft="699,395" />
+          TopLeft="550,383" />
         <NodeLayout
           Size="396,42"
           Id="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Student Program Last Call"
-          TopLeft="708,497" />
+          TopLeft="559,485" />
         <NodeLayout
           Size="172,42"
           Id="Package\dftFindLatestCall\Flat File Destination"
@@ -5035,10 +6252,10 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="212,42"
           Id="Package\dftFindLatestCall\Flat File Destination Student"
-          TopLeft="1141,449" />
+          TopLeft="974,484" />
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup Match Output]"
-          TopLeft="601.75,145">
+          TopLeft="557.75,145">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5062,18 +6279,30 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Union All Output 1]"
-          TopLeft="1480.25,249">
+          TopLeft="1410.5,253">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,118"
+              EndConnector="69.5,114"
               Start="0,0"
-              End="0,110.5">
+              End="69.5,106.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,110.5" />
+                    End="0,53" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53"
+                    Point2="0,57"
+                    Point3="4,57" />
+                  <mssgle:LineSegment
+                    End="65.5,57" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65.5,57"
+                    Point2="69.5,57"
+                    Point3="69.5,61" />
+                  <mssgle:LineSegment
+                    End="69.5,106.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5084,30 +6313,18 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[OLE DB Source Output]"
-          TopLeft="198.5,59">
+          TopLeft="153,58">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-42,41"
+              EndConnector="0,42"
               Start="0,0"
-              End="-42,33.5">
+              End="0,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5"
-                    Point2="0,20.5"
-                    Point3="-4,20.5" />
-                  <mssgle:LineSegment
-                    End="-38,20.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-38,20.5"
-                    Point2="-42,20.5"
-                    Point3="-42,24.5" />
-                  <mssgle:LineSegment
-                    End="-42,33.5" />
+                    End="0,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5118,73 +6335,73 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup No Match Output5]"
-          TopLeft="1113,416">
+          TopLeft="824.666666666667,425">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="28,54"
+              EndConnector="255.333333333333,59"
               Start="0,0"
-              End="20.5,54">
+              End="255.333333333333,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="10,0" />
+                    End="0,19.7362848893167" />
                   <mssgle:CubicBezierSegment
-                    Point1="10,0"
-                    Point2="14,0"
-                    Point3="14,4" />
+                    Point1="0,19.7362848893167"
+                    Point2="0,23.7362848893167"
+                    Point3="4,23.7362848893167" />
                   <mssgle:LineSegment
-                    End="14,50" />
+                    End="251.333333333333,23.7362848893167" />
                   <mssgle:CubicBezierSegment
-                    Point1="14,50"
-                    Point2="14,54"
-                    Point3="18,54" />
+                    Point1="251.333333333333,23.7362848893167"
+                    Point2="255.333333333333,23.7362848893167"
+                    Point3="255.333333333333,27.7362848893167" />
                   <mssgle:LineSegment
-                    End="20.5,54" />
+                    End="255.333333333333,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-41.80638671875,-17.609375,111.6127734375,11.609375"
+              BoundingBox="71.8602799479167,28.7362848893167,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup No Match Output4]"
-          TopLeft="648,267">
+          TopLeft="604,267">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="258,128"
+              EndConnector="153,116"
               Start="0,0"
-              End="258,120.5">
+              End="153,108.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.6302521008403" />
+                    End="0,42.7899159663866" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,47.6302521008403"
-                    Point2="0,51.6302521008403"
-                    Point3="4,51.6302521008403" />
+                    Point1="0,42.7899159663866"
+                    Point2="0,46.7899159663866"
+                    Point3="4,46.7899159663866" />
                   <mssgle:LineSegment
-                    End="254,51.6302521008403" />
+                    End="149,46.7899159663866" />
                   <mssgle:CubicBezierSegment
-                    Point1="254,51.6302521008403"
-                    Point2="258,51.6302521008403"
-                    Point3="258,55.6302521008403" />
+                    Point1="149,46.7899159663866"
+                    Point2="153,46.7899159663866"
+                    Point3="153,50.7899159663866" />
                   <mssgle:LineSegment
-                    End="258,120.5" />
+                    End="153,108.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="73.19361328125,56.6302521008403,111.6127734375,11.609375"
+              BoundingBox="20.69361328125,51.7899159663866,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5214,91 +6431,103 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup No Match Output2]"
-          TopLeft="1155.66666666667,143">
+          TopLeft="1045.66666666667,143">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="324.833333333333,64"
+              EndConnector="364.833333333333,68"
               Start="0,0"
-              End="324.833333333333,56.5">
+              End="364.833333333333,60.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.7593360995851" />
+                    End="0,23.3692946058091" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.7593360995851"
-                    Point2="0,25.7593360995851"
-                    Point3="4,25.7593360995851" />
+                    Point1="0,23.3692946058091"
+                    Point2="0,27.3692946058091"
+                    Point3="4,27.3692946058091" />
                   <mssgle:LineSegment
-                    End="320.833333333333,25.7593360995851" />
+                    End="360.833333333333,27.3692946058091" />
                   <mssgle:CubicBezierSegment
-                    Point1="320.833333333333,25.7593360995851"
-                    Point2="324.833333333333,25.7593360995851"
-                    Point3="324.833333333333,29.7593360995851" />
+                    Point1="360.833333333333,27.3692946058091"
+                    Point2="364.833333333333,27.3692946058091"
+                    Point3="364.833333333333,31.3692946058091" />
                   <mssgle:LineSegment
-                    End="324.833333333333,56.5" />
+                    End="364.833333333333,60.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="106.610279947917,30.7593360995851,111.6127734375,11.609375"
+              BoundingBox="126.610279947917,32.3692946058091,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup No Match Output1]"
-          TopLeft="1312,227.5">
+          TopLeft="1082,223">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="83,0"
+              EndConnector="243,9"
               Start="0,0"
-              End="75.5,0">
+              End="235.5,9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="75.5,0" />
+                    End="117.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="117.5,0"
+                    Point2="121.5,0"
+                    Point3="121.5,4" />
+                  <mssgle:LineSegment
+                    End="121.5,5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.5,5"
+                    Point2="121.5,9"
+                    Point3="125.5,9" />
+                  <mssgle:LineSegment
+                    End="235.5,9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-18.05638671875,5,111.6127734375,11.609375"
+              BoundingBox="65.69361328125,-17.609375,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup No Match Output]"
-          TopLeft="767,123">
+          TopLeft="723,123">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="134,0"
+              EndConnector="68,0"
               Start="0,0"
-              End="126.5,0">
+              End="60.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="126.5,0" />
+                    End="60.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="7.44361328125,5,111.6127734375,11.609375"
+              BoundingBox="-25.55638671875,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup Match Output6]"
-          TopLeft="906,437">
+          TopLeft="757,425">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5346,49 +6575,49 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup Match Output4]"
-          TopLeft="1134.33333333333,143">
+          TopLeft="923.666666666667,143">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,63"
+              EndConnector="0,59"
               Start="0,0"
-              End="0,55.5">
+              End="0,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.5" />
+                    End="0,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup Match Output3]"
-          TopLeft="1207.16666666667,248">
+          TopLeft="926,244">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65"
+              EndConnector="0,68"
               Start="0,0"
-              End="0,57.5">
+              End="0,60.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.5" />
+                    End="0,60.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,22.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,24.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5398,27 +6627,27 @@ FROM    dbo.STUDENT s
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="133,0"
+              EndConnector="89,0"
               Start="0,0"
-              End="125.5,0">
+              End="81.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="125.5,0" />
+                    End="81.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="14.55861328125,5,96.3827734375,11.609375"
+              BoundingBox="-7.44138671875,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup Match Output1]"
-          TopLeft="604,267">
+          TopLeft="560,267">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5472,7 +6701,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5482,7 +6711,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5633,7 +6862,7 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="111,42"
           Id="Package\dftTransferChoice\odsSIS"
-          TopLeft="155.5,0.5" />
+          TopLeft="132.5,130.5" />
         <NodeLayout
           Size="270,42"
           Id="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice"
@@ -5641,43 +6870,7 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="196,42"
           Id="Package\dftTransferChoice\csLast Modified Changed"
-          TopLeft="68,444" />
-        <EdgeLayout
-          Id="Package\dftTransferChoice.Paths[OLE DB Source Output]"
-          TopLeft="211,42.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-18,246.5"
-              Start="0,0"
-              End="-18,239">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,119.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,119.25"
-                    Point2="0,123.25"
-                    Point3="-4,123.25" />
-                  <mssgle:LineSegment
-                    End="-14,123.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-14,123.25"
-                    Point2="-18,123.25"
-                    Point3="-18,127.25" />
-                  <mssgle:LineSegment
-                    End="-18,239" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="69,444" />
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Lookup No Match Output]"
           TopLeft="221.666666666667,331">
@@ -5716,7 +6909,7 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Lookup Match Output]"
-          TopLeft="165.166666666667,331">
+          TopLeft="165.666666666667,331">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5740,7 +6933,7 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Last Modified Changed]"
-          TopLeft="165,486">
+          TopLeft="165.5,486">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5759,6 +6952,68 @@ FROM    dbo.STUDENT s
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-50.42298828125,41.39404296875,100.8459765625,11.7119140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\dftTransferChoice\lStudentChoiceCase"
+          TopLeft="95,202" />
+        <EdgeLayout
+          Id="Package\dftTransferChoice.Paths[OLE DB Source Output]"
+          TopLeft="184.25,172.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.5"
+              Start="0,0"
+              End="0,22">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftTransferChoice.Paths[Lookup Match Output1]"
+          TopLeft="180.5,244">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,45"
+              Start="0,0"
+              End="12.5,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="8.5,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.5,22.5"
+                    Point2="12.5,22.5"
+                    Point3="12.5,26.5" />
+                  <mssgle:LineSegment
+                    End="12.5,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-41.94138671875,27.5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5803,6 +7058,219 @@ FROM    dbo.STUDENT s
         <Name>TableInfoObjectType</Name>
         <Value
           type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\dftTransferCase">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\dftTransferCase\lStudentCase"
+          TopLeft="126,131" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\dftTransferCase\csLast Modified Changed"
+          TopLeft="91,222" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\dftTransferCase\oddStudentChoiceCase"
+          TopLeft="394,126" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase"
+          TopLeft="71,338" />
+        <EdgeLayout
+          Id="Package\dftTransferCase.Paths[Last Modified Changed]"
+          TopLeft="189,264">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,74"
+              Start="0,0"
+              End="12.5,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33"
+                    Point2="0,37"
+                    Point3="4,37" />
+                  <mssgle:LineSegment
+                    End="8.5,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.5,37"
+                    Point2="12.5,37"
+                    Point3="12.5,41" />
+                  <mssgle:LineSegment
+                    End="12.5,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-44.17298828125,42,100.8459765625,11.7119140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="111,42"
+          Id="Package\dftTransferCase\odsSIS"
+          TopLeft="112,19" />
+        <EdgeLayout
+          Id="Package\dftTransferCase.Paths[OLE DB Source Output]"
+          TopLeft="167.5,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.5,70"
+              Start="0,0"
+              End="28.5,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
+                  <mssgle:LineSegment
+                    End="24.5,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.5,35"
+                    Point2="28.5,35"
+                    Point3="28.5,39" />
+                  <mssgle:LineSegment
+                    End="28.5,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftTransferCase.Paths[Lookup Match Output]"
+          TopLeft="192.5,173">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftTransferCase.Paths[Lookup No Match Output]"
+          TopLeft="266,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128,0"
+              Start="0,0"
+              End="120.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="120.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="4.44361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftTransferCase\lStudentCase">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Eligibility].[StudentChoiceCase]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftTransferCase\oddStudentChoiceCase">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftTransferCase\odsSIS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftTransferChoice\lStudentChoiceCase">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Eligibility].[StudentChoiceCase]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
