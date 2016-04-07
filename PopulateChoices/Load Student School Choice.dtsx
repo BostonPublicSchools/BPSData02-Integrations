@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="69"
-  DTS:VersionGUID="{A4CB6B32-8439-4C0A-9630-05BCE8F10F78}">
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{205FBB6F-0F3D-48A7-8B4C-15E1756B854F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACVskPZPDGHZMXALE66Fu92AAAAAASAAACgAAAAEAAAAAwdd8GnLqKPy9f8WzkV/WgYAAAAyceliVev2lKxnRPCJewEpxMTxGJvixe1FAAAAO04XYXcq88QqtzljHq075fRaYV1</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABwsg1amgh65ZcB0hw4z8eiAAAAAASAAACgAAAAEAAAAAlFLajAgXr+8uRUCfkerzcYAAAA542y+5Lk4p5I7+u+nYMcz5fpVK7lT5UzFAAAAOQNr17OboRkHZrbDU0qGgNwkEOe</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAYDtBb3zOhTtstfXvy6k28AAAAAASAAACgAAAAEAAAAMd9TbguuTLb7MNgd7wIaZMYAAAA/nTa1aJZameWmsqW3m3f2C8g9VYSoS3pFAAAAI56CckhxLcMzmjNJUgnziepQxY+</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADB5tpzfnV7UuLOOrsPCY0KAAAAAASAAACgAAAAEAAAAIP7K5NskcZbeCXg19jHxQYYAAAAIOmm0Vs4ZhjyDnY0zr2Qt2BQI9XWo8grFAAAAJK/NKfshJEGFlBQOpuS+Sdiro59</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -842,464 +842,6 @@ where [refTable].[Sch] = ? and [refTable].[ProgramCode] = ? and [refTable].[Case
               </outputs>
             </component>
             <component
-              refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="lEligiblitySchoolChoiceForStudentCallResults"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Eligibility].[SchoolChoicesForStudentCallResults]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[SchoolChoicesForStudentCallResults]) [refTable]
-where [refTable].[Sch] = ? and [refTable].[ProgramCode] = ? and [refTable].[Grade] = ? and [refTable].[CallID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CallID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AssignmentWalkEligibilityStatus" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Grade" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProgramCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="School" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolYear" dataType="DT_STR" length="9" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TransEligible" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Tier" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Eligibility" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StraightLineDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SortClause" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="X" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Y" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchoolName" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsExamSchool" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsSpecAdmissions" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchHours1" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubProgramCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DataKey" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolYearMyBPS" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Sch" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName" dataType="DT_STR" length="40" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ShortSchName" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubProgCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchDescription" dataType="DT_STR" length="80" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchHours2" dataType="DT_STR" length="80" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WalkPrefAssignSch" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WalkEligibleSch" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchSortOrder" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ELLLevel" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsTwoWayInterest" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsGuarantee" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="isNotInFinalResults" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WalkDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]};#{Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]};#{Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]};#{Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[MaxCallID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input].Columns[MaxCallID]"
-                      cachedDataType="i4"
-                      cachedName="MaxCallID"
-                      lineageId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[MaxCallID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">CallID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input].Columns[SCA_PROGRAM_CODE]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="SCA_PROGRAM_CODE"
-                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">ProgramCode</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input].Columns[SCA_GRADE_LEVEL]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="SCA_GRADE_LEVEL"
-                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Grade</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input].Columns[SKL_SCHOOL_ID]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="SKL_SCHOOL_ID"
-                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Sch</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[School]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="4"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[School]"
-                      name="School"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">School</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[ProgramCode]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="3"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[ProgramCode]"
-                      name="ProgramCode"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">ProgramCode</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="lEligiblitySchoolChoiceForStudentCallResults Case"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Eligibility].[SchoolChoicesForStudentCallResults]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[SchoolChoicesForStudentCallResults]) [refTable]
-where [refTable].[Sch] = ? and [refTable].[ProgramCode] = ? and [refTable].[Grade] = ? and [refTable].[CallID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CallID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AssignmentWalkEligibilityStatus" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Grade" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProgramCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="School" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolYear" dataType="DT_STR" length="9" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TransEligible" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Tier" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Eligibility" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StraightLineDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SortClause" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="X" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Y" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchoolName" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsExamSchool" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsSpecAdmissions" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchHours1" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubProgramCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DataKey" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolYearMyBPS" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Sch" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName" dataType="DT_STR" length="40" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ShortSchName" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubProgCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchDescription" dataType="DT_STR" length="80" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchHours2" dataType="DT_STR" length="80" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WalkPrefAssignSch" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WalkEligibleSch" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchSortOrder" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ELLLevel" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsTwoWayInterest" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsGuarantee" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="isNotInFinalResults" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WalkDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]};#{Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]};#{Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]};#{Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[MaxCallID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input].Columns[MaxCallID]"
-                      cachedDataType="i4"
-                      cachedName="MaxCallID"
-                      lineageId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[MaxCallID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">CallID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input].Columns[SCA_PROGRAM_CODE]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="SCA_PROGRAM_CODE"
-                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">ProgramCode</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input].Columns[SCA_GRADE_LEVEL]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="SCA_GRADE_LEVEL"
-                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Grade</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input].Columns[SKL_SCHOOL_ID]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="SKL_SCHOOL_ID"
-                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Sch</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[School]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="4"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[School]"
-                      name="School"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">School</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[ProgramCode]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="3"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[ProgramCode]"
-                      name="ProgramCode"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">ProgramCode</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -1620,27 +1162,27 @@ sscId = ?;</property>
                       externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscId]" />
                     <inputColumn
-                      refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[ProgramCode]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="3"
-                      cachedName="ProgramCode"
-                      externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[ProgramCode]" />
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[School]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="School"
-                      externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[School]" />
-                    <inputColumn
                       refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[MaxCallID]"
                       cachedDataType="i4"
                       cachedName="MaxCallID"
                       externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[MaxCallID]" />
+                    <inputColumn
+                      refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[SKL_SCHOOL_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="SKL_SCHOOL_ID"
+                      externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]" />
+                    <inputColumn
+                      refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[SCA_PROGRAM_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SCA_PROGRAM_CODE"
+                      externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1781,27 +1323,27 @@ sscId = ?;</property>
                       externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscId]" />
                     <inputColumn
-                      refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].Columns[ProgramCode]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="3"
-                      cachedName="ProgramCode"
-                      externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[ProgramCode]" />
-                    <inputColumn
-                      refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].Columns[School]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="School"
-                      externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[School]" />
-                    <inputColumn
                       refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].Columns[MaxCallID]"
                       cachedDataType="i4"
                       cachedName="MaxCallID"
                       externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[MaxCallID]" />
+                    <inputColumn
+                      refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].Columns[SKL_SCHOOL_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="SKL_SCHOOL_ID"
+                      externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]" />
+                    <inputColumn
+                      refId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].Columns[SCA_PROGRAM_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SCA_PROGRAM_CODE"
+                      externalMetadataColumnId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2211,27 +1753,17 @@ WHERE   sscCallID IS NULL</property>
           <paths>
             <path
               refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output]"
-              endId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output1]"
-              endId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
-              name="Lookup Match Output"
-              startId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output2]"
               endId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output3]"
-              endId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input]"
+              refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output1]"
+              endId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
               name="Lookup Match Output"
-              startId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output]" />
+              startId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output4]"
-              endId="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]"
+              refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output2]"
+              endId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output]" />
             <path
@@ -2276,30 +1808,48 @@ WHERE   sscCallID IS NULL</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  Studentno ,
-		GradeParam ,
-        MAX(CallID) MaxCallID
-FROM    Eligibility.SchoolChoicesForStudentCallInfo
-WHERE   NOT type = 'Testing'
-        AND SchYear = '2016-2017'
-        AND NULLIF(Studentno, '') IS NOT NULL
-GROUP BY Studentno ,
-        GradeParam;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH    cte_StudentMaxCall
+          AS ( SELECT   Studentno ,
+                        GradeParam ,
+                        MAX(CallID) MaxCallID
+               FROM     Eligibility.SchoolChoicesForStudentCallInfo
+               WHERE    NOT type = 'Testing'
+                        AND SchYear = '2016-2017'
+                        AND NULLIF(Studentno, '') IS NOT NULL
+               GROUP BY Studentno ,
+                        GradeParam
+             )
+    SELECT  cte_StudentMaxCall.Studentno ,
+            cte_StudentMaxCall.GradeParam ,
+            cte_StudentMaxCall.MaxCallID ,
+            School ,
+            ProgramCode
+    FROM    cte_StudentMaxCall
+            JOIN Eligibility.SchoolChoicesForStudentCallResults ON CallID = cte_StudentMaxCall.MaxCallID;</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  Studentno ,
-		GradeParam ,
-        MAX(CallID) MaxCallID
-FROM    Eligibility.SchoolChoicesForStudentCallInfo
-WHERE   NOT type = 'Testing'
-        AND SchYear = '2016-2017'
-        AND NULLIF(Studentno, '') IS NOT NULL
-GROUP BY Studentno ,
-        GradeParam;) [refTable]
-where [refTable].[Studentno] = ? and [refTable].[GradeParam] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (WITH    cte_StudentMaxCall
+          AS ( SELECT   Studentno ,
+                        GradeParam ,
+                        MAX(CallID) MaxCallID
+               FROM     Eligibility.SchoolChoicesForStudentCallInfo
+               WHERE    NOT type = 'Testing'
+                        AND SchYear = '2016-2017'
+                        AND NULLIF(Studentno, '') IS NOT NULL
+               GROUP BY Studentno ,
+                        GradeParam
+             )
+    SELECT  cte_StudentMaxCall.Studentno ,
+            cte_StudentMaxCall.GradeParam ,
+            cte_StudentMaxCall.MaxCallID ,
+            School ,
+            ProgramCode
+    FROM    cte_StudentMaxCall
+            JOIN Eligibility.SchoolChoicesForStudentCallResults ON CallID = cte_StudentMaxCall.MaxCallID;) [refTable]
+where [refTable].[Studentno] = ? and [refTable].[School] = ? and [refTable].[ProgramCode] = ? and [refTable].[GradeParam] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -2330,12 +1880,12 @@ where [refTable].[Studentno] = ? and [refTable].[GradeParam] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Studentno" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="GradeParam" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MaxCallID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Studentno" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="GradeParam" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MaxCallID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="School" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProgramCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[STD_ID_LOCAL]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]};</property>
+                  name="ParameterMap">#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[STD_ID_LOCAL]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2394,6 +1944,42 @@ where [refTable].[Studentno] = ? and [refTable].[GradeParam] = ?</property>
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Inputs[Lookup Input].Columns[SKL_SCHOOL_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="SKL_SCHOOL_ID"
+                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">School</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Inputs[Lookup Input].Columns[SCA_PROGRAM_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SCA_PROGRAM_CODE"
+                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProgramCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2418,6 +2004,38 @@ where [refTable].[Studentno] = ? and [refTable].[GradeParam] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn">MaxCallID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[School]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="4"
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[School]"
+                      name="School"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">School</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[ProgramCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="3"
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[ProgramCode]"
+                      name="ProgramCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProgramCode</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2469,28 +2087,46 @@ where [refTable].[Studentno] = ? and [refTable].[GradeParam] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  CaseID ,
-		GradeParam ,
-        MAX(CallID) MaxCallID
-FROM    Eligibility.SchoolChoicesForStudentCallInfo
-WHERE   NOT type = 'Testing'
-        AND SchYear = '2016-2017'
-GROUP BY CaseID ,
-        GradeParam;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH    cte_StudentMaxCall
+          AS ( SELECT   CaseID ,
+                        GradeParam ,
+                        MAX(CallID) MaxCallID
+               FROM     Eligibility.SchoolChoicesForStudentCallInfo
+               WHERE    NOT type = 'Testing'
+                        AND SchYear = '2016-2017'
+               GROUP BY CaseID ,
+                        GradeParam
+             )
+    SELECT  cte_StudentMaxCall.CaseID ,
+            cte_StudentMaxCall.GradeParam ,
+            cte_StudentMaxCall.MaxCallID ,
+            School ,
+            ProgramCode
+    FROM    cte_StudentMaxCall
+            JOIN Eligibility.SchoolChoicesForStudentCallResults ON CallID = cte_StudentMaxCall.MaxCallID;</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  CaseID ,
-		GradeParam ,
-        MAX(CallID) MaxCallID
-FROM    Eligibility.SchoolChoicesForStudentCallInfo
-WHERE   NOT type = 'Testing'
-        AND SchYear = '2016-2017'
-GROUP BY CaseID ,
-        GradeParam;) [refTable]
-where [refTable].[CaseID] = ? and [refTable].[GradeParam] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (WITH    cte_StudentMaxCall
+          AS ( SELECT   CaseID ,
+                        GradeParam ,
+                        MAX(CallID) MaxCallID
+               FROM     Eligibility.SchoolChoicesForStudentCallInfo
+               WHERE    NOT type = 'Testing'
+                        AND SchYear = '2016-2017'
+               GROUP BY CaseID ,
+                        GradeParam
+             )
+    SELECT  cte_StudentMaxCall.CaseID ,
+            cte_StudentMaxCall.GradeParam ,
+            cte_StudentMaxCall.MaxCallID ,
+            School ,
+            ProgramCode
+    FROM    cte_StudentMaxCall
+            JOIN Eligibility.SchoolChoicesForStudentCallResults ON CallID = cte_StudentMaxCall.MaxCallID;) [refTable]
+where [refTable].[School] = ? and [refTable].[ProgramCode] = ? and [refTable].[CaseID] = ? and [refTable].[GradeParam] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -2521,12 +2157,12 @@ where [refTable].[CaseID] = ? and [refTable].[GradeParam] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CaseID" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="GradeParam" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MaxCallID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CaseID" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="GradeParam" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MaxCallID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="School" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProgramCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[STC_ID]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]};</property>
+                  name="ParameterMap">#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[STC_ID]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2585,6 +2221,42 @@ where [refTable].[CaseID] = ? and [refTable].[GradeParam] = ?</property>
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Inputs[Lookup Input].Columns[SKL_SCHOOL_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="SKL_SCHOOL_ID"
+                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">School</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Inputs[Lookup Input].Columns[SCA_PROGRAM_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SCA_PROGRAM_CODE"
+                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProgramCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2609,6 +2281,38 @@ where [refTable].[CaseID] = ? and [refTable].[GradeParam] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn">MaxCallID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[School]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="4"
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[School]"
+                      name="School"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">School</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[ProgramCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="3"
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[ProgramCode]"
+                      name="ProgramCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProgramCode</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2639,464 +2343,6 @@ where [refTable].[CaseID] = ? and [refTable].[GradeParam] = ?</property>
                       refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="lEligiblitySchoolChoiceForStudentCallResults"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Eligibility].[SchoolChoicesForStudentCallResults]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[SchoolChoicesForStudentCallResults]) [refTable]
-where [refTable].[Sch] = ? and [refTable].[ProgramCode] = ? and [refTable].[Grade] = ? and [refTable].[CallID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CallID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AssignmentWalkEligibilityStatus" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Grade" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProgramCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="School" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolYear" dataType="DT_STR" length="9" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TransEligible" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Tier" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Eligibility" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StraightLineDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SortClause" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="X" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Y" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchoolName" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsExamSchool" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsSpecAdmissions" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchHours1" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubProgramCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DataKey" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolYearMyBPS" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Sch" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName" dataType="DT_STR" length="40" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ShortSchName" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubProgCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchDescription" dataType="DT_STR" length="80" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchHours2" dataType="DT_STR" length="80" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WalkPrefAssignSch" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WalkEligibleSch" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchSortOrder" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ELLLevel" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsTwoWayInterest" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsGuarantee" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="isNotInFinalResults" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WalkDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]};#{Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[MaxCallID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input].Columns[MaxCallID]"
-                      cachedDataType="i4"
-                      cachedName="MaxCallID"
-                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[MaxCallID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">CallID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input].Columns[SCA_PROGRAM_CODE]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="SCA_PROGRAM_CODE"
-                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">ProgramCode</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input].Columns[SCA_GRADE_LEVEL]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="SCA_GRADE_LEVEL"
-                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Grade</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input].Columns[SKL_SCHOOL_ID]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="SKL_SCHOOL_ID"
-                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Sch</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[School]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="4"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[School]"
-                      name="School"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">School</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[ProgramCode]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="3"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[ProgramCode]"
-                      name="ProgramCode"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">ProgramCode</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="lEligiblitySchoolChoiceForStudentCallResults Case"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Eligibility].[SchoolChoicesForStudentCallResults]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[SchoolChoicesForStudentCallResults]) [refTable]
-where [refTable].[Sch] = ? and [refTable].[ProgramCode] = ? and [refTable].[Grade] = ? and [refTable].[CallID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CallID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AssignmentWalkEligibilityStatus" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Grade" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProgramCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="School" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolYear" dataType="DT_STR" length="9" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TransEligible" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Tier" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Eligibility" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StraightLineDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SortClause" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="X" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Y" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchoolName" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsExamSchool" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsSpecAdmissions" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchHours1" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubProgramCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DataKey" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolYearMyBPS" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Sch" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName" dataType="DT_STR" length="40" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ShortSchName" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SubProgCode" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchDescription" dataType="DT_STR" length="80" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchHours2" dataType="DT_STR" length="80" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WalkPrefAssignSch" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WalkEligibleSch" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchSortOrder" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ELLLevel" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsTwoWayInterest" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsGuarantee" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="isNotInFinalResults" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WalkDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]};#{Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]};#{Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[MaxCallID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BpsInterface.BPSIntegration]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input].Columns[MaxCallID]"
-                      cachedDataType="i4"
-                      cachedName="MaxCallID"
-                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[MaxCallID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">CallID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input].Columns[SCA_PROGRAM_CODE]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="SCA_PROGRAM_CODE"
-                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_PROGRAM_CODE]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">ProgramCode</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input].Columns[SCA_GRADE_LEVEL]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="SCA_GRADE_LEVEL"
-                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SCA_GRADE_LEVEL]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Grade</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input].Columns[SKL_SCHOOL_ID]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="SKL_SCHOOL_ID"
-                      lineageId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output].Columns[SKL_SCHOOL_ID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Sch</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[School]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="4"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[School]"
-                      name="School"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">School</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[ProgramCode]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="3"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[ProgramCode]"
-                      name="ProgramCode"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">ProgramCode</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3431,7 +2677,7 @@ sscId = ?;</property>
                       cachedLength="3"
                       cachedName="ProgramCode"
                       externalMetadataColumnId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[ProgramCode]" />
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[ProgramCode]" />
                     <inputColumn
                       refId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[School]"
                       cachedCodepage="1252"
@@ -3439,7 +2685,7 @@ sscId = ?;</property>
                       cachedLength="4"
                       cachedName="School"
                       externalMetadataColumnId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output].Columns[School]" />
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[School]" />
                     <inputColumn
                       refId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[MaxCallID]"
                       cachedDataType="i4"
@@ -3592,7 +2838,7 @@ sscId = ?;</property>
                       cachedLength="3"
                       cachedName="ProgramCode"
                       externalMetadataColumnId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[ProgramCode]" />
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[ProgramCode]" />
                     <inputColumn
                       refId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].Columns[School]"
                       cachedCodepage="1252"
@@ -3600,7 +2846,7 @@ sscId = ?;</property>
                       cachedLength="4"
                       cachedName="School"
                       externalMetadataColumnId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output].Columns[School]" />
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[School]" />
                     <inputColumn
                       refId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input].Columns[MaxCallID]"
                       cachedDataType="i4"
@@ -4004,27 +3250,17 @@ sscId = ?;</property>
           <paths>
             <path
               refId="Package\dftFindLatestCall.Paths[Lookup Match Output]"
-              endId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\dftFindLatestCall.Paths[Lookup Match Output1]"
-              endId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
-              name="Lookup Match Output"
-              startId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\dftFindLatestCall.Paths[Lookup Match Output2]"
               endId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\dftFindLatestCall.Paths[Lookup Match Output3]"
-              endId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input]"
+              refId="Package\dftFindLatestCall.Paths[Lookup Match Output1]"
+              endId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
               name="Lookup Match Output"
-              startId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Outputs[Lookup Match Output]" />
+              startId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\dftFindLatestCall.Paths[Lookup Match Output4]"
-              endId="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case.Inputs[Lookup Input]"
+              refId="Package\dftFindLatestCall.Paths[Lookup Match Output2]"
+              endId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output]" />
             <path
@@ -7055,6 +6291,10 @@ sscId = ?;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="203,42"
+          Id="Package\dftFindLastCallForProgram"
+          TopLeft="329,384" />
+        <NodeLayout
           Size="157,42"
           Id="Package\dftFindLatestCall"
           TopLeft="350,300" />
@@ -7066,6 +6306,10 @@ sscId = ?;</property>
           Size="162,42"
           Id="Package\dftTransferChoice"
           TopLeft="345,222" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\dtfMatchCallfrom other choices"
+          TopLeft="322,471" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="427.25,264">
@@ -7110,10 +6354,6 @@ sscId = ?;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="203,42"
-          Id="Package\dftFindLastCallForProgram"
-          TopLeft="329,384" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="429.5,342">
@@ -7136,10 +6376,6 @@ sscId = ?;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="225,42"
-          Id="Package\dtfMatchCallfrom other choices"
-          TopLeft="322,471" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="432.5,426">
@@ -7166,42 +6402,238 @@ sscId = ?;</property>
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\dftFindLastCallForProgram">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="235,42"
+          Id="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice"
+          TopLeft="32,16" />
+        <NodeLayout
+          Size="331,42"
+          Id="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
+          TopLeft="393,103" />
+        <NodeLayout
+          Size="296,42"
+          Id="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case"
+          TopLeft="835,234" />
+        <NodeLayout
+          Size="384,42"
+          Id="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case"
+          TopLeft="791,101" />
+        <NodeLayout
+          Size="293,42"
+          Id="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL"
+          TopLeft="10,100" />
+        <NodeLayout
+          Size="270,42"
+          Id="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice"
+          TopLeft="419,241" />
+        <EdgeLayout
+          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output]"
+          TopLeft="303,122.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90,0"
+              Start="0,0"
+              End="82.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.94138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftFindLastCallForProgram.Paths[OLE DB Source Output]"
+          TopLeft="153,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftFindLastCallForProgram.Paths[Lookup No Match Output]"
+          TopLeft="724,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67,0"
+              Start="0,0"
+              End="59.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="59.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.05638671875,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output1]"
+          TopLeft="556.25,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,96"
+              Start="0,0"
+              End="0,88.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,88.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,38.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output2]"
+          TopLeft="983,143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,91"
+              Start="0,0"
+              End="0,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,35.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\dftFindLatestCall">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="331,42"
-          Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
-          TopLeft="393,103" />
-        <NodeLayout
           Size="296,42"
           Id="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case"
-          TopLeft="777,312" />
+          TopLeft="842,223" />
         <NodeLayout
           Size="384,42"
           Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case"
-          TopLeft="791,101" />
-        <NodeLayout
-          Size="235,42"
-          Id="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice"
-          TopLeft="32,16" />
-        <NodeLayout
-          Size="284,42"
-          Id="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults"
-          TopLeft="416,224" />
+          TopLeft="793,101" />
         <NodeLayout
           Size="293,42"
           Id="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL"
           TopLeft="10,100" />
         <NodeLayout
-          Size="310,42"
-          Id="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case"
-          TopLeft="772,202" />
-        <NodeLayout
           Size="270,42"
           Id="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice"
-          TopLeft="427,328" />
+          TopLeft="418,235" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice"
+          TopLeft="32,16" />
+        <NodeLayout
+          Size="331,42"
+          Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
+          TopLeft="393,103" />
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[OLE DB Source Output]"
           TopLeft="153,58">
@@ -7230,74 +6662,26 @@ sscId = ?;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="67,0"
+              EndConnector="69,0"
               Start="0,0"
-              End="59.5,0">
+              End="61.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="59.5,0" />
+                    End="61.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-26.05638671875,5,111.6127734375,11.609375"
+              BoundingBox="-25.05638671875,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\dftFindLatestCall.Paths[Lookup Match Output4]"
-          TopLeft="923.666666666667,143">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftFindLatestCall.Paths[Lookup Match Output3]"
-          TopLeft="926,244">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,68"
-              Start="0,0"
-              End="0,60.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,24.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftFindLatestCall.Paths[Lookup Match Output2]"
+          Id="Package\dftFindLatestCall.Paths[Lookup Match Output]"
           TopLeft="303,122.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7322,78 +6706,55 @@ sscId = ?;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup Match Output1]"
-          TopLeft="560,266">
+          TopLeft="555.75,145">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,62"
+              EndConnector="0,90"
               Start="0,0"
-              End="0,54.5">
+              End="0,82.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.5" />
+                    End="0,82.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,35.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\dftFindLatestCall.Paths[Lookup Match Output]"
-          TopLeft="558.25,145">
+          Id="Package\dftFindLatestCall.Paths[Lookup Match Output2]"
+          TopLeft="987.5,143">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,79"
+              EndConnector="0,80"
               Start="0,0"
-              End="0,71.5">
+              End="0,72.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,71.5" />
+                    End="0,72.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,29.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,30.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case">
     <Properties>
@@ -7418,6 +6779,29 @@ sscId = ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice">
     <Properties>
       <Property>
@@ -7431,30 +6815,7 @@ sscId = ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Eligibility].[SchoolChoicesForStudentCallResults]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL">
+    design-time-name="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -7470,29 +6831,6 @@ sscId = ?;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftFindLatestCall\lEligiblitySchoolChoiceForStudentCallResults Case">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Eligibility].[SchoolChoicesForStudentCallResults]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7555,7 +6893,9 @@ sscId = ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7737,7 +7077,9 @@ sscId = ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7931,350 +7273,26 @@ sscId = ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\dftFindLastCallForProgram">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="310,42"
-          Id="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case"
-          TopLeft="772,202" />
-        <NodeLayout
-          Size="384,42"
-          Id="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case"
-          TopLeft="791,101" />
-        <NodeLayout
-          Size="284,42"
-          Id="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults"
-          TopLeft="416,224" />
-        <NodeLayout
-          Size="296,42"
-          Id="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case"
-          TopLeft="777,312" />
-        <NodeLayout
-          Size="331,42"
-          Id="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
-          TopLeft="393,103" />
-        <NodeLayout
-          Size="235,42"
-          Id="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice"
-          TopLeft="32,16" />
-        <NodeLayout
-          Size="293,42"
-          Id="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL"
-          TopLeft="10,100" />
-        <NodeLayout
-          Size="270,42"
-          Id="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice"
-          TopLeft="427,328" />
-        <EdgeLayout
-          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output4]"
-          TopLeft="923.666666666667,143">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output3]"
-          TopLeft="926,244">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,68"
-              Start="0,0"
-              End="0,60.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,24.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output2]"
-          TopLeft="303,122.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="90,0"
-              Start="0,0"
-              End="82.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="82.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-6.94138671875,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output1]"
-          TopLeft="560,266">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,62"
-              Start="0,0"
-              End="0,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,21.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output]"
-          TopLeft="558.25,145">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,79"
-              Start="0,0"
-              End="0,71.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,29.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftFindLastCallForProgram.Paths[OLE DB Source Output]"
-          TopLeft="153,58">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftFindLastCallForProgram.Paths[Lookup No Match Output]"
-          TopLeft="724,123">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="67,0"
-              Start="0,0"
-              End="59.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="59.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-26.05638671875,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults Case">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Eligibility].[SchoolChoicesForStudentCallResults]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftFindLastCallForProgram\lEligiblitySchoolChoiceForStudentCallResults">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Eligibility].[SchoolChoicesForStudentCallResults]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\dtfMatchCallfrom other choices">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="293,42"
+          Id="Package\dtfMatchCallfrom other choices\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL"
+          TopLeft="18,221" />
+        <NodeLayout
           Size="235,42"
           Id="Package\dtfMatchCallfrom other choices\odsEligibilityStudentSchoolChoice"
           TopLeft="58,31" />
         <NodeLayout
+          Size="166,42"
+          Id="Package\dtfMatchCallfrom other choices\OLE DB Command"
+          TopLeft="76,321" />
+        <NodeLayout
           Size="216,42"
           Id="Package\dtfMatchCallfrom other choices\lEligibityStudentSchoolChoice"
           TopLeft="63,118" />
-        <EdgeLayout
-          Id="Package\dtfMatchCallfrom other choices.Paths[OLE DB Source Output]"
-          TopLeft="173.25,73">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45"
-              Start="0,0"
-              End="0,37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="293,42"
-          Id="Package\dtfMatchCallfrom other choices\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL"
-          TopLeft="18,221" />
         <EdgeLayout
           Id="Package\dtfMatchCallfrom other choices.Paths[Lookup Match Output]"
           TopLeft="167.75,160">
@@ -8299,10 +7317,30 @@ sscId = ?;</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\dtfMatchCallfrom other choices\OLE DB Command"
-          TopLeft="76,321" />
+        <EdgeLayout
+          Id="Package\dtfMatchCallfrom other choices.Paths[OLE DB Source Output]"
+          TopLeft="173.25,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\dtfMatchCallfrom other choices.Paths[Lookup Match Output1]"
           TopLeft="161.75,263">
@@ -8331,6 +7369,29 @@ sscId = ?;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\dtfMatchCallfrom other choices\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\dtfMatchCallfrom other choices\odsEligibilityStudentSchoolChoice">
     <Properties>
       <Property>
@@ -8344,7 +7405,7 @@ sscId = ?;</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -8354,30 +7415,7 @@ sscId = ?;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dtfMatchCallfrom other choices\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
