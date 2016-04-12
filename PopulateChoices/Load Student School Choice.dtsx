@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="71"
-  DTS:VersionGUID="{205FBB6F-0F3D-48A7-8B4C-15E1756B854F}">
+  DTS:VersionBuild="80"
+  DTS:VersionGUID="{984000EC-9512-4642-AFCA-A318C057C993}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABwsg1amgh65ZcB0hw4z8eiAAAAAASAAACgAAAAEAAAAAlFLajAgXr+8uRUCfkerzcYAAAA542y+5Lk4p5I7+u+nYMcz5fpVK7lT5UzFAAAAOQNr17OboRkHZrbDU0qGgNwkEOe</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADcw71SsBL1XnhwKQETgVyIAAAAAASAAACgAAAAEAAAAHWTf5AZ7q54asPcKsRHGkcYAAAAm6Snv8RFz7pReOBDSdIfAl1KNNrXjQVJFAAAAKHEkIvEecjtx8A2E/Bmtv1rfdxj</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADB5tpzfnV7UuLOOrsPCY0KAAAAAASAAACgAAAAEAAAAIP7K5NskcZbeCXg19jHxQYYAAAAIOmm0Vs4ZhjyDnY0zr2Qt2BQI9XWo8grFAAAAJK/NKfshJEGFlBQOpuS+Sdiro59</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAzkLk2weuf4PEpSQ9CMmiLAAAAAASAAACgAAAAEAAAAMwM7uhdLV/YNT4yjO5GMrAYAAAAUU+jqPPc61frdmalr9KOATsSagBW1wl5FAAAAJTGx6AB2L8gs6jutu+ViK6dRaGc</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -359,6 +359,194 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\dftFindLastCallForProgram\csCallId Changed"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="csCallId Changed"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dftFindLastCallForProgram\csCallId Changed.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftFindLastCallForProgram\csCallId Changed.Inputs[Conditional Split Input].Columns[sscCallId]"
+                      cachedDataType="i4"
+                      cachedName="sscCallId"
+                      lineageId="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]" />
+                    <inputColumn
+                      refId="Package\dftFindLastCallForProgram\csCallId Changed.Inputs[Conditional Split Input].Columns[MaxCallID]"
+                      cachedDataType="i4"
+                      cachedName="MaxCallID"
+                      lineageId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[MaxCallID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftFindLastCallForProgram\csCallId Changed.Outputs[CallID Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="CallID Changed"
+                  synchronousInputId="Package\dftFindLastCallForProgram\csCallId Changed.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]} != #{Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[MaxCallID]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">sscCallId != MaxCallID</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftFindLastCallForProgram\csCallId Changed.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\dftFindLastCallForProgram\csCallId Changed.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftFindLastCallForProgram\csCallId Changed.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\dftFindLastCallForProgram\csCallId Changed.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftFindLastCallForProgram\csCallId Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLastCallForProgram\csCallId Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftFindLastCallForProgram\csCallId Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLastCallForProgram\csCallId Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftFindLastCallForProgram\csCallId Changed 1"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="csCallId Changed 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dftFindLastCallForProgram\csCallId Changed 1.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftFindLastCallForProgram\csCallId Changed 1.Inputs[Conditional Split Input].Columns[sscCallId]"
+                      cachedDataType="i4"
+                      cachedName="sscCallId"
+                      lineageId="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]" />
+                    <inputColumn
+                      refId="Package\dftFindLastCallForProgram\csCallId Changed 1.Inputs[Conditional Split Input].Columns[MaxCallID]"
+                      cachedDataType="i4"
+                      cachedName="MaxCallID"
+                      lineageId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[MaxCallID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftFindLastCallForProgram\csCallId Changed 1.Outputs[CallID Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="CallID Changed"
+                  synchronousInputId="Package\dftFindLastCallForProgram\csCallId Changed 1.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]} != #{Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[MaxCallID]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">sscCallId != MaxCallID</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftFindLastCallForProgram\csCallId Changed 1.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\dftFindLastCallForProgram\csCallId Changed 1.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftFindLastCallForProgram\csCallId Changed 1.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\dftFindLastCallForProgram\csCallId Changed 1.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftFindLastCallForProgram\csCallId Changed 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLastCallForProgram\csCallId Changed 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftFindLastCallForProgram\csCallId Changed 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLastCallForProgram\csCallId Changed 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
               componentClassID="Microsoft.Lookup"
@@ -1752,18 +1940,28 @@ WHERE   sscCallID IS NULL</property>
           </components>
           <paths>
             <path
+              refId="Package\dftFindLastCallForProgram.Paths[CallID Changed]"
+              endId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
+              name="CallID Changed"
+              startId="Package\dftFindLastCallForProgram\csCallId Changed.Outputs[CallID Changed]" />
+            <path
+              refId="Package\dftFindLastCallForProgram.Paths[CallID Changed1]"
+              endId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input]"
+              name="CallID Changed"
+              startId="Package\dftFindLastCallForProgram\csCallId Changed 1.Outputs[CallID Changed]" />
+            <path
               refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output]"
               endId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output]" />
             <path
               refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output1]"
-              endId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
+              endId="Package\dftFindLastCallForProgram\csCallId Changed.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output]" />
             <path
               refId="Package\dftFindLastCallForProgram.Paths[Lookup Match Output2]"
-              endId="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input]"
+              endId="Package\dftFindLastCallForProgram\csCallId Changed 1.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output]" />
             <path
@@ -1794,6 +1992,194 @@ WHERE   sscCallID IS NULL</property>
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\dftFindLatestCall\csCallId Changed"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="csCallId Changed"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dftFindLatestCall\csCallId Changed.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftFindLatestCall\csCallId Changed.Inputs[Conditional Split Input].Columns[sscCallId]"
+                      cachedDataType="i4"
+                      cachedName="sscCallId"
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]" />
+                    <inputColumn
+                      refId="Package\dftFindLatestCall\csCallId Changed.Inputs[Conditional Split Input].Columns[MaxCallID]"
+                      cachedDataType="i4"
+                      cachedName="MaxCallID"
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[MaxCallID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftFindLatestCall\csCallId Changed.Outputs[CallID Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="CallID Changed"
+                  synchronousInputId="Package\dftFindLatestCall\csCallId Changed.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]} != #{Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output].Columns[MaxCallID]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">sscCallId != MaxCallID</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftFindLatestCall\csCallId Changed.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\dftFindLatestCall\csCallId Changed.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftFindLatestCall\csCallId Changed.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\dftFindLatestCall\csCallId Changed.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\csCallId Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLatestCall\csCallId Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\csCallId Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLatestCall\csCallId Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftFindLatestCall\csCallId Changed 1"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="csCallId Changed 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dftFindLatestCall\csCallId Changed 1.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftFindLatestCall\csCallId Changed 1.Inputs[Conditional Split Input].Columns[sscCallId]"
+                      cachedDataType="i4"
+                      cachedName="sscCallId"
+                      lineageId="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]" />
+                    <inputColumn
+                      refId="Package\dftFindLatestCall\csCallId Changed 1.Inputs[Conditional Split Input].Columns[MaxCallID]"
+                      cachedDataType="i4"
+                      cachedName="MaxCallID"
+                      lineageId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[MaxCallID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftFindLatestCall\csCallId Changed 1.Outputs[CallID Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="CallID Changed"
+                  synchronousInputId="Package\dftFindLatestCall\csCallId Changed 1.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice.Outputs[OLE DB Source Output].Columns[sscCallId]} != #{Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output].Columns[MaxCallID]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">sscCallId != MaxCallID</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftFindLatestCall\csCallId Changed 1.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\dftFindLatestCall\csCallId Changed 1.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftFindLatestCall\csCallId Changed 1.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\dftFindLatestCall\csCallId Changed 1.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\csCallId Changed 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLatestCall\csCallId Changed 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftFindLatestCall\csCallId Changed 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftFindLatestCall\csCallId Changed 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
               componentClassID="Microsoft.Lookup"
@@ -3249,18 +3635,28 @@ sscId = ?;</property>
           </components>
           <paths>
             <path
+              refId="Package\dftFindLatestCall.Paths[CallID Changed]"
+              endId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
+              name="CallID Changed"
+              startId="Package\dftFindLatestCall\csCallId Changed.Outputs[CallID Changed]" />
+            <path
+              refId="Package\dftFindLatestCall.Paths[CallID Changed1]"
+              endId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input]"
+              name="CallID Changed"
+              startId="Package\dftFindLatestCall\csCallId Changed 1.Outputs[CallID Changed]" />
+            <path
               refId="Package\dftFindLatestCall.Paths[Lookup Match Output]"
               endId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL.Outputs[Lookup Match Output]" />
             <path
               refId="Package\dftFindLatestCall.Paths[Lookup Match Output1]"
-              endId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
+              endId="Package\dftFindLatestCall\csCallId Changed.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID.Outputs[Lookup Match Output]" />
             <path
               refId="Package\dftFindLatestCall.Paths[Lookup Match Output2]"
-              endId="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case.Inputs[OLE DB Command Input]"
+              endId="Package\dftFindLatestCall\csCallId Changed 1.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
               startId="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case.Outputs[Lookup Match Output]" />
             <path
@@ -4324,7 +4720,7 @@ where [refTable].[sccSTC_OID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sccId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTC_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTD_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccLastUpdate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTC_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccRound" dataType="DT_WSTR" length="2" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccCaseType" dataType="DT_STR" length="60" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sccId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTC_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTD_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccLastUpdate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccSTC_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccRound" dataType="DT_WSTR" length="2" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccCaseType" dataType="DT_STR" length="60" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sccValidate" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sccNeedChoiceRun" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -4666,27 +5062,27 @@ sscId = ?;</property>
                       externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]" />
                     <inputColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[ReviewDate]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="ReviewDate"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewDate]" />
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[sscId]"
+                      cachedDataType="i4"
+                      cachedName="sscId"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscId]" />
                     <inputColumn
                       refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[ReviewStatus]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="25"
                       cachedName="ReviewStatus"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewStatus]" />
                     <inputColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[sscId]"
-                      cachedDataType="i4"
-                      cachedName="sscId"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscId]" />
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[ReviewDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ReviewDate"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5005,27 +5401,22 @@ sscId = ?;</property>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  SSS_OID ,
-        s.STD_ID_LOCAL ,
         STC_OID ,
-        STC_ID ,
-        SKL_SCHOOL_ID ,
-		SCA_GRADE_LEVEL ,
-        SCA_PROGRAM_CODE ,
         NULLIF(SSS_FIELDB_004, '') ReviewStatus ,
         NULLIF(SSS_FIELDA_011, '') ReviewDate ,
         DATEADD(S, SSS_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') SSS_LAST_MODIFIED ,
-        NULLIF(SSS_FIELDA_001, '') Rank 
+        NULLIF(SSS_FIELDA_001, '') Rank
 FROM    dbo.STUDENT s
         JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
                                  AND ISNUMERIC(STC_FIELDD_019) = 1
                                  AND ISNULL(STC_FIELDD_019, '') = 2
                                  AND STC_STD_OID = s.STD_OID
         JOIN dbo.STUDENT_SCHOOL_CHOICE ON SSS_STC_OID = STC_OID
-										AND SSS_FIELDB_001  = 'schoolsNext'
+                                          AND SSS_FIELDB_001 = 'schoolsNext'
         JOIN dbo.SCHOOL_CAPACITY ON SCA_OID = SSS_SCA_OID
         JOIN dbo.SCHOOL ON SKL_OID = SCA_SKL_OID
-		JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID
-												AND CTX_CONTEXT_ID = '2016-2017';</property>
+        JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID
+                                                 AND CTX_CONTEXT_ID = '2016-2017';</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -5076,12 +5467,12 @@ FROM    dbo.STUDENT s
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="IgnoreFailure"
                       externalMetadataColumnId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[ReviewStatus]"
                       length="25"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewStatus]"
                       name="ReviewStatus"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewDate]"
                       codePage="1252"
@@ -5101,61 +5492,6 @@ FROM    dbo.STUDENT s
                       externalMetadataColumnId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[SSS_LAST_MODIFIED]"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]"
                       name="SSS_LAST_MODIFIED"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[STD_ID_LOCAL]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STD_ID_LOCAL]"
-                      length="32"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[STD_ID_LOCAL]"
-                      name="STD_ID_LOCAL"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[STC_ID]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_ID]"
-                      length="20"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[STC_ID]"
-                      name="STC_ID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SKL_SCHOOL_ID]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[SKL_SCHOOL_ID]"
-                      length="20"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SKL_SCHOOL_ID]"
-                      name="SKL_SCHOOL_ID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SCA_PROGRAM_CODE]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[SCA_PROGRAM_CODE]"
-                      length="10"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SCA_PROGRAM_CODE]"
-                      name="SCA_PROGRAM_CODE"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SCA_GRADE_LEVEL]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[SCA_GRADE_LEVEL]"
-                      length="20"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SCA_GRADE_LEVEL]"
-                      name="SCA_GRADE_LEVEL"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[STC_OID]"
@@ -5203,36 +5539,6 @@ FROM    dbo.STUDENT s
                       dataType="dbTimeStamp"
                       name="SSS_LAST_MODIFIED" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STD_ID_LOCAL]"
-                      codePage="1252"
-                      dataType="str"
-                      length="32"
-                      name="STD_ID_LOCAL" />
-                    <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="STC_ID" />
-                    <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[SKL_SCHOOL_ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="SKL_SCHOOL_ID" />
-                    <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[SCA_PROGRAM_CODE]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="SCA_PROGRAM_CODE" />
-                    <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[SCA_GRADE_LEVEL]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="SCA_GRADE_LEVEL" />
-                    <externalMetadataColumn
                       refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_OID]"
                       dataType="wstr"
                       length="14"
@@ -5257,46 +5563,11 @@ FROM    dbo.STUDENT s
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[SSS_OID]"
                       name="SSS_OID" />
                     <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STD_ID_LOCAL]"
-                      codePage="1252"
-                      dataType="str"
-                      length="32"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STD_ID_LOCAL]"
-                      name="STD_ID_LOCAL" />
-                    <outputColumn
                       refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_OID]"
                       dataType="wstr"
                       length="14"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_OID]"
                       name="STC_OID" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_ID]"
-                      name="STC_ID" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[SKL_SCHOOL_ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[SKL_SCHOOL_ID]"
-                      name="SKL_SCHOOL_ID" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[SCA_GRADE_LEVEL]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[SCA_GRADE_LEVEL]"
-                      name="SCA_GRADE_LEVEL" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[SCA_PROGRAM_CODE]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[SCA_PROGRAM_CODE]"
-                      name="SCA_PROGRAM_CODE" />
                     <outputColumn
                       refId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Error Output].Columns[ReviewStatus]"
                       codePage="1252"
@@ -6407,21 +6678,21 @@ sscId = ?;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="331,42"
+          Id="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
+          TopLeft="393,104" />
+        <NodeLayout
           Size="235,42"
           Id="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice"
           TopLeft="32,16" />
         <NodeLayout
-          Size="331,42"
-          Id="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
-          TopLeft="393,103" />
+          Size="384,42"
+          Id="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case"
+          TopLeft="792,101" />
         <NodeLayout
           Size="296,42"
           Id="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice Case"
-          TopLeft="835,234" />
-        <NodeLayout
-          Size="384,42"
-          Id="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case"
-          TopLeft="791,101" />
+          TopLeft="840,324" />
         <NodeLayout
           Size="293,42"
           Id="Package\dftFindLastCallForProgram\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL"
@@ -6429,31 +6700,7 @@ sscId = ?;</property>
         <NodeLayout
           Size="270,42"
           Id="Package\dftFindLastCallForProgram\odcUpdate EligiblityStudentSchoolChoice"
-          TopLeft="419,241" />
-        <EdgeLayout
-          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output]"
-          TopLeft="303,122.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="90,0"
-              Start="0,0"
-              End="82.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="82.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-6.94138671875,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="443,318" />
         <EdgeLayout
           Id="Package\dftFindLastCallForProgram.Paths[OLE DB Source Output]"
           TopLeft="153,58">
@@ -6478,55 +6725,147 @@ sscId = ?;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftFindLastCallForProgram.Paths[Lookup No Match Output]"
-          TopLeft="724,123">
+          TopLeft="724,123.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="67,0"
+              EndConnector="68,0"
               Start="0,0"
-              End="59.5,0">
+              End="60.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="59.5,0" />
+                    End="60.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-26.05638671875,5,111.6127734375,11.609375"
+              BoundingBox="-25.55638671875,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output1]"
-          TopLeft="556.25,145">
+          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output]"
+          TopLeft="303,123">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,96"
+              EndConnector="90,0"
               Start="0,0"
-              End="0,88.5">
+              End="82.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,88.5" />
+                    End="82.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,38.4453125,96.3827734375,11.609375"
+              BoundingBox="-6.94138671875,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="160,42"
+          Id="Package\dftFindLastCallForProgram\csCallId Changed"
+          TopLeft="501,177" />
+        <EdgeLayout
+          Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output1]"
+          TopLeft="558.5,146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22.5,31"
+              Start="0,0"
+              End="22.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="18.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.5,15.5"
+                    Point2="22.5,15.5"
+                    Point3="22.5,19.5" />
+                  <mssgle:LineSegment
+                    End="22.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-36.94138671875,20.5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftFindLastCallForProgram.Paths[CallID Changed]"
+          TopLeft="579.5,219">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,99"
+              Start="0,0"
+              End="0,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.6155078125,39.91845703125,69.231015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,42"
+          Id="Package\dftFindLastCallForProgram\csCallId Changed 1"
+          TopLeft="902,191" />
         <EdgeLayout
           Id="Package\dftFindLastCallForProgram.Paths[Lookup Match Output2]"
           TopLeft="983,143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftFindLastCallForProgram.Paths[CallID Changed1]"
+          TopLeft="985,233">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6544,7 +6883,7 @@ sscId = ?;</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,35.9453125,96.3827734375,11.609375"
+              BoundingBox="-34.6155078125,35.91845703125,69.231015625,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6552,20 +6891,12 @@ sscId = ?;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\dftFindLastCallForProgram\lEligibilitySchoolChoicesForStudentCallInfo Max CallID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6577,6 +6908,14 @@ sscId = ?;</property>
         <Value
           type="q4:string">0</Value>
       </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftFindLastCallForProgram\odsEligibilityStudentSchoolChoice">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -6613,11 +6952,7 @@ sscId = ?;</property>
         <NodeLayout
           Size="296,42"
           Id="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice Case"
-          TopLeft="842,223" />
-        <NodeLayout
-          Size="384,42"
-          Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case"
-          TopLeft="793,101" />
+          TopLeft="847,271" />
         <NodeLayout
           Size="293,42"
           Id="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL"
@@ -6625,61 +6960,19 @@ sscId = ?;</property>
         <NodeLayout
           Size="270,42"
           Id="Package\dftFindLatestCall\odcUpdate EligiblityStudentSchoolChoice"
-          TopLeft="418,235" />
+          TopLeft="417,303" />
         <NodeLayout
-          Size="235,42"
-          Id="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice"
-          TopLeft="32,16" />
+          Size="384,42"
+          Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case"
+          TopLeft="793,102" />
         <NodeLayout
           Size="331,42"
           Id="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID"
           TopLeft="393,103" />
-        <EdgeLayout
-          Id="Package\dftFindLatestCall.Paths[OLE DB Source Output]"
-          TopLeft="153,58">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftFindLatestCall.Paths[Lookup No Match Output]"
-          TopLeft="724,123">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="69,0"
-              Start="0,0"
-              End="61.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="61.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-25.05638671875,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="235,42"
+          Id="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice"
+          TopLeft="32,16" />
         <EdgeLayout
           Id="Package\dftFindLatestCall.Paths[Lookup Match Output]"
           TopLeft="303,122.5">
@@ -6705,50 +6998,152 @@ sscId = ?;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\dftFindLatestCall.Paths[Lookup Match Output1]"
-          TopLeft="555.75,145">
+          Id="Package\dftFindLatestCall.Paths[OLE DB Source Output]"
+          TopLeft="153,58">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,90"
+              EndConnector="0,42"
               Start="0,0"
-              End="0,82.5">
+              End="0,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,82.5" />
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftFindLatestCall.Paths[Lookup No Match Output]"
+          TopLeft="724,123.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69,0"
+              Start="0,0"
+              End="61.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="61.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,35.4453125,96.3827734375,11.609375"
+              BoundingBox="-25.05638671875,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,42"
+          Id="Package\dftFindLatestCall\csCallId Changed"
+          TopLeft="471,212" />
+        <EdgeLayout
+          Id="Package\dftFindLatestCall.Paths[Lookup Match Output1]"
+          TopLeft="554.75,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,23.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\dftFindLatestCall.Paths[Lookup Match Output2]"
-          TopLeft="987.5,143">
+          Id="Package\dftFindLatestCall.Paths[CallID Changed]"
+          TopLeft="551.5,254">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,80"
+              EndConnector="0,49"
               Start="0,0"
-              End="0,72.5">
+              End="0,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,72.5" />
+                    End="0,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,30.4453125,96.3827734375,11.609375"
+              BoundingBox="-34.6155078125,14.91845703125,69.231015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="169,42"
+          Id="Package\dftFindLatestCall\csCallId Changed 1"
+          TopLeft="903,183" />
+        <EdgeLayout
+          Id="Package\dftFindLatestCall.Paths[Lookup Match Output2]"
+          TopLeft="986.25,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftFindLatestCall.Paths[CallID Changed1]"
+          TopLeft="991.25,225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.6155078125,13.41845703125,69.231015625,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6756,7 +7151,7 @@ sscId = ?;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case">
+    design-time-name="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -6771,7 +7166,7 @@ sscId = ?;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6779,7 +7174,7 @@ sscId = ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\dftFindLatestCall\lSTUDENT_SCHOOL_CHOICE STD_ID_LOCAL">
+    design-time-name="Package\dftFindLatestCall\lEligibilitySchoolChoicesForStudentCallInfo Max CallID From Case">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -6798,19 +7193,6 @@ sscId = ?;</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6834,6 +7216,19 @@ sscId = ?;</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftFindLatestCall\odsEligibilityStudentSchoolChoice">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -7045,7 +7440,7 @@ sscId = ?;</property>
         <NodeLayout
           Size="111,42"
           Id="Package\dftTransferChoice\odsSIS"
-          TopLeft="132.5,130.5" />
+          TopLeft="133.5,130.5" />
         <NodeLayout
           Size="195,42"
           Id="Package\dftTransferChoice\oddStudentSchoolChoice"
@@ -7060,26 +7455,36 @@ sscId = ?;</property>
           TopLeft="69,444" />
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[OLE DB Source Output]"
-          TopLeft="184.25,172.5">
+          TopLeft="189,172.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29.5"
+              EndConnector="-8.5,29.5"
               Start="0,0"
-              End="0,22">
+              End="-8.5,22">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22" />
+                    End="0,10.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.75"
+                    Point2="0,14.75"
+                    Point3="-4,14.75" />
+                  <mssgle:LineSegment
+                    End="-4.5,14.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.5,14.75"
+                    Point2="-8.5,14.75"
+                    Point3="-8.5,18.75" />
+                  <mssgle:LineSegment
+                    End="-8.5,22" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7114,7 +7519,7 @@ sscId = ?;</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="72.1102799479167,52.0132158590308,111.6127734375,11.609375"
+              BoundingBox="72.1102799479165,52.0132158590308,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
