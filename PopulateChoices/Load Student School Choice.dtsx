@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="136"
-  DTS:VersionGUID="{591F6934-1FD1-443A-94F3-7869E58A5009}">
+  DTS:VersionBuild="138"
+  DTS:VersionGUID="{6ADA7C77-305B-47AB-A1D1-4D902262FE63}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAVpgnGPj2OU2MtSH9SxA/pAAAAAASAAACgAAAAEAAAAEEgKDjwIWR0f+ujlckd1IEYAAAA414XIVgJBL6Z+fHT1EFvOzy0bHCSreDrFAAAAIOqkjI1kY18oy35D/8dlQCZtLh6</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADg83gVtQ0vNpTGWDJ0tw8nAAAAAASAAACgAAAAEAAAABTKMfGLhUC0klkoY9L4YeoYAAAAU4tmphW4ibSniCnQkR4JgQiinrjrXEI4FAAAAMsci6Tj3EbIq2KXGDQ+VCBXfFze</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAA/whHjDpsfO90c3QHm/V4BAAAAAASAAACgAAAAEAAAAPf9dnn9n8tTGLwaIscuITAYAAAAZif+jkJSbUwmVNxTKV/8xBqqz3PHze2yFAAAAEB3pIdsvNI3BshLJKHPLZoCNHKT</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADqtO1YxPo8r85/6niiVVHQAAAAAASAAACgAAAAEAAAALKBDzOL1MO6kicsyx+/UMYYAAAAJYzipH/mA08Mr5OnQSylG0PF01JeF7xSFAAAAHEe0GN4iAP2kiln3tUSOrVAnTRm</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1104,8 +1104,7 @@ where [refTable].[sccSTC_OID] = ?</property>
         DDX_NAME
 FROM    dbo.STUDENT s
         JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
-                                 AND ISNUMERIC(STC_FIELDD_019) = 1
-                                 AND ISNULL(STC_FIELDD_019, '') = 2
+                                 AND ISNULL(STC_FIELDD_019, '') = '2' -- Round Number
 								 AND NOT STC_STATUS IN ('Deleted')
                                  AND STC_STD_OID = s.STD_OID
         JOIN dbo.DATA_DICTIONARY_EXTENDED ON DDX_OID = STC_DDX_OID
@@ -1412,13 +1411,13 @@ FROM    dbo.STUDENT s
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]} != #{Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscSSS_LAST_MODIFIED]}</property>
+                      name="Expression">#{Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]} &gt; #{Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscSSS_LAST_MODIFIED]}</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the friendly version of the expression. This expression version uses column names."
                       expressionType="Notify"
-                      name="FriendlyExpression">SSS_LAST_MODIFIED != sscSSS_LAST_MODIFIED</property>
+                      name="FriendlyExpression">SSS_LAST_MODIFIED &gt; sscSSS_LAST_MODIFIED</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
@@ -2280,8 +2279,7 @@ SCA_GRADE_LEVEL,
         NULLIF(SSS_FIELDA_001, '') Rank
 FROM    dbo.STUDENT s
         JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
-                                 AND ISNUMERIC(STC_FIELDD_019) = 1
-                                 AND ISNULL(STC_FIELDD_019, '') = 2
+                                AND  ISNULL(STC_FIELDD_019, '') = '2' -- Round Number
                                  AND STC_STD_OID = s.STD_OID
         JOIN dbo.STUDENT_SCHOOL_CHOICE ON SSS_STC_OID = STC_OID
                                           AND SSS_FIELDB_001 = 'schoolsNext'
@@ -2621,7 +2619,7 @@ FROM    dbo.STUDENT s
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{B5B6E22C-E790-4640-9270-7CFA3DF4810B}"
-          SQLTask:SqlStatementSource="WITH    cte_MaxCallID&#xA;          AS ( SELECT   CaseID ,&#xA;                        MAX(CallID) MaxCallID&#xA;               FROM     Eligibility.SchoolChoicesForStudentCallInfo&#xA;               WHERE    NOT type = 'Testing'&#xA;                        AND SchYear = '2016-2017'&#xA;               GROUP BY CaseID&#xA;             )&#xA;    UPDATE  Eligibility.StudentSchoolChoice&#xA;    SET     sscCallId = MaxCallID ,&#xA;            sscSchoolEligiblity = Eligibility ,&#xA;            sscTransportationEligbility = TransEligible ,&#xA;            sscStraightLineDistnace = StraightLineDistance ,&#xA;            sscWalkDistance = WalkDistance&#xA;    FROM    cte_MaxCallID&#xA;            JOIN Eligibility.SchoolChoicesForStudentCallResults ON SchoolChoicesForStudentCallResults.CallID = cte_MaxCallID.MaxCallID&#xA;            JOIN Eligibility.StudentSchoolChoice ON StudentSchoolChoice.sscProgramId = SchoolChoicesForStudentCallResults.ProgramCode&#xA;                                                    AND StudentSchoolChoice.sscSchoolId = SchoolChoicesForStudentCallResults.School&#xA;                                                    AND sscGradeLevel = Grade&#xA;    WHERE   sscCallId IS NULL&#xA; AND NOT ISNULL(sscCallId, '') = cte_MaxCallID.MaxCallID;&#xA;&#xA;WITH    cte_MaxCallID&#xA;          AS ( SELECT   Studentno ,&#xA;                        MAX(CallID) MaxCallID&#xA;               FROM     Eligibility.SchoolChoicesForStudentCallInfo&#xA;               WHERE    NOT type = 'Testing'&#xA;                        AND SchYear = '2016-2017'&#xA;               GROUP BY Studentno&#xA;             )&#xA;    UPDATE  Eligibility.StudentSchoolChoice&#xA;    SET     sscCallId = MaxCallID ,&#xA;            sscSchoolEligiblity = Eligibility ,&#xA;            sscTransportationEligbility = TransEligible ,&#xA;            sscStraightLineDistnace = StraightLineDistance ,&#xA;            sscWalkDistance = WalkDistance&#xA;    FROM    cte_MaxCallID&#xA;            JOIN Eligibility.SchoolChoicesForStudentCallResults ON SchoolChoicesForStudentCallResults.CallID = cte_MaxCallID.MaxCallID&#xA;            JOIN Eligibility.StudentSchoolChoice ON StudentSchoolChoice.sscProgramId = SchoolChoicesForStudentCallResults.ProgramCode&#xA;                                                    AND StudentSchoolChoice.sscSchoolId = SchoolChoicesForStudentCallResults.School&#xA;                                                    AND sscGradeLevel = Grade&#xA;    WHERE   sscCallId IS NULL&#xA; AND NOT ISNULL(sscCallId, '') = cte_MaxCallID.MaxCallID;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="WITH    cte_MaxCallID&#xA;          AS ( SELECT   CaseID ,&#xA;                        MAX(CallID) MaxCallID&#xA;               FROM     Eligibility.SchoolChoicesForStudentCallInfo&#xA;               WHERE    NOT type = 'Testing'&#xA;                        AND SchYear = '2016-2017'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AND TierVer = 'V2'&#xA;               GROUP BY CaseID&#xA;             )&#xA;    UPDATE  Eligibility.StudentSchoolChoice&#xA;    SET     sscCallId = MaxCallID ,&#xA;            sscSchoolEligiblity = Eligibility ,&#xA;            sscTransportationEligbility = TransEligible ,&#xA;            sscStraightLineDistnace = StraightLineDistance ,&#xA;            sscWalkDistance = WalkDistance&#xA;    FROM    cte_MaxCallID&#xA;            JOIN Eligibility.SchoolChoicesForStudentCallResults ON SchoolChoicesForStudentCallResults.CallID = cte_MaxCallID.MaxCallID&#xA;            JOIN Eligibility.StudentSchoolChoice ON StudentSchoolChoice.sscProgramId = SchoolChoicesForStudentCallResults.ProgramCode&#xA;                                                    AND StudentSchoolChoice.sscSchoolId = SchoolChoicesForStudentCallResults.School&#xA;                                                    AND sscGradeLevel = Grade&#xA;    WHERE   sscCallId IS NULL&#xA; AND NOT ISNULL(sscCallId, '') = cte_MaxCallID.MaxCallID;&#xA;&#xA;WITH    cte_MaxCallID&#xA;          AS ( SELECT   Studentno ,&#xA;                        MAX(CallID) MaxCallID&#xA;               FROM     Eligibility.SchoolChoicesForStudentCallInfo&#xA;               WHERE    NOT type = 'Testing'&#xA;                        AND SchYear = '2016-2017'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AND TierVer = 'V2'&#xA;               GROUP BY Studentno&#xA;             )&#xA;    UPDATE  Eligibility.StudentSchoolChoice&#xA;    SET     sscCallId = MaxCallID ,&#xA;            sscSchoolEligiblity = Eligibility ,&#xA;            sscTransportationEligbility = TransEligible ,&#xA;            sscStraightLineDistnace = StraightLineDistance ,&#xA;            sscWalkDistance = WalkDistance&#xA;    FROM    cte_MaxCallID&#xA;            JOIN Eligibility.SchoolChoicesForStudentCallResults ON SchoolChoicesForStudentCallResults.CallID = cte_MaxCallID.MaxCallID&#xA;            JOIN Eligibility.StudentSchoolChoice ON StudentSchoolChoice.sscProgramId = SchoolChoicesForStudentCallResults.ProgramCode&#xA;                                                    AND StudentSchoolChoice.sscSchoolId = SchoolChoicesForStudentCallResults.School&#xA;                                                    AND sscGradeLevel = Grade&#xA;    WHERE   sscCallId IS NULL&#xA; AND NOT ISNULL(sscCallId, '') = cte_MaxCallID.MaxCallID;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2738,7 +2736,7 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="111,42"
           Id="Package\dftTransferCase\odsSIS"
-          TopLeft="111,19" />
+          TopLeft="112,18" />
         <NodeLayout
           Size="261,42"
           Id="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase"
@@ -2753,30 +2751,30 @@ FROM    dbo.STUDENT s
           TopLeft="91,222" />
         <EdgeLayout
           Id="Package\dftTransferCase.Paths[OLE DB Source Output]"
-          TopLeft="166.5,61">
+          TopLeft="167.5,60">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="29.5,70"
+              EndConnector="28.5,71"
               Start="0,0"
-              End="29.5,62.5">
+              End="28.5,63.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31" />
+                    End="0,31.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31"
-                    Point2="0,35"
-                    Point3="4,35" />
+                    Point1="0,31.5"
+                    Point2="0,35.5"
+                    Point3="4,35.5" />
                   <mssgle:LineSegment
-                    End="25.5,35" />
+                    End="24.5,35.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="25.5,35"
-                    Point2="29.5,35"
-                    Point3="29.5,39" />
+                    Point1="24.5,35.5"
+                    Point2="28.5,35.5"
+                    Point3="28.5,39.5" />
                   <mssgle:LineSegment
-                    End="29.5,62.5" />
+                    End="28.5,63.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2928,11 +2926,11 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="171,42"
           Id="Package\dftTransferChoice\lStudentChoiceCase"
-          TopLeft="97,201" />
+          TopLeft="97,202" />
         <NodeLayout
           Size="195,42"
           Id="Package\dftTransferChoice\oddStudentSchoolChoice"
-          TopLeft="380,448" />
+          TopLeft="382,448" />
         <NodeLayout
           Size="180,42"
           Id="Package\dftTransferChoice\lStudentSchoolChoice"
@@ -2947,37 +2945,37 @@ FROM    dbo.STUDENT s
           TopLeft="71,444" />
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Lookup Match Output1]"
-          TopLeft="182.5,243">
+          TopLeft="182.5,244">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="10.5,46"
+              EndConnector="10.5,45"
               Start="0,0"
-              End="10.5,38.5">
+              End="10.5,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19" />
+                    End="0,18.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19"
-                    Point2="0,23"
-                    Point3="4,23" />
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
                   <mssgle:LineSegment
-                    End="6.5,23" />
+                    End="6.5,22.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="6.5,23"
-                    Point2="10.5,23"
-                    Point3="10.5,27" />
+                    Point1="6.5,22.5"
+                    Point2="10.5,22.5"
+                    Point3="10.5,26.5" />
                   <mssgle:LineSegment
-                    End="10.5,38.5" />
+                    End="10.5,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-42.94138671875,28,96.3827734375,11.609375"
+              BoundingBox="-42.94138671875,27.5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3035,26 +3033,26 @@ FROM    dbo.STUDENT s
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8.5,30.5"
+              EndConnector="-8.5,31.5"
               Start="0,0"
-              End="-8.5,23">
+              End="-8.5,24">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.25" />
+                    End="0,11.75" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,11.25"
-                    Point2="0,15.25"
-                    Point3="-4,15.25" />
+                    Point1="0,11.75"
+                    Point2="0,15.75"
+                    Point3="-4,15.75" />
                   <mssgle:LineSegment
-                    End="-4.5,15.25" />
+                    End="-4.5,15.75" />
                   <mssgle:CubicBezierSegment
-                    Point1="-4.5,15.25"
-                    Point2="-8.5,15.25"
-                    Point3="-8.5,19.25" />
+                    Point1="-4.5,15.75"
+                    Point2="-8.5,15.75"
+                    Point3="-8.5,19.75" />
                   <mssgle:LineSegment
-                    End="-8.5,23" />
+                    End="-8.5,24" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3069,9 +3067,9 @@ FROM    dbo.STUDENT s
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="255.833333333333,117"
+              EndConnector="257.833333333333,117"
               Start="0,0"
-              End="255.833333333333,109.5">
+              End="257.833333333333,109.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3082,20 +3080,20 @@ FROM    dbo.STUDENT s
                     Point2="0,47.4185022026432"
                     Point3="4,47.4185022026432" />
                   <mssgle:LineSegment
-                    End="251.833333333333,47.4185022026432" />
+                    End="253.833333333333,47.4185022026432" />
                   <mssgle:CubicBezierSegment
-                    Point1="251.833333333333,47.4185022026432"
-                    Point2="255.833333333333,47.4185022026432"
-                    Point3="255.833333333333,51.4185022026432" />
+                    Point1="253.833333333333,47.4185022026432"
+                    Point2="257.833333333333,47.4185022026432"
+                    Point3="257.833333333333,51.4185022026432" />
                   <mssgle:LineSegment
-                    End="255.833333333333,109.5" />
+                    End="257.833333333333,109.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="72.1102799479167,52.4185022026432,111.6127734375,11.609375"
+              BoundingBox="73.1102799479167,52.4185022026432,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
