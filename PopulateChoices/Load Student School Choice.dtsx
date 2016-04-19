@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="133"
-  DTS:VersionGUID="{18C86F14-2BE3-46A0-9FAF-6496ACA09446}">
+  DTS:VersionBuild="134"
+  DTS:VersionGUID="{75FC7FBE-8C49-4A7D-961E-71A7255E0543}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB4YUT2kJNlYs/u/d4cd69tAAAAAASAAACgAAAAEAAAANQQcFnxpiSNesS0cuEsTNoYAAAAb0GE5bOw/ZI1e6D2dw2P23sLxj1UoyYVFAAAAIn5+7RczoAGmhN1ayxFwyDivZ03</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD/pswIGF8aX+whBjGex677AAAAAASAAACgAAAAEAAAAOrEAqPLkYZw41GnykCryqMYAAAAQ+Fu+TqFKlRI8GwFocQKnmk/jrvvz/WNFAAAAGrZQN0sJoZNyu5b/26xgWXUNv40</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABNfTk0Bde5o9hq+xwRfEm3AAAAAASAAACgAAAAEAAAAM7clvpKHIxYlZqZw1FCaRYYAAAA/XwfL8fW2B1kgHY6Acgyez+9UX9Hsob0FAAAABcW+HlzahFkjOkcFzqs2wvLkQMs</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACzDSUwAUnZr8d0vEPsqyZdAAAAAASAAACgAAAAEAAAAPMYwE4Uf+wf6EcCp67A4HoYAAAAQboUSOBP5xFM3O50ZgyGRe9RnzYauI18FAAAAM9y1kLBXjZk4QjKH6XzGHSyhRTP</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2641,7 +2641,7 @@ FROM    dbo.STUDENT s
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{B5B6E22C-E790-4640-9270-7CFA3DF4810B}"
-          SQLTask:SqlStatementSource="WITH    cte_MaxCallID&#xA;          AS ( SELECT   CaseID ,&#xA;                        MAX(CallID) MaxCallID&#xA;               FROM     Eligibility.SchoolChoicesForStudentCallInfo&#xA;               WHERE    NOT type = 'Testing'&#xA;                        AND SchYear = '2016-2017'&#xA;               GROUP BY CaseID&#xA;             )&#xA;    UPDATE  Eligibility.StudentSchoolChoice&#xA;    SET     sscCallId = MaxCallID ,&#xA;            sscSchoolEligiblity = Eligibility ,&#xA;            sscTransportationEligbility = TransEligible ,&#xA;            sscStraightLineDistnace = StraightLineDistance ,&#xA;            sscWalkDistance = WalkDistance&#xA;    FROM    cte_MaxCallID&#xA;            JOIN Eligibility.SchoolChoicesForStudentCallResults ON SchoolChoicesForStudentCallResults.CallID = cte_MaxCallID.MaxCallID&#xA;            JOIN Eligibility.StudentSchoolChoice ON StudentSchoolChoice.sscProgramId = SchoolChoicesForStudentCallResults.ProgramCode&#xA;                                                    AND StudentSchoolChoice.sscSchoolId = SchoolChoicesForStudentCallResults.School&#xA;                                                    AND sscGradeLevel = Grade&#xA;    WHERE   sscCallId IS NULL&#xA; AND NOT ISNULL(sscCallId, '') = cte_MaxCallID.MaxCallID;&#xA;&#xA;WITH    cte_MaxCallID&#xA;          AS ( SELECT   Studentno ,&#xA;                        MAX(CallID) MaxCallID&#xA;               FROM     Eligibility.SchoolChoicesForStudentCallInfo&#xA;               WHERE    NOT type = 'Testing'&#xA;                        AND SchYear = '2016-2017'&#xA;               GROUP BY Studentno&#xA;             )&#xA;    UPDATE  Eligibility.StudentSchoolChoice&#xA;    SET     sscCallId = MaxCallID ,&#xA;            sscSchoolEligiblity = Eligibility ,&#xA;            sscTransportationEligbility = TransEligible ,&#xA;            sscStraightLineDistnace = StraightLineDistance ,&#xA;            sscWalkDistance = WalkDistance&#xA;    FROM    cte_MaxCallID&#xA;            JOIN Eligibility.SchoolChoicesForStudentCallResults ON SchoolChoicesForStudentCallResults.CallID = cte_MaxCallID.MaxCallID&#xA;            JOIN Eligibility.StudentSchoolChoice ON StudentSchoolChoice.sscProgramId = SchoolChoicesForStudentCallResults.ProgramCode&#xA;                                                    AND StudentSchoolChoice.sscSchoolId = SchoolChoicesForStudentCallResults.School&#xA;                                                    AND sscGradeLevel = Grade&#xA;    WHERE   sscCallId IS NULL&#xA; AND NOT ISNULL(sscCallId, '') = cte_MaxCallID.MaxCallID;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="WITH    cte_MaxCallID&#xA;          AS ( SELECT   CaseID ,&#xA;                        MAX(CallID) MaxCallID&#xA;               FROM     Eligibility.SchoolChoicesForStudentCallInfo&#xA;               WHERE    NOT type = 'Testing'&#xA;                        AND SchYear = '2016-2017'&#xA;               GROUP BY CaseID&#xA;             )&#xA;    UPDATE  Eligibility.StudentSchoolChoice&#xA;    SET     sscCallId = MaxCallID ,&#xA;            sscSchoolEligiblity = Eligibility ,&#xA;            sscTransportationEligbility = TransEligible ,&#xA;            sscStraightLineDistnace = StraightLineDistance ,&#xA;            sscWalkDistance = WalkDistance&#xA;    FROM    cte_MaxCallID&#xA;            JOIN Eligibility.SchoolChoicesForStudentCallResults ON SchoolChoicesForStudentCallResults.CallID = cte_MaxCallID.MaxCallID&#xA;            JOIN Eligibility.StudentSchoolChoice ON StudentSchoolChoice.sscProgramId = SchoolChoicesForStudentCallResults.ProgramCode&#xA;                                                    AND StudentSchoolChoice.sscSchoolId = SchoolChoicesForStudentCallResults.School&#xA;                                                    AND sscGradeLevel = Grade&#xA;    WHERE   ISNULL(sscCallId, '') = cte_MaxCallID.MaxCallID;&#xA;&#xA;WITH    cte_MaxCallID&#xA;          AS ( SELECT   Studentno ,&#xA;                        MAX(CallID) MaxCallID&#xA;               FROM     Eligibility.SchoolChoicesForStudentCallInfo&#xA;               WHERE    NOT type = 'Testing'&#xA;                        AND SchYear = '2016-2017'&#xA;               GROUP BY Studentno&#xA;             )&#xA;    UPDATE  Eligibility.StudentSchoolChoice&#xA;    SET     sscCallId = MaxCallID ,&#xA;            sscSchoolEligiblity = Eligibility ,&#xA;            sscTransportationEligbility = TransEligible ,&#xA;            sscStraightLineDistnace = StraightLineDistance ,&#xA;            sscWalkDistance = WalkDistance&#xA;    FROM    cte_MaxCallID&#xA;            JOIN Eligibility.SchoolChoicesForStudentCallResults ON SchoolChoicesForStudentCallResults.CallID = cte_MaxCallID.MaxCallID&#xA;            JOIN Eligibility.StudentSchoolChoice ON StudentSchoolChoice.sscProgramId = SchoolChoicesForStudentCallResults.ProgramCode&#xA;                                                    AND StudentSchoolChoice.sscSchoolId = SchoolChoicesForStudentCallResults.School&#xA;                                                    AND sscGradeLevel = Grade&#xA;    WHERE   NOT ISNULL(sscCallId, '') = cte_MaxCallID.MaxCallID;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -3070,9 +3070,7 @@ FROM    dbo.STUDENT s
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3107,7 +3105,7 @@ FROM    dbo.STUDENT s
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="72.1102799479167,52.4185022026432,111.6127734375,11.609375"
+              BoundingBox="72.1102799479165,52.4185022026432,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
