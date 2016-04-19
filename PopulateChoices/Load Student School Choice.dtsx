@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="134"
-  DTS:VersionGUID="{75FC7FBE-8C49-4A7D-961E-71A7255E0543}">
+  DTS:VersionBuild="140"
+  DTS:VersionGUID="{0EFDED0F-81DD-4821-97F7-92D5454F6C72}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD/pswIGF8aX+whBjGex677AAAAAASAAACgAAAAEAAAAOrEAqPLkYZw41GnykCryqMYAAAAQ+Fu+TqFKlRI8GwFocQKnmk/jrvvz/WNFAAAAGrZQN0sJoZNyu5b/26xgWXUNv40</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADkBHxKI+Vg0Z46va+MT+5CAAAAAASAAACgAAAAEAAAABDdZT0rjuN22e7+hguTzrkYAAAAOGQdY1Tkr+Q5XiVphjJoHYHk6Qk4o2bDFAAAACxv1LsZabRJ9dxpfEemcha0v2i5</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACzDSUwAUnZr8d0vEPsqyZdAAAAAASAAACgAAAAEAAAAPMYwE4Uf+wf6EcCp67A4HoYAAAAQboUSOBP5xFM3O50ZgyGRe9RnzYauI18FAAAAM9y1kLBXjZk4QjKH6XzGHSyhRTP</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABJEDArrDLtbVz1tKWO83qUAAAAAASAAACgAAAAEAAAAIwo34Sd4r+OtsxnpP8O3MIYAAAAnEaKP5NGYi78naxg6bN/eVHFIZuvdxfZFAAAALUfDm7J6oXjMeZYp11AoHKhh8Fh</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1686,7 +1686,7 @@ where [refTable].[sscSSS_OID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sscId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscCallID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscSchool" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sscProgramCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sscSSS_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscLastUpdate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscSSS_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscReviewStatus" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sscReviewDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sscId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscSccId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscSSS_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscSCA_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscSSS_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscLastUpdate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscCallId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscSchoolId" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sscProgramId" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sscGradeLevel" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sscSchoolEligiblity" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sscTransportationEligbility" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sscWalkDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscStraightLineDistnace" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscRank" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sscReviewStatus" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sscReviewDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -1824,16 +1824,7 @@ where [refTable].[sscSSS_OID] = ?</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE Eligibility.StudentSchoolChoice
-SET
-sscSCA_OID = ? ,
-sscRank = ?,
-sscSSS_LAST_MODIFIED = ? ,
-sscReviewStatus = ? ,
-sscReviewDate = ? ,
-sscLastUpdate = GETDATE()
-WHERE
-sscId = ?;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec Eligibility.UpdateStudentSchoolChoiceFromProduction ?, ?, ?, ?, ?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1856,39 +1847,11 @@ sscId = ?;</property>
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[sccId]"
-                      cachedDataType="i4"
-                      cachedName="sccId"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      lineageId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Match Output].Columns[sccId]" />
-                    <inputColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[ReviewDate]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="ReviewDate"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewDate]" />
-                    <inputColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[ReviewStatus]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="25"
-                      cachedName="ReviewStatus"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewStatus]" />
-                    <inputColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[SSS_LAST_MODIFIED]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="SSS_LAST_MODIFIED"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]" />
-                    <inputColumn
                       refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[SCA_OID]"
                       cachedDataType="wstr"
                       cachedLength="14"
                       cachedName="SCA_OID"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscSCA_OID]"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SCA_OID]" />
                     <inputColumn
                       refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[Rank]"
@@ -1896,16 +1859,44 @@ sscId = ?;</property>
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="Rank"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscRank]"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[Rank]" />
+                    <inputColumn
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[SSS_LAST_MODIFIED]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SSS_LAST_MODIFIED"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscSSS_LAST_MODIFIED]"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]" />
+                    <inputColumn
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[ReviewStatus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="ReviewStatus"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscReviewStatus]"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewStatus]" />
+                    <inputColumn
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[ReviewDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ReviewDate"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscReviewDate]"
+                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[ReviewDate]" />
+                    <inputColumn
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].Columns[sscId]"
+                      cachedDataType="i4"
+                      cachedName="sscId"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscId]"
+                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscSCA_OID]"
                       dataType="wstr"
                       length="14"
-                      name="Param_0">
+                      name="@sscSCA_OID">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1914,20 +1905,20 @@ sscId = ?;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscRank]"
                       dataType="i4"
-                      name="Param_1">
+                      name="@sscRank">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscSSS_LAST_MODIFIED]"
                       dataType="dbTimeStamp"
-                      name="Param_2">
+                      name="@sscSSS_LAST_MODIFIED">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1936,33 +1927,33 @@ sscId = ?;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscReviewStatus]"
                       codePage="1252"
                       dataType="str"
                       length="20"
-                      name="Param_3">
+                      name="@sscReviewStatus">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
+                          name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscReviewDate]"
                       dataType="dbDate"
-                      name="Param_4">
+                      name="@sscReviewDate">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
+                          name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      refId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input].ExternalColumns[@sscId]"
                       dataType="i4"
-                      name="Param_5">
+                      name="@sscId">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2962,11 +2953,11 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="111,42"
           Id="Package\dftTransferChoice\odsSIS"
-          TopLeft="133.5,129.5" />
+          TopLeft="135.5,128.5" />
         <NodeLayout
           Size="196,42"
           Id="Package\dftTransferChoice\csLast Modified Changed"
-          TopLeft="69,444" />
+          TopLeft="71,444" />
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Lookup Match Output1]"
           TopLeft="182.5,243">
@@ -3005,7 +2996,7 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Lookup Match Output]"
-          TopLeft="165.666666666667,331">
+          TopLeft="166.666666666667,331">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3029,7 +3020,7 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Last Modified Changed]"
-          TopLeft="165.5,486">
+          TopLeft="166.5,486">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3053,18 +3044,30 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[OLE DB Source Output]"
-          TopLeft="185.75,171.5">
+          TopLeft="191,170.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29.5"
+              EndConnector="-8.5,30.5"
               Start="0,0"
-              End="0,22">
+              End="-8.5,23">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22" />
+                    End="0,11.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.25"
+                    Point2="0,15.25"
+                    Point3="-4,15.25" />
+                  <mssgle:LineSegment
+                    End="-4.5,15.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.5,15.25"
+                    Point2="-8.5,15.25"
+                    Point3="-8.5,19.25" />
+                  <mssgle:LineSegment
+                    End="-8.5,23" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3154,7 +3157,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
