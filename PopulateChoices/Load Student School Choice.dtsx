@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="150"
-  DTS:VersionGUID="{2012640F-8B81-4D01-9F6C-1978BF6B5666}">
+  DTS:VersionBuild="151"
+  DTS:VersionGUID="{936DC4E8-805C-4214-AB7B-9DEF66D24289}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAU5nlZqudmkCZSqxN5uKqVgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACdvLsZcAcf7YLQYnzHQ7nXAAAAAASAAACgAAAAEAAAAEA7nODazF++hBT7UwIezKIYAAAAad9FTDeuPgryb67is805ifPfhITU76raFAAAAHBppogMdBl6nahwhpUIBFcoUkpW</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAU5nlZqudmkCZSqxN5uKqVgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAASbFtk8TiHK9DmcFxeG4FGAAAAAASAAACgAAAAEAAAAEC9GCO9vcBitgQ78RNl+zgYAAAAthdGdz8LpcoC5MOFRiFozNrpUWiHA8wJFAAAAP8qfLJqmxjidnQqSGe5moRn4BiP</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAU5nlZqudmkCZSqxN5uKqVgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADNCy/vOCQEVTUNkZgJJEALAAAAAASAAACgAAAAEAAAANm3/JdanI3bwyBOXFTEcW0YAAAARRxaYS0l1jijrEvqgCR3NlVf7IA476imFAAAAPCA4NSC5nkMXifLCcyuv6PHPm+c</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAU5nlZqudmkCZSqxN5uKqVgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADKrWFlrRcC9cMXmVgbwdH2AAAAAASAAACgAAAAEAAAAIBzAaKZqEoF6rf9cMlnfYEYAAAA+2bHYiiwl1jYGVw4oSd1Jmuxn0T6T62WFAAAAHxP4BWx3LaN4k+Q7vnoqoG5FDy5</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1815,7 +1815,7 @@ where [refTable].[sscSSS_OID] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[StudentSchoolChoice]) [refTable]
-where [refTable].[sscSSS_OID] = ? and [refTable].[sscSCA_OID] = ? and [refTable].[sscId] = ?</property>
+where [refTable].[sscSSS_OID] = ? and [refTable].[sscSCA_OID] = ? and [refTable].[sscSccId] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1917,7 +1917,7 @@ where [refTable].[sscSSS_OID] = ? and [refTable].[sscSCA_OID] = ? and [refTable]
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">sscId</property>
+                          name="JoinToReferenceColumn">sscSccId</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -1937,47 +1937,17 @@ where [refTable].[sscSSS_OID] = ? and [refTable].[sscSCA_OID] = ? and [refTable]
                   synchronousInputId="Package\dftTransferChoice\lStudentSchoolChoice 1.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output].Columns[sscSSS_LAST_MODIFIED]"
-                      dataType="dbTimeStamp"
+                      refId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output].Columns[sscId]"
+                      dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output].Columns[sscSSS_LAST_MODIFIED]"
-                      name="sscSSS_LAST_MODIFIED"
+                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output].Columns[sscId]"
+                      name="sscId"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">sscSSS_LAST_MODIFIED</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output].Columns[sscSCA_OID]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="14"
-                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output].Columns[sscSCA_OID]"
-                      name="sscSCA_OID"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">sscSCA_OID</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output].Columns[sscSSS_OID]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="14"
-                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output].Columns[sscSSS_OID]"
-                      name="sscSSS_OID"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">sscSSS_OID</property>
+                          name="CopyFromReferenceColumn">sscId</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2223,7 +2193,7 @@ where [refTable].[sscSSS_OID] = ? and [refTable].[sscSCA_OID] = ? and [refTable]
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec Eligibility.UpdateSchoolChoiceIDFromProduction ?, ?, ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec Eligibility.UpdateSchoolChoiceIDFromProduction ?, ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2246,33 +2216,21 @@ where [refTable].[sscSSS_OID] = ? and [refTable].[sscSCA_OID] = ? and [refTable]
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dftTransferChoice\odcUpdate SchoolChoiceOID.Inputs[OLE DB Command Input].Columns[sscId]"
-                      cachedDataType="i4"
-                      cachedName="sscId"
-                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate SchoolChoiceOID.Inputs[OLE DB Command Input].ExternalColumns[@sscId]"
-                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscId]" />
-                    <inputColumn
                       refId="Package\dftTransferChoice\odcUpdate SchoolChoiceOID.Inputs[OLE DB Command Input].Columns[SSS_OID]"
                       cachedDataType="wstr"
                       cachedLength="14"
                       cachedName="SSS_OID"
                       externalMetadataColumnId="Package\dftTransferChoice\odcUpdate SchoolChoiceOID.Inputs[OLE DB Command Input].ExternalColumns[@sscSSS_OID]"
                       lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_OID]" />
+                    <inputColumn
+                      refId="Package\dftTransferChoice\odcUpdate SchoolChoiceOID.Inputs[OLE DB Command Input].Columns[sscId]"
+                      cachedDataType="i4"
+                      cachedName="sscId"
+                      externalMetadataColumnId="Package\dftTransferChoice\odcUpdate SchoolChoiceOID.Inputs[OLE DB Command Input].ExternalColumns[@sscId]"
+                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output].Columns[sscId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\dftTransferChoice\odcUpdate SchoolChoiceOID.Inputs[OLE DB Command Input].ExternalColumns[@sscSCA_OID]"
-                      dataType="wstr"
-                      length="14"
-                      name="@sscSCA_OID">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dftTransferChoice\odcUpdate SchoolChoiceOID.Inputs[OLE DB Command Input].ExternalColumns[@sscId]"
                       dataType="i4"
@@ -3481,7 +3439,7 @@ FROM    dbo.STUDENT s
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="14.1899609375,5,114.120078125,16"
+              BoundingBox="23.05861328125,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
