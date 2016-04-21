@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="152"
-  DTS:VersionGUID="{A856E551-DCF0-4B8D-84F5-71FAE42571A7}">
+  DTS:VersionBuild="154"
+  DTS:VersionGUID="{743DF16E-5006-4032-BBD0-0612E8365E9E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC1zetlA340O/NfTnscOepXAAAAAASAAACgAAAAEAAAAOgtrN3pRQef8EFQYeqyDqkYAAAA/44a7JrbavJQDCfbtDBs6OA1szXkqJtUFAAAALRWwDqE6pRtsTvuXExaQcF5hfLS</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABID5UH/S77lqr5UCGZOyANAAAAAASAAACgAAAAEAAAAA7JakExYf1cBzyOXyWh478YAAAAxaY7B3fcyRRv+5AP3f8DBND670gQemEkFAAAAL25xbFqrdpUdUunc++SHhVEPjq6</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABoVPBLESZEzdkkvVCAp8a4AAAAAASAAACgAAAAEAAAAEXfDCAnvkI6QYsbQymWEK0YAAAAKteoozv5+6xH//WnUnExQ+SE+3h/lyGKFAAAAFVdT3/FKIJ4hhKY8JU6Ljf6ElwD</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACbpP40gwJ+q1pFZxfZ+80+AAAAAASAAACgAAAAEAAAAOfqd30TVBSrMWGbwqP+x+AYAAAA/OpMrNwOaTkq2N5Q+yj+eFyniB2npqSLFAAAAEsRDFJlhwqDYzeT3bTWipMibTPe</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1115,13 +1115,13 @@ FROM    dbo.STUDENT s
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]} &gt; #{Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscSSS_LAST_MODIFIED]}</property>
+                      name="Expression">[REPLACENULL](#{Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]} &gt; #{Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscSSS_LAST_MODIFIED]}, FALSE )</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the friendly version of the expression. This expression version uses column names."
                       expressionType="Notify"
-                      name="FriendlyExpression">SSS_LAST_MODIFIED &gt; sscSSS_LAST_MODIFIED</property>
+                      name="FriendlyExpression">REPLACENULL(SSS_LAST_MODIFIED &gt; sscSSS_LAST_MODIFIED, FALSE )</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
@@ -2905,21 +2905,21 @@ FROM    dbo.STUDENT s
           Id="Package\dftTransferChoice\lStudentChoiceCase"
           TopLeft="97,202" />
         <NodeLayout
+          Size="111,42"
+          Id="Package\dftTransferChoice\odsSIS"
+          TopLeft="135.5,128.5" />
+        <NodeLayout
           Size="270,42"
           Id="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice"
           TopLeft="29,588" />
-        <NodeLayout
-          Size="270,42"
-          Id="Package\dftTransferChoice\odcUpdate SchoolChoiceOID"
-          TopLeft="758,297" />
         <NodeLayout
           Size="180,42"
           Id="Package\dftTransferChoice\lStudentSchoolChoice"
           TopLeft="103,289" />
         <NodeLayout
-          Size="111,42"
-          Id="Package\dftTransferChoice\odsSIS"
-          TopLeft="135.5,128.5" />
+          Size="270,42"
+          Id="Package\dftTransferChoice\odcUpdate SchoolChoiceOID"
+          TopLeft="758,297" />
         <NodeLayout
           Size="195,42"
           Id="Package\dftTransferChoice\oddStudentSchoolChoice"
@@ -2927,7 +2927,7 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="196,42"
           Id="Package\dftTransferChoice\csLast Modified Changed"
-          TopLeft="71,444" />
+          TopLeft="71,443" />
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[OLE DB Source Output]"
           TopLeft="191,170.5">
@@ -3084,49 +3084,61 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Lookup Match Output]"
-          TopLeft="166.666666666667,331">
+          TopLeft="193,331">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,113"
+              EndConnector="-24,112"
               Start="0,0"
-              End="0,105.5">
+              End="-24,104.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,105.5" />
+                    End="0,52" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52"
+                    Point2="0,56"
+                    Point3="-4,56" />
+                  <mssgle:LineSegment
+                    End="-20,56" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20,56"
+                    Point2="-24,56"
+                    Point3="-24,60" />
+                  <mssgle:LineSegment
+                    End="-24,104.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,46.9453125,96.3827734375,11.609375"
+              BoundingBox="-60.19138671875,61,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Last Modified Changed]"
-          TopLeft="166.5,486">
+          TopLeft="166.5,485">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,102"
+              EndConnector="0,103"
               Start="0,0"
-              End="0,94.5">
+              End="0,95.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,94.5" />
+                    End="0,95.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-50.42298828125,41.39404296875,100.8459765625,11.7119140625"
+              BoundingBox="-50.42298828125,41.89404296875,100.8459765625,11.7119140625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3139,7 +3151,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3167,6 +3179,14 @@ FROM    dbo.STUDENT s
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\dftTransferChoice\odsSIS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\dftTransferChoice\lStudentSchoolChoice">
     <Properties>
       <Property>
@@ -3184,14 +3204,6 @@ FROM    dbo.STUDENT s
         <Value
           type="q4:string">0</Value>
       </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftTransferChoice\odsSIS">
-    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
