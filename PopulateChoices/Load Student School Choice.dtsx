@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="154"
-  DTS:VersionGUID="{743DF16E-5006-4032-BBD0-0612E8365E9E}">
+  DTS:VersionBuild="155"
+  DTS:VersionGUID="{A0EF6C98-F730-4BDD-8F2B-7B35B86B9DFC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABID5UH/S77lqr5UCGZOyANAAAAAASAAACgAAAAEAAAAA7JakExYf1cBzyOXyWh478YAAAAxaY7B3fcyRRv+5AP3f8DBND670gQemEkFAAAAL25xbFqrdpUdUunc++SHhVEPjq6</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAVBkDmvuX+mbOkP2gMWpaZAAAAAASAAACgAAAAEAAAAF+pIjASfiwvigkTNcJBEmsYAAAArl6YCHy43I1t/DQHw7GgpMu7wsc7amSnFAAAAI0fS9QJqq9i7vq48UKSBhH+O3RP</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACbpP40gwJ+q1pFZxfZ+80+AAAAAASAAACgAAAAEAAAAOfqd30TVBSrMWGbwqP+x+AYAAAA/OpMrNwOaTkq2N5Q+yj+eFyniB2npqSLFAAAAEsRDFJlhwqDYzeT3bTWipMibTPe</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACsjjcOUORGFKJ4O7ABWULLAAAAAASAAACgAAAAEAAAAIug8dhDKCFtWZlZv9u5cJYYAAAADgOHpgByXpwbA79dWIrleEX7BZFL0NnvFAAAAC9akiZr7PkJVFjEe+IiSK2hcev6</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -809,7 +809,7 @@ where [refTable].[sccSTC_OID] = ?</property>
 FROM    dbo.STUDENT s
         JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
                                  AND ISNULL(STC_FIELDD_019, '') = '2' -- Round Number
-								 AND NOT STC_STATUS IN ('Deleted')
+								 AND NOT ISNULL(STC_STATUS, '') IN ('Deleted')
                                  AND STC_STD_OID = s.STD_OID
         JOIN dbo.DATA_DICTIONARY_EXTENDED ON DDX_OID = STC_DDX_OID
         JOIN dbo.STUDENT_SCHOOL_CHOICE ON SSS_STC_OID = STC_OID
@@ -2271,6 +2271,7 @@ SCA_GRADE_LEVEL,
 FROM    dbo.STUDENT s
         JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
                                 AND  ISNULL(STC_FIELDD_019, '') = '2' -- Round Number
+ AND NOT ISNULL(STC_STATUS, '') IN ('Deleted')
                                  AND STC_STD_OID = s.STD_OID
         JOIN dbo.STUDENT_SCHOOL_CHOICE ON SSS_STC_OID = STC_OID
                                           AND SSS_FIELDB_001 = 'schoolsNext'
@@ -2725,7 +2726,7 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="111,42"
           Id="Package\dftTransferCase\odsSIS"
-          TopLeft="140,20" />
+          TopLeft="141,19" />
         <NodeLayout
           Size="261,42"
           Id="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase"
@@ -2740,18 +2741,18 @@ FROM    dbo.STUDENT s
           TopLeft="91,222" />
         <EdgeLayout
           Id="Package\dftTransferCase.Paths[OLE DB Source Output]"
-          TopLeft="195.75,62">
+          TopLeft="196.25,61">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,69"
+              EndConnector="0,70"
               Start="0,0"
-              End="0,61.5">
+              End="0,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.5" />
+                    End="0,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
