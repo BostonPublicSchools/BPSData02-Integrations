@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="166"
-  DTS:VersionGUID="{F28DE5F2-4E73-429C-B907-87A01BB9F9EB}">
+  DTS:VersionBuild="167"
+  DTS:VersionGUID="{AD769C7B-2911-4487-B718-9767746565E9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACm+7B4gYdcnVsBeFvH5yeTAAAAAASAAACgAAAAEAAAAB/AjVhmwv7XjFq06vVNtIIYAAAAELGpDCJiABvwL/2Y2rCbqvhxMLsatC0BFAAAAPTeoHMvTf3/rvS/QkKw9KVI9ZCm</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACpv6zhnY2AD5noVBaGkMxNAAAAAASAAACgAAAAEAAAAALpNaDvog3R+ILugm2IORYYAAAAFRp6o+TF4ooVJYvH2RcZLA0BKMvYgdSjFAAAABbSyugyML3bH9aeWfiJcXmiMtN7</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB/ckPpUcMsST/X9MB88JU7AAAAAASAAACgAAAAEAAAAOY/2s8vkRuAFJ85kvmwh38YAAAAI44PnfgQ0gndjj621bGIus9ztI6c+AYgFAAAAPNyCthzz/2uPNJba5BE5iaptqZU</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADFzbIiwjV3wCoMB4kUtHqqAAAAAASAAACgAAAAEAAAAFaBtwYmi4HEncChXqlGXlIYAAAAWXD2+gCcw03s3z4XFsjaCsZA7dkAgzdJFAAAABBQfeh43iJHJMmh2qhRkqGW0Sx8</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2682,6 +2682,10 @@ FROM    dbo.STUDENT s
           Size="157,42"
           Id="Package\estUpdate CallId"
           TopLeft="349,313" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\estUpdate sccStdId"
+          TopLeft="338,389" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="426.75,264">
@@ -2726,10 +2730,6 @@ FROM    dbo.STUDENT s
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\estUpdate sccStdId"
-          TopLeft="338,389" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="425.25,355">
@@ -2780,6 +2780,28 @@ FROM    dbo.STUDENT s
           Size="196,42"
           Id="Package\dftTransferCase\csLast Modified Changed"
           TopLeft="93,415" />
+        <EdgeLayout
+          Id="Package\dftTransferCase.Paths[OLE DB Source Output]"
+          TopLeft="197.25,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,263"
+              Start="0,0"
+              End="0,255.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,255.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferCase.Paths[Lookup No Match Output]"
           TopLeft="268,342.5">
@@ -2864,28 +2886,6 @@ FROM    dbo.STUDENT s
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftTransferCase.Paths[OLE DB Source Output]"
-          TopLeft="197.25,61">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,263"
-              Start="0,0"
-              End="0,255.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,255.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -2916,7 +2916,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2989,7 +2989,9 @@ FROM    dbo.STUDENT s
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3155,7 +3157,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3165,7 +3167,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3186,7 +3188,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
