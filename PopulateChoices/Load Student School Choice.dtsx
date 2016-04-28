@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="167"
-  DTS:VersionGUID="{AD769C7B-2911-4487-B718-9767746565E9}">
+  DTS:VersionBuild="170"
+  DTS:VersionGUID="{7E76C909-7234-4A61-84BF-7D942258DEDA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACpv6zhnY2AD5noVBaGkMxNAAAAAASAAACgAAAAEAAAAALpNaDvog3R+ILugm2IORYYAAAAFRp6o+TF4ooVJYvH2RcZLA0BKMvYgdSjFAAAABbSyugyML3bH9aeWfiJcXmiMtN7</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABlH+dYqp7uh07INzqtkrVWAAAAAASAAACgAAAAEAAAAKipR/h/vywr9gTKlxm4nI0YAAAAhTJAF+l1etAZwxEiOq328hoKfoFzld0VFAAAAK7ZOInf5F0qAfN1hScJLo4zSElf</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADFzbIiwjV3wCoMB4kUtHqqAAAAAASAAACgAAAAEAAAAFaBtwYmi4HEncChXqlGXlIYAAAAWXD2+gCcw03s3z4XFsjaCsZA7dkAgzdJFAAAABBQfeh43iJHJMmh2qhRkqGW0Sx8</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAChPcKZiZG6b5+FA9/Jk8VnAAAAAASAAACgAAAAEAAAADQqW45qM5nwJdERw2cexPMYAAAA94IC163Jh/ZPg0oZVlC34gfKmjkz4jTfFAAAAKzCAQrkpyRFBxWjP3pYJ25f9AwE</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -347,7 +347,7 @@ where [refTable].[sccSTC_OID] = ?</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec Eligibility.UpdateStudentChoiceCasefromProduction ?, ? , ? , ? , ? , ? , ? ,  ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec Eligibility.UpdateStudentChoiceCasefromProduction ?, ? , ? , ? , ? , ? , ? ,  ?, ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -420,6 +420,14 @@ where [refTable].[sccSTC_OID] = ?</property>
                       cachedName="DDX_NAME"
                       externalMetadataColumnId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[@sccCaseType]"
                       lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[DDX_NAME]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].Columns[STC_STATUS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="STC_STATUS"
+                      externalMetadataColumnId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[@sccCaseStatus]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_STATUS]" />
                     <inputColumn
                       refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].Columns[sccId]"
                       cachedDataType="i4"
@@ -508,6 +516,19 @@ where [refTable].[sccSTC_OID] = ?</property>
                       dataType="str"
                       length="60"
                       name="@sccCaseType">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase.Inputs[OLE DB Command Input].ExternalColumns[@sccCaseStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="@sccCaseStatus">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -684,6 +705,14 @@ where [refTable].[sccSTC_OID] = ?</property>
                       cachedName="STD_ID_LOCAL"
                       externalMetadataColumnId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccStudentLocalId]"
                       lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STD_ID_LOCAL]" />
+                    <inputColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].Columns[STC_STATUS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="STC_STATUS"
+                      externalMetadataColumnId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccCaseStatus]"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_STATUS]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -744,6 +773,12 @@ where [refTable].[sccSTC_OID] = ?</property>
                       refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccStdId]"
                       dataType="i4"
                       name="sccStdId" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\oddStudentChoiceCase.Inputs[OLE DB Destination Input].ExternalColumns[sccCaseStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="sccCaseStatus" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -797,17 +832,29 @@ where [refTable].[sccSTC_OID] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT 
-                         STUDENT_CASE.STC_OID, STUDENT_CASE.STC_ID, STUDENT_CASE.STC_STD_OID, s.STD_ID_LOCAL , DATEADD(S, STUDENT_CASE.STC_LAST_MODIFIED / 1000, 
-                         '1970-01-01 00:00:00') AS STC_LAST_MODIFIED, CAST(STUDENT_CASE.STC_FIELDD_019 AS NCHAR(2)) AS STC_FIELDD_019, DATA_DICTIONARY_EXTENDED.DDX_NAME
-FROM            STUDENT AS s INNER JOIN
-                         STUDENT_CASE ON ISNULL(STUDENT_CASE.STC_FIELDA_037, '') = '2016-2017' AND ISNULL(STUDENT_CASE.STC_FIELDD_019, '') = '2' AND NOT (ISNULL(STUDENT_CASE.STC_STATUS, '') IN ('Deleted')) AND 
-                         STUDENT_CASE.STC_STD_OID = s.STD_OID INNER JOIN
-                         DATA_DICTIONARY_EXTENDED ON DATA_DICTIONARY_EXTENDED.DDX_OID = STUDENT_CASE.STC_DDX_OID INNER JOIN
-                         STUDENT_SCHOOL_CHOICE ON STUDENT_SCHOOL_CHOICE.SSS_STC_OID = STUDENT_CASE.STC_OID AND STUDENT_SCHOOL_CHOICE.SSS_FIELDB_001 = 'schoolsNext' INNER JOIN
-                         SCHOOL_CAPACITY ON SCHOOL_CAPACITY.SCA_OID = STUDENT_SCHOOL_CHOICE.SSS_SCA_OID INNER JOIN
-                         SCHOOL ON SCHOOL.SKL_OID = SCHOOL_CAPACITY.SCA_SKL_OID INNER JOIN
-                         DISTRICT_SCHOOL_YEAR_CONTEXT ON DISTRICT_SCHOOL_YEAR_CONTEXT.CTX_OID = SCHOOL_CAPACITY.SCA_CTX_OID AND DISTRICT_SCHOOL_YEAR_CONTEXT.CTX_CONTEXT_ID = '2016-2017'</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT
+        STUDENT_CASE.STC_OID ,
+        STUDENT_CASE.STC_ID ,
+        STUDENT_CASE.STC_STD_OID ,
+        s.STD_ID_LOCAL ,
+        DATEADD(S, STUDENT_CASE.STC_LAST_MODIFIED / 1000,
+                '1970-01-01 00:00:00') AS STC_LAST_MODIFIED ,
+        CAST(STUDENT_CASE.STC_FIELDD_019 AS NCHAR(2)) AS STC_FIELDD_019 ,
+        DATA_DICTIONARY_EXTENDED.DDX_NAME ,
+		STC_STATUS
+FROM    STUDENT AS s
+        INNER JOIN STUDENT_CASE ON ISNULL(STUDENT_CASE.STC_FIELDA_037, '') = '2016-2017'
+                                   AND ISNULL(STUDENT_CASE.STC_FIELDD_019, '') = '2'
+                                   AND NOT ( ISNULL(STUDENT_CASE.STC_STATUS,
+                                                    '') IN ( 'Deleted' ) )
+                                   AND STUDENT_CASE.STC_STD_OID = s.STD_OID
+        INNER JOIN DATA_DICTIONARY_EXTENDED ON DATA_DICTIONARY_EXTENDED.DDX_OID = STUDENT_CASE.STC_DDX_OID
+        INNER JOIN STUDENT_SCHOOL_CHOICE ON STUDENT_SCHOOL_CHOICE.SSS_STC_OID = STUDENT_CASE.STC_OID
+                                            AND STUDENT_SCHOOL_CHOICE.SSS_FIELDB_001 = 'schoolsNext'
+        INNER JOIN SCHOOL_CAPACITY ON SCHOOL_CAPACITY.SCA_OID = STUDENT_SCHOOL_CHOICE.SSS_SCA_OID
+        INNER JOIN SCHOOL ON SCHOOL.SKL_OID = SCHOOL_CAPACITY.SCA_SKL_OID
+        INNER JOIN DISTRICT_SCHOOL_YEAR_CONTEXT ON DISTRICT_SCHOOL_YEAR_CONTEXT.CTX_OID = SCHOOL_CAPACITY.SCA_CTX_OID
+                                                   AND DISTRICT_SCHOOL_YEAR_CONTEXT.CTX_CONTEXT_ID = '2016-2017';</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -915,6 +962,17 @@ FROM            STUDENT AS s INNER JOIN
                       lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STD_ID_LOCAL]"
                       name="STD_ID_LOCAL"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_STATUS]"
+                      length="25"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].Columns[STC_STATUS]"
+                      name="STC_STATUS"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -955,6 +1013,12 @@ FROM            STUDENT AS s INNER JOIN
                       dataType="str"
                       length="32"
                       name="STD_ID_LOCAL" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Output].ExternalColumns[STC_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="STC_STATUS" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1006,6 +1070,13 @@ FROM            STUDENT AS s INNER JOIN
                       length="60"
                       lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[DDX_NAME]"
                       name="DDX_NAME" />
+                    <outputColumn
+                      refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[STC_STATUS]"
+                      name="STC_STATUS" />
                     <outputColumn
                       refId="Package\dftTransferCase\odsSIS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2763,7 +2834,7 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="140,42"
           Id="Package\dftTransferCase\lStudentCase"
-          TopLeft="128,324" />
+          TopLeft="128,323" />
         <NodeLayout
           Size="111,42"
           Id="Package\dftTransferCase\odsSIS"
@@ -2786,14 +2857,14 @@ FROM    dbo.STUDENT s
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,263"
+              EndConnector="0,262"
               Start="0,0"
-              End="0,255.5">
+              End="0,254.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,255.5" />
+                    End="0,254.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2804,7 +2875,7 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferCase.Paths[Lookup No Match Output]"
-          TopLeft="268,342.5">
+          TopLeft="268,342">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2828,25 +2899,25 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferCase.Paths[Lookup Match Output]"
-          TopLeft="194.5,366">
+          TopLeft="194.5,365">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49"
+              EndConnector="0,50"
               Start="0,0"
-              End="0,41.5">
+              End="0,42.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.5" />
+                    End="0,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,14.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,15.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2916,7 +2987,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2926,7 +2997,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
