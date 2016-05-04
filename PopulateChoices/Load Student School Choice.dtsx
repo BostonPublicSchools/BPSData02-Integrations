@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="173"
-  DTS:VersionGUID="{795A214A-31D9-4DBE-B08F-0B3D16A24E05}">
+  DTS:VersionBuild="174"
+  DTS:VersionGUID="{32FA9DBE-7A91-4A8C-BC5E-1C0B69E741FF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADI8QGLqCVB4akl8jAIGTjSAAAAAASAAACgAAAAEAAAAFbQLyhfCAQ2zvRf7St/fSQYAAAAfw17/8uuzb7Ha8M9HNqjepRmjjzIWni2FAAAACgnUaUpsZYLsi18r+E2AzQHk7wI</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADpgIm7PQVYqepbI6sBz1e+AAAAAASAAACgAAAAEAAAACzK07ZAXB4dH4MMuZ4TC7IYAAAAAdOoZZHj3sQe2sf3jqdk/GKwVeolMWStFAAAAN1LIoJkuze2FppFf5U+RECawJfi</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADoPJgfhjtEbp8J0lQ31NRqAAAAAASAAACgAAAAEAAAAAX0DqcNrDVvHK3mO9Ni+g0YAAAA7TBObxpjYczcaOeQc+2bPU2wQbfl+CJNFAAAAA/kS+ecwF3TmuGOIDK3V4nNKAp9</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADG5YV0fK59GOfcXbDWgKklAAAAAASAAACgAAAAEAAAAKe5VnkcCmZvuqW6XlZ6cv4YAAAAQ7DWK4rZaPAYU3mycV0Z1KJdZ7lpvEbkFAAAAIIaCWichViFTu3GccT6gq2B6yzT</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -844,7 +844,7 @@ where [refTable].[sccSTC_OID] = ?</property>
 		STC_STATUS
 FROM    STUDENT AS s
         INNER JOIN STUDENT_CASE ON ISNULL(STUDENT_CASE.STC_FIELDA_037, '') = '2016-2017'
-                                   AND ISNULL(STUDENT_CASE.STC_FIELDD_019, '') = '2'
+                                   AND ISNULL(STUDENT_CASE.STC_FIELDD_019, '') IN ('2', '3')
                                    AND NOT ( ISNULL(STUDENT_CASE.STC_STATUS,
                                                     '') IN ( 'Deleted' ) )
                                    AND STUDENT_CASE.STC_STD_OID = s.STD_OID
@@ -2332,7 +2332,7 @@ SCA_GRADE_LEVEL,
         NULLIF(SSS_FIELDA_001, '') Rank
 FROM    dbo.STUDENT s
         JOIN dbo.STUDENT_CASE ON ISNULL(STC_FIELDA_037, '') = '2016-2017'
-                                AND  ISNULL(STC_FIELDD_019, '') = '2' -- Round Number
+                                AND  ISNULL(STC_FIELDD_019, '') IN ('2','3') -- Round Number
  AND NOT ISNULL(STC_STATUS, '') IN ('Deleted')
                                  AND STC_STD_OID = s.STD_OID
         JOIN dbo.STUDENT_SCHOOL_CHOICE ON SSS_STC_OID = STC_OID
@@ -2988,7 +2988,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2998,7 +2998,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
