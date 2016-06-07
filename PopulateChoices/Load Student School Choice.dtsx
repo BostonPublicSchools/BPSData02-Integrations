@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="174"
-  DTS:VersionGUID="{32FA9DBE-7A91-4A8C-BC5E-1C0B69E741FF}">
+  DTS:VersionBuild="176"
+  DTS:VersionGUID="{C22EDF75-2DEB-4C85-A09E-8C5A6CA105B1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADpgIm7PQVYqepbI6sBz1e+AAAAAASAAACgAAAAEAAAACzK07ZAXB4dH4MMuZ4TC7IYAAAAAdOoZZHj3sQe2sf3jqdk/GKwVeolMWStFAAAAN1LIoJkuze2FppFf5U+RECawJfi</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACy20jMj3FegHMuqoyjF0ruAAAAAASAAACgAAAAEAAAANqZ01yQe5Oai/SrcqtcIiUYAAAA60cJf67veiHAQfOMiX295+jCvd3Cd9FxFAAAAOFc68l1qNPILtHeAWuc35iuCKq/</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADG5YV0fK59GOfcXbDWgKklAAAAAASAAACgAAAAEAAAAKe5VnkcCmZvuqW6XlZ6cv4YAAAAQ7DWK4rZaPAYU3mycV0Z1KJdZ7lpvEbkFAAAAIIaCWichViFTu3GccT6gq2B6yzT</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAg2uGWadMz1bs/Vpcv7Z3NAAAAAASAAACgAAAAEAAAAFECYpKuHSxxcpX5IRoZaZkYAAAAOC02JZcDH2MzE/9qHL15VRBpFR5WusxxFAAAALU4RJvSiMAXHvRASHtrL7GTrTZ8</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2871,7 +2871,9 @@ FROM    dbo.STUDENT s
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3037,11 +3039,11 @@ FROM    dbo.STUDENT s
         <NodeLayout
           Size="195,42"
           Id="Package\dftTransferChoice\oddStudentSchoolChoice"
-          TopLeft="415,445" />
+          TopLeft="421,442" />
         <NodeLayout
           Size="196,42"
           Id="Package\dftTransferChoice\csLast Modified Changed"
-          TopLeft="102,428" />
+          TopLeft="103,426" />
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[OLE DB Source Output]"
           TopLeft="191.75,170.5">
@@ -3066,37 +3068,25 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Lookup No Match Output1]"
-          TopLeft="520.5,335">
+          TopLeft="519.5,335">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8,110"
+              EndConnector="0,107"
               Start="0,0"
-              End="-8,102.5">
+              End="0,99.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,51"
-                    Point2="0,55"
-                    Point3="-4,55" />
-                  <mssgle:LineSegment
-                    End="-4,55" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4,55"
-                    Point2="-8,55"
-                    Point3="-8,59" />
-                  <mssgle:LineSegment
-                    End="-8,102.5" />
+                    End="0,99.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-59.80638671875,60,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,43.9453125,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3174,49 +3164,61 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Lookup Match Output]"
-          TopLeft="196.5,330">
+          TopLeft="193,330">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,98"
+              EndConnector="8,96"
               Start="0,0"
-              End="0,90.5">
+              End="8,88.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,90.5" />
+                    End="0,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44"
+                    Point2="0,48"
+                    Point3="4,48" />
+                  <mssgle:LineSegment
+                    End="4,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4,48"
+                    Point2="8,48"
+                    Point3="8,52" />
+                  <mssgle:LineSegment
+                    End="8,88.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-44.19138671875,54,96.3827734375,11.609375"
+              BoundingBox="-44.19138671875,53,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[Last Modified Changed]"
-          TopLeft="198.5,470">
+          TopLeft="199,468">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,99"
+              EndConnector="0,101"
               Start="0,0"
-              End="0,91.5">
+              End="0,93.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,91.5" />
+                    End="0,93.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-50.42298828125,39.89404296875,100.8459765625,11.7119140625"
+              BoundingBox="-50.42298828125,40.89404296875,100.8459765625,11.7119140625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

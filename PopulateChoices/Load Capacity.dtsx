@@ -1,0 +1,555 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/3/2016 10:34:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="084-170705-03"
+  DTS:CreatorName="ADMINDOM\114600"
+  DTS:DTSID="{485756D6-AA40-40EB-B2D8-3A6AB11CCBF4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.900.80"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load Capacity"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{8C916BC4-6C27-46BF-AA6D-6941FB14BE46}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ASPENDB.BPSIntegration]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5515EFCC-DA2C-4EEB-872C-8E0170F030E6}"
+      DTS:ObjectName="ASPENDB.BPSIntegration">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.23.12.31;User ID=BPSIntegration;Initial Catalog=x2data;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABTpdZl+ixnaek56yS5y5t4AAAAAASAAACgAAAAEAAAAJAZWStjtZ8vNjMRsRW0coMYAAAAO6ZUlfzt/Z8IBEKkRbLawZW/93sLmazdFAAAAMCEsDnAB1iGR4rb2XFvIDSqE3UT</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSInterface.BPSIntegration]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{031E72F2-93BF-47C2-A42D-ECB4EB21DB1C}"
+      DTS:ObjectName="BPSInterface.BPSIntegration">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntegration;Initial Catalog=BPSInterface;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADW1wbNZ9RnnIIcjgVGUtUGAAAAAASAAACgAAAAEAAAAHWk7fdGAzDK9jNmkKps60QYAAAAqMN7fyyj81PxdNMfpgSEhgZaQhUl+fuYFAAAACIMvGtxpEYwxG8G2gShFp76iUyo</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dftLoadCapacity"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3A449A51-A4C6-4DB5-95E8-51DC66CBC608}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dftLoadCapacity"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dftLoadCapacity\oddBPSInterface"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="oddBPSInterface"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Eligibility].[SchoolCapacity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftLoadCapacity\oddBPSInterface.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BPSInterface.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[BPSInterface.BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].Columns[SCA_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="SCA_OID"
+                      externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaSCA_OID]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_OID]" />
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].Columns[SCA_GRADE_LEVEL]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="SCA_GRADE_LEVEL"
+                      externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaGradeLevel]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_GRADE_LEVEL]" />
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].Columns[SCA_PROGRAM_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SCA_PROGRAM_CODE"
+                      externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaProgramId]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_PROGRAM_CODE]" />
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].Columns[CTX_CONTEXT_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="CTX_CONTEXT_ID"
+                      externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaYearContext]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[CTX_CONTEXT_ID]" />
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].Columns[SKL_SCHOOL_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="SKL_SCHOOL_ID"
+                      externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaSchId]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SKL_SCHOOL_ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaId]"
+                      dataType="i4"
+                      name="scaId" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaSchId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="scaSchId" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaSCA_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="scaSCA_OID" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaGradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="scaGradeLevel" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaProgramId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="scaProgramId" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaYearContext]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="scaYearContext" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaLastUpdated]"
+                      dataType="dbTimeStamp"
+                      name="scaLastUpdated" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftLoadCapacity\oddBPSInterface.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftLoadCapacity\oddBPSInterface.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftLoadCapacity\oddBPSInterface.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="odsSCHOOL_CAPACITY"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SCHOOL_CAPACITY]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  SKL_SCHOOL_ID ,
+        SCA_OID ,
+        SCA_GRADE_LEVEL ,
+        SCA_PROGRAM_CODE ,
+        CTX_CONTEXT_ID 
+FROM  dbo.SCHOOL_CAPACITY
+        JOIN dbo.SCHOOL ON SKL_OID = SCA_SKL_OID
+        JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID
+WHERE   CTX_SCHOOL_YEAR &gt;= '2016'
+AND SCA_GRADE_LEVEL IS NOT NULL</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ASPENDB.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[ASPENDB.BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_OID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_OID]"
+                      length="14"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_OID]"
+                      name="SCA_OID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_PROGRAM_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_PROGRAM_CODE]"
+                      length="10"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_PROGRAM_CODE]"
+                      name="SCA_PROGRAM_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_GRADE_LEVEL]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_GRADE_LEVEL]"
+                      length="20"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_GRADE_LEVEL]"
+                      name="SCA_GRADE_LEVEL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SKL_SCHOOL_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SKL_SCHOOL_ID]"
+                      length="20"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SKL_SCHOOL_ID]"
+                      name="SKL_SCHOOL_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[CTX_CONTEXT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[CTX_CONTEXT_ID]"
+                      length="20"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[CTX_CONTEXT_ID]"
+                      name="CTX_CONTEXT_ID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="SCA_OID" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_PROGRAM_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="SCA_PROGRAM_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_GRADE_LEVEL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="SCA_GRADE_LEVEL" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SKL_SCHOOL_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="SKL_SCHOOL_ID" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[CTX_CONTEXT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="CTX_CONTEXT_ID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SKL_SCHOOL_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SKL_SCHOOL_ID]"
+                      name="SKL_SCHOOL_ID" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_OID]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_OID]"
+                      name="SCA_OID" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_PROGRAM_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_PROGRAM_CODE]"
+                      name="SCA_PROGRAM_CODE" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_GRADE_LEVEL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_GRADE_LEVEL]"
+                      name="SCA_GRADE_LEVEL" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[CTX_CONTEXT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[CTX_CONTEXT_ID]"
+                      name="CTX_CONTEXT_ID" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dftLoadCapacity.Paths[OLE DB Source Output]"
+              endId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\dftLoadCapacity"
+          TopLeft="351,94" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dftLoadCapacity">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="189,42"
+          Id="Package\dftLoadCapacity\odsSCHOOL_CAPACITY"
+          TopLeft="142,15" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\dftLoadCapacity\oddBPSInterface"
+          TopLeft="151,411" />
+        <EdgeLayout
+          Id="Package\dftLoadCapacity.Paths[OLE DB Source Output]"
+          TopLeft="233,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,354"
+              Start="0,0"
+              End="0,346.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,346.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftLoadCapacity\odsSCHOOL_CAPACITY">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftLoadCapacity\oddBPSInterface">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
