@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="176"
-  DTS:VersionGUID="{C22EDF75-2DEB-4C85-A09E-8C5A6CA105B1}">
+  DTS:VersionBuild="177"
+  DTS:VersionGUID="{8D315733-9960-458B-B2B6-ECA4DD8045FF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACy20jMj3FegHMuqoyjF0ruAAAAAASAAACgAAAAEAAAANqZ01yQe5Oai/SrcqtcIiUYAAAA60cJf67veiHAQfOMiX295+jCvd3Cd9FxFAAAAOFc68l1qNPILtHeAWuc35iuCKq/</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADmOFaK+XdnDYxvNL0WQBL9AAAAAASAAACgAAAAEAAAADlAnEDeIDmllVyI6YLBwdYYAAAAurlge348f7QNaeDWMsw85mRNSOYJEQKcFAAAANNAsI5itidYGCc27ak3rzgzjBNF</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMBPCwmGD50Wl2yhrJUJPtQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAg2uGWadMz1bs/Vpcv7Z3NAAAAAASAAACgAAAAEAAAAFECYpKuHSxxcpX5IRoZaZkYAAAAOC02JZcDH2MzE/9qHL15VRBpFR5WusxxFAAAALU4RJvSiMAXHvRASHtrL7GTrTZ8</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABMUTYSnN3GHz5fYiUJ6yzOAAAAAASAAACgAAAAEAAAADJc7GzZVPK6HenFkISnVqEYAAAAI8lSXbqAmxZJYesZ/mQUEsx/CYhWy0L/FAAAAM0JZJZhXxU0GTYAi3sm8tabIr0a</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2670,6 +2670,23 @@ FROM    dbo.STUDENT s
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\estDeleteStudentSchoolChoice"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute DeleteStudentSchoolChoice to remove any choices that have been deleted from Aspen"
+      DTS:DTSID="{937B9297-FA95-4FB6-9329-342EB6EFE063}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="estDeleteStudentSchoolChoice"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 CTP3.2; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B5B6E22C-E790-4640-9270-7CFA3DF4810B}"
+          SQLTask:SqlStatementSource="EXEC DeleteStudentSchoolChoice" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\estUpdate CallId"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -2729,6 +2746,14 @@ FROM    dbo.STUDENT s
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\estUpdate sccStdId" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{32C9621F-920B-4DDB-AD3A-3CA15F5A38A1}"
+      DTS:From="Package\estDeleteStudentSchoolChoice"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\dftTransferCase" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2741,26 +2766,26 @@ FROM    dbo.STUDENT s
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="153,42"
           Id="Package\dftTransferCase"
-          TopLeft="344,110" />
+          TopLeft="192,166" />
         <NodeLayout
           Size="162,42"
           Id="Package\dftTransferChoice"
-          TopLeft="345,222" />
+          TopLeft="193,278" />
         <NodeLayout
           Size="157,42"
           Id="Package\estUpdate CallId"
-          TopLeft="349,313" />
+          TopLeft="197,369" />
         <NodeLayout
           Size="170,42"
           Id="Package\estUpdate sccStdId"
-          TopLeft="338,389" />
+          TopLeft="186,445" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="426.75,264">
+          TopLeft="274.75,320">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2782,7 +2807,7 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="423.25,152">
+          TopLeft="271.25,208">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2804,7 +2829,7 @@ FROM    dbo.STUDENT s
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="425.25,355">
+          TopLeft="273.25,411">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2816,6 +2841,32 @@ FROM    dbo.STUDENT s
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="221,42"
+          Id="Package\estDeleteStudentSchoolChoice"
+          TopLeft="151,79" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="265,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2871,9 +2922,7 @@ FROM    dbo.STUDENT s
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
