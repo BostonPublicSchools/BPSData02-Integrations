@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Capacity"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{8C916BC4-6C27-46BF-AA6D-6941FB14BE46}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{9D303674-3865-4BB4-88ED-E504A539E4DB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABTpdZl+ixnaek56yS5y5t4AAAAAASAAACgAAAAEAAAAJAZWStjtZ8vNjMRsRW0coMYAAAAO6ZUlfzt/Z8IBEKkRbLawZW/93sLmazdFAAAAMCEsDnAB1iGR4rb2XFvIDSqE3UT</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADan9UdI8Lf20HaOA0m6xKIAAAAAASAAACgAAAAEAAAAI1iaLtIqA+kvzRk/TK+AuUYAAAAth3hyDV2zdUH1WLwVb/wnVufWEZetQSgFAAAAFC5dJlqfprmNPIVkA/8CKjLSfH6</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -38,11 +38,11 @@
       DTS:ObjectName="BPSInterface.BPSIntegration">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntegration;Initial Catalog=BPSInterface;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=STAGDATA02;User ID=BPSIntegration;Initial Catalog=BPSInterface;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADW1wbNZ9RnnIIcjgVGUtUGAAAAAASAAACgAAAAEAAAAHWk7fdGAzDK9jNmkKps60QYAAAAqMN7fyyj81PxdNMfpgSEhgZaQhUl+fuYFAAAACIMvGtxpEYwxG8G2gShFp76iUyo</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAA5oiT3IzuHDkLVok6/V35kAAAAAASAAACgAAAAEAAAAHFGJCOYj6Kb5+A1c2P2TwUYAAAAzJFqk/M/pvghxpHaGJPSk5iyPUKWrTugFAAAALZQWp910tTrexHWWp3lDa5AGE6r</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -526,7 +526,7 @@ AND SCA_GRADE_LEVEL IS NOT NULL</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\dftLoadCapacity\odsSCHOOL_CAPACITY">
+    design-time-name="Package\dftLoadCapacity\oddBPSInterface">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -539,7 +539,7 @@ AND SCA_GRADE_LEVEL IS NOT NULL</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\dftLoadCapacity\oddBPSInterface">
+    design-time-name="Package\dftLoadCapacity\odsSCHOOL_CAPACITY">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
