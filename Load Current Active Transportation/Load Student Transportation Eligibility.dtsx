@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student Transportation Eligibility"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{B4E74CCC-5937-4B15-89B9-F218D6F07399}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{6B9E99E6-AFE6-4FB4-9462-AD55DB41DE7E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC+bOdTte7d3jZeE4oEAYMcAAAAAASAAACgAAAAEAAAAEtaiSRGfuf82XKqGZsSmNYYAAAAagGjPAYPyh6UKKNkw8uLNshewudRaVUHFAAAAERYXiHPEUFG6+DJZyTCYISHIASZ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAChC0ALyQUGlENh2NjTQEyEAAAAAASAAACgAAAAEAAAAOAUvjvA8NIXLWUcgPq+VU4YAAAAloaAEBWYpCgO0AQWSZyGwsMvZCSYwYSfFAAAAECUzeNpgtfg6IaaXFW+wdhrSSn/</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADx6HcUxx3usWkQX12QEHq5AAAAAASAAACgAAAAEAAAAF7uMPOCr2EqDCNluwzLgNAYAAAAWkmGCtUv6X5mEYMmPhU6P3B77lZ8f505FAAAALfKMeRL+k+mnKf2ChOC30SJw7IV</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACa1aO1DRg3iq/UXB1A3RwKAAAAAASAAACgAAAAEAAAAOJ+9ug3FPLx82yd9yzQXBgYAAAACTSUMbBlSJkTTBcaOADLMLOpIv8FJtSkFAAAAF8HZ8qAiav558X6rLBoY2mezJhV</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -57,7 +57,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACyMYeiXA5PkuYIi82RJB16AAAAAASAAACgAAAAEAAAAGHZK6BoJLcBgK4foCjXY9QYAAAA2pCJdH76KbfTVPUuicRLj5zKi6bDINp7FAAAALsOSPfa68e5UP0B8g4DbdXW20Md</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACILzoMgiGzHaKWQYjaXtv2AAAAAASAAACgAAAAEAAAAFoBhQV8CW0K8Amu5QDsUmMYAAAACfpWs7XaBGJnHR0QKEAz5cDjisc7SM7AFAAAAGTwS5jAOneIRU238WgbSBv8oaXK</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1726,7 +1726,9 @@ where [refTable].[teoCode] = ?</property>
         NULLIF(CAST(STR_END_DATE AS DATE), '') STR_END_DATE ,
         STR_FIELDB_008 steWalkDistance ,
         STR_OID ,
-        DATEADD(S, STR_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') STR_LAST_MODIFIED ,
+        DATEADD(HOUR, -4,
+                DATEADD(SECOND, STR_LAST_MODIFIED / 1000,
+                        '1970-01-01 00:00:00')) STR_LAST_MODIFIED ,
         CAST(ISNULL(NULLIF(STR_FIELDA_006, ''), 'N') AS CHAR(10)) BusEligiblityCode ,
         CAST(ISNULL(NULLIF(STR_FIELDB_002, ''), 'R') AS CHAR(10)) AlternativeCode ,
         CAST(ISNULL(NULLIF(STR_FIELDB_001, ''), 'R') AS CHAR(10)) SessionCode ,
@@ -1741,7 +1743,7 @@ FROM    dbo.STUDENT_TRANSPORTATION
         JOIN dbo.SCHOOL ON SKL_OID = STR_SKL_OID
         JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = STR_CTX_OID
         JOIN [10.244.1.131].BPSInterface.BPS.Student ON STD_LocalID = STD_ID_LOCAL COLLATE DATABASE_DEFAULT
-WHERE   CTX_SCHOOL_YEAR &gt;= 2016</property>
+WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2293,7 +2295,7 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016</property>
         <NodeLayout
           Size="150,42"
           Id="Package\dftCurrentYearTransportation\OLE DB Source"
-          TopLeft="21,14" />
+          TopLeft="23,14" />
         <NodeLayout
           Size="172,42"
           Id="Package\dftCurrentYearTransportation\lsteEligibilityCodeID"
@@ -2322,18 +2324,18 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[OLE DB Source Output]"
-          TopLeft="171,35.5">
+          TopLeft="173,35.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="29,0"
+              EndConnector="27,0"
               Start="0,0"
-              End="21.5,0">
+              End="19.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="21.5,0" />
+                    End="19.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
