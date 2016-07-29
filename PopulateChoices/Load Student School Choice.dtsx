@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
-  DTS:VersionBuild="181"
-  DTS:VersionGUID="{5CE6DF30-456C-497B-B309-EF91ED305CBE}">
+  DTS:VersionBuild="183"
+  DTS:VersionGUID="{27BBBDBD-A1DD-4300-BC5E-3E322609D283}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD/lCU0w4Xwflucsh6DZME2AAAAAASAAACgAAAAEAAAAKfc7l3x7KUmrBdKarFGeqMYAAAA/I0EbZf8pFRQrMng93EZAZlWesWCICQrFAAAALzxtW8ew8E6TOmsgxn5dQ5RDXjd</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAACFmt0c8Lt2Ox5Fjy+PWg8AAAAAASAAACgAAAAEAAAADkl7rIfVoys8XSJeyv22vIYAAAAzV6kWC4W1lmWMWMpr5vYsUBYdNvUrFgfFAAAANYTUiNXdFdGZOg8fEQLX12KVB5O</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADo3dLuBESwY16SOAUqvmMEAAAAAASAAACgAAAAEAAAAKqffsMeg2V4aq52vfgqc7YYAAAAUH+xZJ0ENQLYuBiLe4y1DWeKFXiSWw2KFAAAABdKMk6bDlzdXBpskvhvsWJ2R0D/</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAHwFBFQJ04tlYVukVVrcH8AAAAAASAAACgAAAAEAAAAFVSlssV1+JyVJ42TJxvIsYYAAAAePHcVB/hyvPvDy0CgdQPQU9Y4UGoKDraFAAAAD2YtHzqNjVnM/hCpX7lxWeVJBEJ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1036,100 +1036,6 @@ FROM    STUDENT AS s
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\dftTransferChoice\csLast Modified Changed"
-              componentClassID="Microsoft.ConditionalSplit"
-              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
-              name="csLast Modified Changed"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\dftTransferChoice\csLast Modified Changed.Inputs[Conditional Split Input]"
-                  description="Input to the Conditional Split Transformation"
-                  name="Conditional Split Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\dftTransferChoice\csLast Modified Changed.Inputs[Conditional Split Input].Columns[SSS_LAST_MODIFIED]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="SSS_LAST_MODIFIED"
-                      lineageId="Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]" />
-                    <inputColumn
-                      refId="Package\dftTransferChoice\csLast Modified Changed.Inputs[Conditional Split Input].Columns[sscSSS_LAST_MODIFIED]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="sscSSS_LAST_MODIFIED"
-                      lineageId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscSSS_LAST_MODIFIED]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Last Modified Changed]"
-                  description="Output 1 of the Conditional Split Transformation"
-                  errorOrTruncationOperation="Computation"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Last Modified Changed"
-                  synchronousInputId="Package\dftTransferChoice\csLast Modified Changed.Inputs[Conditional Split Input]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">[REPLACENULL](#{Package\dftTransferChoice\odsSIS.Outputs[OLE DB Source Output].Columns[SSS_LAST_MODIFIED]},"1900-01-01") &gt; [REPLACENULL](#{Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output].Columns[sscSSS_LAST_MODIFIED]},"1900-01-01")</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the friendly version of the expression. This expression version uses column names."
-                      expressionType="Notify"
-                      name="FriendlyExpression">REPLACENULL(SSS_LAST_MODIFIED,"1900-01-01") &gt; REPLACENULL(sscSSS_LAST_MODIFIED,"1900-01-01")</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
-                      name="EvaluationOrder">0</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Conditional Split Default Output]"
-                  description="Default Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  name="Conditional Split Default Output"
-                  synchronousInputId="Package\dftTransferChoice\csLast Modified Changed.Inputs[Conditional Split Input]">
-                  <properties>
-                    <property
-                      dataType="System.Boolean"
-                      name="IsDefaultOut">true</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Conditional Split Error Output]"
-                  description="Error Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Conditional Split Error Output"
-                  synchronousInputId="Package\dftTransferChoice\csLast Modified Changed.Inputs[Conditional Split Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\dftTransferChoice\lStudentChoiceCase"
               componentClassID="Microsoft.Lookup"
@@ -2533,25 +2439,20 @@ FROM    dbo.STUDENT s
           </components>
           <paths>
             <path
-              refId="Package\dftTransferChoice.Paths[Last Modified Changed]"
-              endId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
-              name="Last Modified Changed"
-              startId="Package\dftTransferChoice\csLast Modified Changed.Outputs[Last Modified Changed]" />
-            <path
               refId="Package\dftTransferChoice.Paths[Lookup Match Output]"
-              endId="Package\dftTransferChoice\csLast Modified Changed.Inputs[Conditional Split Input]"
-              name="Lookup Match Output"
-              startId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\dftTransferChoice.Paths[Lookup Match Output1]"
               endId="Package\dftTransferChoice\lStudentSchoolChoice.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\dftTransferChoice\lStudentChoiceCase.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\dftTransferChoice.Paths[Lookup Match Output2]"
+              refId="Package\dftTransferChoice.Paths[Lookup Match Output1]"
               endId="Package\dftTransferChoice\odcUpdate SchoolChoiceOID.Inputs[OLE DB Command Input]"
               name="Lookup Match Output"
               startId="Package\dftTransferChoice\lStudentSchoolChoice 1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\dftTransferChoice.Paths[Lookup Match Output2]"
+              endId="Package\dftTransferChoice\odcUpdate EligiblityStudentSchoolChoice.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\dftTransferChoice\lStudentSchoolChoice.Outputs[Lookup Match Output]" />
             <path
               refId="Package\dftTransferChoice.Paths[Lookup No Match Output]"
               endId="Package\dftTransferChoice\lStudentSchoolChoice 1.Inputs[Lookup Input]"
@@ -2798,21 +2699,21 @@ FROM    dbo.STUDENT s
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="140,42"
-          Id="Package\dftTransferCase\lStudentCase"
-          TopLeft="128,323" />
+          Size="111,42"
+          Id="Package\dftTransferCase\odsSIS"
+          TopLeft="141,19" />
         <NodeLayout
           Size="187,42"
           Id="Package\dftTransferCase\oddStudentChoiceCase"
           TopLeft="395,319" />
         <NodeLayout
+          Size="140,42"
+          Id="Package\dftTransferCase\lStudentCase"
+          TopLeft="128,323" />
+        <NodeLayout
           Size="261,42"
           Id="Package\dftTransferCase\odcUpdate EligiblityStudentChoiceCase"
           TopLeft="73,531" />
-        <NodeLayout
-          Size="111,42"
-          Id="Package\dftTransferCase\odsSIS"
-          TopLeft="141,19" />
         <EdgeLayout
           Id="Package\dftTransferCase.Paths[OLE DB Source Output]"
           TopLeft="197.25,61">
@@ -2879,13 +2780,21 @@ FROM    dbo.STUDENT s
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-57.0600390625,71.25,114.120078125,16"
+              BoundingBox="-48.19138671875,73.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftTransferCase\odsSIS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\dftTransferCase\oddStudentChoiceCase">
     <Properties>
@@ -2900,20 +2809,12 @@ FROM    dbo.STUDENT s
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\dftTransferCase\odsSIS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\dftTransferCase\lStudentCase">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2923,7 +2824,7 @@ FROM    dbo.STUDENT s
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2963,10 +2864,6 @@ FROM    dbo.STUDENT s
           Size="195,42"
           Id="Package\dftTransferChoice\oddStudentSchoolChoice"
           TopLeft="421,442" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\dftTransferChoice\csLast Modified Changed"
-          TopLeft="103,426" />
         <EdgeLayout
           Id="Package\dftTransferChoice.Paths[OLE DB Source Output]"
           TopLeft="191.75,170.5">
@@ -3038,7 +2935,7 @@ FROM    dbo.STUDENT s
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\dftTransferChoice.Paths[Lookup Match Output2]"
+          Id="Package\dftTransferChoice.Paths[Lookup Match Output1]"
           TopLeft="615,316">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -3062,7 +2959,7 @@ FROM    dbo.STUDENT s
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\dftTransferChoice.Paths[Lookup Match Output1]"
+          Id="Package\dftTransferChoice.Paths[Lookup Match Output]"
           TopLeft="192.75,242">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -3086,62 +2983,26 @@ FROM    dbo.STUDENT s
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\dftTransferChoice.Paths[Lookup Match Output]"
-          TopLeft="193,330">
+          Id="Package\dftTransferChoice.Paths[Lookup Match Output2]"
+          TopLeft="195,330">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="8,96"
+              EndConnector="0,239"
               Start="0,0"
-              End="8,88.5">
+              End="0,231.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44"
-                    Point2="0,48"
-                    Point3="4,48" />
-                  <mssgle:LineSegment
-                    End="4,48" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4,48"
-                    Point2="8,48"
-                    Point3="8,52" />
-                  <mssgle:LineSegment
-                    End="8,88.5" />
+                    End="0,231.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-44.19138671875,53,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftTransferChoice.Paths[Last Modified Changed]"
-          TopLeft="199,468">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,101"
-              Start="0,0"
-              End="0,93.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,93.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-50.42298828125,40.89404296875,100.8459765625,11.7119140625"
+              BoundingBox="-48.19138671875,109.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

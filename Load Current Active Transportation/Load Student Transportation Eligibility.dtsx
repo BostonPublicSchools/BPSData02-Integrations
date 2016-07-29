@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student Transportation Eligibility"
   DTS:PackageType="5"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{6B9E99E6-AFE6-4FB4-9462-AD55DB41DE7E}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{83D86F30-C55F-4517-8782-27B39F87B1F3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAChC0ALyQUGlENh2NjTQEyEAAAAAASAAACgAAAAEAAAAOAUvjvA8NIXLWUcgPq+VU4YAAAAloaAEBWYpCgO0AQWSZyGwsMvZCSYwYSfFAAAAECUzeNpgtfg6IaaXFW+wdhrSSn/</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADZUW4VpCvgdfvR3h7E2WsjAAAAAASAAACgAAAAEAAAAPT5qKO+wju+xxYhuL7pkegYAAAA7++unHJSpLdg6B+zRaECGkyo3vTRUrOXFAAAAO4olNd1cvnspH3LwHihFI5Xx507</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACa1aO1DRg3iq/UXB1A3RwKAAAAAASAAACgAAAAEAAAAOJ+9ug3FPLx82yd9yzQXBgYAAAACTSUMbBlSJkTTBcaOADLMLOpIv8FJtSkFAAAAF8HZ8qAiav558X6rLBoY2mezJhV</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABsXS3OaOOaQoaKDEtKqRwtAAAAAASAAACgAAAAEAAAAPohJjVx5tpzDvdxQzgCLGUYAAAAuTxpsQ7uvhcWYKc2OIzBbf263pkOFCoJFAAAAJPyfU3oIS1TISxxyDny3t5aNrCs</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -57,7 +57,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACILzoMgiGzHaKWQYjaXtv2AAAAAASAAACgAAAAEAAAAFoBhQV8CW0K8Amu5QDsUmMYAAAACfpWs7XaBGJnHR0QKEAz5cDjisc7SM7AFAAAAGTwS5jAOneIRU238WgbSBv8oaXK</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABo2HRzy7V0f5i6JFzwuzOoAAAAAASAAACgAAAAEAAAAG8ZEneAk+itQSVQ8WLUG2QYAAAAboEbPq4hi+CWSsAdIVrIP0smxxBtajs4FAAAABWpb9RFa7mtKxbbJ6J1C0qPks+l</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -78,100 +78,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\dftCurrentYearTransportation\csLast Modified Changed"
-              componentClassID="Microsoft.ConditionalSplit"
-              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
-              name="csLast Modified Changed"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\dftCurrentYearTransportation\csLast Modified Changed.Inputs[Conditional Split Input]"
-                  description="Input to the Conditional Split Transformation"
-                  name="Conditional Split Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\dftCurrentYearTransportation\csLast Modified Changed.Inputs[Conditional Split Input].Columns[STR_LAST_MODIFIED]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="STR_LAST_MODIFIED"
-                      lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].Columns[STR_LAST_MODIFIED]" />
-                    <inputColumn
-                      refId="Package\dftCurrentYearTransportation\csLast Modified Changed.Inputs[Conditional Split Input].Columns[steSTR_LAST_MODIFIED]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="steSTR_LAST_MODIFIED"
-                      lineageId="Package\dftCurrentYearTransportation\lStudentTransportationEligibility.Outputs[Lookup Match Output].Columns[steSTR_LAST_MODIFIED]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\dftCurrentYearTransportation\csLast Modified Changed.Outputs[Last Modified Changed]"
-                  description="Output 2 of the Conditional Split Transformation"
-                  errorOrTruncationOperation="Computation"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Last Modified Changed"
-                  synchronousInputId="Package\dftCurrentYearTransportation\csLast Modified Changed.Inputs[Conditional Split Input]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\dftCurrentYearTransportation\lStudentTransportationEligibility.Outputs[Lookup Match Output].Columns[steSTR_LAST_MODIFIED]} != #{Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].Columns[STR_LAST_MODIFIED]}</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the friendly version of the expression. This expression version uses column names."
-                      expressionType="Notify"
-                      name="FriendlyExpression">steSTR_LAST_MODIFIED != STR_LAST_MODIFIED</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
-                      name="EvaluationOrder">0</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftCurrentYearTransportation\csLast Modified Changed.Outputs[Conditional Split Default Output]"
-                  description="Default Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  name="Conditional Split Default Output"
-                  synchronousInputId="Package\dftCurrentYearTransportation\csLast Modified Changed.Inputs[Conditional Split Input]">
-                  <properties>
-                    <property
-                      dataType="System.Boolean"
-                      name="IsDefaultOut">true</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\dftCurrentYearTransportation\csLast Modified Changed.Outputs[Conditional Split Error Output]"
-                  description="Error Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Conditional Split Error Output"
-                  synchronousInputId="Package\dftCurrentYearTransportation\csLast Modified Changed.Inputs[Conditional Split Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftCurrentYearTransportation\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\dftCurrentYearTransportation\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\dftCurrentYearTransportation\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\dftCurrentYearTransportation\csLast Modified Changed.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\dftCurrentYearTransportation\dcsteDefaultEligibilityCodeID"
               componentClassID="Microsoft.DerivedColumn"
@@ -560,7 +466,7 @@ where [refTable].[tecSISCode] = ? and [refTable].[tecSISAlternativeCode] = ? and
                 <output
                   refId="Package\dftCurrentYearTransportation\lsteEligibilityCodeID.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="RedirectRow"
+                  errorRowDisposition="IgnoreFailure"
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\dftCurrentYearTransportation\lsteEligibilityCodeID.Inputs[Lookup Input]">
@@ -666,7 +572,7 @@ where [refTable].[steSTR_OID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="steID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steStdId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steSTR_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steSTR_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steStudentLocalID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steSchoolLocalID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steSchoolYearContext" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steStartDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEndDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEligibilityCodeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steDefaultEligibilityCodeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stePreviousEligibilityCodeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEligibilityOverrideReasonID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steWalkDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steDistanceTypeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="steID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steStdId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steSTR_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steAddressID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steSTR_LAST_MODIFIED" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steStudentLocalID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steSchoolLocalID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steSchoolYearContext" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steStartDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEndDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEligibilityCodeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steDefaultEligibilityCodeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stePreviousEligibilityCodeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEligibilityOverrideReasonID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steWalkDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steDistanceTypeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEligibilityTypeReason" dataType="DT_STR" length="250" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -1510,14 +1416,6 @@ where [refTable].[teoCode] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].Columns[steWalkDistance]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="25"
-                      cachedName="steWalkDistance"
-                      externalMetadataColumnId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].ExternalColumns[steWalkDistance]"
-                      lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].Columns[steWalkDistance]" />
-                    <inputColumn
                       refId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].Columns[STR_OID]"
                       cachedDataType="wstr"
                       cachedLength="14"
@@ -1590,6 +1488,22 @@ where [refTable].[teoCode] = ?</property>
                       cachedName="CTX_CONTEXT_ID"
                       externalMetadataColumnId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].ExternalColumns[steSchoolYearContext]"
                       lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].Columns[CTX_CONTEXT_ID]" />
+                    <inputColumn
+                      refId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].Columns[AddressID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="AddressID"
+                      externalMetadataColumnId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].ExternalColumns[steAddressID]"
+                      lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].Columns[AddressID]" />
+                    <inputColumn
+                      refId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].Columns[steWalkDistance]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="steWalkDistance"
+                      externalMetadataColumnId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].ExternalColumns[steWalkDistance]"
+                      lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].Columns[steWalkDistance]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1664,6 +1578,16 @@ where [refTable].[teoCode] = ?</property>
                       refId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].ExternalColumns[steDistanceTypeID]"
                       dataType="i4"
                       name="steDistanceTypeID" />
+                    <externalMetadataColumn
+                      refId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].ExternalColumns[steAddressID]"
+                      dataType="i4"
+                      name="steAddressID" />
+                    <externalMetadataColumn
+                      refId="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity.Inputs[OLE DB Destination Input].ExternalColumns[steEligibilityTypeReason]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="steEligibilityTypeReason" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1724,7 +1648,7 @@ where [refTable].[teoCode] = ?</property>
         CTX_CONTEXT_ID ,
         CAST(STR_START_DATE AS DATE) STR_START_DATE ,
         NULLIF(CAST(STR_END_DATE AS DATE), '') STR_END_DATE ,
-        STR_FIELDB_008 steWalkDistance ,
+        CAST(STR_FIELDB_008 AS FLOAT) steWalkDistance ,
         STR_OID ,
         DATEADD(HOUR, -4,
                 DATEADD(SECOND, STR_LAST_MODIFIED / 1000,
@@ -1735,14 +1659,15 @@ where [refTable].[teoCode] = ?</property>
         CAST(ISNULL(NULLIF(STR_FIELDB_009, ''), 'Unknown') AS CHAR(50)) TransportationDistanceType ,
         ADR_POSTAL_CODE ,
         STD_FIELDB_058 SEICode ,
-        CAST(ISNULL(NULLIF(STR_FIELDC_002, ''), 'Unknown') AS CHAR(50)) OverrideReason
+        CAST(ISNULL(NULLIF(STR_FIELDC_002, ''), 'Unknown') AS CHAR(50)) OverrideReason ,
+        NULLIF(STD_FIELDB_087, '') AddressID
 FROM    dbo.STUDENT_TRANSPORTATION
         JOIN dbo.STUDENT ON STD_OID = STR_STD_OID
         JOIN dbo.PERSON ON PSN_OID = STD_PSN_OID
         JOIN dbo.PERSON_ADDRESS ON ADR_OID = PSN_ADR_OID_PHYSICAL
         JOIN dbo.SCHOOL ON SKL_OID = STR_SKL_OID
         JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = STR_CTX_OID
-        JOIN [10.244.1.131].BPSInterface.BPS.Student ON STD_LocalID = STD_ID_LOCAL COLLATE DATABASE_DEFAULT
+        LEFT  JOIN [10.244.1.131].BPSInterface.BPS.Student ON STD_LocalID = STD_ID_LOCAL COLLATE DATABASE_DEFAULT
 WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
                 <property
                   dataType="System.String"
@@ -1956,6 +1881,17 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
                       lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].Columns[OverrideReason]"
                       name="OverrideReason"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].Columns[AddressID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AddressID]"
+                      length="25"
+                      lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].Columns[AddressID]"
+                      name="AddressID"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1996,9 +1932,7 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
                       name="STR_END_DATE" />
                     <externalMetadataColumn
                       refId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[steWalkDistance]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
+                      dataType="r8"
                       name="steWalkDistance" />
                     <externalMetadataColumn
                       refId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[STR_OID]"
@@ -2051,6 +1985,12 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
                       dataType="str"
                       length="50"
                       name="OverrideReason" />
+                    <externalMetadataColumn
+                      refId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AddressID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="AddressID" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2102,9 +2042,7 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
                       name="STR_END_DATE" />
                     <outputColumn
                       refId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[steWalkDistance]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
+                      dataType="r8"
                       lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[steWalkDistance]"
                       name="steWalkDistance" />
                     <outputColumn
@@ -2168,6 +2106,13 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
                       lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OverrideReason]"
                       name="OverrideReason" />
                     <outputColumn
+                      refId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AddressID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AddressID]"
+                      name="AddressID" />
+                    <outputColumn
                       refId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\dftCurrentYearTransportation\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -2192,11 +2137,6 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
               name="Derived Column Output"
               startId="Package\dftCurrentYearTransportation\dcsteDefaultEligibilityCodeID.Outputs[Derived Column Output]" />
             <path
-              refId="Package\dftCurrentYearTransportation.Paths[Last Modified Changed]"
-              endId="Package\dftCurrentYearTransportation\dcsteDefaultEligibilityCodeID.Inputs[Derived Column Input]"
-              name="Last Modified Changed"
-              startId="Package\dftCurrentYearTransportation\csLast Modified Changed.Outputs[Last Modified Changed]" />
-            <path
               refId="Package\dftCurrentYearTransportation.Paths[Lookup Match Output]"
               endId="Package\dftCurrentYearTransportation\lteoEligibilityOverrideReasonID.Inputs[Lookup Input]"
               name="Lookup Match Output"
@@ -2218,7 +2158,7 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
               startId="Package\dftCurrentYearTransportation\lteoEligibilityOverrideReasonID.Outputs[Lookup Match Output]" />
             <path
               refId="Package\dftCurrentYearTransportation.Paths[Lookup Match Output4]"
-              endId="Package\dftCurrentYearTransportation\csLast Modified Changed.Inputs[Conditional Split Input]"
+              endId="Package\dftCurrentYearTransportation\dcsteDefaultEligibilityCodeID.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\dftCurrentYearTransportation\lStudentTransportationEligibility.Outputs[Lookup Match Output]" />
             <path
@@ -2251,7 +2191,7 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
         <NodeLayout
           Size="217,42"
           Id="Package\dftCurrentYearTransportation"
-          TopLeft="384,92" />
+          TopLeft="385,92" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2260,14 +2200,6 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="214,42"
-          Id="Package\dftCurrentYearTransportation\dcsteDefaultEligibilityCodeID"
-          TopLeft="1137,178" />
-        <NodeLayout
-          Size="228,42"
-          Id="Package\dftCurrentYearTransportation\lStudentTransportationEligibility"
-          TopLeft="1135,23" />
         <NodeLayout
           Size="223,42"
           Id="Package\dftCurrentYearTransportation\lteoEligibilityOverrideReasonID"
@@ -2289,10 +2221,6 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
           Id="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity"
           TopLeft="1356,87" />
         <NodeLayout
-          Size="196,42"
-          Id="Package\dftCurrentYearTransportation\csLast Modified Changed"
-          TopLeft="1145,91" />
-        <NodeLayout
           Size="150,42"
           Id="Package\dftCurrentYearTransportation\OLE DB Source"
           TopLeft="23,14" />
@@ -2300,28 +2228,14 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
           Size="172,42"
           Id="Package\dftCurrentYearTransportation\lsteEligibilityCodeID"
           TopLeft="380,18" />
-        <EdgeLayout
-          Id="Package\dftCurrentYearTransportation.Paths[Derived Column Output]"
-          TopLeft="1244,220">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32"
-              Start="0,0"
-              End="0,24.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="214,42"
+          Id="Package\dftCurrentYearTransportation\dcsteDefaultEligibilityCodeID"
+          TopLeft="1137,178" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dftCurrentYearTransportation\lStudentTransportationEligibility"
+          TopLeft="1135,23" />
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[OLE DB Source Output]"
           TopLeft="173,35.5">
@@ -2376,25 +2290,25 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[Lookup Match Output4]"
-          TopLeft="1246,65">
+          TopLeft="1246.5,65">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,26"
+              EndConnector="0,113"
               Start="0,0"
-              End="0,18.5">
+              End="0,105.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.5" />
+                    End="0,105.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,3.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,46.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2495,55 +2409,30 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\dftCurrentYearTransportation.Paths[Last Modified Changed]"
-          TopLeft="1243.5,133">
+          Id="Package\dftCurrentYearTransportation.Paths[Derived Column Output]"
+          TopLeft="1244,220">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45"
+              EndConnector="0,32"
               Start="0,0"
-              End="0,37.5">
+              End="0,24.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
+                    End="0,24.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-50.42298828125,12.89404296875,100.8459765625,11.7119140625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftCurrentYearTransportation\lStudentTransportationEligibility">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[StudentTransportationEligibility]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\dftCurrentYearTransportation\lteoEligibilityOverrideReasonID">
     <Properties>
@@ -2646,6 +2535,29 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[tecTransportationEligibility]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftCurrentYearTransportation\lStudentTransportationEligibility">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[StudentTransportationEligibility]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
