@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Capacity"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{9D303674-3865-4BB4-88ED-E504A539E4DB}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{490806B1-C1C2-4072-AD30-E910AD40BDE5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADan9UdI8Lf20HaOA0m6xKIAAAAAASAAACgAAAAEAAAAI1iaLtIqA+kvzRk/TK+AuUYAAAAth3hyDV2zdUH1WLwVb/wnVufWEZetQSgFAAAAFC5dJlqfprmNPIVkA/8CKjLSfH6</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwWUNnqdQRUCGtfhc2IOVoQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACLzh5PalbsoMy2s4PnjFAgAAAAAASAAACgAAAAEAAAAC5QJ4pXXKic2bQMWgSX9JMYAAAA0F0Djm+qEGnthrI1UyzDpMXW1Cyi9nauFAAAAJkNUZ+0cd2Q5ALWFHp9Rm+zVaqr</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAA5oiT3IzuHDkLVok6/V35kAAAAAASAAACgAAAAEAAAAHFGJCOYj6Kb5+A1c2P2TwUYAAAAzJFqk/M/pvghxpHaGJPSk5iyPUKWrTugFAAAALZQWp910tTrexHWWp3lDa5AGE6r</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwWUNnqdQRUCGtfhc2IOVoQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACq4QfOZ8ARiKJIJOQckMktAAAAAASAAACgAAAAEAAAAJ76O18icRxYhCDZSxX4YMcYAAAAkrpi8n+A4obEdWSLc9GgGfoVkl73p3DrFAAAAOQaO/pVRw+xJOIBgbpaBWViu7O1</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -63,6 +63,165 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\dftLoadCapacity\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Eligibility].[SchoolCapacity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[SchoolCapacity]) [refTable]
+where [refTable].[scaSCA_OID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="scaId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaSchId" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaSCA_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaGradeLevel" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaProgramId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaYearContext" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaAssignLimit" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaActualTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaPendingTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaWaitlistTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_OID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftLoadCapacity\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BPSInterface.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[BPSInterface.BPSIntegration]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dftLoadCapacity\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\Lookup.Inputs[Lookup Input].Columns[SCA_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="SCA_OID"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_OID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">scaSCA_OID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftLoadCapacity\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dftLoadCapacity\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\Lookup.Outputs[Lookup Match Output].Columns[scaId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\dftLoadCapacity\Lookup.Outputs[Lookup Match Output].Columns[scaId]"
+                      name="scaId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">scaId</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftLoadCapacity\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dftLoadCapacity\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftLoadCapacity\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dftLoadCapacity\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftLoadCapacity\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftLoadCapacity\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\dftLoadCapacity\oddBPSInterface"
               componentClassID="Microsoft.OLEDBDestination"
@@ -174,6 +333,35 @@
                       cachedName="SKL_SCHOOL_ID"
                       externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaSchId]"
                       lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SKL_SCHOOL_ID]" />
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].Columns[SCA_ASSIGN_LIMIT]"
+                      cachedDataType="numeric"
+                      cachedName="SCA_ASSIGN_LIMIT"
+                      cachedPrecision="5"
+                      externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaAssignLimit]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_ASSIGN_LIMIT]" />
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].Columns[SCA_ASSIGN_TOTAL]"
+                      cachedDataType="numeric"
+                      cachedName="SCA_ASSIGN_TOTAL"
+                      cachedPrecision="5"
+                      externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaActualTotal]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_ASSIGN_TOTAL]" />
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].Columns[PendingTotal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PendingTotal"
+                      externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaPendingTotal]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[PendingTotal]" />
+                    <inputColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].Columns[SCA_WAITLIST_TOTAL]"
+                      cachedDataType="numeric"
+                      cachedName="SCA_WAITLIST_TOTAL"
+                      cachedPrecision="5"
+                      externalMetadataColumnId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaWaitlistTotal]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_WAITLIST_TOTAL]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -214,6 +402,22 @@
                       refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaLastUpdated]"
                       dataType="dbTimeStamp"
                       name="scaLastUpdated" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaAssignLimit]"
+                      dataType="i4"
+                      name="scaAssignLimit" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaActualTotal]"
+                      dataType="i4"
+                      name="scaActualTotal" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaPendingTotal]"
+                      dataType="i4"
+                      name="scaPendingTotal" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input].ExternalColumns[scaWaitlistTotal]"
+                      dataType="i4"
+                      name="scaWaitlistTotal" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -271,12 +475,16 @@
         SCA_OID ,
         SCA_GRADE_LEVEL ,
         SCA_PROGRAM_CODE ,
-        CTX_CONTEXT_ID 
-FROM  dbo.SCHOOL_CAPACITY
+        CTX_CONTEXT_ID ,
+        SCA_ASSIGN_LIMIT ,
+        SCA_ASSIGN_TOTAL ,
+        SCA_FIELDA_002 PendingTotal ,
+        SCA_WAITLIST_TOTAL
+FROM    dbo.SCHOOL_CAPACITY
         JOIN dbo.SCHOOL ON SKL_OID = SCA_SKL_OID
         JOIN dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID
 WHERE   CTX_SCHOOL_YEAR &gt;= '2016'
-AND SCA_GRADE_LEVEL IS NOT NULL</property>
+        AND SCA_GRADE_LEVEL IS NOT NULL;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -366,6 +574,47 @@ AND SCA_GRADE_LEVEL IS NOT NULL</property>
                       lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[CTX_CONTEXT_ID]"
                       name="CTX_CONTEXT_ID"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_ASSIGN_LIMIT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_ASSIGN_LIMIT]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_ASSIGN_LIMIT]"
+                      name="SCA_ASSIGN_LIMIT"
+                      precision="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_ASSIGN_TOTAL]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_ASSIGN_TOTAL]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_ASSIGN_TOTAL]"
+                      name="SCA_ASSIGN_TOTAL"
+                      precision="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[PendingTotal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[PendingTotal]"
+                      length="10"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[PendingTotal]"
+                      name="PendingTotal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_WAITLIST_TOTAL]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_WAITLIST_TOTAL]"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].Columns[SCA_WAITLIST_TOTAL]"
+                      name="SCA_WAITLIST_TOTAL"
+                      precision="5"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -398,6 +647,27 @@ AND SCA_GRADE_LEVEL IS NOT NULL</property>
                       dataType="str"
                       length="20"
                       name="CTX_CONTEXT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_ASSIGN_LIMIT]"
+                      dataType="numeric"
+                      name="SCA_ASSIGN_LIMIT"
+                      precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_ASSIGN_TOTAL]"
+                      dataType="numeric"
+                      name="SCA_ASSIGN_TOTAL"
+                      precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[PendingTotal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PendingTotal" />
+                    <externalMetadataColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output].ExternalColumns[SCA_WAITLIST_TOTAL]"
+                      dataType="numeric"
+                      name="SCA_WAITLIST_TOTAL"
+                      precision="5" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -440,6 +710,31 @@ AND SCA_GRADE_LEVEL IS NOT NULL</property>
                       lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[CTX_CONTEXT_ID]"
                       name="CTX_CONTEXT_ID" />
                     <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_ASSIGN_LIMIT]"
+                      dataType="numeric"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_ASSIGN_LIMIT]"
+                      name="SCA_ASSIGN_LIMIT"
+                      precision="5" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_ASSIGN_TOTAL]"
+                      dataType="numeric"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_ASSIGN_TOTAL]"
+                      name="SCA_ASSIGN_TOTAL"
+                      precision="5" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[PendingTotal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[PendingTotal]"
+                      name="PendingTotal" />
+                    <outputColumn
+                      refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_WAITLIST_TOTAL]"
+                      dataType="numeric"
+                      lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[SCA_WAITLIST_TOTAL]"
+                      name="SCA_WAITLIST_TOTAL"
+                      precision="5" />
+                    <outputColumn
                       refId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -459,8 +754,13 @@ AND SCA_GRADE_LEVEL IS NOT NULL</property>
           </components>
           <paths>
             <path
-              refId="Package\dftLoadCapacity.Paths[OLE DB Source Output]"
+              refId="Package\dftLoadCapacity.Paths[Lookup No Match Output]"
               endId="Package\dftLoadCapacity\oddBPSInterface.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\dftLoadCapacity\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\dftLoadCapacity.Paths[OLE DB Source Output]"
+              endId="Package\dftLoadCapacity\Lookup.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\dftLoadCapacity\odsSCHOOL_CAPACITY.Outputs[OLE DB Source Output]" />
           </paths>
@@ -491,35 +791,75 @@ AND SCA_GRADE_LEVEL IS NOT NULL</property>
     design-time-name="Package\dftLoadCapacity">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="189,42"
-          Id="Package\dftLoadCapacity\odsSCHOOL_CAPACITY"
-          TopLeft="142,15" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="157,42"
           Id="Package\dftLoadCapacity\oddBPSInterface"
           TopLeft="151,411" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\dftLoadCapacity\Lookup"
+          TopLeft="184,179" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\dftLoadCapacity\odsSCHOOL_CAPACITY"
+          TopLeft="142,15" />
         <EdgeLayout
           Id="Package\dftLoadCapacity.Paths[OLE DB Source Output]"
-          TopLeft="233,57">
+          TopLeft="238.5,57">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,354"
+              EndConnector="0,122"
               Start="0,0"
-              End="0,346.5">
+              End="0,114.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,346.5" />
+                    End="0,114.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftLoadCapacity.Paths[Lookup No Match Output]"
+          TopLeft="240.5,221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11,190"
+              Start="0,0"
+              End="-11,182.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,91"
+                    Point2="0,95"
+                    Point3="-4,95" />
+                  <mssgle:LineSegment
+                    End="-7,95" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7,95"
+                    Point2="-11,95"
+                    Point3="-11,99" />
+                  <mssgle:LineSegment
+                    End="-11,182.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-61.30638671875,100,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -535,6 +875,29 @@ AND SCA_GRADE_LEVEL IS NOT NULL</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftLoadCapacity\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Eligibility].[SchoolCapacity]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
