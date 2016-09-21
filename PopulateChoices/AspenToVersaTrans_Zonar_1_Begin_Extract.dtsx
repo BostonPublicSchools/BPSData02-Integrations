@@ -1,0 +1,2048 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/4/2014 11:01:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BPSDATA"
+  DTS:CreatorName="ADMINDOM\114600"
+  DTS:DTSID="{B4617AE2-51F5-42B2-9044-45F8C73FC6EA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.900.80"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="AspenToVersaTrans_Zonar_1_Begin_Extract"
+  DTS:PackageType="5"
+  DTS:VersionBuild="124"
+  DTS:VersionGUID="{92DB17E7-7184-4BFF-8202-B16E55A2E432}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSDATA02.AspenInterface]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{F5D15602-68B8-4D8B-B177-53162400F6CC}"
+      DTS:ObjectName="BPSDATA02.AspenInterface">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntranet;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{F5D15602-68B8-4D8B-B177-53162400F6CC}BPSData.AspenInterface;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSWorks.AspenInterface.BPSIntranet]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{517AD7C1-F481-49E8-B41C-B3B7B0EA7100}"
+      DTS:ObjectName="BPSWorks.AspenInterface.BPSIntranet">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BPSWorks;User ID=BPSIntranet;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-AspenToVersaTrans-{517AD7C1-F481-49E8-B41C-B3B7B0EA7100}BPSWorks.AspenInterface.BPSIntranet;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9DA45F0E-5BA4-41A2-ACBB-4E2F86A904FD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="isAspenJobComplete">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{76B18DC4-24C1-47A1-86B7-F82E8F1C17CA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="JobStatus">
+      <DTS:VariableValue
+        DTS:DataType="8">99</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dft Transfer data to BPSData02"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E7BD5880-88FC-49EE-8A38-6ABD6E8AC978}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft Transfer data to BPSData02"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Writes to a database using ADO.NET provider.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes to a database using ADO.NET provider."
+              name="and BPSData02 AspenInterface"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."CurrentTransportationDaily"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BPSDATA02.AspenInterface]"
+                  connectionManagerRefId="Package.ConnectionManagers[BPSDATA02.AspenInterface]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[StudentNo]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="StudentNo"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[StudentNo]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[StudentNo]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[MiddleName]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="MiddleName"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[MiddleName]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[MiddleName]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[Grade]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="Grade"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[Grade]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[Grade]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[sch]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="sch"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[sch]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[sch]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[streetno]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="streetno"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[streetno]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[streetno]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[street]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="street"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[street]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[street]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[apt]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="apt"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[apt]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[apt]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[city]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="state"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[state]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[zip]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="zip"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[zip]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[zip]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[DOB]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DOB"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DOB]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DOB]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[parent1phones]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="parent1phones"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[parent1phones]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent1phones]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[parent2phones]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="parent2phones"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[parent2phones]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent2phones]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[emergencycontactphones]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="emergencycontactphones"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[emergencycontactphones]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[emergencycontactphones]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[parent1name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="parent1name"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[parent1name]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent1name]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[parent2name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="parent2name"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[parent2name]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent2name]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[emergencycontactname]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="emergencycontactname"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[emergencycontactname]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[emergencycontactname]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[sex]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="sex"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[sex]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[sex]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[program]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="program"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[program]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[program]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[PickupHouseNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PickupHouseNumber"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupHouseNumber]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupHouseNumber]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[PickupStreetname]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="PickupStreetname"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupStreetname]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupStreetname]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[PickupApartmentNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PickupApartmentNumber"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupApartmentNumber]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupApartmentNumber]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[PickupCity]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PickupCity"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupCity]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupCity]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[PickupState]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PickupState"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupState]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupState]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[Pickupzip]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Pickupzip"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[Pickupzip]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[Pickupzip]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[DropOffHouseNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DropOffHouseNumber"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffHouseNumber]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffHouseNumber]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[DropOffStreetname]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="DropOffStreetname"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffStreetname]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffStreetname]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[DropOffApartmentNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="DropOffApartmentNumber"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffApartmentNumber]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffApartmentNumber]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[DropOffCity]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="DropOffCity"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffCity]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffCity]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[DropOffState]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DropOffState"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffState]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffState]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[DropOffzip]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DropOffzip"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffzip]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffzip]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[MedicaData]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="MedicaData"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[MedicaData]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[MedicaData]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[sncode]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="sncode"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[sncode]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[sncode]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[bilingual]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="bilingual"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[bilingual]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[bilingual]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[aw]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="aw"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[aw]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[aw]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[voced]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="voced"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[voced]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[voced]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[theme]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="theme"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[theme]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[theme]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[monitor]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="monitor"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[monitor]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[monitor]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[hzone]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="hzone"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[hzone]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[hzone]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[zone]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="zone"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[zone]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[zone]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[geo]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="geo"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[geo]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[geo]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[hphone]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="hphone"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[hphone]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[hphone]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[BufferZone]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="BufferZone"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[BufferZone]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[BufferZone]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[HomeRoom]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="HomeRoom"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[HomeRoom]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[HomeRoom]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[IsWithDrawn]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="IsWithDrawn"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[IsWithDrawn]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[IsWithDrawn]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[ishomeless]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="ishomeless"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[ishomeless]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[ishomeless]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[IsProtectedAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="IsProtectedAddress"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[IsProtectedAddress]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[IsProtectedAddress]" />
+                    <inputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].Columns[TapCardID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="TapCardID"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[TapCardID]"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[TapCardID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[StudentNo]"
+                      dataType="wstr"
+                      length="10"
+                      name="StudentNo" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="60"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="60"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="60"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[Grade]"
+                      dataType="wstr"
+                      length="2"
+                      name="Grade" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[sch]"
+                      dataType="wstr"
+                      length="20"
+                      name="sch" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[streetno]"
+                      dataType="wstr"
+                      length="10"
+                      name="streetno" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[street]"
+                      dataType="wstr"
+                      length="100"
+                      name="street" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[apt]"
+                      dataType="wstr"
+                      length="20"
+                      name="apt" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="30"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[state]"
+                      dataType="wstr"
+                      length="4"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[zip]"
+                      dataType="wstr"
+                      length="9"
+                      name="zip" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DOB]"
+                      dataType="wstr"
+                      length="10"
+                      name="DOB" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[parent1phones]"
+                      dataType="wstr"
+                      length="60"
+                      name="parent1phones" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[parent2phones]"
+                      dataType="wstr"
+                      length="60"
+                      name="parent2phones" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[emergencycontactphones]"
+                      dataType="wstr"
+                      length="50"
+                      name="emergencycontactphones" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[parent1name]"
+                      dataType="wstr"
+                      length="100"
+                      name="parent1name" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[parent2name]"
+                      dataType="wstr"
+                      length="100"
+                      name="parent2name" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[emergencycontactname]"
+                      dataType="wstr"
+                      length="60"
+                      name="emergencycontactname" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[sex]"
+                      dataType="wstr"
+                      length="10"
+                      name="sex" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[program]"
+                      dataType="wstr"
+                      length="4"
+                      name="program" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupHouseNumber]"
+                      dataType="wstr"
+                      length="10"
+                      name="PickupHouseNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupStreetname]"
+                      dataType="wstr"
+                      length="30"
+                      name="PickupStreetname" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupApartmentNumber]"
+                      dataType="wstr"
+                      length="10"
+                      name="PickupApartmentNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupCity]"
+                      dataType="wstr"
+                      length="10"
+                      name="PickupCity" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[PickupState]"
+                      dataType="wstr"
+                      length="10"
+                      name="PickupState" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[Pickupzip]"
+                      dataType="wstr"
+                      length="10"
+                      name="Pickupzip" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffHouseNumber]"
+                      dataType="wstr"
+                      length="10"
+                      name="DropOffHouseNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffStreetname]"
+                      dataType="wstr"
+                      length="80"
+                      name="DropOffStreetname" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffApartmentNumber]"
+                      dataType="wstr"
+                      length="20"
+                      name="DropOffApartmentNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffCity]"
+                      dataType="wstr"
+                      length="20"
+                      name="DropOffCity" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffState]"
+                      dataType="wstr"
+                      length="10"
+                      name="DropOffState" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[DropOffzip]"
+                      dataType="wstr"
+                      length="10"
+                      name="DropOffzip" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[MedicaData]"
+                      dataType="wstr"
+                      length="20"
+                      name="MedicaData" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[sncode]"
+                      dataType="wstr"
+                      length="20"
+                      name="sncode" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[bilingual]"
+                      dataType="wstr"
+                      length="10"
+                      name="bilingual" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[aw]"
+                      dataType="wstr"
+                      length="10"
+                      name="aw" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[voced]"
+                      dataType="wstr"
+                      length="20"
+                      name="voced" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[theme]"
+                      dataType="wstr"
+                      length="20"
+                      name="theme" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[monitor]"
+                      dataType="wstr"
+                      length="20"
+                      name="monitor" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[hzone]"
+                      dataType="wstr"
+                      length="20"
+                      name="hzone" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[zone]"
+                      dataType="wstr"
+                      length="20"
+                      name="zone" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[geo]"
+                      dataType="wstr"
+                      length="10"
+                      name="geo" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[hphone]"
+                      dataType="wstr"
+                      length="60"
+                      name="hphone" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[BufferZone]"
+                      dataType="wstr"
+                      length="1"
+                      name="BufferZone" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[HomeRoom]"
+                      dataType="wstr"
+                      length="10"
+                      name="HomeRoom" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[IsWithDrawn]"
+                      dataType="wstr"
+                      length="2"
+                      name="IsWithDrawn" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[ishomeless]"
+                      dataType="wstr"
+                      length="2"
+                      name="ishomeless" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[IsProtectedAddress]"
+                      dataType="wstr"
+                      length="2"
+                      name="IsProtectedAddress" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input].ExternalColumns[TapCardID]"
+                      dataType="wstr"
+                      length="10"
+                      name="TapCardID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Extracts data from a relational database by using a .NET provider.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Extracts data from a relational database by using a .NET provider."
+              name="ans BPSWorks AspenInterface"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."CurrentTransportationDaily"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BPSWorks.AspenInterface.BPSIntranet]"
+                  connectionManagerRefId="Package.ConnectionManagers[BPSWorks.AspenInterface.BPSIntranet]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[StudentNo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[StudentNo]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[StudentNo]"
+                      name="StudentNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[LastName]"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[FirstName]"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[MiddleName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[MiddleName]"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[MiddleName]"
+                      name="MiddleName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[Grade]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[Grade]"
+                      length="2"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[Grade]"
+                      name="Grade"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[sch]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[sch]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[sch]"
+                      name="sch"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[streetno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[streetno]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[streetno]"
+                      name="streetno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[street]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[street]"
+                      length="100"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[street]"
+                      name="street"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[apt]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[apt]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[apt]"
+                      name="apt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[city]"
+                      length="30"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[state]"
+                      length="4"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[state]"
+                      name="state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[zip]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[zip]"
+                      length="9"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[zip]"
+                      name="zip"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DOB]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DOB]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DOB]"
+                      name="DOB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent1phones]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[parent1phones]"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent1phones]"
+                      name="parent1phones"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent2phones]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[parent2phones]"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent2phones]"
+                      name="parent2phones"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[emergencycontactphones]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[emergencycontactphones]"
+                      length="50"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[emergencycontactphones]"
+                      name="emergencycontactphones"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent1name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[parent1name]"
+                      length="100"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent1name]"
+                      name="parent1name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent2name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[parent2name]"
+                      length="100"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[parent2name]"
+                      name="parent2name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[emergencycontactname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[emergencycontactname]"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[emergencycontactname]"
+                      name="emergencycontactname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[sex]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[sex]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[sex]"
+                      name="sex"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[program]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[program]"
+                      length="4"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[program]"
+                      name="program"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupHouseNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupHouseNumber]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupHouseNumber]"
+                      name="PickupHouseNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupStreetname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupStreetname]"
+                      length="30"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupStreetname]"
+                      name="PickupStreetname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupApartmentNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupApartmentNumber]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupApartmentNumber]"
+                      name="PickupApartmentNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupCity]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupCity]"
+                      name="PickupCity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupState]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupState]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[PickupState]"
+                      name="PickupState"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[Pickupzip]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[Pickupzip]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[Pickupzip]"
+                      name="Pickupzip"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffHouseNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffHouseNumber]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffHouseNumber]"
+                      name="DropOffHouseNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffStreetname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffStreetname]"
+                      length="80"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffStreetname]"
+                      name="DropOffStreetname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffApartmentNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffApartmentNumber]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffApartmentNumber]"
+                      name="DropOffApartmentNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffCity]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffCity]"
+                      name="DropOffCity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffState]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffState]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffState]"
+                      name="DropOffState"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffzip]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffzip]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[DropOffzip]"
+                      name="DropOffzip"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[MedicaData]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[MedicaData]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[MedicaData]"
+                      name="MedicaData"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[sncode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[sncode]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[sncode]"
+                      name="sncode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[bilingual]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[bilingual]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[bilingual]"
+                      name="bilingual"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[aw]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[aw]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[aw]"
+                      name="aw"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[voced]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[voced]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[voced]"
+                      name="voced"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[theme]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[theme]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[theme]"
+                      name="theme"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[monitor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[monitor]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[monitor]"
+                      name="monitor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[hzone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[hzone]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[hzone]"
+                      name="hzone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[zone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[zone]"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[zone]"
+                      name="zone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[geo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[geo]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[geo]"
+                      name="geo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[hphone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[hphone]"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[hphone]"
+                      name="hphone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[BufferZone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[BufferZone]"
+                      length="1"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[BufferZone]"
+                      name="BufferZone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[HomeRoom]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[HomeRoom]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[HomeRoom]"
+                      name="HomeRoom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[IsWithDrawn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[IsWithDrawn]"
+                      length="2"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[IsWithDrawn]"
+                      name="IsWithDrawn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[ishomeless]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[ishomeless]"
+                      length="2"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[ishomeless]"
+                      name="ishomeless"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[IsProtectedAddress]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[IsProtectedAddress]"
+                      length="2"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[IsProtectedAddress]"
+                      name="IsProtectedAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[TapCardID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[TapCardID]"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].Columns[TapCardID]"
+                      name="TapCardID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[StudentNo]"
+                      dataType="wstr"
+                      length="10"
+                      name="StudentNo" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="60"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="60"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="60"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[Grade]"
+                      dataType="wstr"
+                      length="2"
+                      name="Grade" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[sch]"
+                      dataType="wstr"
+                      length="20"
+                      name="sch" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[streetno]"
+                      dataType="wstr"
+                      length="10"
+                      name="streetno" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[street]"
+                      dataType="wstr"
+                      length="100"
+                      name="street" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[apt]"
+                      dataType="wstr"
+                      length="20"
+                      name="apt" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="30"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[state]"
+                      dataType="wstr"
+                      length="4"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[zip]"
+                      dataType="wstr"
+                      length="9"
+                      name="zip" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DOB]"
+                      dataType="wstr"
+                      length="10"
+                      name="DOB" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[parent1phones]"
+                      dataType="wstr"
+                      length="60"
+                      name="parent1phones" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[parent2phones]"
+                      dataType="wstr"
+                      length="60"
+                      name="parent2phones" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[emergencycontactphones]"
+                      dataType="wstr"
+                      length="50"
+                      name="emergencycontactphones" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[parent1name]"
+                      dataType="wstr"
+                      length="100"
+                      name="parent1name" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[parent2name]"
+                      dataType="wstr"
+                      length="100"
+                      name="parent2name" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[emergencycontactname]"
+                      dataType="wstr"
+                      length="60"
+                      name="emergencycontactname" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[sex]"
+                      dataType="wstr"
+                      length="10"
+                      name="sex" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[program]"
+                      dataType="wstr"
+                      length="4"
+                      name="program" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupHouseNumber]"
+                      dataType="wstr"
+                      length="10"
+                      name="PickupHouseNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupStreetname]"
+                      dataType="wstr"
+                      length="30"
+                      name="PickupStreetname" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupApartmentNumber]"
+                      dataType="wstr"
+                      length="10"
+                      name="PickupApartmentNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupCity]"
+                      dataType="wstr"
+                      length="10"
+                      name="PickupCity" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[PickupState]"
+                      dataType="wstr"
+                      length="10"
+                      name="PickupState" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[Pickupzip]"
+                      dataType="wstr"
+                      length="10"
+                      name="Pickupzip" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffHouseNumber]"
+                      dataType="wstr"
+                      length="10"
+                      name="DropOffHouseNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffStreetname]"
+                      dataType="wstr"
+                      length="80"
+                      name="DropOffStreetname" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffApartmentNumber]"
+                      dataType="wstr"
+                      length="20"
+                      name="DropOffApartmentNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffCity]"
+                      dataType="wstr"
+                      length="20"
+                      name="DropOffCity" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffState]"
+                      dataType="wstr"
+                      length="10"
+                      name="DropOffState" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[DropOffzip]"
+                      dataType="wstr"
+                      length="10"
+                      name="DropOffzip" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[MedicaData]"
+                      dataType="wstr"
+                      length="20"
+                      name="MedicaData" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[sncode]"
+                      dataType="wstr"
+                      length="20"
+                      name="sncode" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[bilingual]"
+                      dataType="wstr"
+                      length="10"
+                      name="bilingual" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[aw]"
+                      dataType="wstr"
+                      length="10"
+                      name="aw" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[voced]"
+                      dataType="wstr"
+                      length="20"
+                      name="voced" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[theme]"
+                      dataType="wstr"
+                      length="20"
+                      name="theme" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[monitor]"
+                      dataType="wstr"
+                      length="20"
+                      name="monitor" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[hzone]"
+                      dataType="wstr"
+                      length="20"
+                      name="hzone" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[zone]"
+                      dataType="wstr"
+                      length="20"
+                      name="zone" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[geo]"
+                      dataType="wstr"
+                      length="10"
+                      name="geo" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[hphone]"
+                      dataType="wstr"
+                      length="60"
+                      name="hphone" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[BufferZone]"
+                      dataType="wstr"
+                      length="1"
+                      name="BufferZone" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[HomeRoom]"
+                      dataType="wstr"
+                      length="10"
+                      name="HomeRoom" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[IsWithDrawn]"
+                      dataType="wstr"
+                      length="2"
+                      name="IsWithDrawn" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[ishomeless]"
+                      dataType="wstr"
+                      length="2"
+                      name="ishomeless" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[IsProtectedAddress]"
+                      dataType="wstr"
+                      length="2"
+                      name="IsProtectedAddress" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output].ExternalColumns[TapCardID]"
+                      dataType="wstr"
+                      length="10"
+                      name="TapCardID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[StudentNo]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[StudentNo]"
+                      name="StudentNo" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[MiddleName]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[MiddleName]"
+                      name="MiddleName" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[Grade]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[Grade]"
+                      name="Grade" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[sch]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[sch]"
+                      name="sch" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[streetno]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[streetno]"
+                      name="streetno" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[street]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[street]"
+                      name="street" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[apt]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[apt]"
+                      name="apt" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[city]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[state]"
+                      dataType="wstr"
+                      length="4"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[state]"
+                      name="state" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[zip]"
+                      dataType="wstr"
+                      length="9"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[zip]"
+                      name="zip" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DOB]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DOB]"
+                      name="DOB" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[parent1phones]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[parent1phones]"
+                      name="parent1phones" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[parent2phones]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[parent2phones]"
+                      name="parent2phones" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[emergencycontactphones]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[emergencycontactphones]"
+                      name="emergencycontactphones" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[parent1name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[parent1name]"
+                      name="parent1name" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[parent2name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[parent2name]"
+                      name="parent2name" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[emergencycontactname]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[emergencycontactname]"
+                      name="emergencycontactname" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[sex]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[sex]"
+                      name="sex" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[program]"
+                      dataType="wstr"
+                      length="4"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[program]"
+                      name="program" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupHouseNumber]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupHouseNumber]"
+                      name="PickupHouseNumber" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupStreetname]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupStreetname]"
+                      name="PickupStreetname" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupApartmentNumber]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupApartmentNumber]"
+                      name="PickupApartmentNumber" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupCity]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupCity]"
+                      name="PickupCity" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupState]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[PickupState]"
+                      name="PickupState" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[Pickupzip]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[Pickupzip]"
+                      name="Pickupzip" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffHouseNumber]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffHouseNumber]"
+                      name="DropOffHouseNumber" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffStreetname]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffStreetname]"
+                      name="DropOffStreetname" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffApartmentNumber]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffApartmentNumber]"
+                      name="DropOffApartmentNumber" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffCity]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffCity]"
+                      name="DropOffCity" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffState]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffState]"
+                      name="DropOffState" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffzip]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[DropOffzip]"
+                      name="DropOffzip" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[MedicaData]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[MedicaData]"
+                      name="MedicaData" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[sncode]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[sncode]"
+                      name="sncode" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[bilingual]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[bilingual]"
+                      name="bilingual" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[aw]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[aw]"
+                      name="aw" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[voced]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[voced]"
+                      name="voced" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[theme]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[theme]"
+                      name="theme" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[monitor]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[monitor]"
+                      name="monitor" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[hzone]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[hzone]"
+                      name="hzone" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[zone]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[zone]"
+                      name="zone" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[geo]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[geo]"
+                      name="geo" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[hphone]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[hphone]"
+                      name="hphone" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[BufferZone]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[BufferZone]"
+                      name="BufferZone" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[HomeRoom]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[HomeRoom]"
+                      name="HomeRoom" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[IsWithDrawn]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[IsWithDrawn]"
+                      name="IsWithDrawn" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[ishomeless]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[ishomeless]"
+                      name="ishomeless" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[IsProtectedAddress]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[IsProtectedAddress]"
+                      name="IsProtectedAddress" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[TapCardID]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[TapCardID]"
+                      name="TapCardID" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft Transfer data to BPSData02.Paths[ADO NET Source Output]"
+              endId="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\est Trunca CurrentTransportationDaily"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FF0A0145-1E8D-4F48-AAA6-D152D671147E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="est Trunca CurrentTransportationDaily"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F5D15602-68B8-4D8B-B177-53162400F6CC}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.CurrentTransportationDaily" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{68C0ED47-BA5B-49A3-9B78-9CBBB06DDABB}"
+      DTS:From="Package\est Trunca CurrentTransportationDaily"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\dft Transfer data to BPSData02" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="226,42"
+          Id="Package\dft Transfer data to BPSData02"
+          TopLeft="66.4622641509434,126.990566037736" />
+        <NodeLayout
+          Size="259,42"
+          Id="Package\est Trunca CurrentTransportationDaily"
+          TopLeft="31.4811320754717,35.160377358491" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="160.981132075472,77.160377358491">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.4811320754717,49.830188679245"
+              Start="0,0"
+              End="18.4811320754717,42.330188679245">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.9150943396225" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.9150943396225"
+                    Point2="0,24.9150943396225"
+                    Point3="4,24.9150943396225" />
+                  <mssgle:LineSegment
+                    End="14.4811320754717,24.9150943396225" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.4811320754717,24.9150943396225"
+                    Point2="18.4811320754717,24.9150943396225"
+                    Point3="18.4811320754717,28.9150943396225" />
+                  <mssgle:LineSegment
+                    End="18.4811320754717,42.330188679245" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dft Transfer data to BPSData02">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="226,42"
+          Id="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface"
+          TopLeft="38.5,105.367924528302" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface"
+          TopLeft="7.5,5.5" />
+        <EdgeLayout
+          Id="Package\dft Transfer data to BPSData02.Paths[ADO NET Source Output]"
+          TopLeft="118,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.5,57.867924528302"
+              Start="0,0"
+              End="33.5,50.367924528302">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.933962264151" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.933962264151"
+                    Point2="0,28.933962264151"
+                    Point3="4,28.933962264151" />
+                  <mssgle:LineSegment
+                    End="29.5,28.933962264151" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.5,28.933962264151"
+                    Point2="33.5,28.933962264151"
+                    Point3="33.5,32.933962264151" />
+                  <mssgle:LineSegment
+                    End="33.5,50.367924528302" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft Transfer data to BPSData02\and BPSData02 AspenInterface">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
