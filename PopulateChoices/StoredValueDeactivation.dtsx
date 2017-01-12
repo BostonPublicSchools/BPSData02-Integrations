@@ -1,0 +1,474 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/12/2014 5:07:26 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BPSDATA"
+  DTS:CreatorName="ADMINDOM\114600"
+  DTS:DTSID="{562618C5-23F3-4AA1-9067-7B6DE4391C59}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.1000.281"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="StoredValueDeactivation"
+  DTS:PackageType="5"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{32EFDDC4-A440-4449-87A2-DBFE39C1EEA4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{0C9248DA-1AA1-4A16-BF1C-6E9810EC09B0}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"D:\\StoredValuePassDeactivation" +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH( GETDATE()  ), 2) + RIGHT("0" + (DT_STR, 2, 1252)  DAY( GETDATE()  ), 2) + (DT_STR, 4, 1252)  YEAR( GETDATE()  )  + ".txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x003A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\StoredValuePassDeactivation01042017.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="25"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BPSID"
+              DTS:DTSID="{1741DD8C-0F7F-47BC-A8E1-65BEE5F9708A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="25"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SerialNumber"
+              DTS:DTSID="{C1EC2C34-F120-45FB-9A8D-85A9768450F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DeactivateCode"
+              DTS:DTSID="{3D00E867-2718-4586-BC58-EE94560057F4}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SISSQL-01.x2data]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{855F310C-3BC9-47F1-AFE3-74AE8AB22A26}"
+      DTS:ObjectName="SISSQL-01.x2data">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.244.1.136;User ID=BPSIntegration;Initial Catalog=x2data;Persist Security Info=True;Application Name=SSIS-StoredValueDeactivation-{855F310C-3BC9-47F1-AFE3-74AE8AB22A26}10.23.12.31.x2data.bps_user3;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4bUSaiWh4U683R9vp2YDsQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAfLgMpGaknW80tCLYxezgaAAAAAASAAACgAAAAEAAAAOmecmZKi/i5TqA1eNs0LQwYAAAA0vG9JO32sa+6RljhNp6cT0xbbwHxCyVqFAAAAPtnT2rA0hFXc0zkLZCHPRHL7Hbw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{B0829F60-E6F6-4675-AAE1-E2F1FBF129F5}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=smtp.boston.k12.ma.us;UseWindowsAuthentication=False;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dftBPSPassesDeactivation"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A01A5CAF-0848-411D-9A83-35DF704BF575}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dftBPSPassesDeactivation"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Extracts data from a relational database by using a .NET provider.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Extracts data from a relational database by using a .NET provider."
+              name="ansStored Value Passes for deactivation"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">/* Deactive Query*/
+SELECT  
+--S.STD_ID_LOCAL ,
+        C.TRS_ID AS BPSID ,
+        C.TRS_FIELDB_001 AS SerialNumber ,
+        ISNULL(R.RCD_CODE_STATE, '') AS DeactivateCode
+FROM    STUDENT_TRANSPORTATION A
+        INNER JOIN STUDENT S ON S.STD_OID = A.STR_STD_OID
+        INNER JOIN ORGANIZATION ON ORG_CTX_OID_CURRENT = A.STR_CTX_OID
+        LEFT OUTER JOIN STUDENT_TRANSPORTATION_SESSION B ON B.STS_STR_OID = A.STR_OID
+        INNER JOIN REF_CODE R ON R.RCD_CODE = B.STS_FIELDB_007
+        INNER JOIN TRANSPORTATION_RESOURCE C ON C.TRS_OID = B.STS_TRS_OID
+WHERE   C.TRS_FIELDA_002 = 1
+        AND C.TRS_FIELDB_005 IS NULL
+--      AND C.TRS_FIELDB_002 = 'BPS';
+       AND C.TRS_FIELDB_002 = 'PAY';</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SISSQL-01.x2data]"
+                  connectionManagerRefId="Package.ConnectionManagers[SISSQL-01.x2data]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].Columns[BPSID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[BPSID]"
+                      length="25"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].Columns[BPSID]"
+                      name="BPSID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].Columns[SerialNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[SerialNumber]"
+                      length="25"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].Columns[SerialNumber]"
+                      name="SerialNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].Columns[DeactivateCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[DeactivateCode]"
+                      length="20"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].Columns[DeactivateCode]"
+                      name="DeactivateCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[BPSID]"
+                      dataType="wstr"
+                      length="25"
+                      name="BPSID" />
+                    <externalMetadataColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[SerialNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="SerialNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[DeactivateCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="DeactivateCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[BPSID]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[BPSID]"
+                      name="BPSID" />
+                    <outputColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[SerialNumber]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[SerialNumber]"
+                      name="SerialNumber" />
+                    <outputColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[DeactivateCode]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[DeactivateCode]"
+                      name="DeactivateCode" />
+                    <outputColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1033"
+              name="ffdStoredValuePassActivations">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input].Columns[BPSID]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="BPSID"
+                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input].ExternalColumns[BPSID]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].Columns[BPSID]" />
+                    <inputColumn
+                      refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input].Columns[SerialNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="SerialNumber"
+                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input].ExternalColumns[SerialNumber]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].Columns[SerialNumber]" />
+                    <inputColumn
+                      refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input].Columns[DeactivateCode]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="DeactivateCode"
+                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input].ExternalColumns[DeactivateCode]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output].Columns[DeactivateCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input].ExternalColumns[BPSID]"
+                      dataType="wstr"
+                      length="25"
+                      name="BPSID" />
+                    <externalMetadataColumn
+                      refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input].ExternalColumns[SerialNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="SerialNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input].ExternalColumns[DeactivateCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="DeactivateCode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dftBPSPassesDeactivation.Paths[ADO NET Source Output]"
+              endId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Inputs[Flat File Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Mail Task"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:DelayValidation="True"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{524332C1-84C8-4E17-ADE8-65E2E8A73B2E}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Mail Task"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="FileAttachments">"D:\\StoredValuePassDeactivation" +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH( GETDATE()  ), 2) + RIGHT("0" + (DT_STR, 2, 1252)  DAY( GETDATE()  ), 2) + (DT_STR, 4, 1252)  YEAR( GETDATE()  )  + ".txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{B0829F60-E6F6-4675-AAE1-E2F1FBF129F5}"
+          SendMailTask:From="do-not-reply@bostonpublicschools.org"
+          SendMailTask:To="studentpassprogram@mbta.com"
+          SendMailTask:CC="krice@bostonpublicschools.org; jsteketee@bostonpublicschools.org; mhughes@bostonpublicschools.org; mchau@bostonpublicschools.org; mdepina@mbta.com; OIIT-AppDev@bostonpublicschools.org"
+          SendMailTask:Subject="Stored Value Deactivations"
+          SendMailTask:MessageSource="Stored Value Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
+          <SendMailTask:Attachments
+            SendMailTask:FileName="D:\StoredValuePassDeactivation01042017.txt" />
+        </SendMailTask:SendMailTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8E43FE5C-77E2-4151-9485-CEAA249372AA}"
+      DTS:From="Package\dftBPSPassesDeactivation"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Send Mail Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\dftBPSPassesDeactivation"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Send Mail Task"
+          TopLeft="5.5,99.9150943396226" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="73.3867924528302,49.4245283018868">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.4905660377358"
+              Start="0,0"
+              End="0,42.9905660377358">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.9905660377358" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dftBPSPassesDeactivation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations"
+          TopLeft="5.5,126.330188679245" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package\dftBPSPassesDeactivation.Paths[ADO NET Source Output]"
+          TopLeft="73.3867924528302,49.4245283018868">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.9056603773585"
+              Start="0,0"
+              End="0,69.4056603773585">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.4056603773585" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
