@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{B4617AE2-51F5-42B2-9044-45F8C73FC6EA}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.1000.281"
+  DTS:LastModifiedProductVersion="13.0.900.80"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_1_Begin_Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="125"
-  DTS:VersionGUID="{0850AFBF-F553-409E-89CE-3E9EC599A554}">
+  DTS:VersionBuild="124"
+  DTS:VersionGUID="{92DB17E7-7184-4BFF-8202-B16E55A2E432}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,27 +23,17 @@
       DTS:ObjectName="BPSDATA02.AspenInterface">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntegration;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{F5D15602-68B8-4D8B-B177-53162400F6CC}BPSData.AspenInterface;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4bUSaiWh4U683R9vp2YDsQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABH7gQF6fnpAQ+zU/G6adWrAAAAAASAAACgAAAAEAAAAJzcfr3e7yNTgXjE+s/Qi98YAAAA04Csgj3k7m9LQ30GTKbxEaYdXjbRnysCFAAAAN+LyOW/TBx/SN+vFGPLM5RVVcEN</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntranet;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{F5D15602-68B8-4D8B-B177-53162400F6CC}BPSData.AspenInterface;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BPSWorks.AspenInterface]"
+      DTS:refId="Package.ConnectionManagers[BPSWorks.AspenInterface.BPSIntranet]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
       DTS:DTSID="{517AD7C1-F481-49E8-B41C-B3B7B0EA7100}"
-      DTS:ObjectName="BPSWorks.AspenInterface">
+      DTS:ObjectName="BPSWorks.AspenInterface.BPSIntranet">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSWorks;User ID=BPSIntegration;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-AspenToVersaTrans-{517AD7C1-F481-49E8-B41C-B3B7B0EA7100}BPSWorks.AspenInterface.BPSIntranet;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4bUSaiWh4U683R9vp2YDsQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADMcgeFxT+naxJw55B1XAahAAAAAASAAACgAAAAEAAAAMGRrHbUxJpGzvM9bLhpFxUYAAAAPVSz8l9K6jhCr2BFSys5Qa09R0mrmwU7FAAAAJPN1K/l/cyQQqdxew90PEnvW20+</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=BPSWorks;User ID=BPSIntranet;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-AspenToVersaTrans-{517AD7C1-F481-49E8-B41C-B3B7B0EA7100}BPSWorks.AspenInterface.BPSIntranet;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -805,8 +795,8 @@
               <connections>
                 <connection
                   refId="Package\dft Transfer data to BPSData02\ans BPSWorks AspenInterface.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSWorks.AspenInterface]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSWorks.AspenInterface]"
+                  connectionManagerID="Package.ConnectionManagers[BPSWorks.AspenInterface.BPSIntranet]"
+                  connectionManagerRefId="Package.ConnectionManagers[BPSWorks.AspenInterface.BPSIntranet]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>

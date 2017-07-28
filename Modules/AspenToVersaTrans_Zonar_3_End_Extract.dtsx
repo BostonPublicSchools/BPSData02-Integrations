@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{DBCF6EE3-9195-40AC-B6D6-8F022D28B63C}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.1000.281"
+  DTS:LastModifiedProductVersion="13.0.900.80"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_3_End_Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="132"
-  DTS:VersionGUID="{E05CDADA-E2D4-454D-8932-FF51160DA58E}">
+  DTS:VersionBuild="130"
+  DTS:VersionGUID="{4FECFD36-32B5-47C1-842E-844D29F4642A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,12 +23,7 @@
       DTS:ObjectName="BPSData02.AspenInterface">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSData02;User ID=BPSIntegration;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{E3FC2E47-6A56-4EC0-872E-6B6CD40A98CD}BPSData.AspenInterface;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4bUSaiWh4U683R9vp2YDsQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACnpu94dTDhDmxLAk8vY8VbAAAAAASAAACgAAAAEAAAANme/hEVe6/p6ls+HDYb5rkYAAAAfhoEfEF+odSgD5USDHSxUfl7yxMLaHKvFAAAAJOtdOVykEFMFq0QWn6/a/w9zB3f</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=BPSData02;User ID=BPSIntranet;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{E3FC2E47-6A56-4EC0-872E-6B6CD40A98CD}BPSData.AspenInterface;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -2024,13 +2019,13 @@ AND NOT city is null</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="214,44"
-          Id="Package\dftTransferCurrenttoArchive\andArchiveTransportationDaily"
-          TopLeft="6.4811320754717,106.330188679245" />
-        <NodeLayout
           Size="216,44"
           Id="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily"
           TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="214,44"
+          Id="Package\dftTransferCurrenttoArchive\andArchiveTransportationDaily"
+          TopLeft="6.4811320754717,106.330188679245" />
         <EdgeLayout
           Id="Package\dftTransferCurrenttoArchive.Paths[ADO NET Source Output]"
           TopLeft="113.311320754717,49.4245283018868">

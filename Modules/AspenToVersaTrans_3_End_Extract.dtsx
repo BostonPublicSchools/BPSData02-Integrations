@@ -5,29 +5,29 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="BPSDATA"
   DTS:CreatorName="ADMINDOM\114600"
-  DTS:DTSID="{1BB1FA5B-5242-477A-921F-69EBA0A60DE5}"
+  DTS:DTSID="{7F4E85B1-1EAF-4C80-AFED-C95685AFBFFC}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="13.0.1000.281"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_3_End_Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="141"
-  DTS:VersionGUID="{69138779-4D4B-4CC5-BACE-6E1C5891C210}">
+  DTS:VersionBuild="131"
+  DTS:VersionGUID="{BFA97EC4-39E6-4943-977C-C21B12EF0628}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[BPSData02.AspenInterface]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{8B9E26A1-A353-49C7-82BC-F0B6401D89AE}"
+      DTS:DTSID="{3025E564-48DB-42DC-AC43-DCB9DCD0C0C7}"
       DTS:ObjectName="BPSData02.AspenInterface">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSData02;User ID=BPSIntegration;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{8B9E26A1-A353-49C7-82BC-F0B6401D89AE}BPSData.AspenInterface;">
+          DTS:ConnectionString="Data Source=BPSData02;User ID=BPSIntegration;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{3025E564-48DB-42DC-AC43-DCB9DCD0C0C7}BPSData.AspenInterface;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHIDRCDlRDUSsCphot7CI2QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC+3xRrPz31nYB/em+s4hl5AAAAAASAAACgAAAAEAAAALrJZmyrEOMoeC/Ib5Mfv2wYAAAASnfD5ZQZ9B0zBDy6GkXIz4auRrOCiHDsFAAAABz282rdrIzXoBe0/S5JWSZepXWc</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4bUSaiWh4U683R9vp2YDsQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADC1DEOqdwJc9UoIJI1YmMqAAAAAASAAACgAAAAEAAAAMYcxkE1OUOqz7dnoYYyPPoYAAAAAfOib+yrbYHmsSV8ygqNW3v5vocQ/4LfFAAAAFsfzLQTBgbC8rJFwfqmeKuZhlgQ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -35,7 +35,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{749FAB41-BF4B-4B7B-BD7B-F22E864C5503}"
+      DTS:DTSID="{C901061E-A993-49C4-8332-E63AC98D5AE9}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="isAspenJobComplete">
@@ -44,7 +44,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B008618C-11D6-465B-A810-1C149C196069}"
+      DTS:DTSID="{857F03F0-B870-455B-A8BE-DB1E22365302}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="JobStatus">
@@ -57,7 +57,7 @@
       DTS:refId="Package\dftTransferCurrenttoArchive"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{F294892A-BB29-4933-984D-F665BA3CD34F}"
+      DTS:DTSID="{811379D4-56AF-40D9-9F13-10CFE81E5E18}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="dftTransferCurrenttoArchive"
@@ -468,13 +468,6 @@
                       cachedName="TapCardID"
                       externalMetadataColumnId="Package\dftTransferCurrenttoArchive\andArchiveTransportationDaily.Inputs[ADO NET Destination Input].ExternalColumns[TapCardID]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Output].Columns[TapCardID]" />
-                    <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\andArchiveTransportationDaily.Inputs[ADO NET Destination Input].Columns[ctdFamilyId]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="ctdFamilyId"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\andArchiveTransportationDaily.Inputs[ADO NET Destination Input].ExternalColumns[atdFamilyId]"
-                      lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Output].Columns[ctdFamilyId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -728,11 +721,6 @@
                       dataType="wstr"
                       length="10"
                       name="TapCardID" />
-                    <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\andArchiveTransportationDaily.Inputs[ADO NET Destination Input].ExternalColumns[atdFamilyId]"
-                      dataType="wstr"
-                      length="10"
-                      name="atdFamilyId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -775,64 +763,64 @@
                   description="Specifies the SQL statement used by the component to extract data."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  StudentNo ,
-        LastName ,
-        FirstName ,
-        MiddleName ,
-        Grade ,
-        sch ,
-        streetno ,
-        street ,
-        apt ,
-        city ,
-        state ,
-        zip ,
-        DOB ,
-        parent1phones ,
-        parent2phones ,
-        emergencycontactphones ,
-        parent1name ,
-        parent2name ,
-        emergencycontactname ,
-        sex ,
-        program ,
-        PickupHouseNumber ,
-        PickupStreetname ,
-        PickupApartmentNumber ,
-        PickupCity ,
-        PickupState ,
-        Pickupzip ,
-        DropOffHouseNumber ,
-        DropOffStreetname ,
-        DropOffApartmentNumber ,
-        DropOffCity ,
-        DropOffState ,
-        DropOffzip ,
-        MedicaData ,
-        sncode ,
-        bilingual ,
-        aw ,
-        voced ,
-        theme ,
-        monitor ,
-        hzone ,
-        zone ,
-        geo ,
-        hphone ,
-        BufferZone ,
-        HomeRoom ,
-        IsWithDrawn ,
-        ishomeless ,
-        IsProtectedAddress ,
-        TapCardID,
-        ctdFamilyId
-FROM    CurrentTransportationDaily
-/*WHERE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	StudentNo ,
+    LastName ,
+    FirstName ,
+    MiddleName ,
+    Grade ,
+    sch ,
+    streetno ,
+    street ,
+    apt ,
+    city ,
+    state ,
+    zip ,
+    DOB ,
+    parent1phones ,
+    parent2phones ,
+    emergencycontactphones ,
+    parent1name ,
+    parent2name ,
+    emergencycontactname ,
+    sex ,
+    program ,
+    PickupHouseNumber ,
+    PickupStreetname ,
+    PickupApartmentNumber ,
+    PickupCity ,
+    PickupState ,
+    Pickupzip ,
+    DropOffHouseNumber ,
+    DropOffStreetname ,
+    DropOffApartmentNumber ,
+    DropOffCity ,
+    DropOffState ,
+    DropOffzip ,
+    MedicaData ,
+    sncode ,
+    bilingual ,
+    aw ,
+    voced ,
+    theme ,
+    monitor ,
+    hzone ,
+    zone ,
+    geo ,
+    hphone ,
+    BufferZone ,
+    HomeRoom ,
+    IsWithDrawn ,
+    ishomeless ,
+    IsProtectedAddress,
+    TapCardID
+FROM 
+CurrentTransportationDaily
+WHERE
  NOT program = '00'
 AND NOT zip = ''
 AND NOT street = '' 
-AND NOT city is null
-*/</property>
+AND NOT city is null</property>
                 <property
                   dataType="System.Int32"
                   description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
@@ -1369,16 +1357,6 @@ AND NOT city is null
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Output].Columns[TapCardID]"
                       name="TapCardID"
                       truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Output].Columns[ctdFamilyId]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Output].ExternalColumns[ctdFamilyId]"
-                      length="10"
-                      lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Output].Columns[ctdFamilyId]"
-                      name="ctdFamilyId"
-                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1632,11 +1610,6 @@ AND NOT city is null
                       dataType="wstr"
                       length="10"
                       name="TapCardID" />
-                    <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Output].ExternalColumns[ctdFamilyId]"
-                      dataType="wstr"
-                      length="10"
-                      name="ctdFamilyId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1945,12 +1918,6 @@ AND NOT city is null
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Error Output].Columns[TapCardID]"
                       name="TapCardID" />
                     <outputColumn
-                      refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Error Output].Columns[ctdFamilyId]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Error Output].Columns[ctdFamilyId]"
-                      name="ctdFamilyId" />
-                    <outputColumn
                       refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
@@ -1982,7 +1949,7 @@ AND NOT city is null
       DTS:refId="Package\estTruncateArchiveTransportationDaily"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{9ADA682A-BF10-487D-A4C3-255C703EC3AF}"
+      DTS:DTSID="{4120145F-EDB2-4BA8-92FC-625DA26B4E61}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="estTruncateArchiveTransportationDaily"
@@ -1991,7 +1958,7 @@ AND NOT city is null
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{8B9E26A1-A353-49C7-82BC-F0B6401D89AE}"
+          SQLTask:Connection="{3025E564-48DB-42DC-AC43-DCB9DCD0C0C7}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.ArchiveTransportationDaily&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2000,7 +1967,7 @@ AND NOT city is null
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{C797683C-5DDD-4C37-A530-EC9896042CD8}"
+      DTS:DTSID="{B5312F77-B5D1-4645-BF84-B16552A977C2}"
       DTS:From="Package\estTruncateArchiveTransportationDaily"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
@@ -2019,7 +1986,7 @@ AND NOT city is null
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="210,42"
+          Size="208,44"
           Id="Package\dftTransferCurrenttoArchive"
           TopLeft="34.4811320754717,200.349056603774" />
         <NodeLayout
@@ -2028,18 +1995,18 @@ AND NOT city is null
           TopLeft="11.5,107.481132075472" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="138.990566037736,151.481132075472">
+          TopLeft="138.292452830189,151.405660377359">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,48.867924528302"
+              EndConnector="0,48.9433962264151"
               Start="0,0"
-              End="0,41.367924528302">
+              End="0,41.4433962264151">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.367924528302" />
+                    End="0,41.4433962264151" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
