@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="VersaTransData"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{5766F4B6-084A-4CC9-A835-EFAC6F29329F}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{41AF99C5-05B3-433A-B4A7-15CE1636B873}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3584,6 +3584,862 @@ WHERE LEN(VisibleID) = 6
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\dft Transportation Eligiblity"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5144DC34-302B-4243-83E2-093EC0B14D09}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft Transportation Eligiblity"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="l StudentTransportationEligibility"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Transportation].[StudentTransportationEligibility]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Transportation].[StudentTransportationEligibility]) [refTable]
+where [refTable].[steSourceId] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="steId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steSourceId" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steisCurrent" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steAcademicYearDesignator" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steStudentLocalId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steSchoolLocalId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steAddressId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steWalkDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEligibility" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steProvider" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steEligiblityStartDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEligiblityEndDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[STR_OID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Inputs[Lookup Input].Columns[STR_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="STR_OID"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[STR_OID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">steSourceId</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup Match Output].Columns[steId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup Match Output].Columns[steId]"
+                      name="steId"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">steId</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ODS STUDENT_TRANSPORTATION"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT STR_OID ,
+CAST(CASE
+                WHEN STR_END_DATE IS NULL THEN
+                    1
+                ELSE
+                    0
+            END AS BIT) stiisCurrent,
+       CTX_CONTEXT_ID stiAcademicYearDesignator,
+       STD_ID_LOCAL stiStudentLocalId,
+       SKL_SCHOOL_ID stiSchoolLocalId,
+       CAST(CASE
+                WHEN ISNUMERIC(STR_FIELDA_017) = 1 THEN
+                    STR_FIELDA_017
+                ELSE
+                    NULL
+            END AS INT) steAddressId,
+       STR_FIELDB_008 steWalkDistance,
+       STR_FIELDA_006 stiStudentTransportationEligibility,
+       CASE
+           WHEN NULLIF(STR_FIELDB_004, '') IS NOT NULL THEN
+               STR_FIELDB_004
+           ELSE
+               'BPS'
+       END steProvider,
+       CAST(STR_START_DATE AS DATE) stdStudentTransportationEligiblityStartDate,
+       CAST(STR_END_DATE AS DATE) stdStudentTransportationEligiblityEndDate
+FROM [SISSQL-01].x2data.dbo.STUDENT_TRANSPORTATION
+    JOIN [SISSQL-01].x2data.dbo.DISTRICT_SCHOOL_YEAR_CONTEXT
+        ON CTX_OID = STR_CTX_OID
+    JOIN [SISSQL-01].x2data.dbo.STUDENT
+        ON STD_OID = STR_STD_OID
+    JOIN [SISSQL-01].x2data.dbo.SCHOOL
+        ON SKL_OID = STR_SKL_OID;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiisCurrent]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiisCurrent]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiisCurrent]"
+                      name="stiisCurrent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiAcademicYearDesignator]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiAcademicYearDesignator]"
+                      length="20"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiAcademicYearDesignator]"
+                      name="stiAcademicYearDesignator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiStudentLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiStudentLocalId]"
+                      length="32"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiStudentLocalId]"
+                      name="stiStudentLocalId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiSchoolLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiSchoolLocalId]"
+                      length="20"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiSchoolLocalId]"
+                      name="stiSchoolLocalId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[steAddressId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[steAddressId]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[steAddressId]"
+                      name="steAddressId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[steWalkDistance]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[steWalkDistance]"
+                      length="25"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[steWalkDistance]"
+                      name="steWalkDistance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiStudentTransportationEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiStudentTransportationEligibility]"
+                      length="10"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiStudentTransportationEligibility]"
+                      name="stiStudentTransportationEligibility"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[steProvider]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[steProvider]"
+                      length="25"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[steProvider]"
+                      name="steProvider"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stdStudentTransportationEligiblityStartDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stdStudentTransportationEligiblityStartDate]"
+                      length="10"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stdStudentTransportationEligiblityStartDate]"
+                      name="stdStudentTransportationEligiblityStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stdStudentTransportationEligiblityEndDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stdStudentTransportationEligiblityEndDate]"
+                      length="10"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stdStudentTransportationEligiblityEndDate]"
+                      name="stdStudentTransportationEligiblityEndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[STR_OID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[STR_OID]"
+                      length="14"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[STR_OID]"
+                      name="STR_OID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiisCurrent]"
+                      dataType="bool"
+                      name="stiisCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiAcademicYearDesignator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="stiAcademicYearDesignator" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiStudentLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="32"
+                      name="stiStudentLocalId" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiSchoolLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="stiSchoolLocalId" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[steAddressId]"
+                      dataType="i4"
+                      name="steAddressId" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[steWalkDistance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="steWalkDistance" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stiStudentTransportationEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="stiStudentTransportationEligibility" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[steProvider]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="steProvider" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stdStudentTransportationEligiblityStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="stdStudentTransportationEligiblityStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[stdStudentTransportationEligiblityEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="stdStudentTransportationEligiblityEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].ExternalColumns[STR_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="STR_OID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[STR_OID]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[STR_OID]"
+                      name="STR_OID" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiisCurrent]"
+                      dataType="bool"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiisCurrent]"
+                      name="stiisCurrent" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiAcademicYearDesignator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiAcademicYearDesignator]"
+                      name="stiAcademicYearDesignator" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiStudentLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiStudentLocalId]"
+                      name="stiStudentLocalId" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiSchoolLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiSchoolLocalId]"
+                      name="stiSchoolLocalId" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[steAddressId]"
+                      dataType="i4"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[steAddressId]"
+                      name="steAddressId" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[steWalkDistance]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[steWalkDistance]"
+                      name="steWalkDistance" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiStudentTransportationEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stiStudentTransportationEligibility]"
+                      name="stiStudentTransportationEligibility" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[steProvider]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[steProvider]"
+                      name="steProvider" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stdStudentTransportationEligiblityStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stdStudentTransportationEligiblityStartDate]"
+                      name="stdStudentTransportationEligiblityStartDate" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stdStudentTransportationEligiblityEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[stdStudentTransportationEligiblityEndDate]"
+                      name="stdStudentTransportationEligiblityEndDate" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft Transportation Eligiblity\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft Transportation Eligiblity\OLE DB Command.Connections[OleDbConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft Transportation Eligiblity\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft Transportation Eligiblity\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\dft Transportation Eligiblity\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft Transportation Eligiblity\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\dft Transportation Eligiblity\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft Transportation Eligiblity\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft Transportation Eligiblity\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft Transportation Eligiblity\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Transportation].[StudentTransportationEligibility]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft Transportation Eligiblity\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[steAddressId]"
+                      cachedDataType="i4"
+                      cachedName="steAddressId"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steAddressId]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[steAddressId]" />
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[steWalkDistance]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="steWalkDistance"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steWalkDistance]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[steWalkDistance]" />
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[steProvider]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="steProvider"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steProvider]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[steProvider]" />
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stiAcademicYearDesignator]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="stiAcademicYearDesignator"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steAcademicYearDesignator]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiAcademicYearDesignator]" />
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stiStudentLocalId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="stiStudentLocalId"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steStudentLocalId]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiStudentLocalId]" />
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stiSchoolLocalId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="stiSchoolLocalId"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steSchoolLocalId]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiSchoolLocalId]" />
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stiStudentTransportationEligibility]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="stiStudentTransportationEligibility"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steEligibility]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stiStudentTransportationEligibility]" />
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stdStudentTransportationEligiblityStartDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="stdStudentTransportationEligiblityStartDate"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steEligiblityStartDate]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stdStudentTransportationEligiblityStartDate]" />
+                    <inputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stdStudentTransportationEligiblityEndDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="stdStudentTransportationEligiblityEndDate"
+                      externalMetadataColumnId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steEligiblityEndDate]"
+                      lineageId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output].Columns[stdStudentTransportationEligiblityEndDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steId]"
+                      dataType="i4"
+                      name="steId" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steLastUpdated]"
+                      dataType="dbTimeStamp"
+                      name="steLastUpdated" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steisCurrent]"
+                      dataType="bool"
+                      name="steisCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steAcademicYearDesignator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="steAcademicYearDesignator" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steStudentLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="steStudentLocalId" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steSchoolLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="steSchoolLocalId" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steAddressId]"
+                      dataType="i4"
+                      name="steAddressId" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steWalkDistance]"
+                      dataType="r8"
+                      name="steWalkDistance" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="steEligibility" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steProvider]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="steProvider" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steEligiblityStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="steEligiblityStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[steEligiblityEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="steEligiblityEndDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft Transportation Eligiblity\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft Transportation Eligiblity\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft Transportation Eligiblity\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft Transportation Eligiblity\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft Transportation Eligiblity.Paths[Lookup No Match Output]"
+              endId="Package\dft Transportation Eligiblity\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\dft Transportation Eligiblity.Paths[OLE DB Source Output]"
+              endId="Package\dft Transportation Eligiblity\l StudentTransportationEligibility.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\est Truncate tables"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -3626,25 +4482,25 @@ WHERE LEN(VisibleID) = 6
         <NodeLayout
           Size="236,42"
           Id="Package\dft TransferRaw VersaTrans Data"
-          TopLeft="208,236" />
+          TopLeft="5.5,107.5" />
         <NodeLayout
           Size="169,42"
           Id="Package\est Truncate tables"
-          TopLeft="236,108" />
+          TopLeft="39,5.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="323.25,150">
+          TopLeft="123.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,86"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,78.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,78.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3653,6 +4509,10 @@ WHERE LEN(VisibleID) = 6
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="206,42"
+          Id="Package\dft Transportation Eligiblity"
+          TopLeft="302,107.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3817,5 +4677,75 @@ WHERE LEN(VisibleID) = 6
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\dft Transportation Eligiblity">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\dft Transportation Eligiblity\OLE DB Command"
+          TopLeft="374,171" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\dft Transportation Eligiblity\OLE DB Destination"
+          TopLeft="42,209.5" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\dft Transportation Eligiblity\ODS STUDENT_TRANSPORTATION"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\dft Transportation Eligiblity\l StudentTransportationEligibility"
+          TopLeft="12,107.5" />
+        <EdgeLayout
+          Id="Package\dft Transportation Eligiblity.Paths[OLE DB Source Output]"
+          TopLeft="127.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft Transportation Eligiblity.Paths[Lookup No Match Output]"
+          TopLeft="127.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,20.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
