@@ -3,12 +3,14 @@
   DTS:ObjectName="BPSROUTES03.SY_Pending_RP.BPSIntegration"
   DTS:DTSID="{F239B543-7762-43DC-82B9-DEA2708740FD}"
   DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="InitialCatalog">@[$Project::DatabaseName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:ConnectionString="Data Source=BPSROUTES03;User ID=BPSIntegration;Initial Catalog=SY_Pending_RP;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACVGzG+Wlwkqv8bNzCNFT8QAAAAACAAAAAAADZgAAwAAAABAAAAD/ylWnZNhcjM8RLxxqqNTvAAAAAASAAACgAAAAEAAAAJSn72RTs0Bou5SmWFwJ1614AAAABIigl4qNEga5b4jtPatPfXuf5jgshF2nC6VfYPfGDfweipDkQ8dJgVhvdLhGBbZ3BJCdFu1MAIRejS9FepdbOcfbqmdjrquO98laqVkQLnb0nVy8OUNXogyrOiVP+2KXs/M2032q6oN0TotRk9QWacVMS4hZrrTCFAAAAMH31wBOWCUxK9VgBvmaLet/7Tet</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACVGzG+Wlwkqv8bNzCNFT8QAAAAACAAAAAAADZgAAwAAAABAAAABEmrx3VPrALKpdhWC5g5p1AAAAAASAAACgAAAAEAAAAPPLxI0ke/J1NAj8NZN0Jd14AAAAGALhQfg8ymxgtbEl5QxBcOuK6Zs7ZH1qykNqIcg3+P1SbtqrlMs/u/XBM810rusLPTdOBaStBJhoHvrSGZOe0ZmAhOS45waqCuERag02MX8La8sQRa4R6e7LvgKYy61YJw4HcNzNZ0CXE+GwTDTKIvIa8ULVa3BkFAAAALmPSrH23RmkCdeEEshbAIqdZOuF</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
