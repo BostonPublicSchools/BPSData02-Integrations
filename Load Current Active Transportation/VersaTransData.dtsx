@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{42415C39-0BA3-4526-9792-843240C027A5}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0600.250"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1033"
   DTS:ObjectName="VersaTransData"
   DTS:PackageType="5"
-  DTS:VersionBuild="57"
-  DTS:VersionGUID="{8F3DEFB2-7F90-4CA4-B4E7-5F97D50B814C}">
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{70599A9F-0983-4854-B917-C133F54847E9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1253,9 +1253,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">USE MIT;
-
-SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -2075,9 +2073,7 @@ WHERE LEN(VisibleID) = 6
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">USE MIT;
-
-SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -2897,9 +2893,7 @@ WHERE LEN(VisibleID) = 6
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">USE MIT;
-
-SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -3794,6 +3788,14 @@ WHERE LEN(VisibleID) = 6
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="175,42"
+          Id="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP"
+          TopLeft="33,146" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending"
+          TopLeft="273,65" />
+        <NodeLayout
           Size="212,42"
           Id="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning"
           TopLeft="271,146" />
@@ -3802,10 +3804,6 @@ WHERE LEN(VisibleID) = 6
           Id="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP"
           TopLeft="22,9" />
         <NodeLayout
-          Size="209,42"
-          Id="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending"
-          TopLeft="273,65" />
-        <NodeLayout
           Size="173,42"
           Id="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP"
           TopLeft="26,65" />
@@ -3813,10 +3811,6 @@ WHERE LEN(VisibleID) = 6
           Size="190,42"
           Id="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive"
           TopLeft="269,6" />
-        <NodeLayout
-          Size="175,42"
-          Id="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP"
-          TopLeft="33,146" />
         <EdgeLayout
           Id="Package\dft TransferRaw VersaTrans Data.Paths[OLE DB Source Output2]"
           TopLeft="208,167">
@@ -3887,6 +3881,27 @@ WHERE LEN(VisibleID) = 6
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning">
     <Properties>
       <Property>
@@ -3908,19 +3923,6 @@ WHERE LEN(VisibleID) = 6
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP">
     <Properties>
       <Property>
@@ -3938,14 +3940,6 @@ WHERE LEN(VisibleID) = 6
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
