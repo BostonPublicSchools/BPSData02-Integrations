@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{FEC67929-FCED-43FB-BB1F-D7D8084B3F6F}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{37750E73-F2E6-45D3-B49C-C5C12D5E55DB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -149,6 +149,302 @@
               </outputs>
             </component>
             <component
+              refId="Package\dftMergeBusRounting\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dftMergeBusRounting\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dftMergeBusRounting\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Output].Columns[strSourceId]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Output].Columns[strSourceId]"
+                      name="strSourceId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">NULL(DT_NTEXT)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">NULL(DT_NTEXT)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Output].Columns[strisCurrent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Output].Columns[strisCurrent]"
+                      name="strisCurrent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dftMergeBusRounting\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dftMergeBusRounting\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Transportation].[StudentTransportationEligibility]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Transportation].[StudentTransportationEligibility]) [refTable]
+where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? and [refTable].[steEligibility] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="steId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steStdId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steSourceId" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steisCurrent" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steAcademicYearDesignator" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steStudentLocalId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steSchoolLocalId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steAddressId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steWalkDistance" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEligibility" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steProvider" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="steEligiblityStartDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="steEligiblityEndDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[StudentNo]};#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Sch]};#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steEligibility]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftMergeBusRounting\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dftMergeBusRounting\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\Lookup.Inputs[Lookup Input].Columns[StudentNo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="StudentNo"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[StudentNo]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">steStudentLocalId</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\Lookup.Inputs[Lookup Input].Columns[Sch]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Sch"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Sch]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">steSchoolLocalId</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\Lookup.Inputs[Lookup Input].Columns[steEligibility]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="steEligibility"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steEligibility]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">steEligibility</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\Lookup.Inputs[Lookup Input].Columns[steId]"
+                      cachedDataType="i4"
+                      cachedName="steId"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steId]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn" />
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">steId</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftMergeBusRounting\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\dftMergeBusRounting\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftMergeBusRounting\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\dftMergeBusRounting\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftMergeBusRounting\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\dftMergeBusRounting\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftMergeBusRounting\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftMergeBusRounting\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\dftMergeBusRounting\Merge Join"
               componentClassID="Microsoft.MergeJoin"
               contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -164,7 +460,7 @@
                 <property
                   dataType="System.Int32"
                   description="Specifies the number of columns in the ordering key."
-                  name="NumKeyColumns">5</property>
+                  name="NumKeyColumns">3</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the null values are treated as equal values."
@@ -359,6 +655,11 @@
                       cachedName="strDayOfWeek"
                       cachedSortKeyPosition="4"
                       lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDayOfWeek]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strId]"
+                      cachedDataType="i4"
+                      cachedName="strId"
+                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strId]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -436,8 +737,7 @@
                       dataType="str"
                       length="8000"
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Days]"
-                      name="Days"
-                      sortKeyPosition="4">
+                      name="Days">
                       <properties>
                         <property
                           containsID="true"
@@ -466,8 +766,7 @@
                       dataType="str"
                       length="8"
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Trip]"
-                      name="Trip"
-                      sortKeyPosition="5">
+                      name="Trip">
                       <properties>
                         <property
                           containsID="true"
@@ -666,6 +965,19 @@
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[outLongitude]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strId]"
+                      dataType="i4"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strId]"
+                      name="strId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strId]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1309,6 +1621,455 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
               </outputs>
             </component>
             <component
+              refId="Package\dftMergeBusRounting\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Transportation.MergeStudentTransportationRouting ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dftMergeBusRounting\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[Days]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8000"
+                      cachedName="Days"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDayOfWeek]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Days]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[EffectiveDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="EffectiveDate"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strEffectiveDate]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[EffectiveDate]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[Trip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Trip"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strRoutingdirection]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Trip]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[InBusID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="InBusID"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointVehicleNumber]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[InBusID]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[InStopDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="InStopDescription"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[InStopDescription]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[InStopTime]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="InStopTime"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointArrivalTime]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[InStopTime]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[inX]"
+                      cachedDataType="r8"
+                      cachedName="inX"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginCartesianXCoordinate]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[inX]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[inY]"
+                      cachedDataType="r8"
+                      cachedName="inY"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginCartesianYCoordinate]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[inY]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[inLatitude]"
+                      cachedDataType="r8"
+                      cachedName="inLatitude"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginLatitude]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[inLatitude]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[inLongitude]"
+                      cachedDataType="r8"
+                      cachedName="inLongitude"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginLongitude]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[inLongitude]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[OutBusID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="OutBusID"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointVehicleNumber]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[OutBusID]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[OutStopDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OutStopDescription"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[OutStopDescription]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[OutStopTime]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="OutStopTime"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointArrivalTime]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[OutStopTime]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[outX]"
+                      cachedDataType="r8"
+                      cachedName="outX"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationCartesianXCoordinate]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[outX]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[outY]"
+                      cachedDataType="r8"
+                      cachedName="outY"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationCartesianYCoordinate]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[outY]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[outLatitude]"
+                      cachedDataType="r8"
+                      cachedName="outLatitude"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationLatitude]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[outLatitude]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[outLongitude]"
+                      cachedDataType="r8"
+                      cachedName="outLongitude"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationLongitude]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[outLongitude]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[strId]"
+                      cachedDataType="i4"
+                      cachedName="strId"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strId]"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strId]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[strSourceId]"
+                      cachedDataType="nText"
+                      cachedName="strSourceId"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strSourceId]"
+                      lineageId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Output].Columns[strSourceId]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].Columns[strisCurrent]"
+                      cachedDataType="i4"
+                      cachedName="strisCurrent"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strisCurrent]"
+                      lineageId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Output].Columns[strisCurrent]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strId]"
+                      dataType="i4"
+                      name="@strId">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strSourceId]"
+                      dataType="wstr"
+                      length="14"
+                      name="@strSourceId">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strisCurrent]"
+                      dataType="bool"
+                      name="@strisCurrent">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDayOfWeek]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="@strDayOfWeek">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strEffectiveDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="@strEffectiveDate">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strRoutingdirection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="@strRoutingdirection">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointVehicleNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="@strOriginPointVehicleNumber">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@strOriginPointBusStopDescription">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointArrivalTime]"
+                      dataType="wstr"
+                      length="16"
+                      name="@strOriginPointArrivalTime">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginCartesianXCoordinate]"
+                      dataType="r8"
+                      name="@strOriginCartesianXCoordinate">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginCartesianYCoordinate]"
+                      dataType="r8"
+                      name="@strOriginCartesianYCoordinate">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginLatitude]"
+                      dataType="r8"
+                      name="@strOriginLatitude">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strOriginLongitude]"
+                      dataType="r8"
+                      name="@strOriginLongitude">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointVehicleNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="@strDestinationPointVehicleNumber">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@strDestinationPointBusStopDescription">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointArrivalTime]"
+                      dataType="wstr"
+                      length="16"
+                      name="@strDestinationPointArrivalTime">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationCartesianXCoordinate]"
+                      dataType="r8"
+                      name="@strDestinationCartesianXCoordinate">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationCartesianYCoordinate]"
+                      dataType="r8"
+                      name="@strDestinationCartesianYCoordinate">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationLatitude]"
+                      dataType="r8"
+                      name="@strDestinationLatitude">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationLongitude]"
+                      dataType="r8"
+                      name="@strDestinationLongitude">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dftMergeBusRounting\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dftMergeBusRounting\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dftMergeBusRounting\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dftMergeBusRounting\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\dftMergeBusRounting\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -1376,7 +2137,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                 <input
                   refId="Package\dftMergeBusRounting\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="IgnoreFailure"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
@@ -1392,7 +2153,6 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                       cachedDataType="str"
                       cachedLength="8000"
                       cachedName="Days"
-                      cachedSortKeyPosition="4"
                       externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[strDayOfWeek]"
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Days]" />
                     <inputColumn
@@ -1408,7 +2168,6 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                       cachedDataType="str"
                       cachedLength="8"
                       cachedName="Trip"
-                      cachedSortKeyPosition="5"
                       externalMetadataColumnId="Package\dftMergeBusRounting\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[strRoutingdirection]"
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Trip]" />
                     <inputColumn
@@ -3704,13 +4463,28 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
           </components>
           <paths>
             <path
+              refId="Package\dftMergeBusRounting.Paths[Derived Column Output]"
+              endId="Package\dftMergeBusRounting\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\dftMergeBusRounting\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dftMergeBusRounting.Paths[ExistingRow]"
+              endId="Package\dftMergeBusRounting\Derived Column.Inputs[Derived Column Input]"
+              name="ExistingRow"
+              startId="Package\dftMergeBusRounting\Conditional Split.Outputs[ExistingRow]" />
+            <path
+              refId="Package\dftMergeBusRounting.Paths[Lookup Match Output]"
+              endId="Package\dftMergeBusRounting\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\dftMergeBusRounting\Lookup.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\dftMergeBusRounting.Paths[Merge Join Output]"
               endId="Package\dftMergeBusRounting\Conditional Split.Inputs[Conditional Split Input]"
               name="Merge Join Output"
               startId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output]" />
             <path
               refId="Package\dftMergeBusRounting.Paths[NewRow]"
-              endId="Package\dftMergeBusRounting\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\dftMergeBusRounting\Lookup.Inputs[Lookup Input]"
               name="NewRow"
               startId="Package\dftMergeBusRounting\Conditional Split.Outputs[NewRow]" />
             <path
@@ -3761,29 +4535,133 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
     design-time-name="Package\dftMergeBusRounting">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="192,42"
-          Id="Package\dftMergeBusRounting\ODS VesaTransDataLive"
-          TopLeft="25,5.5" />
+          Size="171,42"
+          Id="Package\dftMergeBusRounting\OLE DB Destination"
+          TopLeft="25,413.5" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\dftMergeBusRounting\Lookup"
+          TopLeft="7,284" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\dftMergeBusRounting\OLE DB Command"
+          TopLeft="250.5,515.5" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\dftMergeBusRounting\Merge Join"
+          TopLeft="269.5,214.5" />
         <NodeLayout
           Size="175,42"
           Id="Package\dftMergeBusRounting\s VersatransDatalive"
-          TopLeft="33.5,106.5" />
+          TopLeft="49,107.5" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\dftMergeBusRounting\Sort"
+          TopLeft="284.5,107.5" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\dftMergeBusRounting\ODS VesaTransDataLive"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\dftMergeBusRounting\OLE DB Source"
+          TopLeft="258.5,5.5" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\dftMergeBusRounting\Conditional Split"
+          TopLeft="256,311.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\dftMergeBusRounting\Derived Column"
+          TopLeft="256.5,413.5" />
         <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[OLE DB Source Output]"
-          TopLeft="121,47.5">
+          Id="Package\dftMergeBusRounting.Paths[Lookup Match Output]"
+          TopLeft="63.5,326">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59"
+              EndConnector="47,87.5"
               Start="0,0"
-              End="0,51.5">
+              End="47,80">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.5" />
+                    End="0,39.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.75"
+                    Point2="0,43.75"
+                    Point3="4,43.75" />
+                  <mssgle:LineSegment
+                    End="43,43.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43,43.75"
+                    Point2="47,43.75"
+                    Point3="47,47.75" />
+                  <mssgle:LineSegment
+                    End="47,80" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.69138671875,48.75,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[ExistingRow]"
+          TopLeft="358,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-24.4999999999999,60"
+              Start="0,0"
+              End="-24.4999999999999,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.367816091954" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.367816091954"
+                    Point2="0,24.367816091954"
+                    Point3="-4,24.367816091954" />
+                  <mssgle:LineSegment
+                    End="-20.4999999999999,24.367816091954" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20.4999999999999,24.367816091954"
+                    Point2="-24.4999999999999,24.367816091954"
+                    Point3="-24.4999999999999,28.367816091954" />
+                  <mssgle:LineSegment
+                    End="-24.4999999999999,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-39.36404296875,29.367816091954,54.2280859375,11.384765625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Derived Column Output]"
+          TopLeft="333.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3792,21 +4670,169 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\dftMergeBusRounting\OLE DB Destination"
-          TopLeft="35.5000000000001,617.5" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\dftMergeBusRounting\OLE DB Source"
-          TopLeft="571,49" />
-        <NodeLayout
-          Size="98,42"
-          Id="Package\dftMergeBusRounting\Sort"
-          TopLeft="595,146" />
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Sort Output1]"
+          TopLeft="333.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.3333333333333,65"
+              Start="0,0"
+              End="21.3333333333333,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5258358662614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5258358662614"
+                    Point2="0,38.5258358662614"
+                    Point3="4,38.5258358662614" />
+                  <mssgle:LineSegment
+                    End="17.3333333333333,38.5258358662614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.3333333333333,38.5258358662614"
+                    Point2="21.3333333333333,38.5258358662614"
+                    Point3="21.3333333333333,42.5258358662614" />
+                  <mssgle:LineSegment
+                    End="21.3333333333333,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Sort Output]"
+          TopLeft="136.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="177.666666666667,65"
+              Start="0,0"
+              End="177.666666666667,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5258358662614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5258358662614"
+                    Point2="0,38.5258358662614"
+                    Point3="4,38.5258358662614" />
+                  <mssgle:LineSegment
+                    End="173.666666666667,38.5258358662614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="173.666666666667,38.5258358662614"
+                    Point2="177.666666666667,38.5258358662614"
+                    Point3="177.666666666667,42.5258358662614" />
+                  <mssgle:LineSegment
+                    End="177.666666666667,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[OLE DB Source Output1]"
-          TopLeft="645,91">
+          TopLeft="333.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[OLE DB Source Output]"
+          TopLeft="101.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35,60"
+              Start="0,0"
+              End="35,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="31,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31,30"
+                    Point2="35,30"
+                    Point3="35,34" />
+                  <mssgle:LineSegment
+                    End="35,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[NewRow]"
+          TopLeft="256,332.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-136,-27.5"
+              Start="0,0"
+              End="-128.5,-27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-64,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64,0"
+                    Point2="-68,0"
+                    Point3="-68,-4" />
+                  <mssgle:LineSegment
+                    End="-68,-23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68,-23.5"
+                    Point2="-68,-27.5"
+                    Point3="-72,-27.5" />
+                  <mssgle:LineSegment
+                    End="-128.5,-27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-87.76404296875,1,39.5280859375,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Merge Join Output]"
+          TopLeft="334,256.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3823,154 +4849,14 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\dftMergeBusRounting\Merge Join"
-          TopLeft="364,259" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Sort Output]"
-          TopLeft="121,148.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="308,110.5"
-              Start="0,0"
-              End="308,103">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,51.25"
-                    Point2="0,55.25"
-                    Point3="4,55.25" />
-                  <mssgle:LineSegment
-                    End="304,55.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="304,55.25"
-                    Point2="308,55.25"
-                    Point3="308,59.25" />
-                  <mssgle:LineSegment
-                    End="308,103" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Sort Output1]"
-          TopLeft="644,188">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-194.666666666667,71"
-              Start="0,0"
-              End="-194.666666666667,63.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.0820668693009" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.0820668693009"
-                    Point2="0,42.0820668693009"
-                    Point3="-4,42.0820668693009" />
-                  <mssgle:LineSegment
-                    End="-190.666666666667,42.0820668693009" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-190.666666666667,42.0820668693009"
-                    Point2="-194.666666666667,42.0820668693009"
-                    Point3="-194.666666666667,46.0820668693009" />
-                  <mssgle:LineSegment
-                    End="-194.666666666667,63.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\dftMergeBusRounting\Conditional Split"
-          TopLeft="353,335" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Merge Join Output]"
-          TopLeft="429.75,301">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[NewRow]"
-          TopLeft="430.5,377">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-309.5,240.5"
-              Start="0,0"
-              End="-309.5,233">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,116.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,116.25"
-                    Point2="0,120.25"
-                    Point3="-4,120.25" />
-                  <mssgle:LineSegment
-                    End="-305.5,120.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-305.5,120.25"
-                    Point2="-309.5,120.25"
-                    Point3="-309.5,124.25" />
-                  <mssgle:LineSegment
-                    End="-309.5,233" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-174.51404296875,125.25,39.5280859375,9.421875"
+              BoundingBox="-8,15.75,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftMergeBusRounting\ODS VesaTransDataLive">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\dftMergeBusRounting\OLE DB Destination">
     <Properties>
@@ -3981,6 +4867,37 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftMergeBusRounting\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Transportation].[StudentTransportationEligibility]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftMergeBusRounting\ODS VesaTransDataLive">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

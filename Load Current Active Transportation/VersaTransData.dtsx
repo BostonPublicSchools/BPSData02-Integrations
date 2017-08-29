@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="VersaTransData"
   DTS:PackageType="5"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{70599A9F-0983-4854-B917-C133F54847E9}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{EFA23CA7-6069-4595-8A1E-D5AAD08582E2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -263,6 +263,20 @@
                       cachedName="X"
                       externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[vdlVersatransX]"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[X]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].Columns[BusRideMinutes]"
+                      cachedDataType="i4"
+                      cachedName="BusRideMinutes"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[vdlBusTripDuration]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].Columns[DropoffTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="DropoffTime"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[vdlDropOffTime]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -270,13 +284,13 @@
                       refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[StudentNo]"
                       codePage="1252"
                       dataType="str"
-                      length="6"
+                      length="10"
                       name="StudentNo" />
                     <externalMetadataColumn
                       refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[Sch]"
                       codePage="1252"
                       dataType="str"
-                      length="4"
+                      length="10"
                       name="Sch" />
                     <externalMetadataColumn
                       refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[ProgID]"
@@ -402,6 +416,16 @@
                       dataType="str"
                       length="10"
                       name="vdlStudentZipCode" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[vdlDropOffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="vdlDropOffTime" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[vdlBusTripDuration]"
+                      dataType="i4"
+                      name="vdlBusTripDuration" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -662,6 +686,20 @@
                       cachedName="Zip"
                       externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[vdpStudentZipCode]"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[Zip]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].Columns[BusRideMinutes]"
+                      cachedDataType="i4"
+                      cachedName="BusRideMinutes"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[vdlBusTripDuration]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].Columns[DropoffTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="DropoffTime"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[vdlDropOffTime]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -669,13 +707,13 @@
                       refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[StudentNo]"
                       codePage="1252"
                       dataType="str"
-                      length="6"
+                      length="10"
                       name="StudentNo" />
                     <externalMetadataColumn
                       refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[Sch]"
                       codePage="1252"
                       dataType="str"
-                      length="4"
+                      length="10"
                       name="Sch" />
                     <externalMetadataColumn
                       refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[ProgID]"
@@ -801,6 +839,16 @@
                       dataType="str"
                       length="10"
                       name="vdpStudentZipCode" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[vdlDropOffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="vdlDropOffTime" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[vdlBusTripDuration]"
+                      dataType="i4"
+                      name="vdlBusTripDuration" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1061,6 +1109,20 @@
                       cachedName="Zip"
                       externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[vdplStudentZipCode]"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[Zip]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].Columns[BusRideMinutes]"
+                      cachedDataType="i4"
+                      cachedName="BusRideMinutes"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[vdlBusTripDuration]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].Columns[DropoffTime]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="DropoffTime"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[vdlDropOffTime]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1068,13 +1130,13 @@
                       refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[StudentNo]"
                       codePage="1252"
                       dataType="str"
-                      length="6"
+                      length="10"
                       name="StudentNo" />
                     <externalMetadataColumn
                       refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[Sch]"
                       codePage="1252"
                       dataType="str"
-                      length="4"
+                      length="10"
                       name="Sch" />
                     <externalMetadataColumn
                       refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[ProgID]"
@@ -1200,6 +1262,16 @@
                       dataType="str"
                       length="10"
                       name="vdplStudentZipCode" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[vdlDropOffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="vdlDropOffTime" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[vdlBusTripDuration]"
+                      dataType="i4"
+                      name="vdlBusTripDuration" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1253,7 +1325,9 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">USE SY_Live_RP;
+
+SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -1316,6 +1390,41 @@
                        'PM',
                        ' PM'
                    ), 8) AS StopTime,
+       LEFT(REPLACE(
+                       REPLACE(
+                                  LTRIM(RTRIM(   CASE
+                                                     WHEN CHARINDEX(
+                                                                       ':',
+                                                                       LTRIM(SUBSTRING(
+                                                                                          CAST(times_IN.DropoffTime AS VARCHAR),
+                                                                                          12,
+                                                                                          LEN(GETDATE())
+                                                                                      )
+                                                                            )
+                                                                   ) = 2 THEN
+                                                         '0'
+                                                         + LTRIM(SUBSTRING(
+                                                                              CAST(times_IN.DropoffTime AS VARCHAR),
+                                                                              12,
+                                                                              LEN(GETDATE())
+                                                                          )
+                                                                )
+                                                     ELSE
+                                                         SUBSTRING(
+                                                                      CAST(times_IN.DropoffTime AS VARCHAR),
+                                                                      12,
+                                                                      LEN(GETDATE())
+                                                                  )
+                                                 END
+                                             )
+                                       ),
+                                  'AM',
+                                  ' AM'
+                              ),
+                       'PM',
+                       ' PM'
+                   ), 8) AS DropoffTime,
+       times_IN.BusRideMinutes,
        route_IN.Days,
        (CASE
             WHEN ISDATE(siEffDate.Description) = 1 THEN
@@ -1443,6 +1552,41 @@ SELECT s.VisibleID AS 'StudentNo',
                        'PM',
                        ' PM'
                    ), 8) AS 'StopTime',
+       LEFT(REPLACE(
+                       REPLACE(
+                                  LTRIM(RTRIM(   CASE
+                                                     WHEN CHARINDEX(
+                                                                       ':',
+                                                                       LTRIM(SUBSTRING(
+                                                                                          CAST(times_OUT.PickupTime AS VARCHAR),
+                                                                                          12,
+                                                                                          LEN(GETDATE())
+                                                                                      )
+                                                                            )
+                                                                   ) = 2 THEN
+                                                         '0'
+                                                         + LTRIM(SUBSTRING(
+                                                                              CAST(times_OUT.PickupTime AS VARCHAR),
+                                                                              12,
+                                                                              LEN(GETDATE())
+                                                                          )
+                                                                )
+                                                     ELSE
+                                                         SUBSTRING(
+                                                                      CAST(times_OUT.PickupTime AS VARCHAR),
+                                                                      12,
+                                                                      LEN(GETDATE())
+                                                                  )
+                                                 END
+                                             )
+                                       ),
+                                  'AM',
+                                  ' AM'
+                              ),
+                       'PM', 
+                       ' PM'
+                   ), 8) AS DropoffTime,
+       times_OUT.BusRideMinutes,
        route_OUT.Days,
        (CASE
             WHEN ISDATE(siEffDate.Description) = 1 THEN
@@ -1763,6 +1907,26 @@ WHERE LEN(VisibleID) = 6
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[Longitude]"
                       name="Longitude"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[DropoffTime]"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]"
+                      name="DropoffTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[BusRideMinutes]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]"
+                      name="BusRideMinutes"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1884,6 +2048,16 @@ WHERE LEN(VisibleID) = 6
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
                       dataType="r8"
                       name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[DropoffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="DropoffTime" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[BusRideMinutes]"
+                      dataType="i4"
+                      name="BusRideMinutes" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1938,6 +2112,18 @@ WHERE LEN(VisibleID) = 6
                       length="8"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[StopTime]"
                       name="StopTime" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[DropoffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[DropoffTime]"
+                      name="DropoffTime" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[BusRideMinutes]"
+                      dataType="i4"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[BusRideMinutes]"
+                      name="BusRideMinutes" />
                     <outputColumn
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[Days]"
                       codePage="1252"
@@ -2073,7 +2259,9 @@ WHERE LEN(VisibleID) = 6
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">USE SY_Live_RP;
+
+SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -2136,6 +2324,41 @@ WHERE LEN(VisibleID) = 6
                        'PM',
                        ' PM'
                    ), 8) AS StopTime,
+       LEFT(REPLACE(
+                       REPLACE(
+                                  LTRIM(RTRIM(   CASE
+                                                     WHEN CHARINDEX(
+                                                                       ':',
+                                                                       LTRIM(SUBSTRING(
+                                                                                          CAST(times_IN.DropoffTime AS VARCHAR),
+                                                                                          12,
+                                                                                          LEN(GETDATE())
+                                                                                      )
+                                                                            )
+                                                                   ) = 2 THEN
+                                                         '0'
+                                                         + LTRIM(SUBSTRING(
+                                                                              CAST(times_IN.DropoffTime AS VARCHAR),
+                                                                              12,
+                                                                              LEN(GETDATE())
+                                                                          )
+                                                                )
+                                                     ELSE
+                                                         SUBSTRING(
+                                                                      CAST(times_IN.DropoffTime AS VARCHAR),
+                                                                      12,
+                                                                      LEN(GETDATE())
+                                                                  )
+                                                 END
+                                             )
+                                       ),
+                                  'AM',
+                                  ' AM'
+                              ),
+                       'PM',
+                       ' PM'
+                   ), 8) AS DropoffTime,
+       times_IN.BusRideMinutes,
        route_IN.Days,
        (CASE
             WHEN ISDATE(siEffDate.Description) = 1 THEN
@@ -2263,6 +2486,41 @@ SELECT s.VisibleID AS 'StudentNo',
                        'PM',
                        ' PM'
                    ), 8) AS 'StopTime',
+       LEFT(REPLACE(
+                       REPLACE(
+                                  LTRIM(RTRIM(   CASE
+                                                     WHEN CHARINDEX(
+                                                                       ':',
+                                                                       LTRIM(SUBSTRING(
+                                                                                          CAST(times_OUT.PickupTime AS VARCHAR),
+                                                                                          12,
+                                                                                          LEN(GETDATE())
+                                                                                      )
+                                                                            )
+                                                                   ) = 2 THEN
+                                                         '0'
+                                                         + LTRIM(SUBSTRING(
+                                                                              CAST(times_OUT.PickupTime AS VARCHAR),
+                                                                              12,
+                                                                              LEN(GETDATE())
+                                                                          )
+                                                                )
+                                                     ELSE
+                                                         SUBSTRING(
+                                                                      CAST(times_OUT.PickupTime AS VARCHAR),
+                                                                      12,
+                                                                      LEN(GETDATE())
+                                                                  )
+                                                 END
+                                             )
+                                       ),
+                                  'AM',
+                                  ' AM'
+                              ),
+                       'PM', 
+                       ' PM'
+                   ), 8) AS DropoffTime,
+       times_OUT.BusRideMinutes,
        route_OUT.Days,
        (CASE
             WHEN ISDATE(siEffDate.Description) = 1 THEN
@@ -2583,6 +2841,26 @@ WHERE LEN(VisibleID) = 6
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[Longitude]"
                       name="Longitude"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[DropoffTime]"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]"
+                      name="DropoffTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[BusRideMinutes]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]"
+                      name="BusRideMinutes"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2704,6 +2982,16 @@ WHERE LEN(VisibleID) = 6
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
                       dataType="r8"
                       name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[DropoffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="DropoffTime" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[BusRideMinutes]"
+                      dataType="i4"
+                      name="BusRideMinutes" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2758,6 +3046,18 @@ WHERE LEN(VisibleID) = 6
                       length="8"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[StopTime]"
                       name="StopTime" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[DropoffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[DropoffTime]"
+                      name="DropoffTime" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[BusRideMinutes]"
+                      dataType="i4"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[BusRideMinutes]"
+                      name="BusRideMinutes" />
                     <outputColumn
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[Days]"
                       codePage="1252"
@@ -2893,7 +3193,9 @@ WHERE LEN(VisibleID) = 6
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">USE SY_Live_RP;
+
+SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -2956,6 +3258,41 @@ WHERE LEN(VisibleID) = 6
                        'PM',
                        ' PM'
                    ), 8) AS StopTime,
+       LEFT(REPLACE(
+                       REPLACE(
+                                  LTRIM(RTRIM(   CASE
+                                                     WHEN CHARINDEX(
+                                                                       ':',
+                                                                       LTRIM(SUBSTRING(
+                                                                                          CAST(times_IN.DropoffTime AS VARCHAR),
+                                                                                          12,
+                                                                                          LEN(GETDATE())
+                                                                                      )
+                                                                            )
+                                                                   ) = 2 THEN
+                                                         '0'
+                                                         + LTRIM(SUBSTRING(
+                                                                              CAST(times_IN.DropoffTime AS VARCHAR),
+                                                                              12,
+                                                                              LEN(GETDATE())
+                                                                          )
+                                                                )
+                                                     ELSE
+                                                         SUBSTRING(
+                                                                      CAST(times_IN.DropoffTime AS VARCHAR),
+                                                                      12,
+                                                                      LEN(GETDATE())
+                                                                  )
+                                                 END
+                                             )
+                                       ),
+                                  'AM',
+                                  ' AM'
+                              ),
+                       'PM',
+                       ' PM'
+                   ), 8) AS DropoffTime,
+       times_IN.BusRideMinutes,
        route_IN.Days,
        (CASE
             WHEN ISDATE(siEffDate.Description) = 1 THEN
@@ -3083,6 +3420,41 @@ SELECT s.VisibleID AS 'StudentNo',
                        'PM',
                        ' PM'
                    ), 8) AS 'StopTime',
+       LEFT(REPLACE(
+                       REPLACE(
+                                  LTRIM(RTRIM(   CASE
+                                                     WHEN CHARINDEX(
+                                                                       ':',
+                                                                       LTRIM(SUBSTRING(
+                                                                                          CAST(times_OUT.PickupTime AS VARCHAR),
+                                                                                          12,
+                                                                                          LEN(GETDATE())
+                                                                                      )
+                                                                            )
+                                                                   ) = 2 THEN
+                                                         '0'
+                                                         + LTRIM(SUBSTRING(
+                                                                              CAST(times_OUT.PickupTime AS VARCHAR),
+                                                                              12,
+                                                                              LEN(GETDATE())
+                                                                          )
+                                                                )
+                                                     ELSE
+                                                         SUBSTRING(
+                                                                      CAST(times_OUT.PickupTime AS VARCHAR),
+                                                                      12,
+                                                                      LEN(GETDATE())
+                                                                  )
+                                                 END
+                                             )
+                                       ),
+                                  'AM',
+                                  ' AM'
+                              ),
+                       'PM', 
+                       ' PM'
+                   ), 8) AS DropoffTime,
+       times_OUT.BusRideMinutes,
        route_OUT.Days,
        (CASE
             WHEN ISDATE(siEffDate.Description) = 1 THEN
@@ -3403,6 +3775,26 @@ WHERE LEN(VisibleID) = 6
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[Longitude]"
                       name="Longitude"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[DropoffTime]"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]"
+                      name="DropoffTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[BusRideMinutes]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]"
+                      name="BusRideMinutes"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3524,6 +3916,16 @@ WHERE LEN(VisibleID) = 6
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
                       dataType="r8"
                       name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[DropoffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="DropoffTime" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[BusRideMinutes]"
+                      dataType="i4"
+                      name="BusRideMinutes" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3578,6 +3980,18 @@ WHERE LEN(VisibleID) = 6
                       length="8"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[StopTime]"
                       name="StopTime" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[DropoffTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[DropoffTime]"
+                      name="DropoffTime" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[BusRideMinutes]"
+                      dataType="i4"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[BusRideMinutes]"
+                      name="BusRideMinutes" />
                     <outputColumn
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[Days]"
                       codePage="1252"
