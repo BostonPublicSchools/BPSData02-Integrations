@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{E763C778-DAA2-46A5-84E6-BEEDFC7B3E64}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.900.80"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student Transportation Eligibility"
   DTS:PackageType="5"
-  DTS:VersionBuild="60"
-  DTS:VersionGUID="{83D86F30-C55F-4517-8782-27B39F87B1F3}">
+  DTS:VersionBuild="61"
+  DTS:VersionGUID="{35BB9552-23CB-4BAF-91F9-1D6CCC8AD1D8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,12 +23,7 @@
       DTS:ObjectName="10.23.12.31.x2data.BPSIntegration">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.23.12.31;User ID=BPSIntegration;Initial Catalog=x2data;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADZUW4VpCvgdfvR3h7E2WsjAAAAAASAAACgAAAAEAAAAPT5qKO+wju+xxYhuL7pkegYAAAA7++unHJSpLdg6B+zRaECGkyo3vTRUrOXFAAAAO4olNd1cvnspH3LwHihFI5Xx507</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=10.23.12.31;User ID=BPSIntegration;Initial Catalog=x2data;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -38,12 +33,7 @@
       DTS:ObjectName="BPSDATA02.BPSInterface.BPSIntegration">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntegration;Initial Catalog=BPSInterface;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABsXS3OaOOaQoaKDEtKqRwtAAAAAASAAACgAAAAEAAAAPohJjVx5tpzDvdxQzgCLGUYAAAAuTxpsQ7uvhcWYKc2OIzBbf263pkOFCoJFAAAAJPyfU3oIS1TISxxyDny3t5aNrCs</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntegration;Initial Catalog=BPSInterface;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -53,12 +43,7 @@
       DTS:ObjectName="BPSDATA02.BPSTransportation.BPSIntegration">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntegration;Initial Catalog=BPSTransportation;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABo2HRzy7V0f5i6JFzwuzOoAAAAAASAAACgAAAAEAAAAG8ZEneAk+itQSVQ8WLUG2QYAAAAboEbPq4hi+CWSsAdIVrIP0smxxBtajs4FAAAABWpb9RFa7mtKxbbJ6J1C0qPks+l</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntegration;Initial Catalog=BPSTransportation;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -2191,7 +2176,7 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
         <NodeLayout
           Size="217,42"
           Id="Package\dftCurrentYearTransportation"
-          TopLeft="385,92" />
+          TopLeft="72,87" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2203,42 +2188,42 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
         <NodeLayout
           Size="223,42"
           Id="Package\dftCurrentYearTransportation\lteoEligibilityOverrideReasonID"
-          TopLeft="853,21" />
+          TopLeft="22,225" />
         <NodeLayout
           Size="169,42"
           Id="Package\dftCurrentYearTransportation\ltdtDistanceTypeID"
-          TopLeft="609,20" />
+          TopLeft="313,119" />
         <NodeLayout
           Size="136,42"
           Id="Package\dftCurrentYearTransportation\lBPSStudent"
-          TopLeft="200,15" />
+          TopLeft="200,28" />
         <NodeLayout
           Size="276,42"
           Id="Package\dftCurrentYearTransportation\odcUpdateStudentTransportationEligibility"
-          TopLeft="1106,252" />
+          TopLeft="180,424" />
         <NodeLayout
           Size="238,42"
           Id="Package\dftCurrentYearTransportation\oddStudentTransportationEligibity"
-          TopLeft="1356,87" />
+          TopLeft="490,343" />
         <NodeLayout
           Size="150,42"
           Id="Package\dftCurrentYearTransportation\OLE DB Source"
-          TopLeft="23,14" />
+          TopLeft="23,27" />
         <NodeLayout
           Size="172,42"
           Id="Package\dftCurrentYearTransportation\lsteEligibilityCodeID"
-          TopLeft="380,18" />
+          TopLeft="441,35" />
         <NodeLayout
           Size="214,42"
           Id="Package\dftCurrentYearTransportation\dcsteDefaultEligibilityCodeID"
-          TopLeft="1137,178" />
+          TopLeft="236,338" />
         <NodeLayout
           Size="228,42"
           Id="Package\dftCurrentYearTransportation\lStudentTransportationEligibility"
-          TopLeft="1135,23" />
+          TopLeft="361,221" />
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[OLE DB Source Output]"
-          TopLeft="173,35.5">
+          TopLeft="173,48.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2260,168 +2245,222 @@ WHERE   CTX_SCHOOL_YEAR &gt;= 2016;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[Lookup No Match Output]"
-          TopLeft="1363,44">
+          TopLeft="511.666666666667,263">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="112,43"
+              EndConnector="97.3333333333334,80"
               Start="0,0"
-              End="112,35.5">
+              End="97.3333333333334,72.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="108,0" />
+                    End="0,28.3344947735192" />
                   <mssgle:CubicBezierSegment
-                    Point1="108,0"
-                    Point2="112,0"
-                    Point3="112,4" />
+                    Point1="0,28.3344947735192"
+                    Point2="0,32.3344947735192"
+                    Point3="4,32.3344947735192" />
                   <mssgle:LineSegment
-                    End="112,35.5" />
+                    End="93.3333333333334,32.3344947735192" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.3333333333334,32.3344947735192"
+                    Point2="97.3333333333334,32.3344947735192"
+                    Point3="97.3333333333334,36.3344947735192" />
+                  <mssgle:LineSegment
+                    End="97.3333333333334,72.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="56.19361328125,-17.609375,111.6127734375,11.609375"
+              BoundingBox="-7.13972005208331,37.3344947735192,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[Lookup Match Output4]"
-          TopLeft="1246.5,65">
+          TopLeft="438.333333333333,263">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,113"
+              EndConnector="-95.3333333333333,75"
               Start="0,0"
-              End="0,105.5">
+              End="-95.3333333333333,67.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,105.5" />
+                    End="0,26.3135888501742" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.3135888501742"
+                    Point2="0,30.3135888501742"
+                    Point3="-4,30.3135888501742" />
+                  <mssgle:LineSegment
+                    End="-91.3333333333333,30.3135888501742" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-91.3333333333333,30.3135888501742"
+                    Point2="-95.3333333333333,30.3135888501742"
+                    Point3="-95.3333333333333,34.3135888501742" />
+                  <mssgle:LineSegment
+                    End="-95.3333333333333,67.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,46.9453125,96.3827734375,11.609375"
+              BoundingBox="-95.8580533854167,35.3135888501742,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[Lookup Match Output3]"
-          TopLeft="1076,43">
+          TopLeft="245,244">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="59,0"
+              EndConnector="116,0"
               Start="0,0"
-              End="51.5,0">
+              End="108.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="51.5,0" />
+                    End="108.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-22.44138671875,5,96.3827734375,11.609375"
+              BoundingBox="6.05861328125,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[Lookup Match Output2]"
-          TopLeft="552,40">
+          TopLeft="527,77">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="57,0"
+              EndConnector="-129.5,42"
               Start="0,0"
-              End="49.5,0">
+              End="-129.5,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="49.5,0" />
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="-4,21" />
+                  <mssgle:LineSegment
+                    End="-125.5,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-125.5,21"
+                    Point2="-129.5,21"
+                    Point3="-129.5,25" />
+                  <mssgle:LineSegment
+                    End="-129.5,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-23.44138671875,5,96.3827734375,11.609375"
+              BoundingBox="-112.94138671875,26,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[Lookup Match Output1]"
-          TopLeft="336,37.5">
+          TopLeft="336,52.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="44,0"
+              EndConnector="105,0"
               Start="0,0"
-              End="36.5,0">
+              End="97.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="36.5,0" />
+                    End="97.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-29.94138671875,5,96.3827734375,11.609375"
+              BoundingBox="0.558613281249997,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[Lookup Match Output]"
-          TopLeft="778,41.5">
+          TopLeft="397.5,161">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="75,0"
+              EndConnector="-264,64"
               Start="0,0"
-              End="67.5,0">
+              End="-264,56.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="67.5,0" />
+                    End="0,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28"
+                    Point2="0,32"
+                    Point3="-4,32" />
+                  <mssgle:LineSegment
+                    End="-260,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-260,32"
+                    Point2="-264,32"
+                    Point3="-264,36" />
+                  <mssgle:LineSegment
+                    End="-264,56.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-14.44138671875,5,96.3827734375,11.609375"
+              BoundingBox="-180.19138671875,37,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftCurrentYearTransportation.Paths[Derived Column Output]"
-          TopLeft="1244,220">
+          TopLeft="343,380">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32"
+              EndConnector="-25,44"
               Start="0,0"
-              End="0,24.5">
+              End="-25,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="-4,22" />
+                  <mssgle:LineSegment
+                    End="-21,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21,22"
+                    Point2="-25,22"
+                    Point3="-25,26" />
+                  <mssgle:LineSegment
+                    End="-25,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

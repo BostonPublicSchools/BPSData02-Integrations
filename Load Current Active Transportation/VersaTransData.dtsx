@@ -6,16 +6,35 @@
   DTS:CreatorComputerName="084-170705-03"
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{42415C39-0BA3-4526-9792-843240C027A5}"
+  DTS:EnableConfig="True"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1033"
   DTS:ObjectName="VersaTransData"
   DTS:PackageType="5"
-  DTS:VersionBuild="60"
-  DTS:VersionGUID="{3CFB07B9-A704-4841-805D-9850F107E707}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{BACAF301-8684-4E2B-9F16-A40B8466FA01}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\Users\X05112\Source\Repos\BPSData02-Integrations\Load Current Active Transportation\SvName.dtsConfig"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{47867B8A-BCCF-4399-B462-F2D9AD3DBF6F}"
+      DTS:ObjectName="Name" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7FC88AE7-16B8-432D-846B-2472F11311E5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerNameRuntime">
+      <DTS:VariableValue
+        DTS:DataType="8">TESTDATA03</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\dft TransferRaw VersaTrans Data"
