@@ -26,13 +26,14 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">084-170705-03</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2QogScSd3EiHAU5wG26b1wAAAAACAAAAAAADZgAAwAAAABAAAABM7hk9cOjVmyLIZE1lIGGhAAAAAASAAACgAAAAEAAAAJ1OMoKy0ujFg/+jiZ4tmsSIAAAABs9jQ63R1OMjtvBje/e7vvbkrukTicuXpAXCuzfBwyQ5zQEosifuNzLFiTvSBmIX6Sd+Od+W3tB1aTapeh2n59ysf1hxZRkLfLs8KU9WD4Pt18nyGlCxK19f6fzDBUAhH3QlrP+FDqD/1SmeEfYtbWVaIpX4DfHbClFxwf1En8XXznSQMQQQLRQAAADLYE1YfrcOI74ajjiLBUFojKgqMA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2QogScSd3EiHAU5wG26b1wAAAAACAAAAAAADZgAAwAAAABAAAAC/8Ea2KHTdIDw2mNz+eT+5AAAAAASAAACgAAAAEAAAADJ5aGoMbcx9O0RhpC/eFJ+IAAAA9Yj8SDsehQvXVTs8wT/MAkmLUMgeU1gArSCSKjXLcwbYHoLWcrtXVO6dNrQ1EZPzBKPQRfi3mKU6VGpMrIcjLEGNTIy7QnDK9Q6sEBPtge0nhdsIEUN0NN735a1F1d5OB1r9DCX62KooQgMbAJYoqmKxlrSC9VA3pdfdgAqxVedBdtc6SNHU5RQAAACUKKhHCaCeLkELECibnUWcjknLpg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Load Student Transportation Eligibility.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="VersaTransData.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="SyncBusRouting.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="SyncPendingData.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="BPSInterface.BPSIntegration.conmgr" />
@@ -767,10 +768,10 @@
                 <SSIS:Property SSIS:Name="Name">SyncBusRouting</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">52</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">56</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{978383FC-44A4-48A4-82E8-EF29750961C7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{17055B2E-D568-4EAB-8536-31D964ABA521}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -960,6 +961,23 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="SyncPendingData.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B458ED55-A9A3-4D3E-B9D2-B99454FF2376}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">SyncPendingData</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{950676D6-2C4A-4E2D-8B32-BD70EBB56D61}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
