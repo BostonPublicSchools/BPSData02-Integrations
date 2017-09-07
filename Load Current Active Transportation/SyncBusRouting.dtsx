@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="67"
-  DTS:VersionGUID="{76D83BA9-C4EA-4EAF-B017-C06B76CFAB18}">
+  DTS:VersionBuild="81"
+  DTS:VersionGUID="{E46E574E-11D2-4959-BE3B-89F015B18792}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3354,15 +3354,15 @@ where [refTable].[strSteId] = ?</property>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT steId,
-       steStudentLocalId,
-       steSchoolLocalId,
-       steEligibility,
+       steStudentLocalId ,
+       steSchoolLocalId ,
+      steEligibility,
        strId,
        strSourceId,
        CASE WHEN strisCurrent IS NULL THEN 1 ELSE 0 END AS strisCurrent,
-       strDayOfWeek,
+       CONVERT(VARCHAR(7),strDayOfWeek) strDayOfWeek ,
        strEffectiveDate,
-       strRoutingdirection,
+       CONVERT(Varchar(8),strRoutingdirection) strRoutingdirection,
        strOriginPointVehicleNumber,
        strOriginPointBusStopDescription,
        strOriginPointArrivalTime,
@@ -3380,7 +3380,8 @@ where [refTable].[strSteId] = ?</property>
 FROM Transportation.StudentTransportationEligibility
     left JOIN Transportation.StudentTransportationRouting
         ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId
-WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
+-- WHERE NULLIF(steEligiblityEndDate, '') IS NULL;
+				 ORDER BY steStudentLocalId,steSchoolLocalId,steEligibility,strDayOfWeek,strRoutingdirection</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3414,8 +3415,18 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
               <outputs>
                 <output
                   refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output]"
+                  isSorted="true"
                   name="OLE DB Source Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[steId]"
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steId]"
+                      name="steId"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steStudentLocalId]"
                       codePage="1252"
@@ -3426,6 +3437,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       length="10"
                       lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steStudentLocalId]"
                       name="steStudentLocalId"
+                      sortKeyPosition="1"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steSchoolLocalId]"
@@ -3437,6 +3449,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       length="10"
                       lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steSchoolLocalId]"
                       name="steSchoolLocalId"
+                      sortKeyPosition="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steEligibility]"
@@ -3448,6 +3461,16 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       length="10"
                       lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steEligibility]"
                       name="steEligibility"
+                      sortKeyPosition="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strId]"
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strId]"
+                      name="strId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strSourceId]"
@@ -3461,7 +3484,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strisCurrent]"
-                      dataType="bool"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strisCurrent]"
@@ -3478,6 +3501,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       length="15"
                       lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDayOfWeek]"
                       name="strDayOfWeek"
+                      sortKeyPosition="4"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strEffectiveDate]"
@@ -3499,6 +3523,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       length="10"
                       lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strRoutingdirection]"
                       name="strRoutingdirection"
+                      sortKeyPosition="5"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginPointVehicleNumber]"
@@ -3636,27 +3661,13 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationLongitude]"
                       name="strDestinationLongitude"
                       truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[steId]"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steId]"
-                      name="steId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strId]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strId]"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strId]"
-                      name="strId"
-                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[steId]"
+                      dataType="i4"
+                      name="steId" />
                     <externalMetadataColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[steStudentLocalId]"
                       codePage="1252"
@@ -3676,6 +3687,10 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       length="10"
                       name="steEligibility" />
                     <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strId]"
+                      dataType="i4"
+                      name="strId" />
+                    <externalMetadataColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strSourceId]"
                       dataType="wstr"
                       length="14"
@@ -3688,7 +3703,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strDayOfWeek]"
                       codePage="1252"
                       dataType="str"
-                      length="15"
+                      length="7"
                       name="strDayOfWeek" />
                     <externalMetadataColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strEffectiveDate]"
@@ -3699,7 +3714,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strRoutingdirection]"
                       codePage="1252"
                       dataType="str"
-                      length="10"
+                      length="8"
                       name="strRoutingdirection" />
                     <externalMetadataColumn
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strOriginPointVehicleNumber]"
@@ -3767,14 +3782,6 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strDestinationLongitude]"
                       dataType="r8"
                       name="strDestinationLongitude" />
-                    <externalMetadataColumn
-                      refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[steId]"
-                      dataType="i4"
-                      name="steId" />
-                    <externalMetadataColumn
-                      refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].ExternalColumns[strId]"
-                      dataType="i4"
-                      name="strId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3828,7 +3835,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Error Output].Columns[strDayOfWeek]"
                       codePage="1252"
                       dataType="str"
-                      length="15"
+                      length="7"
                       lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Error Output].Columns[strDayOfWeek]"
                       name="strDayOfWeek" />
                     <outputColumn
@@ -3841,7 +3848,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                       refId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Error Output].Columns[strRoutingdirection]"
                       codePage="1252"
                       dataType="str"
-                      length="10"
+                      length="8"
                       lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Error Output].Columns[strRoutingdirection]"
                       name="strRoutingdirection" />
                     <outputColumn
@@ -3962,7 +3969,7 @@ WHERE NULLIF(steEligiblityEndDate, '') IS NULL;</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Transportation].[StudentTransportationEligibility]) [refTable]
-where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? and [refTable].[steEligibility] = ? and [refTable].[steId] = ?</property>
+where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? and [refTable].[steId] = ? and [refTable].[steEligibility] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -3998,7 +4005,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[StudentNo]};#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Sch]};#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steEligibility]};#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steId]};</property>
+                  name="ParameterMap">#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[StudentNo]};#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[Sch]};#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steId]};#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steEligibility]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4079,7 +4086,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       refId="Package\dftMergeBusRounting\Eligibility Lookup.Inputs[Lookup Input].Columns[steEligibility]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="1"
+                      cachedLength="10"
                       cachedName="steEligibility"
                       cachedSortKeyPosition="3"
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steEligibility]">
@@ -4220,7 +4227,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strSourceId]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Insert St Routing.Inputs[OLE DB Destination Input].Columns[strisCurrent]"
-                      cachedDataType="bool"
+                      cachedDataType="i4"
                       cachedName="strisCurrent"
                       externalMetadataColumnId="Package\dftMergeBusRounting\Insert St Routing.Inputs[OLE DB Destination Input].ExternalColumns[strisCurrent]"
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strisCurrent]" />
@@ -4494,7 +4501,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                   dataType="System.Int32"
                   description="Specifies the type of join to perform."
                   name="JoinType"
-                  typeConverter="JoinType">0</property>
+                  typeConverter="JoinType">2</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the number of columns in the ordering key."
@@ -4521,7 +4528,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       cachedLength="10"
                       cachedName="StudentNo"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[StudentNo]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[StudentNo]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[Sch]"
                       cachedCodepage="1252"
@@ -4529,15 +4536,15 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       cachedLength="10"
                       cachedName="Sch"
                       cachedSortKeyPosition="2"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[Sch]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Sch]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[steEligibility]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="1"
+                      cachedLength="10"
                       cachedName="steEligibility"
                       cachedSortKeyPosition="3"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[steEligibility]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[steEligibility]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[Days]"
                       cachedCodepage="1252"
@@ -4545,7 +4552,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       cachedLength="8000"
                       cachedName="Days"
                       cachedSortKeyPosition="4"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[Days]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Days]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[Trip]"
                       cachedCodepage="1252"
@@ -4553,93 +4560,93 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       cachedLength="8"
                       cachedName="Trip"
                       cachedSortKeyPosition="5"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[Trip]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Trip]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[EffectiveDate]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="EffectiveDate"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[EffectiveDate]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[EffectiveDate]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[InBusID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="5"
                       cachedName="InBusID"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[InBusID]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InBusID]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="InStopDescription"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[InStopDescription]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopDescription]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[InStopTime]"
                       cachedDataType="wstr"
                       cachedLength="16"
                       cachedName="InStopTime"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[InStopTime]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopTime]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[inX]"
                       cachedDataType="r8"
                       cachedName="inX"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inX]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inX]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[inY]"
                       cachedDataType="r8"
                       cachedName="inY"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inY]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inY]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[inLatitude]"
                       cachedDataType="r8"
                       cachedName="inLatitude"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inLatitude]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inLatitude]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[inLongitude]"
                       cachedDataType="r8"
                       cachedName="inLongitude"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inLongitude]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inLongitude]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[OutBusID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="5"
                       cachedName="OutBusID"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[OutBusID]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutBusID]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="OutStopDescription"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[OutStopDescription]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopDescription]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[OutStopTime]"
                       cachedDataType="wstr"
                       cachedLength="16"
                       cachedName="OutStopTime"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[OutStopTime]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopTime]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[outX]"
                       cachedDataType="r8"
                       cachedName="outX"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outX]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outX]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[outY]"
                       cachedDataType="r8"
                       cachedName="outY"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outY]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outY]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[outLatitude]"
                       cachedDataType="r8"
                       cachedName="outLatitude"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outLatitude]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outLatitude]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[outLongitude]"
                       cachedDataType="r8"
                       cachedName="outLongitude"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outLongitude]" />
+                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outLongitude]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4655,7 +4662,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       cachedLength="10"
                       cachedName="steStudentLocalId"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steStudentLocalId]" />
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steStudentLocalId]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[steSchoolLocalId]"
                       cachedCodepage="1252"
@@ -4663,7 +4670,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       cachedLength="10"
                       cachedName="steSchoolLocalId"
                       cachedSortKeyPosition="2"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steSchoolLocalId]" />
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steSchoolLocalId]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[steEligibility]"
                       cachedCodepage="1252"
@@ -4671,15 +4678,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       cachedLength="10"
                       cachedName="steEligibility"
                       cachedSortKeyPosition="3"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steEligibility]" />
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strRoutingdirection]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="strRoutingdirection"
-                      cachedSortKeyPosition="5"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strRoutingdirection]" />
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steEligibility]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strDayOfWeek]"
                       cachedCodepage="1252"
@@ -4687,28 +4686,36 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       cachedLength="15"
                       cachedName="strDayOfWeek"
                       cachedSortKeyPosition="4"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDayOfWeek]" />
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDayOfWeek]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strRoutingdirection]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="strRoutingdirection"
+                      cachedSortKeyPosition="5"
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strRoutingdirection]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[steId]"
                       cachedDataType="i4"
                       cachedName="steId"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steId]" />
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strId]"
-                      cachedDataType="i4"
-                      cachedName="strId"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strId]" />
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steId]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strSourceId]"
                       cachedDataType="wstr"
                       cachedLength="14"
                       cachedName="strSourceId"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strSourceId]" />
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strSourceId]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strisCurrent]"
-                      cachedDataType="bool"
+                      cachedDataType="i4"
                       cachedName="strisCurrent"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strisCurrent]" />
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strisCurrent]" />
+                    <inputColumn
+                      refId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strId]"
+                      cachedDataType="i4"
+                      cachedName="strId"
+                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strId]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4749,22 +4756,6 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[Sch]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steEligibility]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steEligibility]"
-                      name="steEligibility"
-                      sortKeyPosition="3">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[steEligibility]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -5017,19 +5008,6 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strId]"
-                      dataType="i4"
-                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strId]"
-                      name="strId">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strId]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strSourceId]"
                       dataType="wstr"
                       length="14"
@@ -5045,7 +5023,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                     </outputColumn>
                     <outputColumn
                       refId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strisCurrent]"
-                      dataType="bool"
+                      dataType="i4"
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strisCurrent]"
                       name="strisCurrent">
                       <properties>
@@ -5054,6 +5032,35 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strisCurrent]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strId]"
+                      dataType="i4"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strId]"
+                      name="strId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input].Columns[strId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steEligibility]"
+                      name="steEligibility"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input].Columns[steEligibility]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -5112,7 +5119,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT StudentNo,
        VersatransDataLive.Sch,
-       CASE ProgID
+    CONVERT(CHAR(10),CAST(CASE ProgID
            WHEN 10 THEN
                'C'
            WHEN 11 THEN
@@ -5139,7 +5146,7 @@ where [refTable].[steStudentLocalId] = ? and [refTable].[steSchoolLocalId] = ? a
                'T'
            WHEN 51 THEN
                'O'
-       END steEligibility,
+       END AS VARCHAR(8))) steEligibility,
        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(Days, 'M', 'Mo'), 'T', 'Tu'), 'W', 'We'), 'H', 'Th'), 'F', 'Fr') Days,
        CAST(EffectiveDate AS DATE) EffectiveDate,
        CASE
@@ -5234,7 +5241,8 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                          JOIN ASPENDB.x2data.dbo.SCHOOL
                              ON SKL_OID = STD_SKL_OID
                      WHERE STD_ENROLLMENT_STATUS IN ( 'Active', 'Registered' )
-                 );</property>
+                 )
+				 ORDER BY StudentNo,sch,steEligibility,Days,Trip</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -5268,6 +5276,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
               <outputs>
                 <output
                   refId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output]"
+                  isSorted="true"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
@@ -5280,6 +5289,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                       length="10"
                       lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[StudentNo]"
                       name="StudentNo"
+                      sortKeyPosition="1"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Sch]"
@@ -5291,6 +5301,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                       length="10"
                       lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Sch]"
                       name="Sch"
+                      sortKeyPosition="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[steEligibility]"
@@ -5299,9 +5310,10 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[steEligibility]"
-                      length="1"
+                      length="10"
                       lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[steEligibility]"
                       name="steEligibility"
+                      sortKeyPosition="3"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Days]"
@@ -5313,6 +5325,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                       length="8000"
                       lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Days]"
                       name="Days"
+                      sortKeyPosition="4"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[EffectiveDate]"
@@ -5334,6 +5347,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                       length="8"
                       lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Trip]"
                       name="Trip"
+                      sortKeyPosition="5"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InBusID]"
@@ -5490,7 +5504,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                       refId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[steEligibility]"
                       codePage="1252"
                       dataType="str"
-                      length="1"
+                      length="10"
                       name="steEligibility" />
                     <externalMetadataColumn
                       refId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[Days]"
@@ -5600,7 +5614,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                       refId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[steEligibility]"
                       codePage="1252"
                       dataType="str"
-                      length="1"
+                      length="10"
                       lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[steEligibility]"
                       name="steEligibility" />
                     <outputColumn
@@ -6226,7 +6240,7 @@ where [refTable].[strSteId] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[steId]};</property>
+                  name="ParameterMap">#{Package\dftMergeBusRounting\1028:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -6330,1454 +6344,6 @@ where [refTable].[strSteId] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\dftMergeBusRounting\s VersatransDatalive"
-              componentClassID="Microsoft.Sort"
-              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
-              name="s VersatransDatalive"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
-                  name="EliminateDuplicates">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the maximum number of threads to use for sorting."
-                  expressionType="Notify"
-                  name="MaximumThreads">-1</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input]"
-                  name="Sort Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[StudentNo]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="StudentNo"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[StudentNo]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">1</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[Sch]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="Sch"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Sch]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">2</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[steEligibility]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="steEligibility"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[steEligibility]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">3</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[Days]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8000"
-                      cachedName="Days"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Days]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">4</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[EffectiveDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="EffectiveDate"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[EffectiveDate]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[Trip]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8"
-                      cachedName="Trip"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Trip]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">5</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[InBusID]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="5"
-                      cachedName="InBusID"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InBusID]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[InStopDescription]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="InStopDescription"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopDescription]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[InStopTime]"
-                      cachedDataType="wstr"
-                      cachedLength="16"
-                      cachedName="InStopTime"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopTime]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[inX]"
-                      cachedDataType="r8"
-                      cachedName="inX"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inX]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[inY]"
-                      cachedDataType="r8"
-                      cachedName="inY"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inY]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[inLatitude]"
-                      cachedDataType="r8"
-                      cachedName="inLatitude"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inLatitude]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[inLongitude]"
-                      cachedDataType="r8"
-                      cachedName="inLongitude"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inLongitude]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[OutBusID]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="5"
-                      cachedName="OutBusID"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutBusID]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[OutStopDescription]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OutStopDescription"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopDescription]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[OutStopTime]"
-                      cachedDataType="wstr"
-                      cachedLength="16"
-                      cachedName="OutStopTime"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopTime]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[outX]"
-                      cachedDataType="r8"
-                      cachedName="outX"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outX]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[outY]"
-                      cachedDataType="r8"
-                      cachedName="outY"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outY]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[outLatitude]"
-                      cachedDataType="r8"
-                      cachedName="outLatitude"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outLatitude]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input].Columns[outLongitude]"
-                      cachedDataType="r8"
-                      cachedName="outLongitude"
-                      lineageId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outLongitude]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output]"
-                  isSorted="true"
-                  name="Sort Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[StudentNo]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[StudentNo]"
-                      name="StudentNo"
-                      sortKeyPosition="1">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[StudentNo]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[Sch]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[Sch]"
-                      name="Sch"
-                      sortKeyPosition="2">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Sch]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[steEligibility]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[steEligibility]"
-                      name="steEligibility"
-                      sortKeyPosition="3">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[steEligibility]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[Days]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8000"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[Days]"
-                      name="Days"
-                      sortKeyPosition="4">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Days]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[EffectiveDate]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[EffectiveDate]"
-                      name="EffectiveDate">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[EffectiveDate]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[Trip]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[Trip]"
-                      name="Trip"
-                      sortKeyPosition="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[Trip]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[InBusID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="5"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[InBusID]"
-                      name="InBusID">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InBusID]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[InStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[InStopDescription]"
-                      name="InStopDescription">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopDescription]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[InStopTime]"
-                      dataType="wstr"
-                      length="16"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[InStopTime]"
-                      name="InStopTime">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopTime]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inX]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inX]"
-                      name="inX">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inX]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inY]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inY]"
-                      name="inY">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inY]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inLatitude]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inLatitude]"
-                      name="inLatitude">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inLatitude]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inLongitude]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[inLongitude]"
-                      name="inLongitude">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[inLongitude]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[OutBusID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="5"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[OutBusID]"
-                      name="OutBusID">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutBusID]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[OutStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[OutStopDescription]"
-                      name="OutStopDescription">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopDescription]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[OutStopTime]"
-                      dataType="wstr"
-                      length="16"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[OutStopTime]"
-                      name="OutStopTime">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopTime]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outX]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outX]"
-                      name="outX">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outX]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outY]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outY]"
-                      name="outY">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outY]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outLatitude]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outLatitude]"
-                      name="outLatitude">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outLatitude]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outLongitude]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output].Columns[outLongitude]"
-                      name="outLongitude">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[outLongitude]}</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\dftMergeBusRounting\Sort"
-              componentClassID="Microsoft.Sort"
-              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
-              name="Sort"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
-                  name="EliminateDuplicates">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the maximum number of threads to use for sorting."
-                  expressionType="Notify"
-                  name="MaximumThreads">-1</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input]"
-                  name="Sort Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[steStudentLocalId]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="steStudentLocalId"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steStudentLocalId]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">1</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[steSchoolLocalId]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="steSchoolLocalId"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steSchoolLocalId]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">2</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[steEligibility]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="steEligibility"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steEligibility]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">3</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strSourceId]"
-                      cachedDataType="wstr"
-                      cachedLength="14"
-                      cachedName="strSourceId"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strSourceId]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strisCurrent]"
-                      cachedDataType="bool"
-                      cachedName="strisCurrent"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strisCurrent]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strDayOfWeek]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="15"
-                      cachedName="strDayOfWeek"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDayOfWeek]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">4</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strEffectiveDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="strEffectiveDate"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strEffectiveDate]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strRoutingdirection]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="strRoutingdirection"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strRoutingdirection]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">5</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strOriginPointVehicleNumber]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="strOriginPointVehicleNumber"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginPointVehicleNumber]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strOriginPointBusStopDescription]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="strOriginPointBusStopDescription"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginPointBusStopDescription]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strOriginPointArrivalTime]"
-                      cachedDataType="wstr"
-                      cachedLength="16"
-                      cachedName="strOriginPointArrivalTime"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginPointArrivalTime]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strOriginCartesianXCoordinate]"
-                      cachedDataType="r8"
-                      cachedName="strOriginCartesianXCoordinate"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginCartesianXCoordinate]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strOriginCartesianYCoordinate]"
-                      cachedDataType="r8"
-                      cachedName="strOriginCartesianYCoordinate"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginCartesianYCoordinate]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strOriginLatitude]"
-                      cachedDataType="r8"
-                      cachedName="strOriginLatitude"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginLatitude]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strOriginLongitude]"
-                      cachedDataType="r8"
-                      cachedName="strOriginLongitude"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginLongitude]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strDestinationPointVehicleNumber]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="strDestinationPointVehicleNumber"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationPointVehicleNumber]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strDestinationPointBusStopDescription]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="strDestinationPointBusStopDescription"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationPointBusStopDescription]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strDestinationPointArrivalTime]"
-                      cachedDataType="wstr"
-                      cachedLength="16"
-                      cachedName="strDestinationPointArrivalTime"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationPointArrivalTime]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strDestinationCartesianXCoordinate]"
-                      cachedDataType="r8"
-                      cachedName="strDestinationCartesianXCoordinate"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationCartesianXCoordinate]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strDestinationCartesianYCoordinate]"
-                      cachedDataType="r8"
-                      cachedName="strDestinationCartesianYCoordinate"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationCartesianYCoordinate]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strDestinationLatitude]"
-                      cachedDataType="r8"
-                      cachedName="strDestinationLatitude"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationLatitude]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strDestinationLongitude]"
-                      cachedDataType="r8"
-                      cachedName="strDestinationLongitude"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationLongitude]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[steId]"
-                      cachedDataType="i4"
-                      cachedName="steId"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steId]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input].Columns[strId]"
-                      cachedDataType="i4"
-                      cachedName="strId"
-                      lineageId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strId]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output]"
-                  isSorted="true"
-                  name="Sort Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steStudentLocalId]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steStudentLocalId]"
-                      name="steStudentLocalId"
-                      sortKeyPosition="1">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steStudentLocalId]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steSchoolLocalId]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steSchoolLocalId]"
-                      name="steSchoolLocalId"
-                      sortKeyPosition="2">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steSchoolLocalId]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steEligibility]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steEligibility]"
-                      name="steEligibility"
-                      sortKeyPosition="3">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steEligibility]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strSourceId]"
-                      dataType="wstr"
-                      length="14"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strSourceId]"
-                      name="strSourceId">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strSourceId]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strisCurrent]"
-                      dataType="bool"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strisCurrent]"
-                      name="strisCurrent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strisCurrent]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDayOfWeek]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDayOfWeek]"
-                      name="strDayOfWeek"
-                      sortKeyPosition="4">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDayOfWeek]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strEffectiveDate]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strEffectiveDate]"
-                      name="strEffectiveDate">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strEffectiveDate]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strRoutingdirection]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strRoutingdirection]"
-                      name="strRoutingdirection"
-                      sortKeyPosition="5">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strRoutingdirection]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginPointVehicleNumber]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginPointVehicleNumber]"
-                      name="strOriginPointVehicleNumber">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginPointVehicleNumber]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginPointBusStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginPointBusStopDescription]"
-                      name="strOriginPointBusStopDescription">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginPointBusStopDescription]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginPointArrivalTime]"
-                      dataType="wstr"
-                      length="16"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginPointArrivalTime]"
-                      name="strOriginPointArrivalTime">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginPointArrivalTime]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginCartesianXCoordinate]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginCartesianXCoordinate]"
-                      name="strOriginCartesianXCoordinate">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginCartesianXCoordinate]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginCartesianYCoordinate]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginCartesianYCoordinate]"
-                      name="strOriginCartesianYCoordinate">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginCartesianYCoordinate]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginLatitude]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginLatitude]"
-                      name="strOriginLatitude">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginLatitude]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginLongitude]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strOriginLongitude]"
-                      name="strOriginLongitude">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strOriginLongitude]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationPointVehicleNumber]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationPointVehicleNumber]"
-                      name="strDestinationPointVehicleNumber">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationPointVehicleNumber]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationPointBusStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationPointBusStopDescription]"
-                      name="strDestinationPointBusStopDescription">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationPointBusStopDescription]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationPointArrivalTime]"
-                      dataType="wstr"
-                      length="16"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationPointArrivalTime]"
-                      name="strDestinationPointArrivalTime">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationPointArrivalTime]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationCartesianXCoordinate]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationCartesianXCoordinate]"
-                      name="strDestinationCartesianXCoordinate">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationCartesianXCoordinate]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationCartesianYCoordinate]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationCartesianYCoordinate]"
-                      name="strDestinationCartesianYCoordinate">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationCartesianYCoordinate]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationLatitude]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationLatitude]"
-                      name="strDestinationLatitude">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationLatitude]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationLongitude]"
-                      dataType="r8"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strDestinationLongitude]"
-                      name="strDestinationLongitude">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strDestinationLongitude]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steId]"
-                      dataType="i4"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[steId]"
-                      name="steId">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[steId]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strId]"
-                      dataType="i4"
-                      lineageId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output].Columns[strId]"
-                      name="strId">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output].Columns[strId]}</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\dftMergeBusRounting\Update St Routing"
               componentClassID="Microsoft.OLEDBCommand"
               contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
@@ -7832,7 +6398,7 @@ where [refTable].[strSteId] = ?</property>
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strSourceId]" />
                     <inputColumn
                       refId="Package\dftMergeBusRounting\Update St Routing.Inputs[OLE DB Command Input].Columns[strisCurrent]"
-                      cachedDataType="bool"
+                      cachedDataType="i4"
                       cachedName="strisCurrent"
                       externalMetadataColumnId="Package\dftMergeBusRounting\Update St Routing.Inputs[OLE DB Command Input].ExternalColumns[@strisCurrent]"
                       lineageId="Package\dftMergeBusRounting\Merge Join.Outputs[Merge Join Output].Columns[strisCurrent]" />
@@ -8276,24 +6842,14 @@ where [refTable].[strSteId] = ?</property>
               startId="Package\dftMergeBusRounting\Conditional Split.Outputs[New Rows]" />
             <path
               refId="Package\dftMergeBusRounting.Paths[OLE DB Source Output]"
-              endId="Package\dftMergeBusRounting\s VersatransDatalive.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\dftMergeBusRounting.Paths[OLE DB Source Output1]"
-              endId="Package\dftMergeBusRounting\Sort.Inputs[Sort Input]"
+              endId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input]"
               name="OLE DB Source Output"
               startId="Package\dftMergeBusRounting\Eligibility.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\dftMergeBusRounting.Paths[Sort Output]"
+              refId="Package\dftMergeBusRounting.Paths[OLE DB Source Output1]"
               endId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\dftMergeBusRounting\s VersatransDatalive.Outputs[Sort Output]" />
-            <path
-              refId="Package\dftMergeBusRounting.Paths[Sort Output1]"
-              endId="Package\dftMergeBusRounting\Merge Join.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\dftMergeBusRounting\Sort.Outputs[Sort Output]" />
+              name="OLE DB Source Output"
+              startId="Package\dftMergeBusRounting\ODS VesaTransDataLive.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -8690,260 +7246,86 @@ where [refTable].[strSteId] = ?</property>
           Id="Package\dftMergeBusRounting\ODS VesaTransDataLive"
           TopLeft="28,6" />
         <NodeLayout
-          Size="175,42"
-          Id="Package\dftMergeBusRounting\s VersatransDatalive"
-          TopLeft="39.5,77" />
-        <NodeLayout
-          Size="98,42"
-          Id="Package\dftMergeBusRounting\Sort"
-          TopLeft="321,67" />
-        <NodeLayout
-          Size="120,42"
-          Id="Package\dftMergeBusRounting\Eligibility"
-          TopLeft="283,1" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\dftMergeBusRounting\Merge Join"
-          TopLeft="181,146" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[OLE DB Source Output]"
-          TopLeft="125.5,48">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29"
-              Start="0,0"
-              End="0,21.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[OLE DB Source Output1]"
-          TopLeft="343,43">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="27,24"
-              Start="0,0"
-              End="27,16.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,8" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,8"
-                    Point2="0,12"
-                    Point3="4,12" />
-                  <mssgle:LineSegment
-                    End="23,12" />
-                  <mssgle:CubicBezierSegment
-                    Point1="23,12"
-                    Point2="27,12"
-                    Point3="27,16" />
-                  <mssgle:LineSegment
-                    End="27,16.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Sort Output]"
-          TopLeft="127,119">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="98.6666666666667,27"
-              Start="0,0"
-              End="98.6666666666667,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.0030395136778" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.0030395136778"
-                    Point2="0,16.0030395136778"
-                    Point3="4,16.0030395136778" />
-                  <mssgle:LineSegment
-                    End="94.6666666666667,16.0030395136778" />
-                  <mssgle:CubicBezierSegment
-                    Point1="94.6666666666667,16.0030395136778"
-                    Point2="98.6666666666667,16.0030395136778"
-                    Point3="98.6666666666667,20.0030395136778" />
-                  <mssgle:LineSegment
-                    End="98.6666666666667,19.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Sort Output1]"
-          TopLeft="370,109">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-103.666666666667,37"
-              Start="0,0"
-              End="-103.666666666667,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.9300911854103" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.9300911854103"
-                    Point2="0,21.9300911854103"
-                    Point3="-4,21.9300911854103" />
-                  <mssgle:LineSegment
-                    End="-99.6666666666667,21.9300911854103" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-99.6666666666667,21.9300911854103"
-                    Point2="-103.666666666667,21.9300911854103"
-                    Point3="-103.666666666667,25.9300911854103" />
-                  <mssgle:LineSegment
-                    End="-103.666666666667,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
           Size="155,42"
           Id="Package\dftMergeBusRounting\Conditional Split"
-          TopLeft="189,215" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Merge Join Output]"
-          TopLeft="246,188">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="20.5,27"
-              Start="0,0"
-              End="20.5,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,9.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.5"
-                    Point2="0,13.5"
-                    Point3="4,13.5" />
-                  <mssgle:LineSegment
-                    End="16.5,13.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16.5,13.5"
-                    Point2="20.5,13.5"
-                    Point3="20.5,17.5" />
-                  <mssgle:LineSegment
-                    End="20.5,19.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="171,187" />
         <NodeLayout
           Size="154,42"
           Id="Package\dftMergeBusRounting\Derived Column"
-          TopLeft="303,305" />
+          TopLeft="293,264" />
         <NodeLayout
           Size="158,42"
           Id="Package\dftMergeBusRounting\Eligibility Lookup"
-          TopLeft="111,289" />
+          TopLeft="94,254" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[New Rows]"
-          TopLeft="242,257">
+          TopLeft="224,229">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-52,32"
+              EndConnector="-51,25"
               Start="0,0"
-              End="-52,24.5">
+              End="-51,17.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.99616858237548" />
+                    End="0,6.15325670498084" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,8.99616858237548"
-                    Point2="0,12.9961685823755"
-                    Point3="-4,12.9961685823755" />
+                    Point1="0,6.15325670498084"
+                    Point2="0,10.1532567049808"
+                    Point3="-4,10.1532567049808" />
                   <mssgle:LineSegment
-                    End="-48,12.9961685823755" />
+                    End="-47,10.1532567049808" />
                   <mssgle:CubicBezierSegment
-                    Point1="-48,12.9961685823755"
-                    Point2="-52,12.9961685823755"
-                    Point3="-52,16.9961685823755" />
+                    Point1="-47,10.1532567049808"
+                    Point2="-51,10.1532567049808"
+                    Point3="-51,14.1532567049808" />
                   <mssgle:LineSegment
-                    End="-52,24.5" />
+                    End="-51,17.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-49.537578125,17.9961685823755,47.07515625,9.421875"
+              BoundingBox="-49.037578125,15.1532567049808,47.07515625,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Existing Rows]"
-          TopLeft="291,257">
+          TopLeft="273,229">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="89,48"
+              EndConnector="97,35"
               Start="0,0"
-              End="89,40.5">
+              End="97,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.4942528735632" />
+                    End="0,10.2145593869732" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.4942528735632"
-                    Point2="0,19.4942528735632"
-                    Point3="4,19.4942528735632" />
+                    Point1="0,10.2145593869732"
+                    Point2="0,14.2145593869732"
+                    Point3="4,14.2145593869732" />
                   <mssgle:LineSegment
-                    End="85,19.4942528735632" />
+                    End="93,14.2145593869732" />
                   <mssgle:CubicBezierSegment
-                    Point1="85,19.4942528735632"
-                    Point2="89,19.4942528735632"
-                    Point3="89,23.4942528735632" />
+                    Point1="93,14.2145593869732"
+                    Point2="97,14.2145593869732"
+                    Point3="97,18.2145593869732" />
                   <mssgle:LineSegment
-                    End="89,40.5" />
+                    End="97,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="13.612421875,24.4942528735632,61.77515625,11.384765625"
+              BoundingBox="17.612421875,19.2145593869732,61.77515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8953,30 +7335,30 @@ where [refTable].[strSteId] = ?</property>
           TopLeft="392,382" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Derived Column Output]"
-          TopLeft="380,347">
+          TopLeft="370,306">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95,35"
+              EndConnector="105,76"
               Start="0,0"
-              End="95,27.5">
+              End="105,68.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.5" />
+                    End="0,34" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.5"
-                    Point2="0,17.5"
-                    Point3="4,17.5" />
+                    Point1="0,34"
+                    Point2="0,38"
+                    Point3="4,38" />
                   <mssgle:LineSegment
-                    End="91,17.5" />
+                    End="101,38" />
                   <mssgle:CubicBezierSegment
-                    Point1="91,17.5"
-                    Point2="95,17.5"
-                    Point3="95,21.5" />
+                    Point1="101,38"
+                    Point2="105,38"
+                    Point3="105,42" />
                   <mssgle:LineSegment
-                    End="95,27.5" />
+                    End="105,68.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8988,96 +7370,96 @@ where [refTable].[strSteId] = ?</property>
         <NodeLayout
           Size="153,42"
           Id="Package\dftMergeBusRounting\Routing Lookup"
-          TopLeft="164,368" />
+          TopLeft="168,337" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Lookup No Match Output]"
-          TopLeft="215,331">
+          TopLeft="198,296">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="25.5,37"
+              EndConnector="46.5,41"
               Start="0,0"
-              End="25.5,29.5">
+              End="46.5,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.0225563909774" />
+                    End="0,12.6466165413534" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,11.0225563909774"
-                    Point2="0,15.0225563909774"
-                    Point3="4,15.0225563909774" />
+                    Point1="0,12.6466165413534"
+                    Point2="0,16.6466165413534"
+                    Point3="4,16.6466165413534" />
                   <mssgle:LineSegment
-                    End="21.5,15.0225563909774" />
+                    End="42.5,16.6466165413534" />
                   <mssgle:CubicBezierSegment
-                    Point1="21.5,15.0225563909774"
-                    Point2="25.5,15.0225563909774"
-                    Point3="25.5,19.0225563909774" />
+                    Point1="42.5,16.6466165413534"
+                    Point2="46.5,16.6466165413534"
+                    Point3="46.5,20.6466165413534" />
                   <mssgle:LineSegment
-                    End="25.5,29.5" />
+                    End="46.5,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-43.05638671875,20.0225563909774,111.6127734375,11.609375"
+              BoundingBox="-32.55638671875,21.6466165413534,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
           Size="120,42"
           Id="Package\dftMergeBusRounting\Multicast"
-          TopLeft="8,369" />
+          TopLeft="8,349" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Lookup Match Output]"
-          TopLeft="165,331">
+          TopLeft="148,296">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-97,38"
+              EndConnector="-80,53"
               Start="0,0"
-              End="-97,30.5">
+              End="-80,45.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.4285714285714" />
+                    End="0,17.5187969924812" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,11.4285714285714"
-                    Point2="0,15.4285714285714"
-                    Point3="-4,15.4285714285714" />
+                    Point1="0,17.5187969924812"
+                    Point2="0,21.5187969924812"
+                    Point3="-4,21.5187969924812" />
                   <mssgle:LineSegment
-                    End="-93,15.4285714285714" />
+                    End="-76,21.5187969924812" />
                   <mssgle:CubicBezierSegment
-                    Point1="-93,15.4285714285714"
-                    Point2="-97,15.4285714285714"
-                    Point3="-97,19.4285714285714" />
+                    Point1="-76,21.5187969924812"
+                    Point2="-80,21.5187969924812"
+                    Point3="-80,25.5187969924812" />
                   <mssgle:LineSegment
-                    End="-97,30.5" />
+                    End="-80,45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-96.69138671875,20.4285714285714,96.3827734375,11.609375"
+              BoundingBox="-88.19138671875,26.5187969924812,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
           Size="165,42"
           Id="Package\dftMergeBusRounting\Update St Routing"
-          TopLeft="58,466" />
+          TopLeft="57,435" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Lookup Match Output1]"
-          TopLeft="216.333333333333,410">
+          TopLeft="220.333333333333,379">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-75.8333333333333,56"
+              EndConnector="-80.8333333333333,56"
               Start="0,0"
-              End="-75.8333333333333,48.5">
+              End="-80.8333333333333,48.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -9088,81 +7470,191 @@ where [refTable].[strSteId] = ?</property>
                     Point2="0,22.7477360931436"
                     Point3="-4,22.7477360931436" />
                   <mssgle:LineSegment
-                    End="-71.8333333333333,22.7477360931436" />
+                    End="-76.8333333333333,22.7477360931436" />
                   <mssgle:CubicBezierSegment
-                    Point1="-71.8333333333333,22.7477360931436"
-                    Point2="-75.8333333333333,22.7477360931436"
-                    Point3="-75.8333333333333,26.7477360931436" />
+                    Point1="-76.8333333333333,22.7477360931436"
+                    Point2="-80.8333333333333,22.7477360931436"
+                    Point3="-80.8333333333333,26.7477360931436" />
                   <mssgle:LineSegment
-                    End="-75.8333333333333,48.5" />
+                    End="-80.8333333333333,48.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-86.1080533854167,27.7477360931436,96.3827734375,11.609375"
+              BoundingBox="-88.6080533854167,27.7477360931436,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
           Size="159,42"
           Id="Package\dftMergeBusRounting\Insert St Routing"
-          TopLeft="260,546" />
+          TopLeft="247,495" />
         <NodeLayout
           Size="156,42"
           Id="Package\dftMergeBusRounting\Data Conversion"
-          TopLeft="255,473" />
+          TopLeft="247,427" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Lookup No Match Output1]"
-          TopLeft="264.666666666667,410">
+          TopLeft="268.666666666667,379">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="68.3333333333334,63"
+              EndConnector="56.3333333333334,48"
               Start="0,0"
-              End="68.3333333333334,55.5">
+              End="56.3333333333334,40.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5912031047866" />
+                    End="0,15.4980595084088" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.5912031047866"
-                    Point2="0,25.5912031047866"
-                    Point3="4,25.5912031047866" />
+                    Point1="0,15.4980595084088"
+                    Point2="0,19.4980595084088"
+                    Point3="4,19.4980595084088" />
                   <mssgle:LineSegment
-                    End="64.3333333333334,25.5912031047866" />
+                    End="52.3333333333334,19.4980595084088" />
                   <mssgle:CubicBezierSegment
-                    Point1="64.3333333333334,25.5912031047866"
-                    Point2="68.3333333333334,25.5912031047866"
-                    Point3="68.3333333333334,29.5912031047866" />
+                    Point1="52.3333333333334,19.4980595084088"
+                    Point2="56.3333333333334,19.4980595084088"
+                    Point3="56.3333333333334,23.4980595084088" />
                   <mssgle:LineSegment
-                    End="68.3333333333334,55.5" />
+                    End="56.3333333333334,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-21.6397200520833,30.5912031047866,111.6127734375,11.609375"
+              BoundingBox="-27.6397200520833,24.4980595084088,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Data Conversion Output]"
-          TopLeft="336.25,515">
+          TopLeft="325.75,469">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31"
+              EndConnector="0,26"
               Start="0,0"
-              End="0,23.5">
+              End="0,18.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5" />
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,42"
+          Id="Package\dftMergeBusRounting\Eligibility"
+          TopLeft="267,10" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\dftMergeBusRounting\Merge Join"
+          TopLeft="144,94" />
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Merge Join Output]"
+          TopLeft="209,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.5,51"
+              Start="0,0"
+              End="39.5,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="4,25.5" />
+                  <mssgle:LineSegment
+                    End="35.5,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.5,25.5"
+                    Point2="39.5,25.5"
+                    Point3="39.5,29.5" />
+                  <mssgle:LineSegment
+                    End="39.5,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[OLE DB Source Output]"
+          TopLeft="327,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-97.6666666666667,42"
+              Start="0,0"
+              End="-97.6666666666667,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.8936170212766" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.8936170212766"
+                    Point2="0,24.8936170212766"
+                    Point3="-4,24.8936170212766" />
+                  <mssgle:LineSegment
+                    End="-93.6666666666667,24.8936170212766" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-93.6666666666667,24.8936170212766"
+                    Point2="-97.6666666666667,24.8936170212766"
+                    Point3="-97.6666666666667,28.8936170212766" />
+                  <mssgle:LineSegment
+                    End="-97.6666666666667,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[OLE DB Source Output1]"
+          TopLeft="124,48">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.6666666666667,46"
+              Start="0,0"
+              End="64.6666666666667,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.2644376899696" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.2644376899696"
+                    Point2="0,27.2644376899696"
+                    Point3="4,27.2644376899696" />
+                  <mssgle:LineSegment
+                    End="60.6666666666667,27.2644376899696" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.6666666666667,27.2644376899696"
+                    Point2="64.6666666666667,27.2644376899696"
+                    Point3="64.6666666666667,31.2644376899696" />
+                  <mssgle:LineSegment
+                    End="64.6666666666667,38.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9175,7 +7667,7 @@ where [refTable].[strSteId] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\dftMergeBusRounting\Eligibility">
+    design-time-name="Package\dftMergeBusRounting\ODS VesaTransDataLive">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9238,6 +7730,14 @@ where [refTable].[strSteId] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftMergeBusRounting\Eligibility">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
