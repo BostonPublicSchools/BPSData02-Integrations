@@ -26,19 +26,18 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">084-170705-03</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2QogScSd3EiHAU5wG26b1wAAAAACAAAAAAADZgAAwAAAABAAAACqiebwKxgZmYDUxBAipppwAAAAAASAAACgAAAAEAAAAClaBWxtJFGnV+aL5FDSscyIAAAAdUAU+glH7jeE2AsPBnyFzbUhQR9G3HrFdTuqkal/lbATdj3nAyYAFKRyQ53JmP5ywA4CbX3eD8tKNRPEj9705h8tDtyAqrQPJRUgR0pRkq0tFOmsCRq0QpglPSebKDB0pwP5Y7AEn+jpNdRZOl69/qEKFFuM/V3Qy65xtBucQdeWY7myjYmDehQAAAC9RqcPgcWBq4iavi1Rfw3c7xuZyQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2QogScSd3EiHAU5wG26b1wAAAAACAAAAAAADZgAAwAAAABAAAAA56KgMo0fE02OPcj1+Pf5wAAAAAASAAACgAAAAEAAAAMhzoz91Ej6IG1DqvRKdgfSIAAAA0StYm6i/kk79WY8JBURSBuLbPg+0HWC9cku2wZl3VJ2QMc9JxKw4nI8ia5Kel1LCZRL/TdDGGze0A5p9M5RPWE8YaYAOK4eiZM80M0UdSy5gkUkFjmaOvEhQgi9rODQM18xUHyVGVmya/sdj0BeE5wJRMzKjHizmL6QDSUzf0D1m8MMDDoLYNRQAAADINXQe/p5ohYAH6296plyHSWsyhw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Load Student Transportation Eligibility.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="VersaTransData.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="SyncBusRouting.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="SyncPendingData.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Load Planning Data.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="BPSInterface.BPSIntegration.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="BPSROUTES03.SY_Planning_RP.BPSIntegration.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="BPSROUTES03.SY_Pending_RP.BPSIntegration.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="BPSROUTES03.SY_Live_RP.BPSIntegration.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="SISSQL-01.x2data.BPSIntegration.conmgr" />
         </SSIS:ConnectionManagers>
@@ -192,95 +191,6 @@
               </SSIS:Properties>
             </SSIS:Parameter>
             <SSIS:Parameter SSIS:Name="CM.BPSROUTES03.SY_Planning_RP.BPSIntegration.UserName">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="CreationName">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">BPSIntegration</SSIS:Property>
-                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-              </SSIS:Properties>
-            </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.BPSROUTES03.SY_Pending_RP.BPSIntegration.ConnectionString">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="CreationName">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=BPSROUTES03;User ID=BPSIntegration;Initial Catalog=SY_Pending_RP;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;</SSIS:Property>
-                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-              </SSIS:Properties>
-            </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.BPSROUTES03.SY_Pending_RP.BPSIntegration.InitialCatalog">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="CreationName">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">SY_Pending_RP</SSIS:Property>
-                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-              </SSIS:Properties>
-            </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.BPSROUTES03.SY_Pending_RP.BPSIntegration.Password">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="CreationName">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-              </SSIS:Properties>
-            </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.BPSROUTES03.SY_Pending_RP.BPSIntegration.RetainSameConnection">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="CreationName">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
-                <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-              </SSIS:Properties>
-            </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.BPSROUTES03.SY_Pending_RP.BPSIntegration.ServerName">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="CreationName">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">BPSROUTES03</SSIS:Property>
-                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-              </SSIS:Properties>
-            </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.BPSROUTES03.SY_Pending_RP.BPSIntegration.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -768,10 +678,10 @@
                 <SSIS:Property SSIS:Name="Name">SyncBusRouting</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">63</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">88</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{08498C6C-4AF2-42F9-B2BD-3454690BE7E9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{005DEF91-EFA6-4117-B2BD-0D62A56F7C9E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -779,16 +689,16 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="SyncPendingData.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="Load Planning Data.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B458ED55-A9A3-4D3E-B9D2-B99454FF2376}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">SyncPendingData</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{96F6EFED-D7FC-418A-A302-AE8930974D67}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Load Planning Data</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{950676D6-2C4A-4E2D-8B32-BD70EBB56D61}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F2CF7A25-0ED3-4ABE-A9C7-1CE16F0E2739}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
