@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadPendingData"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{18787799-3182-4D5C-A6FA-49AEA91EAE38}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{0289553A-38B5-4D1A-9E0A-4EDC62355B34}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -57,7 +57,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT steId,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  steId,
        steStudentLocalId ,
        steSchoolLocalId ,
       steEligibility,
@@ -85,6 +85,8 @@ FROM Transportation.StudentTransportationEligibility
     left JOIN Transportation.StudentTransportationRouting
         ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId
 -- WHERE NULLIF(steEligiblityEndDate, '') IS NULL;
+WHERE steAcademicYearDesignator =CASE WHEN MONTH(GETDATE()) &gt;= 1 AND MONTH(GETDATE()) &lt; 6 then CONCAT(YEAR(GETDATE())-1,'-', (YEAR(GETDATE())-1)+1)
+                                 ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END 
 				 ORDER BY steStudentLocalId,steSchoolLocalId,steEligibility,strDayOfWeek,strRoutingdirection</property>
                 <property
                   dataType="System.String"
@@ -6716,7 +6718,7 @@ where [refTable].[strSteId] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6726,7 +6728,7 @@ where [refTable].[strSteId] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6739,7 +6741,7 @@ where [refTable].[strSteId] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6749,7 +6751,7 @@ where [refTable].[strSteId] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

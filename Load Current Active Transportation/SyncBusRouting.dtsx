@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="100"
-  DTS:VersionGUID="{D42C2C49-C30A-4738-8631-FCA28B770962}">
+  DTS:VersionBuild="101"
+  DTS:VersionGUID="{4F01A26D-8565-4409-9C23-4270875AE410}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3206,7 +3206,8 @@ where [refTable].[strSteId] = ?</property>
 FROM Transportation.StudentTransportationEligibility
     left JOIN Transportation.StudentTransportationRouting
         ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId
- WHERE NULLIF(steEligiblityEndDate, '') IS NULL
+ WHERE steAcademicYearDesignator =CASE WHEN MONTH(GETDATE()) &gt;= 1 AND MONTH(GETDATE()) &lt; 6 then CONCAT(YEAR(GETDATE())-1,'-', (YEAR(GETDATE())-1)+1)
+                                 ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END 
 
 				 ORDER BY steStudentLocalId,steSchoolLocalId,steEligibility,strDayOfWeek,strRoutingdirection</property>
                 <property
@@ -9239,45 +9240,61 @@ where [refTable].[strSteId] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="192,42"
-          Id="Package\dftMergeBusRounting\ODS VesaTransDataLive"
-          TopLeft="47,6" />
+          Size="159,42"
+          Id="Package\dftMergeBusRounting\Insert St Routing"
+          TopLeft="206.111111111111,418.666666666667" />
         <NodeLayout
-          Size="195,42"
-          Id="Package\dftMergeBusRounting\Existing Rows stircurrent"
-          TopLeft="304,222" />
+          Size="165,42"
+          Id="Package\dftMergeBusRounting\Update ErrorTable"
+          TopLeft="398.333333333333,384.333333333333" />
         <NodeLayout
-          Size="165,46"
-          Id="Package\dftMergeBusRounting\Update St Routing"
-          TopLeft="6.44444444444444,416.888888888889" />
+          Size="162,42"
+          Id="Package\dftMergeBusRounting\Insert Error Table"
+          TopLeft="640,386.666666666667" />
         <NodeLayout
-          Size="129,42"
-          Id="Package\dftMergeBusRounting\Insert Sort"
-          TopLeft="200.555555555556,334.666666666667" />
-        <NodeLayout
-          Size="120,42"
-          Id="Package\dftMergeBusRounting\Eligibility"
-          TopLeft="286,10" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\dftMergeBusRounting\Merge Join"
-          TopLeft="184.333333333333,76" />
-        <NodeLayout
-          Size="153,42"
-          Id="Package\dftMergeBusRounting\Routing Lookup"
-          TopLeft="87.5555555555555,257.111111111111" />
+          Size="154,42"
+          Id="Package\dftMergeBusRounting\Error_Table Lkp"
+          TopLeft="534,276.888888888889" />
         <NodeLayout
           Size="134,42"
           Id="Package\dftMergeBusRounting\Update sort"
           TopLeft="11.6666666666667,324.666666666667" />
         <NodeLayout
+          Size="129,42"
+          Id="Package\dftMergeBusRounting\Insert Sort"
+          TopLeft="200.555555555556,334.666666666667" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\dftMergeBusRounting\Merge Join"
+          TopLeft="184.333333333333,76" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\dftMergeBusRounting\Existing Rows stircurrent"
+          TopLeft="304,222" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\dftMergeBusRounting\New Rows StirCurrent"
+          TopLeft="36.6666666666667,175.555555555555" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\dftMergeBusRounting\Eligibility"
+          TopLeft="286,10" />
+        <NodeLayout
+          Size="165,46"
+          Id="Package\dftMergeBusRounting\Update St Routing"
+          TopLeft="6.44444444444444,416.888888888889" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\dftMergeBusRounting\Routing Lookup"
+          TopLeft="87.5555555555555,257.111111111111" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\dftMergeBusRounting\ODS VesaTransDataLive"
+          TopLeft="47,6" />
+        <NodeLayout
           Size="155,42"
           Id="Package\dftMergeBusRounting\Conditional Split"
           TopLeft="221.666666666667,129.222222222222" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\dftMergeBusRounting\Insert St Routing"
-          TopLeft="206.111111111111,418.666666666667" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Sort Output1]"
           TopLeft="265.055555555556,376.666666666667">
@@ -9415,6 +9432,36 @@ where [refTable].[strSteId] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[New Rows]"
+          TopLeft="221.666666666667,150.222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-93.9999999999999,25.3333333333333"
+              Start="0,0"
+              End="-93.9999999999999,17.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-89.9999999999999,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-89.9999999999999,0"
+                    Point2="-93.9999999999999,0"
+                    Point3="-93.9999999999999,4" />
+                  <mssgle:LineSegment
+                    End="-93.9999999999999,17.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-117.537578125,-15.421875,47.07515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Merge Join Output]"
           TopLeft="314.333333333333,97">
           <EdgeLayout.Curve>
@@ -9440,6 +9487,42 @@ where [refTable].[strSteId] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Lookup No Match Output1]"
+          TopLeft="635.333333333333,318.888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.6666666666666,67.7777777777778"
+              Start="0,0"
+              End="85.6666666666666,60.2777777777778">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5292773493288" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5292773493288"
+                    Point2="0,27.5292773493288"
+                    Point3="4,27.5292773493288" />
+                  <mssgle:LineSegment
+                    End="81.6666666666666,27.5292773493288" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81.6666666666666,27.5292773493288"
+                    Point2="85.6666666666666,27.5292773493288"
+                    Point3="85.6666666666666,31.5292773493288" />
+                  <mssgle:LineSegment
+                    End="85.6666666666666,60.2777777777778" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-12.9730533854167,32.5292773493288,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9475,6 +9558,42 @@ where [refTable].[strSteId] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-17.3897200520833,19.4430070432657,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Lookup Match Output1]"
+          TopLeft="611,318.888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-130.166666666667,65.4444444444445"
+              Start="0,0"
+              End="-130.166666666667,57.9444444444445">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.7222222222223" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.7222222222223"
+                    Point2="0,32.7222222222223"
+                    Point3="-4,32.7222222222223" />
+                  <mssgle:LineSegment
+                    End="-126.166666666667,32.7222222222223" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-126.166666666667,32.7222222222223"
+                    Point2="-130.166666666667,32.7222222222223"
+                    Point3="-130.166666666667,36.7222222222223" />
+                  <mssgle:LineSegment
+                    End="-130.166666666667,57.9444444444445" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-113.274720052083,37.7222222222223,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -9550,158 +9669,6 @@ where [refTable].[strSteId] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\dftMergeBusRounting\Error_Table Lkp"
-          TopLeft="534,276.888888888889" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Derived Column Output]"
-          TopLeft="499,243">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="35,54.8888888888889"
-              Start="0,0"
-              End="27.5,54.8888888888889">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="13.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="13.5,0"
-                    Point2="17.5,0"
-                    Point3="17.5,4" />
-                  <mssgle:LineSegment
-                    End="17.5,50.8888888888889" />
-                  <mssgle:CubicBezierSegment
-                    Point1="17.5,50.8888888888889"
-                    Point2="17.5,54.8888888888889"
-                    Point3="21.5,54.8888888888889" />
-                  <mssgle:LineSegment
-                    End="27.5,54.8888888888889" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\dftMergeBusRounting\Update ErrorTable"
-          TopLeft="398.333333333333,384.333333333333" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Lookup Match Output1]"
-          TopLeft="611,318.888888888889">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-130.166666666667,65.4444444444445"
-              Start="0,0"
-              End="-130.166666666667,57.9444444444445">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.7222222222223" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28.7222222222223"
-                    Point2="0,32.7222222222223"
-                    Point3="-4,32.7222222222223" />
-                  <mssgle:LineSegment
-                    End="-126.166666666667,32.7222222222223" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-126.166666666667,32.7222222222223"
-                    Point2="-130.166666666667,32.7222222222223"
-                    Point3="-130.166666666667,36.7222222222223" />
-                  <mssgle:LineSegment
-                    End="-130.166666666667,57.9444444444445" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-113.274720052083,37.7222222222223,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="162,42"
-          Id="Package\dftMergeBusRounting\Insert Error Table"
-          TopLeft="640,386.666666666667" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Lookup No Match Output1]"
-          TopLeft="635.333333333333,318.888888888889">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="85.6666666666666,67.7777777777778"
-              Start="0,0"
-              End="85.6666666666666,60.2777777777778">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5292773493288" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.5292773493288"
-                    Point2="0,27.5292773493288"
-                    Point3="4,27.5292773493288" />
-                  <mssgle:LineSegment
-                    End="81.6666666666666,27.5292773493288" />
-                  <mssgle:CubicBezierSegment
-                    Point1="81.6666666666666,27.5292773493288"
-                    Point2="85.6666666666666,27.5292773493288"
-                    Point3="85.6666666666666,31.5292773493288" />
-                  <mssgle:LineSegment
-                    End="85.6666666666666,60.2777777777778" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-12.9730533854167,32.5292773493288,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="182,42"
-          Id="Package\dftMergeBusRounting\New Rows StirCurrent"
-          TopLeft="36.6666666666667,175.555555555555" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[New Rows]"
-          TopLeft="221.666666666667,150.222222222222">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-93.9999999999999,25.3333333333333"
-              Start="0,0"
-              End="-93.9999999999999,17.8333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-89.9999999999999,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-89.9999999999999,0"
-                    Point2="-93.9999999999999,0"
-                    Point3="-93.9999999999999,4" />
-                  <mssgle:LineSegment
-                    End="-93.9999999999999,17.8333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-117.537578125,-15.421875,47.07515625,9.421875"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Derived Column Output1]"
           TopLeft="127.666666666667,217.555555555555">
@@ -9736,12 +9703,87 @@ where [refTable].[strSteId] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Derived Column Output]"
+          TopLeft="499,243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35,54.8888888888889"
+              Start="0,0"
+              End="27.5,54.8888888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="13.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.5,0"
+                    Point2="17.5,0"
+                    Point3="17.5,4" />
+                  <mssgle:LineSegment
+                    End="17.5,50.8888888888889" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.5,50.8888888888889"
+                    Point2="17.5,54.8888888888889"
+                    Point3="21.5,54.8888888888889" />
+                  <mssgle:LineSegment
+                    End="27.5,54.8888888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\dftMergeBusRounting\ODS VesaTransDataLive">
+    design-time-name="Package\dftMergeBusRounting\Insert St Routing">
     <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftMergeBusRounting\Insert Error Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftMergeBusRounting\Error_Table Lkp">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Transportation].[Error_StudentTransportationRouting]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -9761,7 +9803,7 @@ where [refTable].[strSteId] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -9771,7 +9813,7 @@ where [refTable].[strSteId] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9779,51 +9821,10 @@ where [refTable].[strSteId] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\dftMergeBusRounting\Insert St Routing">
+    design-time-name="Package\dftMergeBusRounting\ODS VesaTransDataLive">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftMergeBusRounting\Error_Table Lkp">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Transportation].[Error_StudentTransportationRouting]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftMergeBusRounting\Insert Error Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
