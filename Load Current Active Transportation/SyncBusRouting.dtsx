@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="101"
-  DTS:VersionGUID="{4F01A26D-8565-4409-9C23-4270875AE410}">
+  DTS:VersionBuild="104"
+  DTS:VersionGUID="{8FC1720F-74FA-4DFD-B6EC-E4016D5CE7DB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5575,7 +5575,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   dataType="System.Int32"
                   description="Specifies the type of join to perform."
                   name="JoinType"
-                  typeConverter="JoinType">2</property>
+                  typeConverter="JoinType">1</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the number of columns in the ordering key."
@@ -6313,7 +6313,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
            WHEN InTrip IS NOT NULL THEN
                CAST(StopTime AS TIME)
            ELSE
-               NULL
+               VersatransDataLive.vdldropofftime
        END InStopTime,
        CASE
            WHEN InTrip IS NOT NULL THEN
@@ -6350,7 +6350,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
            WHEN OutTrip IS NOT NULL THEN
                CAST(StopTime AS TIME)
            ELSE
-               NULL
+               VersatransDataLive.vdldropofftime
        END OutStopTime,
        CASE
            WHEN OutTrip IS NOT NULL THEN
@@ -8924,7 +8924,9 @@ where [refTable].[strSteId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9174,7 +9176,9 @@ where [refTable].[strSteId] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9665,7 +9669,7 @@ where [refTable].[strSteId] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="8.02908854166668,25.62239250745,61.77515625,11.384765625"
+              BoundingBox="8.0290885416667,25.62239250745,61.77515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -9803,7 +9807,7 @@ where [refTable].[strSteId] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
