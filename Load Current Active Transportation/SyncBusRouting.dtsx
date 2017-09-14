@@ -11,10 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="104"
-  DTS:VersionGUID="{8FC1720F-74FA-4DFD-B6EC-E4016D5CE7DB}">
+  DTS:VersionBuild="109"
+  DTS:VersionGUID="{2FB5C03A-48F6-4040-B603-44BE64FFF326}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{7851F3D4-CB5B-44C3-9330-3CABD14C7073}"
+      DTS:ObjectName="ParameterServerName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">TESTDATA-03</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -9807,7 +9818,7 @@ where [refTable].[strSteId] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
