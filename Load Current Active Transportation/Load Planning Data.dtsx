@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Planning Data"
   DTS:PackageType="5"
-  DTS:VersionBuild="138"
-  DTS:VersionGUID="{E264D5CA-344F-410F-956A-F12194727EE1}">
+  DTS:VersionBuild="143"
+  DTS:VersionGUID="{7D59708B-263C-419B-A952-3DC05AB52F9A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -7426,7 +7426,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="strSourceData"
-                      cachedSortKeyPosition="19"
+                      cachedSortKeyPosition="20"
                       lineageId="Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[strSourceData]" />
                   </inputColumns>
                   <externalMetadataColumns />
@@ -7586,7 +7586,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="strSourceData"
-                      cachedSortKeyPosition="19"
+                      cachedSortKeyPosition="20"
                       externalMetadataColumnId="Package\LoadPlanningData 1\Error table Insert.Inputs[OLE DB Destination Input].ExternalColumns[strSourceData]"
                       lineageId="Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[strSourceData]" />
                     <inputColumn
@@ -8957,7 +8957,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="strSourceData"
-                      cachedSortKeyPosition="19"
+                      cachedSortKeyPosition="20"
                       lineageId="Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[strSourceData]">
                       <properties>
                         <property
@@ -9008,7 +9008,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData 1\Insert Sort.Inputs[Sort Input].Columns[strId]"
                       cachedDataType="i4"
                       cachedName="strId"
-                      cachedSortKeyPosition="20"
+                      cachedSortKeyPosition="19"
                       lineageId="Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[strId]">
                       <properties>
                         <property
@@ -9737,7 +9737,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
        strDestinationLongitude
 FROM Transportation.StudentTransportationEligibility
     left JOIN Transportation.StudentTransportationRouting
-        ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId 
+        ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId  AND ISNULL(StudentTransportationRouting.strSourceData,'Planning')='Planning'
  WHERE steAcademicYearDesignator =CASE WHEN MONTH(GETDATE()) &gt;= 1 AND MONTH(GETDATE()) &lt; 6 then CONCAT(YEAR(GETDATE())-1,'-', (YEAR(GETDATE())-1)+1)
                                  ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END 
 								 AND StudentTransportationEligibility.steisCurrent=1)b
@@ -11082,7 +11082,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                         <property
                           dataType="System.Int32"
                           description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">20</property>
+                          name="NewSortKeyPosition">19</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -11134,7 +11134,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                         <property
                           dataType="System.Int32"
                           description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">19</property>
+                          name="NewSortKeyPosition">20</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -11599,7 +11599,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       dataType="i4"
                       lineageId="Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[strId]"
                       name="strId"
-                      sortKeyPosition="20">
+                      sortKeyPosition="19">
                       <properties>
                         <property
                           containsID="true"
@@ -11643,7 +11643,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="10"
                       lineageId="Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[strSourceData]"
                       name="strSourceData"
-                      sortKeyPosition="19">
+                      sortKeyPosition="20">
                       <properties>
                         <property
                           containsID="true"
@@ -13348,7 +13348,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       refId="Package\LoadPlanningData 1\Update sort.Inputs[Sort Input].Columns[strId]"
                       cachedDataType="i4"
                       cachedName="strId"
-                      cachedSortKeyPosition="20"
+                      cachedSortKeyPosition="19"
                       lineageId="Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[strId]">
                       <properties>
                         <property
@@ -14991,7 +14991,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

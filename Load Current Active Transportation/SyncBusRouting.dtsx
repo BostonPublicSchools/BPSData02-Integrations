@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="148"
-  DTS:VersionGUID="{AA7A24FC-1DF6-4526-BEB1-63799A98D360}">
+  DTS:VersionBuild="152"
+  DTS:VersionGUID="{FB2423FD-6F92-4F8A-BF94-CEEBD33ED173}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -9677,7 +9677,6 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="strSourceData"
-                      cachedSortKeyPosition="22"
                       externalMetadataColumnId="Package\dftMergeBusRounting 1\Insert Error Table.Inputs[OLE DB Destination Input].ExternalColumns[strSourceData]"
                       lineageId="Package\dftMergeBusRounting 1\Remove Duplicate Records.Outputs[Sort Output].Columns[strSourceData]" />
                     <inputColumn
@@ -10249,7 +10248,6 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\dftMergeBusRounting 1\Insert Sort.Inputs[Sort Input].Columns[strId]"
                       cachedDataType="i4"
                       cachedName="strId"
-                      cachedSortKeyPosition="23"
                       lineageId="Package\dftMergeBusRounting 1\Remove Duplicate Records.Outputs[Sort Output].Columns[strId]">
                       <properties>
                         <property
@@ -10302,7 +10300,6 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="strSourceData"
-                      cachedSortKeyPosition="22"
                       lineageId="Package\dftMergeBusRounting 1\Remove Duplicate Records.Outputs[Sort Output].Columns[strSourceData]">
                       <properties>
                         <property
@@ -11335,7 +11332,7 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
        strDestinationLongitude
 FROM Transportation.StudentTransportationEligibility
     left JOIN Transportation.StudentTransportationRouting
-        ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId
+        ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId AND ISNULL(StudentTransportationRouting.strSourceData,'Live')='Live'
  WHERE steAcademicYearDesignator =CASE WHEN MONTH(GETDATE()) &gt;= 1 AND MONTH(GETDATE()) &lt; 6 then CONCAT(YEAR(GETDATE())-1,'-', (YEAR(GETDATE())-1)+1)
                                  ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END 
 AND StudentTransportationEligibility.steisCurrent=1)b
@@ -12680,7 +12677,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                         <property
                           dataType="System.Int32"
                           description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">23</property>
+                          name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -12732,7 +12729,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                         <property
                           dataType="System.Int32"
                           description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">22</property>
+                          name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -13199,8 +13196,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       refId="Package\dftMergeBusRounting 1\Remove Duplicate Records.Outputs[Sort Output].Columns[strId]"
                       dataType="i4"
                       lineageId="Package\dftMergeBusRounting 1\Remove Duplicate Records.Outputs[Sort Output].Columns[strId]"
-                      name="strId"
-                      sortKeyPosition="23">
+                      name="strId">
                       <properties>
                         <property
                           containsID="true"
@@ -13243,8 +13239,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       dataType="str"
                       length="10"
                       lineageId="Package\dftMergeBusRounting 1\Remove Duplicate Records.Outputs[Sort Output].Columns[strSourceData]"
-                      name="strSourceData"
-                      sortKeyPosition="22">
+                      name="strSourceData">
                       <properties>
                         <property
                           containsID="true"
@@ -13375,7 +13370,6 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="strSourceData"
-                      cachedSortKeyPosition="22"
                       lineageId="Package\dftMergeBusRounting 1\Remove Duplicate Records.Outputs[Sort Output].Columns[strSourceData]">
                       <properties>
                         <property
@@ -14453,7 +14447,6 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       refId="Package\dftMergeBusRounting 1\Update sort.Inputs[Sort Input].Columns[strId]"
                       cachedDataType="i4"
                       cachedName="strId"
-                      cachedSortKeyPosition="23"
                       lineageId="Package\dftMergeBusRounting 1\Remove Duplicate Records.Outputs[Sort Output].Columns[strId]">
                       <properties>
                         <property
@@ -14506,7 +14499,6 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="strSourceData"
-                      cachedSortKeyPosition="22"
                       lineageId="Package\dftMergeBusRounting 1\Remove Duplicate Records.Outputs[Sort Output].Columns[strSourceData]">
                       <properties>
                         <property
