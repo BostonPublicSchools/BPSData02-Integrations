@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadPendingData"
   DTS:PackageType="5"
-  DTS:VersionBuild="111"
-  DTS:VersionGUID="{16233CFC-CB8D-4021-9804-1E20FE245DC8}">
+  DTS:VersionBuild="114"
+  DTS:VersionGUID="{9F617BCE-AC3F-4D2F-98DA-82A4762087F1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,96 +31,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\LoadPending\Conditional Split"
-              componentClassID="Microsoft.ConditionalSplit"
-              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
-              name="Conditional Split"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\LoadPending\Conditional Split.Inputs[Conditional Split Input]"
-                  description="Input to the Conditional Split Transformation"
-                  name="Conditional Split Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\LoadPending\Conditional Split.Inputs[Conditional Split Input].Columns[steId]"
-                      cachedDataType="i4"
-                      cachedName="steId"
-                      cachedSortKeyPosition="1"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steId]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\LoadPending\Conditional Split.Outputs[New Rows]"
-                  description="Output 1 of the Conditional Split Transformation"
-                  errorOrTruncationOperation="Computation"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="New Rows"
-                  synchronousInputId="Package\LoadPending\Conditional Split.Inputs[Conditional Split Input]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">![ISNULL](#{Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steId]})</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the friendly version of the expression. This expression version uses column names."
-                      expressionType="Notify"
-                      name="FriendlyExpression">!ISNULL(steId)</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
-                      name="EvaluationOrder">0</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\LoadPending\Conditional Split.Outputs[Existing Rows]"
-                  description="Default Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  name="Existing Rows"
-                  synchronousInputId="Package\LoadPending\Conditional Split.Inputs[Conditional Split Input]">
-                  <properties>
-                    <property
-                      dataType="System.Boolean"
-                      name="IsDefaultOut">true</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\LoadPending\Conditional Split.Outputs[Conditional Split Error Output]"
-                  description="Error Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Conditional Split Error Output"
-                  synchronousInputId="Package\LoadPending\Conditional Split.Inputs[Conditional Split Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\LoadPending\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\LoadPending\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\LoadPending\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\LoadPending\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\LoadPending\Data Conversion"
               componentClassID="Microsoft.DataConvert"
@@ -766,7 +676,7 @@
                         <property
                           dataType="System.Int32"
                           description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
+                          name="NewSortKeyPosition">20</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1282,7 +1192,8 @@
                       refId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strId]"
                       dataType="i4"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strId]"
-                      name="strId">
+                      name="strId"
+                      sortKeyPosition="20">
                       <properties>
                         <property
                           containsID="true"
@@ -1989,6 +1900,420 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               </outputs>
             </component>
             <component
+              refId="Package\LoadPending\Insert Error table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Error table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Transportation].[Error_StudentTransportationRouting]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\LoadPending\Insert Error table.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[strSourceData]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="strSourceData"
+                      cachedSortKeyPosition="19"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[strSourceData]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strSourceData]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[StudentNo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="StudentNo"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_StudentNo]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[StudentNo]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[Sch]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Sch"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_SCh]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[Sch]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[steEligibility]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="steEligibility"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_StudentEligibilty]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steEligibility]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[steId]"
+                      cachedDataType="i4"
+                      cachedName="steId"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strSteId]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steId]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[strSourceId]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="strSourceId"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strSourceId]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strSourceId]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[strisCurrent]"
+                      cachedDataType="i4"
+                      cachedName="strisCurrent"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strisCurrent]"
+                      lineageId="Package\LoadPending\Existing Rows stcurrent.Outputs[Derived Column Output].Columns[strisCurrent]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[Days]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8000"
+                      cachedName="Days"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDayOfWeek]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[Days]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[EffectiveDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="EffectiveDate"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strEffectiveDate]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[EffectiveDate]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[Trip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Trip"
+                      cachedSortKeyPosition="4"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strRoutingdirection]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[Trip]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[InBusID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="InBusID"
+                      cachedSortKeyPosition="5"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointVehicleNumber]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InBusID]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[InStopDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="InStopDescription"
+                      cachedSortKeyPosition="6"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointBusStopDescription]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InStopDescription]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[InStopTime]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="InStopTime"
+                      cachedSortKeyPosition="7"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointArrivalTime]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InStopTime]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[inX]"
+                      cachedDataType="r8"
+                      cachedName="inX"
+                      cachedSortKeyPosition="8"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginCartesianXCoordinate]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[inX]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[inY]"
+                      cachedDataType="r8"
+                      cachedName="inY"
+                      cachedSortKeyPosition="9"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginCartesianYCoordinate]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[inY]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[inLatitude]"
+                      cachedDataType="r8"
+                      cachedName="inLatitude"
+                      cachedSortKeyPosition="10"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginLatitude]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[inLatitude]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[inLongitude]"
+                      cachedDataType="r8"
+                      cachedName="inLongitude"
+                      cachedSortKeyPosition="11"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginLongitude]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[inLongitude]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[OutBusID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="OutBusID"
+                      cachedSortKeyPosition="12"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointVehicleNumber]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutBusID]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[OutStopDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OutStopDescription"
+                      cachedSortKeyPosition="13"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointBusStopDescription]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutStopDescription]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[OutStopTime]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="OutStopTime"
+                      cachedSortKeyPosition="14"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointArrivalTime]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutStopTime]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[outX]"
+                      cachedDataType="r8"
+                      cachedName="outX"
+                      cachedSortKeyPosition="15"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationCartesianXCoordinate]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[outX]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[outY]"
+                      cachedDataType="r8"
+                      cachedName="outY"
+                      cachedSortKeyPosition="16"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationCartesianYCoordinate]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[outY]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[outLatitude]"
+                      cachedDataType="r8"
+                      cachedName="outLatitude"
+                      cachedSortKeyPosition="17"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationLatitude]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[outLatitude]" />
+                    <inputColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[outLongitude]"
+                      cachedDataType="r8"
+                      cachedName="outLongitude"
+                      cachedSortKeyPosition="18"
+                      externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationLongitude]"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[outLongitude]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_StudentNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="E_StudentNo" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_SCh]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="E_SCh" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_StudentEligibilty]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="E_StudentEligibilty" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strSteId]"
+                      dataType="i4"
+                      name="E_strSteId" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strLastUpdated]"
+                      dataType="dbTimeStamp"
+                      name="E_strLastUpdated" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strSourceId]"
+                      dataType="wstr"
+                      length="14"
+                      name="E_strSourceId" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strisCurrent]"
+                      dataType="bool"
+                      name="E_strisCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDayOfWeek]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="E_strDayOfWeek" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strEffectiveDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="E_strEffectiveDate" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strRoutingdirection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="E_strRoutingdirection" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointVehicleNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="E_strOriginPointVehicleNumber" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointBusStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="E_strOriginPointBusStopDescription" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointArrivalTime]"
+                      dataType="wstr"
+                      length="16"
+                      name="E_strOriginPointArrivalTime" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginCartesianXCoordinate]"
+                      dataType="r8"
+                      name="E_strOriginCartesianXCoordinate" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginCartesianYCoordinate]"
+                      dataType="r8"
+                      name="E_strOriginCartesianYCoordinate" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginLatitude]"
+                      dataType="r8"
+                      name="E_strOriginLatitude" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginLongitude]"
+                      dataType="r8"
+                      name="E_strOriginLongitude" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointVehicleNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="E_strDestinationPointVehicleNumber" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointBusStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="E_strDestinationPointBusStopDescription" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointArrivalTime]"
+                      dataType="wstr"
+                      length="16"
+                      name="E_strDestinationPointArrivalTime" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationCartesianXCoordinate]"
+                      dataType="r8"
+                      name="E_strDestinationCartesianXCoordinate" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationCartesianYCoordinate]"
+                      dataType="r8"
+                      name="E_strDestinationCartesianYCoordinate" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationLatitude]"
+                      dataType="r8"
+                      name="E_strDestinationLatitude" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationLongitude]"
+                      dataType="r8"
+                      name="E_strDestinationLongitude" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[strSourceData]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="strSourceData" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\LoadPending\Insert Error table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadPending\Insert Error table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LoadPending\Insert Error table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LoadPending\Insert Error table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LoadPending\Insert Error table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\LoadPending\Insert Sort"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -2440,6 +2765,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Sort.Inputs[Sort Input].Columns[strId]"
                       cachedDataType="i4"
                       cachedName="strId"
+                      cachedSortKeyPosition="20"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strId]">
                       <properties>
                         <property
@@ -2947,420 +3273,6 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               </outputs>
             </component>
             <component
-              refId="Package\LoadPending\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[Transportation].[Error_StudentTransportationRouting]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\LoadPending\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[strSourceData]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="strSourceData"
-                      cachedSortKeyPosition="19"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[strSourceData]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strSourceData]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StudentNo]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="StudentNo"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_StudentNo]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[StudentNo]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sch]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="Sch"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_SCh]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[Sch]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[steEligibility]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="steEligibility"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_StudentEligibilty]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steEligibility]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[steId]"
-                      cachedDataType="i4"
-                      cachedName="steId"
-                      cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strSteId]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steId]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[strSourceId]"
-                      cachedDataType="wstr"
-                      cachedLength="14"
-                      cachedName="strSourceId"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strSourceId]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strSourceId]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[strisCurrent]"
-                      cachedDataType="i4"
-                      cachedName="strisCurrent"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strisCurrent]"
-                      lineageId="Package\LoadPending\Existing Rows stcurrent.Outputs[Derived Column Output].Columns[strisCurrent]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Days]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8000"
-                      cachedName="Days"
-                      cachedSortKeyPosition="2"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDayOfWeek]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[Days]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EffectiveDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="EffectiveDate"
-                      cachedSortKeyPosition="3"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strEffectiveDate]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[EffectiveDate]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Trip]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8"
-                      cachedName="Trip"
-                      cachedSortKeyPosition="4"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strRoutingdirection]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[Trip]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InBusID]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="5"
-                      cachedName="InBusID"
-                      cachedSortKeyPosition="5"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointVehicleNumber]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InBusID]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InStopDescription]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="InStopDescription"
-                      cachedSortKeyPosition="6"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointBusStopDescription]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InStopDescription]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InStopTime]"
-                      cachedDataType="wstr"
-                      cachedLength="16"
-                      cachedName="InStopTime"
-                      cachedSortKeyPosition="7"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointArrivalTime]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InStopTime]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[inX]"
-                      cachedDataType="r8"
-                      cachedName="inX"
-                      cachedSortKeyPosition="8"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginCartesianXCoordinate]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[inX]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[inY]"
-                      cachedDataType="r8"
-                      cachedName="inY"
-                      cachedSortKeyPosition="9"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginCartesianYCoordinate]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[inY]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[inLatitude]"
-                      cachedDataType="r8"
-                      cachedName="inLatitude"
-                      cachedSortKeyPosition="10"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginLatitude]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[inLatitude]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[inLongitude]"
-                      cachedDataType="r8"
-                      cachedName="inLongitude"
-                      cachedSortKeyPosition="11"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginLongitude]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[inLongitude]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OutBusID]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="5"
-                      cachedName="OutBusID"
-                      cachedSortKeyPosition="12"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointVehicleNumber]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutBusID]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OutStopDescription]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OutStopDescription"
-                      cachedSortKeyPosition="13"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointBusStopDescription]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutStopDescription]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OutStopTime]"
-                      cachedDataType="wstr"
-                      cachedLength="16"
-                      cachedName="OutStopTime"
-                      cachedSortKeyPosition="14"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointArrivalTime]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutStopTime]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[outX]"
-                      cachedDataType="r8"
-                      cachedName="outX"
-                      cachedSortKeyPosition="15"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationCartesianXCoordinate]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[outX]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[outY]"
-                      cachedDataType="r8"
-                      cachedName="outY"
-                      cachedSortKeyPosition="16"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationCartesianYCoordinate]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[outY]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[outLatitude]"
-                      cachedDataType="r8"
-                      cachedName="outLatitude"
-                      cachedSortKeyPosition="17"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationLatitude]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[outLatitude]" />
-                    <inputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[outLongitude]"
-                      cachedDataType="r8"
-                      cachedName="outLongitude"
-                      cachedSortKeyPosition="18"
-                      externalMetadataColumnId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationLongitude]"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[outLongitude]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_StudentNo]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="E_StudentNo" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_SCh]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="E_SCh" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_StudentEligibilty]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="E_StudentEligibilty" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strSteId]"
-                      dataType="i4"
-                      name="E_strSteId" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strLastUpdated]"
-                      dataType="dbTimeStamp"
-                      name="E_strLastUpdated" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strSourceId]"
-                      dataType="wstr"
-                      length="14"
-                      name="E_strSourceId" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strisCurrent]"
-                      dataType="bool"
-                      name="E_strisCurrent" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDayOfWeek]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="E_strDayOfWeek" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strEffectiveDate]"
-                      dataType="wstr"
-                      length="10"
-                      name="E_strEffectiveDate" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strRoutingdirection]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="E_strRoutingdirection" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointVehicleNumber]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="E_strOriginPointVehicleNumber" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointBusStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="E_strOriginPointBusStopDescription" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointArrivalTime]"
-                      dataType="wstr"
-                      length="16"
-                      name="E_strOriginPointArrivalTime" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginCartesianXCoordinate]"
-                      dataType="r8"
-                      name="E_strOriginCartesianXCoordinate" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginCartesianYCoordinate]"
-                      dataType="r8"
-                      name="E_strOriginCartesianYCoordinate" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginLatitude]"
-                      dataType="r8"
-                      name="E_strOriginLatitude" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginLongitude]"
-                      dataType="r8"
-                      name="E_strOriginLongitude" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointVehicleNumber]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="E_strDestinationPointVehicleNumber" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointBusStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="E_strDestinationPointBusStopDescription" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointArrivalTime]"
-                      dataType="wstr"
-                      length="16"
-                      name="E_strDestinationPointArrivalTime" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationCartesianXCoordinate]"
-                      dataType="r8"
-                      name="E_strDestinationCartesianXCoordinate" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationCartesianYCoordinate]"
-                      dataType="r8"
-                      name="E_strDestinationCartesianYCoordinate" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationLatitude]"
-                      dataType="r8"
-                      name="E_strDestinationLatitude" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationLongitude]"
-                      dataType="r8"
-                      name="E_strDestinationLongitude" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[strSourceData]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="strSourceData" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\LoadPending\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\LoadPending\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\LoadPending\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\LoadPending\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\LoadPending\PendingData"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -3586,7 +3498,7 @@ FROM Transportation.StudentTransportationEligibility
         ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId
  WHERE steAcademicYearDesignator =CASE WHEN MONTH(GETDATE()) &gt;= 1 AND MONTH(GETDATE()) &lt; 6 then CONCAT(YEAR(GETDATE())-1,'-', (YEAR(GETDATE())-1)+1)
                                  ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END )b
-on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibility1=b.SteEligibility --and a.Trip=b.StrRoutingDirection</property>
+on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibility1=b.SteEligibility and a.Trip=ISNULL(b.StrRoutingDirection,a.trip)</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -4444,7 +4356,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[steId]};#{Package\LoadPending\Data Conversion.Outputs[Data Conversion Output].Columns[ConvstrisCurrent]};#{Package\LoadPending\Data Conversion.Outputs[Data Conversion Output].Columns[ConvStrSourceData]};</property>
+                  name="ParameterMap">#{Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steId]};#{Package\LoadPending\Data Conversion.Outputs[Data Conversion Output].Columns[ConvstrisCurrent]};#{Package\LoadPending\Data Conversion.Outputs[Data Conversion Output].Columns[ConvStrSourceData]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4518,25 +4430,6 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
-                    <inputColumn
-                      refId="Package\LoadPending\Routing Lkp.Inputs[Lookup Input].Columns[strId]"
-                      cachedDataType="i4"
-                      cachedName="strId"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strId]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn" />
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">strId</property>
-                      </properties>
-                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4575,6 +4468,96 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       refId="Package\LoadPending\Routing Lkp.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\LoadPending\Routing Lkp.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\LoadPending\Steid Is null"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Steid Is null"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\LoadPending\Steid Is null.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\LoadPending\Steid Is null.Inputs[Conditional Split Input].Columns[steId]"
+                      cachedDataType="i4"
+                      cachedName="steId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steId]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\LoadPending\Steid Is null.Outputs[New Rows]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="New Rows"
+                  synchronousInputId="Package\LoadPending\Steid Is null.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL](#{Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steId]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(steId)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\LoadPending\Steid Is null.Outputs[Existing Rows]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Existing Rows"
+                  synchronousInputId="Package\LoadPending\Steid Is null.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\LoadPending\Steid Is null.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\LoadPending\Steid Is null.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LoadPending\Steid Is null.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LoadPending\Steid Is null.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LoadPending\Steid Is null.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LoadPending\Steid Is null.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -5993,6 +5976,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       refId="Package\LoadPending\Update sort.Inputs[Sort Input].Columns[strId]"
                       cachedDataType="i4"
                       cachedName="strId"
+                      cachedSortKeyPosition="20"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strId]">
                       <properties>
                         <property
@@ -6389,7 +6373,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               refId="Package\LoadPending.Paths[Existing Rows]"
               endId="Package\LoadPending\Existing Rows stcurrent.Inputs[Derived Column Input]"
               name="Existing Rows"
-              startId="Package\LoadPending\Conditional Split.Outputs[Existing Rows]" />
+              startId="Package\LoadPending\Steid Is null.Outputs[Existing Rows]" />
             <path
               refId="Package\LoadPending.Paths[Lookup Match Output]"
               endId="Package\LoadPending\Update sort.Inputs[Sort Input]"
@@ -6402,7 +6386,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               startId="Package\LoadPending\Error_Table Lkp.Outputs[Lookup Match Output]" />
             <path
               refId="Package\LoadPending.Paths[Lookup No Match Output]"
-              endId="Package\LoadPending\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\LoadPending\Error_Table Lkp.Outputs[Lookup No Match Output]" />
             <path
@@ -6414,7 +6398,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               refId="Package\LoadPending.Paths[New Rows]"
               endId="Package\LoadPending\New rows Stcurrent.Inputs[Derived Column Input]"
               name="New Rows"
-              startId="Package\LoadPending\Conditional Split.Outputs[New Rows]" />
+              startId="Package\LoadPending\Steid Is null.Outputs[New Rows]" />
             <path
               refId="Package\LoadPending.Paths[OLE DB Source Output]"
               endId="Package\LoadPending\Delete duplicate Records.Inputs[Sort Input]"
@@ -6422,7 +6406,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               startId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\LoadPending.Paths[Sort Output]"
-              endId="Package\LoadPending\Conditional Split.Inputs[Conditional Split Input]"
+              endId="Package\LoadPending\Steid Is null.Inputs[Conditional Split Input]"
               name="Sort Output"
               startId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output]" />
             <path
@@ -18728,73 +18712,73 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
         <NodeLayout
           Size="135,42"
           Id="Package\LoadPending\Routing Lkp"
-          TopLeft="177,509.585858585858" />
+          TopLeft="162,433.585858585858" />
         <NodeLayout
           Size="196,42"
           Id="Package\LoadPending\Delete duplicate Records"
-          TopLeft="209,137.363636363636" />
+          TopLeft="279,94.363636363636" />
         <NodeLayout
           Size="107,42"
           Id="Package\LoadPending\Insert"
-          TopLeft="329.909090909091,687.494949494949" />
+          TopLeft="295.909090909091,614.494949494949" />
         <NodeLayout
           Size="154,42"
           Id="Package\LoadPending\Error_Table Lkp"
-          TopLeft="557.030303030303,427.494949494949" />
+          TopLeft="461.030303030303,335.494949494949" />
         <NodeLayout
           Size="129,42"
           Id="Package\LoadPending\Insert Sort"
-          TopLeft="321,598.585858585858" />
+          TopLeft="280,529.585858585858" />
         <NodeLayout
           Size="156,42"
           Id="Package\LoadPending\Data Conversion"
-          TopLeft="135,419.585858585858" />
+          TopLeft="148,349.585858585858" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\LoadPending\OLE DB Destination"
-          TopLeft="717,531.363636363636" />
+          Size="160,42"
+          Id="Package\LoadPending\Insert Error table"
+          TopLeft="568,434.363636363636" />
         <NodeLayout
           Size="189,42"
           Id="Package\LoadPending\Existing Rows stcurrent"
-          TopLeft="525,339.585858585858" />
+          TopLeft="449,258.585858585858" />
         <NodeLayout
           Size="113,42"
           Id="Package\LoadPending\Update"
-          TopLeft="84.545454545455,693.494949494949" />
+          TopLeft="48.545454545455,620.494949494949" />
         <NodeLayout
           Size="139,42"
           Id="Package\LoadPending\PendingData"
-          TopLeft="236.909090909091,26" />
+          TopLeft="304.909090909091,12" />
         <NodeLayout
           Size="134,42"
           Id="Package\LoadPending\Update sort"
-          TopLeft="68,592.585858585858" />
+          TopLeft="40,524.585858585858" />
         <NodeLayout
-          Size="155,42"
-          Id="Package\LoadPending\Conditional Split"
-          TopLeft="232,241.363636363636" />
+          Size="135,42"
+          Id="Package\LoadPending\Steid Is null"
+          TopLeft="306,178.363636363636" />
         <NodeLayout
           Size="165,42"
           Id="Package\LoadPending\Update ErrorTable"
-          TopLeft="507.272727272727,531.21212121212" />
+          TopLeft="371.272727272727,433.21212121212" />
         <NodeLayout
           Size="172,42"
           Id="Package\LoadPending\New rows Stcurrent"
-          TopLeft="151,343.363636363636" />
+          TopLeft="140,269.363636363636" />
         <EdgeLayout
           Id="Package\LoadPending.Paths[Sort Output2]"
-          TopLeft="384.454545454546,640.585858585858">
+          TopLeft="346.954545454546,571.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46.909090909091"
+              EndConnector="0,42.909090909091"
               Start="0,0"
-              End="0,39.409090909091">
+              End="0,35.409090909091">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.409090909091" />
+                    End="0,35.409090909091" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -18805,18 +18789,18 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Sort Output1]"
-          TopLeft="138.022727272728,634.585858585858">
+          TopLeft="106.022727272728,566.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58.909090909091"
+              EndConnector="0,53.909090909091"
               Start="0,0"
-              End="0,51.409090909091">
+              End="0,46.409090909091">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.409090909091" />
+                    End="0,46.409090909091" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -18827,18 +18811,18 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Sort Output]"
-          TopLeft="308.25,179.363636363636">
+          TopLeft="375.25,136.363636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,62"
+              EndConnector="0,42"
               Start="0,0"
-              End="0,54.5">
+              End="0,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.5" />
+                    End="0,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -18849,246 +18833,234 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[New Rows]"
-          TopLeft="285,283.363636363636">
+          TopLeft="352.333333333333,220.363636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-48,59.9999999999999"
+              EndConnector="-126.333333333333,48.9999999999999"
               Start="0,0"
-              End="-48,52.4999999999999">
+              End="-126.333333333333,41.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.367816091954" />
+                    End="0,15.9443631039531" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.367816091954"
-                    Point2="0,24.367816091954"
-                    Point3="-4,24.367816091954" />
+                    Point1="0,15.9443631039531"
+                    Point2="0,19.9443631039531"
+                    Point3="-4,19.9443631039531" />
                   <mssgle:LineSegment
-                    End="-44,24.367816091954" />
+                    End="-122.333333333333,19.9443631039531" />
                   <mssgle:CubicBezierSegment
-                    Point1="-44,24.367816091954"
-                    Point2="-48,24.367816091954"
-                    Point3="-48,28.367816091954" />
+                    Point1="-122.333333333333,19.9443631039531"
+                    Point2="-126.333333333333,19.9443631039531"
+                    Point3="-126.333333333333,23.9443631039531" />
                   <mssgle:LineSegment
-                    End="-48,52.4999999999999" />
+                    End="-126.333333333333,41.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-47.537578125,29.367816091954,47.07515625,9.421875"
+              BoundingBox="-86.7042447916667,24.9443631039531,47.07515625,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Lookup No Match Output1]"
-          TopLeft="265.666666666667,551.585858585858">
+          TopLeft="250.666666666667,475.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="119.833333333333,47"
+              EndConnector="93.8333333333333,54"
               Start="0,0"
-              End="119.833333333333,39.5">
+              End="93.8333333333333,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.1303074670571" />
+                    End="0,17.9795021961933" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.1303074670571"
-                    Point2="0,19.1303074670571"
-                    Point3="4,19.1303074670571" />
+                    Point1="0,17.9795021961933"
+                    Point2="0,21.9795021961933"
+                    Point3="4,21.9795021961933" />
                   <mssgle:LineSegment
-                    End="115.833333333333,19.1303074670571" />
+                    End="89.8333333333333,21.9795021961933" />
                   <mssgle:CubicBezierSegment
-                    Point1="115.833333333333,19.1303074670571"
-                    Point2="119.833333333333,19.1303074670571"
-                    Point3="119.833333333333,23.1303074670571" />
+                    Point1="89.8333333333333,21.9795021961933"
+                    Point2="93.8333333333333,21.9795021961933"
+                    Point3="93.8333333333333,25.9795021961933" />
                   <mssgle:LineSegment
-                    End="119.833333333333,39.5" />
+                    End="93.8333333333333,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="4.11027994791669,24.1303074670571,111.6127734375,11.609375"
+              BoundingBox="-8.88972005208333,26.9795021961933,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Lookup No Match Output]"
-          TopLeft="658.363636363636,469.494949494949">
+          TopLeft="562.363636363636,377.494949494949">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="144.136363636364,61.868686868687"
+              EndConnector="85.6363636363636,56.868686868687"
               Start="0,0"
-              End="144.136363636364,54.368686868687">
+              End="85.6363636363636,49.368686868687">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.1291838695438" />
+                    End="0,19.098335540495" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.1291838695438"
-                    Point2="0,25.1291838695438"
-                    Point3="4,25.1291838695438" />
+                    Point1="0,19.098335540495"
+                    Point2="0,23.098335540495"
+                    Point3="4,23.098335540495" />
                   <mssgle:LineSegment
-                    End="140.136363636364,25.1291838695438" />
+                    End="81.6363636363636,23.098335540495" />
                   <mssgle:CubicBezierSegment
-                    Point1="140.136363636364,25.1291838695438"
-                    Point2="144.136363636364,25.1291838695438"
-                    Point3="144.136363636364,29.1291838695438" />
+                    Point1="81.6363636363636,23.098335540495"
+                    Point2="85.6363636363636,23.098335540495"
+                    Point3="85.6363636363636,27.098335540495" />
                   <mssgle:LineSegment
-                    End="144.136363636364,54.368686868687" />
+                    End="85.6363636363636,49.368686868687" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="16.2617950994318,30.1291838695438,111.6127734375,11.609375"
+              BoundingBox="-12.9882049005682,28.098335540495,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Lookup Match Output1]"
-          TopLeft="609.69696969697,469.494949494949">
+          TopLeft="513.69696969697,377.494949494949">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-19.9242424242426,61.717171717171"
+              EndConnector="-59.9242424242426,55.717171717171"
               Start="0,0"
-              End="-19.9242424242426,54.217171717171">
+              End="-59.9242424242426,48.217171717171">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.0676430110874" />
+                    End="0,18.6306250162288" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.0676430110874"
-                    Point2="0,25.0676430110874"
-                    Point3="-4,25.0676430110874" />
+                    Point1="0,18.6306250162288"
+                    Point2="0,22.6306250162288"
+                    Point3="-4,22.6306250162288" />
                   <mssgle:LineSegment
-                    End="-15.9242424242426,25.0676430110874" />
+                    End="-55.9242424242426,22.6306250162288" />
                   <mssgle:CubicBezierSegment
-                    Point1="-15.9242424242426,25.0676430110874"
-                    Point2="-19.9242424242426,25.0676430110874"
-                    Point3="-19.9242424242426,29.0676430110874" />
+                    Point1="-55.9242424242426,22.6306250162288"
+                    Point2="-59.9242424242426,22.6306250162288"
+                    Point3="-59.9242424242426,26.6306250162288" />
                   <mssgle:LineSegment
-                    End="-19.9242424242426,54.217171717171" />
+                    End="-59.9242424242426,48.217171717171" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-58.1535079308713,30.0676430110874,96.3827734375,11.609375"
+              BoundingBox="-78.1535079308713,27.6306250162288,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Lookup Match Output]"
-          TopLeft="223.333333333333,551.585858585858">
+          TopLeft="208.333333333333,475.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-88.3333333333333,41"
+              EndConnector="-101.333333333333,49"
               Start="0,0"
-              End="-88.3333333333333,33.5">
+              End="-101.333333333333,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.688140556369" />
+                    End="0,15.9443631039531" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.688140556369"
-                    Point2="0,16.688140556369"
-                    Point3="-4,16.688140556369" />
+                    Point1="0,15.9443631039531"
+                    Point2="0,19.9443631039531"
+                    Point3="-4,19.9443631039531" />
                   <mssgle:LineSegment
-                    End="-84.3333333333333,16.688140556369" />
+                    End="-97.3333333333333,19.9443631039531" />
                   <mssgle:CubicBezierSegment
-                    Point1="-84.3333333333333,16.688140556369"
-                    Point2="-88.3333333333333,16.688140556369"
-                    Point3="-88.3333333333333,20.688140556369" />
+                    Point1="-97.3333333333333,19.9443631039531"
+                    Point2="-101.333333333333,19.9443631039531"
+                    Point3="-101.333333333333,23.9443631039531" />
                   <mssgle:LineSegment
-                    End="-88.3333333333333,33.5" />
+                    End="-101.333333333333,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-92.3580533854167,21.688140556369,96.3827734375,11.609375"
+              BoundingBox="-98.8580533854167,24.9443631039531,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Existing Rows]"
-          TopLeft="334,283.363636363636">
+          TopLeft="394.666666666667,220.363636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="285.5,56.2222222222219"
+              EndConnector="148.833333333333,38.2222222222219"
               Start="0,0"
-              End="285.5,48.7222222222219">
+              End="148.833333333333,30.7222222222219">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.8335461898679" />
+                    End="0,11.5575077273466" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.8335461898679"
-                    Point2="0,22.8335461898679"
-                    Point3="4,22.8335461898679" />
+                    Point1="0,11.5575077273466"
+                    Point2="0,15.5575077273466"
+                    Point3="4,15.5575077273466" />
                   <mssgle:LineSegment
-                    End="281.5,22.8335461898679" />
+                    End="144.833333333333,15.5575077273466" />
                   <mssgle:CubicBezierSegment
-                    Point1="281.5,22.8335461898679"
-                    Point2="285.5,22.8335461898679"
-                    Point3="285.5,26.8335461898679" />
+                    Point1="144.833333333333,15.5575077273466"
+                    Point2="148.833333333333,15.5575077273466"
+                    Point3="148.833333333333,19.5575077273466" />
                   <mssgle:LineSegment
-                    End="285.5,48.7222222222219" />
+                    End="148.833333333333,30.7222222222219" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="111.862421875,27.8335461898679,61.77515625,11.384765625"
+              BoundingBox="43.5290885416667,20.5575077273466,61.77515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Derived Column Output1]"
-          TopLeft="619.5,381.585858585858">
+          TopLeft="540.765151515152,300.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="14.530303030303,45.909090909091"
+              EndConnector="0,34.909090909091"
               Start="0,0"
-              End="14.530303030303,38.409090909091">
+              End="0,27.409090909091">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.9545454545455" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.9545454545455"
-                    Point2="0,22.9545454545455"
-                    Point3="4,22.9545454545455" />
-                  <mssgle:LineSegment
-                    End="10.530303030303,22.9545454545455" />
-                  <mssgle:CubicBezierSegment
-                    Point1="10.530303030303,22.9545454545455"
-                    Point2="14.530303030303,22.9545454545455"
-                    Point3="14.530303030303,26.9545454545455" />
-                  <mssgle:LineSegment
-                    End="14.530303030303,38.409090909091" />
+                    End="0,27.409090909091" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19099,30 +19071,18 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Derived Column Output]"
-          TopLeft="237,385.363636363636">
+          TopLeft="226,311.363636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-24,34.222222222222"
+              EndConnector="0,38.222222222222"
               Start="0,0"
-              End="-24,26.722222222222">
+              End="0,30.722222222222">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.111111111111" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.111111111111"
-                    Point2="0,17.111111111111"
-                    Point3="-4,17.111111111111" />
-                  <mssgle:LineSegment
-                    End="-20,17.111111111111" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-20,17.111111111111"
-                    Point2="-24,17.111111111111"
-                    Point3="-24,21.111111111111" />
-                  <mssgle:LineSegment
-                    End="-24,26.722222222222" />
+                    End="0,30.722222222222" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19133,30 +19093,18 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Data Conversion Output]"
-          TopLeft="213,461.585858585858">
+          TopLeft="227.75,391.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31.5,48"
+              EndConnector="0,42"
               Start="0,0"
-              End="31.5,40.5">
+              End="0,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20"
-                    Point2="0,24"
-                    Point3="4,24" />
-                  <mssgle:LineSegment
-                    End="27.5,24" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.5,24"
-                    Point2="31.5,24"
-                    Point3="31.5,28" />
-                  <mssgle:LineSegment
-                    End="31.5,40.5" />
+                    End="0,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19167,18 +19115,18 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[OLE DB Source Output]"
-          TopLeft="306.704545454546,68">
+          TopLeft="375.704545454546,54">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,69.363636363636"
+              EndConnector="0,40.363636363636"
               Start="0,0"
-              End="0,61.863636363636">
+              End="0,32.863636363636">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.863636363636" />
+                    End="0,32.863636363636" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19190,6 +19138,29 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\LoadPending\Routing Lkp">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Transportation].[StudentTransportationRouting]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\LoadPending\PendingData">
     <Properties>
