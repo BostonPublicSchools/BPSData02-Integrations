@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="147"
-  DTS:VersionGUID="{ACEF27BE-00A4-40EA-A8D9-11DA9635194A}">
+  DTS:VersionBuild="148"
+  DTS:VersionGUID="{AA7A24FC-1DF6-4526-BEB1-63799A98D360}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -11337,7 +11337,8 @@ FROM Transportation.StudentTransportationEligibility
     left JOIN Transportation.StudentTransportationRouting
         ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId
  WHERE steAcademicYearDesignator =CASE WHEN MONTH(GETDATE()) &gt;= 1 AND MONTH(GETDATE()) &lt; 6 then CONCAT(YEAR(GETDATE())-1,'-', (YEAR(GETDATE())-1)+1)
-                                 ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END )b
+                                 ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END 
+AND StudentTransportationEligibility.steisCurrent=1)b
 on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibility1=b.SteEligibility and a.Trip=ISNULL(b.StrRoutingDirection,a.trip)</property>
                 <property
                   dataType="System.String"

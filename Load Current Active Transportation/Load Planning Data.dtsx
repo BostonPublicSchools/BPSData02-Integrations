@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Planning Data"
   DTS:PackageType="5"
-  DTS:VersionBuild="135"
-  DTS:VersionGUID="{20473F78-C96D-4354-BC41-A5CC6B9AEBF9}">
+  DTS:VersionBuild="138"
+  DTS:VersionGUID="{E264D5CA-344F-410F-956A-F12194727EE1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -9737,9 +9737,10 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
        strDestinationLongitude
 FROM Transportation.StudentTransportationEligibility
     left JOIN Transportation.StudentTransportationRouting
-        ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId
+        ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId 
  WHERE steAcademicYearDesignator =CASE WHEN MONTH(GETDATE()) &gt;= 1 AND MONTH(GETDATE()) &lt; 6 then CONCAT(YEAR(GETDATE())-1,'-', (YEAR(GETDATE())-1)+1)
-                                 ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END )b
+                                 ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END 
+								 AND StudentTransportationEligibility.steisCurrent=1)b
 on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibility1=b.SteEligibility and a.Trip=ISNULL(b.StrRoutingDirection,a.trip)</property>
                 <property
                   dataType="System.String"

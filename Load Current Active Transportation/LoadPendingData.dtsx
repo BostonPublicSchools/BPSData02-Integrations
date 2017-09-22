@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadPendingData"
   DTS:PackageType="5"
-  DTS:VersionBuild="114"
-  DTS:VersionGUID="{9F617BCE-AC3F-4D2F-98DA-82A4762087F1}">
+  DTS:VersionBuild="115"
+  DTS:VersionGUID="{7509637A-C916-4AE0-8D6F-62B88731FF30}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3497,7 +3497,8 @@ FROM Transportation.StudentTransportationEligibility
     left JOIN Transportation.StudentTransportationRouting
         ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId
  WHERE steAcademicYearDesignator =CASE WHEN MONTH(GETDATE()) &gt;= 1 AND MONTH(GETDATE()) &lt; 6 then CONCAT(YEAR(GETDATE())-1,'-', (YEAR(GETDATE())-1)+1)
-                                 ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END )b
+                                 ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END 
+AND StudentTransportationEligibility.steisCurrent=1)b
 on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibility1=b.SteEligibility and a.Trip=ISNULL(b.StrRoutingDirection,a.trip)</property>
                 <property
                   dataType="System.String"
