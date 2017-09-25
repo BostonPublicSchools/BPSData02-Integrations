@@ -12,10 +12,27 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="VersaTransData"
   DTS:PackageType="5"
-  DTS:VersionBuild="70"
-  DTS:VersionGUID="{BACAF301-8684-4E2B-9F16-A40B8466FA01}">
+  DTS:VersionBuild="76"
+  DTS:VersionGUID="{971D30DD-8C1A-4D78-AC81-888154549A16}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSROUTES03.SY_Pending_RP.BPSIntegration]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F355D95C-7B6D-447E-BCD9-D33517B5EBE7}"
+      DTS:ObjectName="BPSROUTES03.SY_Pending_RP.BPSIntegration">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BPSROUTES03;User ID=BPSIntegration;Initial Catalog=SY_Pending_RP;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2QogScSd3EiHAU5wG26b1wAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAqT8bFETWF0+O9/czdYJ4VAAAAAASAAACgAAAAEAAAAJkaQpDLTcluYqe+QPvFW+YYAAAAHQIKMRCaU/Nybq0GjgToJw9yOfkLgtxBFAAAAD/mzpSPnKxdiAriplg7eRONLQSu</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Configurations>
     <DTS:Configuration
       DTS:ConfigurationString="C:\Users\X05112\Source\Repos\BPSData02-Integrations\Load Current Active Transportation\SvName.dtsConfig"
@@ -2622,8 +2639,8 @@ WHERE LEN(VisibleID) = 6
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Connections[OleDbConnection]"
-                  connectionManagerID="{F239B543-7762-43DC-82B9-DEA2708740FD}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSROUTES03.SY_Pending_RP.BPSIntegration]"
+                  connectionManagerID="Package.ConnectionManagers[BPSROUTES03.SY_Pending_RP.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[BPSROUTES03.SY_Pending_RP.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4181,25 +4198,25 @@ WHERE LEN(VisibleID) = 6
         <NodeLayout
           Size="236,42"
           Id="Package\dft TransferRaw VersaTrans Data"
-          TopLeft="6.5,106.5" />
+          TopLeft="7.5,105.5" />
         <NodeLayout
           Size="169,42"
           Id="Package\est Truncate tables"
           TopLeft="39,5.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="124,47.5">
+          TopLeft="124.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59"
+              EndConnector="0,58"
               Start="0,0"
-              End="0,51.5">
+              End="0,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.5" />
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
