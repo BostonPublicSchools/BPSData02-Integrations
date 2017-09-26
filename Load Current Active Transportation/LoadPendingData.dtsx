@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadPendingData"
   DTS:PackageType="5"
-  DTS:VersionBuild="127"
-  DTS:VersionGUID="{463148FB-222B-44B7-84FA-4E9EA1772701}">
+  DTS:VersionBuild="128"
+  DTS:VersionGUID="{FA07ECC6-9976-4F1D-8012-9FF0BFC673EB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3297,7 +3297,10 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">-- Pending
+
+
+SELECT DISTINCT 
 		a.BusID,
             a.Days,
             a.EffectiveDate,
@@ -3384,7 +3387,7 @@ SELECT StudentNo,
            WHEN InTrip IS NOT NULL THEN
                StopDescription
            ELSE
-               schname_23
+               S.SchName COLLATE SQL_Latin1_General_CP1_CI_AS
        END InStopDescription,
        CASE
            WHEN InTrip IS NOT NULL THEN
@@ -3396,32 +3399,32 @@ SELECT StudentNo,
            WHEN InTrip IS NOT NULL THEN
                vdpeVersatransX
            ELSE
-               X
+               SGI.sgiCartesianXCoordinate
        END inX,
        CASE
            WHEN InTrip IS NOT NULL THEN
                vdpeVersatransY
            ELSE
-               Y
+               SGI.sgiCartesianYCoordinate
        END inY,
        CASE
            WHEN InTrip IS NOT NULL THEN
                vdpeVersatransLatitude
            ELSE
-               Latitude
+               SGI.sgiLatitude
        END inLatitude,
        CASE
            WHEN InTrip IS NOT NULL THEN
                vdpeVersatransLongitude
            ELSE
-               Longitude
+               SGI.sgiLongitude
        END inLongitude,
        BusID OutBusID,
        CASE
            WHEN OutTrip IS NOT NULL THEN
                StopDescription
            ELSE
-               schname_23
+               S.SchName COLLATE SQL_Latin1_General_CP1_CI_AS
        END OutStopDescription,
        CASE
            WHEN OutTrip IS NOT NULL THEN
@@ -3433,28 +3436,30 @@ SELECT StudentNo,
            WHEN OutTrip IS NOT NULL THEN
                vdpeVersatransX
            ELSE
-               X
+               SGI.sgiCartesianXCoordinate
        END outX,
        CASE
            WHEN OutTrip IS NOT NULL THEN
                vdpeVersatransY
            ELSE
-               Y
+               SGI.sgiCartesianYCoordinate
        END outY,
        CASE
            WHEN OutTrip IS NOT NULL THEN
                vdpeVersatransLatitude
            ELSE
-               Latitude
+               SGI.sgiLatitude
        END outLatitude,
        CASE
            WHEN OutTrip IS NOT NULL THEN
                vdpeVersatransLongitude
            ELSE
-               Longitude
+               SGI.sgiLongitude
        END outLongitude
 FROM Transportation.VersatransDataPending
-LEFT JOIN dbo.schoollocation ON schoollocation.sch = Transportation.VersatransDataPending.Sch
+--LEFT JOIN dbo.schoollocation ON schoollocation.sch = Transportation.VersatransDataPending.Sch
+LEFT JOIN [BPS].[SchoolGeographicInformation] SGI ON SGI.sgiSchoolId = Transportation.VersatransDataPending.Sch
+INNER JOIN BPS.School S ON S.SchID=SGI.sgiSchoolId
 WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
       AND VersatransDataPending.Sch IN (
                      SELECT DISTINCT
@@ -20190,9 +20195,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               startId="Package\LoadPendingData\Routing Lkp.Outputs[Lookup Match Output]" />
             <path
               refId="Package\LoadPendingData.Paths[Lookup No Match Output2]"
-              endId="Package\LoadPendingData\Insert Error Table.Inputs[OLE DB Destination Input]"
+              endId="Package\LoadPendingData\Merge Join.Inputs[Merge Join Left Input]"
               name="Lookup No Match Output"
-              startId="Package\LoadPendingData\Error_Table Lkp.Outputs[Lookup No Match Output]" />
+              startId="Package\LoadPendingData\Live data Lkp.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\LoadPendingData.Paths[Lookup No Match Output1]"
               endId="Package\LoadPendingData\Insert Sort.Inputs[Sort Input]"
@@ -20200,9 +20205,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               startId="Package\LoadPendingData\Routing Lkp.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\LoadPendingData.Paths[Lookup No Match Output]"
-              endId="Package\LoadPendingData\Merge Join.Inputs[Merge Join Left Input]"
+              endId="Package\LoadPendingData\Insert Error Table.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
-              startId="Package\LoadPendingData\Live data Lkp.Outputs[Lookup No Match Output]" />
+              startId="Package\LoadPendingData\Error_Table Lkp.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\LoadPendingData.Paths[Merge Join Output]"
               endId="Package\LoadPendingData\Delete duplicate rows.Inputs[Sort Input]"
@@ -25582,61 +25587,61 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="135,42"
-          Id="Package\LoadPending 1\Routing Lkp"
-          TopLeft="162,433.585858585858" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\LoadPending 1\Delete duplicate Records"
-          TopLeft="279,94.363636363636" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\LoadPending 1\Insert"
-          TopLeft="295.909090909091,614.494949494949" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\LoadPending 1\Error_Table Lkp"
-          TopLeft="461.030303030303,335.494949494949" />
-        <NodeLayout
-          Size="129,42"
-          Id="Package\LoadPending 1\Insert Sort"
-          TopLeft="280,529.585858585858" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\LoadPending 1\Data Conversion"
-          TopLeft="148,349.585858585858" />
-        <NodeLayout
-          Size="160,42"
-          Id="Package\LoadPending 1\Insert Error table"
-          TopLeft="568,434.363636363636" />
-        <NodeLayout
-          Size="189,42"
-          Id="Package\LoadPending 1\Existing Rows stcurrent"
-          TopLeft="449,258.585858585858" />
-        <NodeLayout
           Size="113,42"
           Id="Package\LoadPending 1\Update"
           TopLeft="48.545454545455,620.494949494949" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\LoadPending 1\PendingData"
-          TopLeft="304.909090909091,12" />
+          Size="160,42"
+          Id="Package\LoadPending 1\Insert Error table"
+          TopLeft="568,434.363636363636" />
         <NodeLayout
           Size="134,42"
           Id="Package\LoadPending 1\Update sort"
           TopLeft="40,524.585858585858" />
         <NodeLayout
           Size="135,42"
+          Id="Package\LoadPending 1\Routing Lkp"
+          TopLeft="162,433.585858585858" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\LoadPending 1\Insert Sort"
+          TopLeft="280,529.585858585858" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\LoadPending 1\PendingData"
+          TopLeft="304.909090909091,12" />
+        <NodeLayout
+          Size="135,42"
           Id="Package\LoadPending 1\Steid Is null"
           TopLeft="306,178.363636363636" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\LoadPending 1\Delete duplicate Records"
+          TopLeft="279,94.363636363636" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\LoadPending 1\New rows Stcurrent"
+          TopLeft="140,269.363636363636" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\LoadPending 1\Insert"
+          TopLeft="295.909090909091,614.494949494949" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\LoadPending 1\Existing Rows stcurrent"
+          TopLeft="449,258.585858585858" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\LoadPending 1\Error_Table Lkp"
+          TopLeft="461.030303030303,335.494949494949" />
         <NodeLayout
           Size="165,42"
           Id="Package\LoadPending 1\Update ErrorTable"
           TopLeft="371.272727272727,433.21212121212" />
         <NodeLayout
-          Size="172,42"
-          Id="Package\LoadPending 1\New rows Stcurrent"
-          TopLeft="140,269.363636363636" />
+          Size="156,42"
+          Id="Package\LoadPending 1\Data Conversion"
+          TopLeft="148,349.585858585858" />
         <EdgeLayout
           Id="Package\LoadPending 1.Paths[Sort Output2]"
           TopLeft="346.954545454546,571.585858585858">
@@ -25656,7 +25661,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -25678,7 +25685,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -25702,6 +25711,30 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-8,9.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending 1.Paths[OLE DB Source Output]"
+          TopLeft="375.704545454546,54">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.363636363636"
+              Start="0,0"
+              End="0,32.863636363636">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.863636363636" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,8.431818181818,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -25940,7 +25973,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -25962,7 +25997,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -25984,30 +26021,8 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\LoadPending 1.Paths[OLE DB Source Output]"
-          TopLeft="375.704545454546,54">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40.363636363636"
-              Start="0,0"
-              End="0,32.863636363636">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.863636363636" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,8.431818181818,16,16"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -26250,7 +26265,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\LoadPendingData.Paths[Lookup No Match Output]"
+          Id="Package\LoadPendingData.Paths[Lookup No Match Output2]"
           TopLeft="168.333333333333,139">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -26322,7 +26337,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\LoadPendingData.Paths[Lookup No Match Output2]"
+          Id="Package\LoadPendingData.Paths[Lookup No Match Output]"
           TopLeft="610.090909090909,521.818181818182">
           <EdgeLayout.Curve>
             <mssgle:Curve

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="152"
-  DTS:VersionGUID="{FB2423FD-6F92-4F8A-BF94-CEEBD33ED173}">
+  DTS:VersionBuild="154"
+  DTS:VersionGUID="{4C82A90A-25A5-4775-9674-DE7612401294}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -11139,22 +11139,22 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
             a.Days,
             a.EffectiveDate,
             a.InBusID,
-            a.inLatitude,
-            a.inLongitude,
-            a.InStopDescription,
+           a.inLatitude,
+          a.inLongitude,
+        a.InStopDescription,
             a.InStopTime,
             a.inX,
             a.inY,
             a.OutBusID,
             a.outLatitude,
             a.outLongitude,
-            a.OutStopDescription,
+          a.OutStopDescription,
             a.OutStopTime,
             a.outX,
             a.outY,
             a.ProgID,
             a.Sch,
-            a.steEligibility1,
+           a.steEligibility1,
             b.steEligibility,
             b.steId,
             b.steSchoolLocalId,
@@ -11165,10 +11165,11 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
             b.strId,
             b.strisCurrent,
             b.strRoutingdirection,
-           CASE WHEN  a.strSourceData IS NULL THEN 'Live' ELSE b.strSourceData END AS strSourceData,
+          CASE WHEN  b.strSourceData IS NULL THEN 'Live' ELSE b.strSourceData END AS strSourceData,
             b.strSourceId,
             a.StudentNo,
-            a.Trip FROM
+          a.Trip 
+			FROM
 			 (
 
 SELECT StudentNo,
@@ -11178,7 +11179,7 @@ SELECT StudentNo,
 	   BusID,
 	   StopDescription,
 	   StopTime,
-	  convert(char(10),Cast(CASE ProgID
+	convert(char(10),Cast(CASE ProgID
            WHEN 10 THEN
                'C'
            WHEN 11 THEN
@@ -11205,7 +11206,7 @@ SELECT StudentNo,
                'T'
            WHEN 51 THEN
                'O'
-       END as varchar(10))) steEligibility1,
+       END as varchar(10)))  steEligibility1 ,
        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(Days, 'M', 'Mo'), 'T', 'Tu'), 'W', 'We'), 'H', 'Th'), 'F', 'Fr') Days,
        CAST(EffectiveDate AS DATE) EffectiveDate,
        CASE
@@ -11221,9 +11222,9 @@ SELECT StudentNo,
            WHEN InTrip IS NOT NULL THEN
                StopDescription
            ELSE
-               schname_23
+               S.SchName COLLATE SQL_Latin1_General_CP1_CI_AS
        END InStopDescription,
-       CASE
+    CASE
            WHEN InTrip IS NOT NULL THEN
                CAST(StopTime AS TIME)
            ELSE
@@ -11233,33 +11234,33 @@ SELECT StudentNo,
            WHEN InTrip IS NOT NULL THEN
                vdlVersatransX
            ELSE
-               X
+               SGI.sgiCartesianXCoordinate
        END inX,
        CASE
            WHEN InTrip IS NOT NULL THEN
                vdlVersatransY
            ELSE
-               Y
+               SGI.sgiCartesianYCoordinate
        END inY,
        CASE
            WHEN InTrip IS NOT NULL THEN
                vdlVersatransLatitude
            ELSE
-               Latitude
+               SGI.sgiLatitude
        END inLatitude,
        CASE
            WHEN InTrip IS NOT NULL THEN
                vdlVersatransLongitude
            ELSE
-               Longitude
-       END inLongitude,
+               SGI.sgiLongitude
+		END inLongitude,
        BusID OutBusID,
-       CASE
+    CASE
            WHEN OutTrip IS NOT NULL THEN
                StopDescription
            ELSE
-               schname_23
-       END OutStopDescription,
+               S.SchName COLLATE SQL_Latin1_General_CP1_CI_AS
+       END   OutStopDescription,
        CASE
            WHEN OutTrip IS NOT NULL THEN
                CAST(StopTime AS TIME)
@@ -11270,28 +11271,30 @@ SELECT StudentNo,
            WHEN OutTrip IS NOT NULL THEN
                vdlVersatransX
            ELSE
-               X
+               SGI.sgiCartesianXCoordinate
        END outX,
        CASE
            WHEN OutTrip IS NOT NULL THEN
                vdlVersatransY
            ELSE
-               Y
+               sgi.sgiCartesianYCoordinate
        END outY,
        CASE
            WHEN OutTrip IS NOT NULL THEN
                vdlVersatransLatitude
            ELSE
-               Latitude
+               SGI.sgiLatitude
        END outLatitude,
        CASE
            WHEN OutTrip IS NOT NULL THEN
                vdlVersatransLongitude
            ELSE
-               Longitude
+               SGI.sgiLongitude
        END outLongitude
 FROM Transportation.VersatransDataLive
-LEFT JOIN dbo.schoollocation ON schoollocation.sch = Transportation.VersatransDataLive.Sch
+--LEFT JOIN dbo.schoollocation ON schoollocation.sch = Transportation.VersatransDataLive.Sch
+LEFT JOIN [BPS].[SchoolGeographicInformation] SGI ON SGI.sgiSchoolId = Transportation.VersatransDataLive.Sch
+INNER JOIN BPS.School S ON S.SchID=SGI.sgiSchoolId
 WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
       AND VersatransDataLive.Sch IN (
                      SELECT DISTINCT
@@ -11302,7 +11305,6 @@ WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
                      WHERE STD_ENROLLMENT_STATUS IN ( 'Active', 'Registered' )
   ))a
    
-  --ORDER BY StudentNo,Sch,steEligibility,Days,Trip
   INNER JOIN (
 
   SELECT steId,
@@ -11455,17 +11457,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       name="InBusID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[InStopDescription]"
-                      length="50"
-                      lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopDescription]"
-                      name="InStopDescription"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopTime]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -11521,17 +11512,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="5"
                       lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutBusID]"
                       name="OutBusID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[OutStopDescription]"
-                      length="50"
-                      lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopDescription]"
-                      name="OutStopDescription"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopTime]"
@@ -11724,6 +11704,28 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[strSourceId]"
                       name="strSourceId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[InStopDescription]"
+                      length="50"
+                      lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[InStopDescription]"
+                      name="InStopDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[OutStopDescription]"
+                      length="50"
+                      lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].Columns[OutStopDescription]"
+                      name="OutStopDescription"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -11769,12 +11771,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="5"
                       name="InBusID" />
                     <externalMetadataColumn
-                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[InStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="InStopDescription" />
-                    <externalMetadataColumn
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[InStopTime]"
                       dataType="wstr"
                       length="16"
@@ -11801,12 +11797,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       dataType="str"
                       length="5"
                       name="OutBusID" />
-                    <externalMetadataColumn
-                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[OutStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="OutStopDescription" />
                     <externalMetadataColumn
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[OutStopTime]"
                       dataType="wstr"
@@ -11896,13 +11886,25 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[strSourceData]"
                       codePage="1252"
                       dataType="str"
-                      length="4"
+                      length="10"
                       name="strSourceData" />
                     <externalMetadataColumn
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[strSourceId]"
                       dataType="wstr"
                       length="14"
                       name="strSourceId" />
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[InStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InStopDescription" />
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Output].ExternalColumns[OutStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OutStopDescription" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -11952,6 +11954,13 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[EffectiveDate]"
                       name="EffectiveDate" />
                     <outputColumn
+                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[InStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[InStopDescription]"
+                      name="InStopDescription" />
+                    <outputColumn
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[Trip]"
                       codePage="1252"
                       dataType="str"
@@ -11965,13 +11974,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="5"
                       lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[InBusID]"
                       name="InBusID" />
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[InStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[InStopDescription]"
-                      name="InStopDescription" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[InStopTime]"
                       dataType="wstr"
@@ -11994,6 +11996,13 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[inLatitude]"
                       name="inLatitude" />
                     <outputColumn
+                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
+                      name="OutStopDescription" />
+                    <outputColumn
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[inLongitude]"
                       dataType="r8"
                       lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[inLongitude]"
@@ -12005,13 +12014,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="5"
                       lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[OutBusID]"
                       name="OutBusID" />
-                    <outputColumn
-                      refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
-                      name="OutStopDescription" />
                     <outputColumn
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[OutStopTime]"
                       dataType="wstr"
@@ -12101,7 +12103,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       refId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[strSourceData]"
                       codePage="1252"
                       dataType="str"
-                      length="4"
+                      length="10"
                       lineageId="Package\dftMergeBusRounting 1\ODS VesaTransDataLive.Outputs[OLE DB Source Error Output].Columns[strSourceData]"
                       name="strSourceData" />
                     <outputColumn
@@ -16412,13 +16414,21 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="135,42"
+          Id="Package\dftMergeBusRounting 1\Steid Is null"
+          TopLeft="297.222222222223,151.222222222222" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\dftMergeBusRounting 1\Insert Sort"
+          TopLeft="255.111111111112,427.666666666667" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\dftMergeBusRounting 1\Existing Rows stircurrent"
+          TopLeft="517.555555555556,242" />
+        <NodeLayout
           Size="165,42"
           Id="Package\dftMergeBusRounting 1\Update St Routing"
           TopLeft="34,521.888888888889" />
-        <NodeLayout
-          Size="134,42"
-          Id="Package\dftMergeBusRounting 1\Update sort"
-          TopLeft="46.2222222222223,434.666666666667" />
         <NodeLayout
           Size="205,42"
           Id="Package\dftMergeBusRounting 1\Remove Duplicate Records"
@@ -16428,13 +16438,17 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
           Id="Package\dftMergeBusRounting 1\Insert St Routing"
           TopLeft="240.666666666667,520.666666666667" />
         <NodeLayout
+          Size="134,42"
+          Id="Package\dftMergeBusRounting 1\Update sort"
+          TopLeft="46.2222222222223,434.666666666667" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\dftMergeBusRounting 1\New Rows StirCurrent"
+          TopLeft="127.222222222222,238.555555555555" />
+        <NodeLayout
           Size="192,42"
           Id="Package\dftMergeBusRounting 1\ODS VesaTransDataLive"
           TopLeft="271.555555555556,7" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\dftMergeBusRounting 1\Update ErrorTable"
-          TopLeft="440.888888888889,427.333333333333" />
         <NodeLayout
           Size="153,42"
           Id="Package\dftMergeBusRounting 1\Routing Lookup"
@@ -16448,21 +16462,89 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
           Id="Package\dftMergeBusRounting 1\Error_Table Lkp"
           TopLeft="540.555555555556,319.888888888889" />
         <NodeLayout
-          Size="182,42"
-          Id="Package\dftMergeBusRounting 1\New Rows StirCurrent"
-          TopLeft="127.222222222222,238.555555555555" />
-        <NodeLayout
-          Size="129,42"
-          Id="Package\dftMergeBusRounting 1\Insert Sort"
-          TopLeft="255.111111111112,427.666666666667" />
-        <NodeLayout
-          Size="195,42"
-          Id="Package\dftMergeBusRounting 1\Existing Rows stircurrent"
-          TopLeft="517.555555555556,242" />
-        <NodeLayout
-          Size="135,42"
-          Id="Package\dftMergeBusRounting 1\Steid Is null"
-          TopLeft="297.222222222223,151.222222222222" />
+          Size="165,42"
+          Id="Package\dftMergeBusRounting 1\Update ErrorTable"
+          TopLeft="440.888888888889,427.333333333333" />
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting 1.Paths[Sort Output]"
+          TopLeft="114.861111111111,476.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.222222222222"
+              Start="0,0"
+              End="0,37.722222222222">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.722222222222" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting 1.Paths[OLE DB Source Output]"
+          TopLeft="365.527777777778,49">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting 1.Paths[New Rows]"
+          TopLeft="343.555555555556,193.222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-125.333333333334,45.333333333333"
+              Start="0,0"
+              End="-125.333333333334,37.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.4519277696436" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.4519277696436"
+                    Point2="0,18.4519277696436"
+                    Point3="-4,18.4519277696436" />
+                  <mssgle:LineSegment
+                    End="-121.333333333334,18.4519277696436" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-121.333333333334,18.4519277696436"
+                    Point2="-125.333333333334,18.4519277696436"
+                    Point3="-125.333333333334,22.4519277696436" />
+                  <mssgle:LineSegment
+                    End="-125.333333333334,37.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-86.204244791667,23.4519277696436,47.07515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting 1.Paths[Lookup No Match Output1]"
           TopLeft="641.888888888889,361.888888888889">
@@ -16531,7 +16613,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-16.8897200520828,25.1299410665519,111.6127734375,11.609375"
+              BoundingBox="-16.8897200520829,25.1299410665519,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -16731,86 +16813,6 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting 1.Paths[Sort Output]"
-          TopLeft="114.861111111111,476.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.222222222222"
-              Start="0,0"
-              End="0,37.722222222222">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.722222222222" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting 1.Paths[OLE DB Source Output]"
-          TopLeft="365.527777777778,49">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting 1.Paths[New Rows]"
-          TopLeft="343.555555555556,193.222222222222">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-125.333333333334,45.333333333333"
-              Start="0,0"
-              End="-125.333333333334,37.833333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.4519277696436" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.4519277696436"
-                    Point2="0,18.4519277696436"
-                    Point3="-4,18.4519277696436" />
-                  <mssgle:LineSegment
-                    End="-121.333333333334,18.4519277696436" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-121.333333333334,18.4519277696436"
-                    Point2="-125.333333333334,18.4519277696436"
-                    Point3="-125.333333333334,22.4519277696436" />
-                  <mssgle:LineSegment
-                    End="-125.333333333334,37.833333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-86.204244791667,23.4519277696436,47.07515625,9.421875"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -16841,7 +16843,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -16851,7 +16853,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -16877,7 +16879,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -16887,7 +16889,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
