@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Planning Data"
   DTS:PackageType="5"
-  DTS:VersionBuild="144"
-  DTS:VersionGUID="{C3E1849F-4608-4DCB-88F6-60D13C300C29}">
+  DTS:VersionBuild="145"
+  DTS:VersionGUID="{982F2503-28EF-42A0-80D3-3AB6F57FC127}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -9698,7 +9698,7 @@ SELECT StudentNo,
 FROM Transportation.VersatransDataPlanning
 --LEFT JOIN dbo.schoollocation ON schoollocation.sch = VersatransDataPlanning.Sch
 LEFT JOIN [BPS].[SchoolGeographicInformation] SGI ON SGI.sgiSchoolId = Transportation.VersatransDataPlanning.Sch
-INNER JOIN BPS.School S ON S.SchID=SGI.sgiSchoolId
+INNER JOIN BPS.School S ON S.SchID=VersatransDataPlanning.Sch
 WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
       AND VersatransDataPlanning.Sch IN (
                      SELECT DISTINCT
@@ -14703,7 +14703,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-110.204244791667,29.0146412884334,47.07515625,9.421875"
+              BoundingBox="-110.204244791666,29.0146412884334,47.07515625,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -14775,7 +14775,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="17.6102799479167,20.8740849194729,111.6127734375,11.609375"
+              BoundingBox="17.6102799479165,20.8740849194729,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="154"
-  DTS:VersionGUID="{4C82A90A-25A5-4775-9674-DE7612401294}">
+  DTS:VersionBuild="155"
+  DTS:VersionGUID="{157E1213-34CB-4F53-9E92-9948EE2376B1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -11294,7 +11294,7 @@ SELECT StudentNo,
 FROM Transportation.VersatransDataLive
 --LEFT JOIN dbo.schoollocation ON schoollocation.sch = Transportation.VersatransDataLive.Sch
 LEFT JOIN [BPS].[SchoolGeographicInformation] SGI ON SGI.sgiSchoolId = Transportation.VersatransDataLive.Sch
-INNER JOIN BPS.School S ON S.SchID=SGI.sgiSchoolId
+INNER JOIN BPS.School S ON S.SchID=VersatransDataLive.Sch 
 WHERE NOT ProgID IN ( 50, 61, 62, 70, 60 )
       AND VersatransDataLive.Sch IN (
                      SELECT DISTINCT
