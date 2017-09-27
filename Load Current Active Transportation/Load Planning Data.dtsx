@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Planning Data"
   DTS:PackageType="5"
-  DTS:VersionBuild="145"
-  DTS:VersionGUID="{982F2503-28EF-42A0-80D3-3AB6F57FC127}">
+  DTS:VersionBuild="150"
+  DTS:VersionGUID="{F4167D1A-47D8-4567-89F1-7599EE4340B8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -7336,9 +7336,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               startId="Package\LoadPlanningData\Routing Lkp.Outputs[Lookup Match Output]" />
             <path
               refId="Package\LoadPlanningData.Paths[Lookup No Match Output2]"
-              endId="Package\LoadPlanningData\Merge Join.Inputs[Merge Join Left Input]"
+              endId="Package\LoadPlanningData\Insert Sort.Inputs[Sort Input]"
               name="Lookup No Match Output"
-              startId="Package\LoadPlanningData\Live data Lkp.Outputs[Lookup No Match Output]" />
+              startId="Package\LoadPlanningData\Routing Lkp.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\LoadPlanningData.Paths[Lookup No Match Output1]"
               endId="Package\LoadPlanningData\Insert Error Table.Inputs[OLE DB Destination Input]"
@@ -7346,9 +7346,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               startId="Package\LoadPlanningData\Error_Table Lkp.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\LoadPlanningData.Paths[Lookup No Match Output]"
-              endId="Package\LoadPlanningData\Insert Sort.Inputs[Sort Input]"
+              endId="Package\LoadPlanningData\Merge Join.Inputs[Merge Join Left Input]"
               name="Lookup No Match Output"
-              startId="Package\LoadPlanningData\Routing Lkp.Outputs[Lookup No Match Output]" />
+              startId="Package\LoadPlanningData\Live data Lkp.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\LoadPlanningData.Paths[Merge Join Output]"
               endId="Package\LoadPlanningData\Delete duplicates.Inputs[Sort Input]"
@@ -7979,7 +7979,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\LoadPlanningData 1\1101:invalid};#{Package\LoadPlanningData 1\1102:invalid};#{Package\LoadPlanningData 1\Existing Rows stcurrent.Outputs[Derived Column Output]};</property>
+                  name="ParameterMap">#{Package\LoadPlanningData 1\1118:invalid};#{Package\LoadPlanningData 1\1119:invalid};#{Package\LoadPlanningData 1\Existing Rows stcurrent.Outputs[Derived Column Output]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -8350,12 +8350,6 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       externalMetadataColumnId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strOriginLongitude]"
                       lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[inLongitude]" />
                     <inputColumn
-                      refId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].Columns[OutBusID]"
-                      cachedDataType="i4"
-                      cachedName="OutBusID"
-                      externalMetadataColumnId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strDestinationPointVehicleNumber]"
-                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[OutBusID]" />
-                    <inputColumn
                       refId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -8409,12 +8403,20 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       externalMetadataColumnId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strSourceData]"
                       lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[ConvStrSourceData]" />
                     <inputColumn
-                      refId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].Columns[StrSourceId]"
+                      refId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].Columns[strSourceId]"
                       cachedDataType="wstr"
                       cachedLength="14"
-                      cachedName="StrSourceId"
+                      cachedName="strSourceId"
                       externalMetadataColumnId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strSourceId]"
-                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[StrSourceId]" />
+                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[strSourceId]" />
+                    <inputColumn
+                      refId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].Columns[OutBusID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="OutBusID"
+                      externalMetadataColumnId="Package\LoadPlanningData 1\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strDestinationPointVehicleNumber]"
+                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[OutBusID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -9038,6 +9040,25 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                           name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\LoadPlanningData 1\Insert Sort.Inputs[Sort Input].Columns[OutBusID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="OutBusID"
+                      cachedSortKeyPosition="12"
+                      lineageId="Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[OutBusID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -9234,10 +9255,10 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[OutBusID]"
+                      refId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[StrisCurrent]"
                       dataType="i4"
-                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[OutBusID]"
-                      name="OutBusID">
+                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[StrisCurrent]"
+                      name="StrisCurrent">
                       <properties>
                         <property
                           containsID="true"
@@ -9342,12 +9363,12 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[StrSourceData]"
+                      refId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[strSourceData]"
                       codePage="1252"
                       dataType="str"
                       length="10"
-                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[StrSourceData]"
-                      name="StrSourceData">
+                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[strSourceData]"
+                      name="strSourceData">
                       <properties>
                         <property
                           containsID="true"
@@ -9398,17 +9419,32 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[StrSourceId]"
+                      refId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[strSourceId]"
                       dataType="wstr"
                       length="14"
-                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[StrSourceId]"
-                      name="StrSourceId">
+                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[strSourceId]"
+                      name="strSourceId">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
                           name="SortColumnId">#{Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[strSourceId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[OutBusID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\LoadPlanningData 1\Insert Sort.Outputs[Sort Output].Columns[OutBusID]"
+                      name="OutBusID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[OutBusID]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -12050,12 +12086,6 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       externalMetadataColumnId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].ExternalColumns[@strOriginLongitude]"
                       lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[inLongitude]" />
                     <inputColumn
-                      refId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].Columns[OutBusID]"
-                      cachedDataType="i4"
-                      cachedName="OutBusID"
-                      externalMetadataColumnId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointVehicleNumber]"
-                      lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[OutBusID]" />
-                    <inputColumn
                       refId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -12101,18 +12131,26 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       externalMetadataColumnId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].ExternalColumns[@strisCurrent]"
                       lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[ConvstrisCurrent]" />
                     <inputColumn
-                      refId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].Columns[StrSourceId]"
+                      refId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].Columns[strSourceId]"
                       cachedDataType="wstr"
                       cachedLength="14"
-                      cachedName="StrSourceId"
+                      cachedName="strSourceId"
                       externalMetadataColumnId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].ExternalColumns[@strSourceId]"
-                      lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[StrSourceId]" />
+                      lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[strSourceId]" />
                     <inputColumn
                       refId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].Columns[strId]"
                       cachedDataType="i4"
                       cachedName="strId"
                       externalMetadataColumnId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].ExternalColumns[@strId]"
                       lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[strId]" />
+                    <inputColumn
+                      refId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].Columns[OutBusID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="OutBusID"
+                      externalMetadataColumnId="Package\LoadPlanningData 1\Update.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointVehicleNumber]"
+                      lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[OutBusID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -13363,6 +13401,25 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                           name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\LoadPlanningData 1\Update sort.Inputs[Sort Input].Columns[OutBusID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="OutBusID"
+                      cachedSortKeyPosition="12"
+                      lineageId="Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[OutBusID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -13559,10 +13616,10 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[OutBusID]"
+                      refId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[StrisCurrent]"
                       dataType="i4"
-                      lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[OutBusID]"
-                      name="OutBusID">
+                      lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[StrisCurrent]"
+                      name="StrisCurrent">
                       <properties>
                         <property
                           containsID="true"
@@ -13695,11 +13752,11 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[StrSourceId]"
+                      refId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[strSourceId]"
                       dataType="wstr"
                       length="14"
-                      lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[StrSourceId]"
-                      name="StrSourceId">
+                      lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[strSourceId]"
+                      name="strSourceId">
                       <properties>
                         <property
                           containsID="true"
@@ -13719,6 +13776,21 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
                           name="SortColumnId">#{Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[strId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[OutBusID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\LoadPlanningData 1\Update sort.Outputs[Sort Output].Columns[OutBusID]"
+                      name="OutBusID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\LoadPlanningData 1\Remove Duplicates.Outputs[Sort Output].Columns[OutBusID]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -14110,37 +14182,37 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPlanningData.Paths[Lookup No Match Output2]"
-          TopLeft="125.333333333333,136">
+          TopLeft="234.666666666667,549">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="190.333333333333,46"
+              EndConnector="111.833333333333,49"
               Start="0,0"
-              End="190.333333333333,38.5">
+              End="111.833333333333,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.9709534834772" />
+                    End="0,15.9443631039532" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.9709534834772"
-                    Point2="0,22.9709534834772"
-                    Point3="4,22.9709534834772" />
+                    Point1="0,15.9443631039532"
+                    Point2="0,19.9443631039532"
+                    Point3="4,19.9443631039532" />
                   <mssgle:LineSegment
-                    End="186.333333333333,22.9709534834772" />
+                    End="107.833333333333,19.9443631039532" />
                   <mssgle:CubicBezierSegment
-                    Point1="186.333333333333,22.9709534834772"
-                    Point2="190.333333333333,22.9709534834772"
-                    Point3="190.333333333333,26.9709534834772" />
+                    Point1="107.833333333333,19.9443631039532"
+                    Point2="111.833333333333,19.9443631039532"
+                    Point3="111.833333333333,23.9443631039532" />
                   <mssgle:LineSegment
-                    End="190.333333333333,38.5" />
+                    End="111.833333333333,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="30.4916276041665,27.9709534834772,129.350078125,16"
+              BoundingBox="0.110279947916673,24.9443631039532,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -14182,37 +14254,37 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPlanningData.Paths[Lookup No Match Output]"
-          TopLeft="234.666666666667,549">
+          TopLeft="125.333333333333,136">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="111.833333333333,49"
+              EndConnector="190.333333333333,46"
               Start="0,0"
-              End="111.833333333333,41.5">
+              End="190.333333333333,38.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.9443631039532" />
+                    End="0,18.9709534834772" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.9443631039532"
-                    Point2="0,19.9443631039532"
-                    Point3="4,19.9443631039532" />
+                    Point1="0,18.9709534834772"
+                    Point2="0,22.9709534834772"
+                    Point3="4,22.9709534834772" />
                   <mssgle:LineSegment
-                    End="107.833333333333,19.9443631039532" />
+                    End="186.333333333333,22.9709534834772" />
                   <mssgle:CubicBezierSegment
-                    Point1="107.833333333333,19.9443631039532"
-                    Point2="111.833333333333,19.9443631039532"
-                    Point3="111.833333333333,23.9443631039532" />
+                    Point1="186.333333333333,22.9709534834772"
+                    Point2="190.333333333333,22.9709534834772"
+                    Point3="190.333333333333,26.9709534834772" />
                   <mssgle:LineSegment
-                    End="111.833333333333,41.5" />
+                    End="190.333333333333,38.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0.110279947916673,24.9443631039532,111.6127734375,11.609375"
+              BoundingBox="30.4916276041665,27.9709534834772,129.350078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -14989,6 +15061,19 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\LoadPlanningData 1\Error table Insert">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\LoadPlanningData 1\Insert">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

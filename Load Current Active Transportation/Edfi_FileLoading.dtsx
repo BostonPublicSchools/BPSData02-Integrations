@@ -1,0 +1,1544 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/27/2017 10:43:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="084-138051-004"
+  DTS:CreatorName="ADMINDOM\X05112"
+  DTS:DTSID="{DB11FA20-2EF7-474E-9AB7-081F1DE4C945}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Edfi_FileLoading"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{89BBF0D1-A88F-4ACE-83F4-0C7FC3898679}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{13D52450-91BA-481D-BE0A-C9EB6B9C3359}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\X05112\Desktop\EDPlan to Aspen file for review.xls.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Edfi_FileLoad"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AD5722FA-39DC-4734-B021-1C3C51506DAA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Edfi_FileLoad"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Edfi_FileLoad\Convert DataTypes"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convert DataTypes"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Student Number]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Student Number"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Student Number]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Special Education Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Special Education Status"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Education Status]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Current IEP Begin Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Current IEP Begin Date"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Current IEP Begin Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Current IEP End Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Current IEP End Date"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Current IEP End Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Next Evaluation Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Next Evaluation Date"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Next Evaluation Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Next Review Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Next Review Date"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Next Review Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Special Education Exit Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Special Education Exit Date"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Education Exit Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Setting]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Setting"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Setting]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Program]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Program"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Program]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Related Services]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Related Services"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Services]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Related Service Minutes General Ed Setting (B Grid)]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Related Service Minutes General Ed Setting (B Grid)"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Service Minutes General Ed Setting (B Grid)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Related Service Minutes Other Setting (C Grid)]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Related Service Minutes Other Setting (C Grid)"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Service Minutes Other Setting (C Grid)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Special Ed Service Minutes General Ed Setting (B Grid)"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Special Ed Service Minutes Other Setting (C Grid)]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Special Ed Service Minutes Other Setting (C Grid)"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Ed Service Minutes Other Setting (C Grid)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Transportation Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Transportation Code"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Code]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Transportation Accomodation(s)]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Transportation Accomodation(s)"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Accomodation(s)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Transportation Monitor (Y/N)]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Transportation Monitor (Y/N)"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Monitor (Y/N)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input].Columns[Utilize Proposed Trans]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Utilize Proposed Trans"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Utilize Proposed Trans]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvStudent Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvStudent Number]"
+                      name="ConvStudent Number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Student Number]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Education Status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Education Status]"
+                      name="ConvSpecial Education Status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Education Status]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvCurrent IEP Begin Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvCurrent IEP Begin Date]"
+                      name="ConvCurrent IEP Begin Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Current IEP Begin Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvCurrent IEP End Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvCurrent IEP End Date]"
+                      name="ConvCurrent IEP End Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Current IEP End Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvNext Evaluation Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvNext Evaluation Date]"
+                      name="ConvNext Evaluation Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Next Evaluation Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvNext Review Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvNext Review Date]"
+                      name="ConvNext Review Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Next Review Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Education Exit Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Education Exit Date]"
+                      name="ConvSpecial Education Exit Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Education Exit Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSetting]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSetting]"
+                      name="ConvSetting"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Setting]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvProgram]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvProgram]"
+                      name="ConvProgram"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Program]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvRelated Services]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvRelated Services]"
+                      name="ConvRelated Services"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Services]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvRelated Service Minutes General Ed Setting (B Grid)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvRelated Service Minutes General Ed Setting (B Grid)]"
+                      name="ConvRelated Service Minutes General Ed Setting (B Grid)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Service Minutes General Ed Setting (B Grid)]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvRelated Service Minutes Other Setting (C Grid)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvRelated Service Minutes Other Setting (C Grid)]"
+                      name="ConvRelated Service Minutes Other Setting (C Grid)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Service Minutes Other Setting (C Grid)]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Ed Service Minutes General Ed Setting (B Grid)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Ed Service Minutes General Ed Setting (B Grid)]"
+                      name="ConvSpecial Ed Service Minutes General Ed Setting (B Grid)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Ed Service Minutes Other Setting (C Grid)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Ed Service Minutes Other Setting (C Grid)]"
+                      name="ConvSpecial Ed Service Minutes Other Setting (C Grid)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Ed Service Minutes Other Setting (C Grid)]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvTransportation Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvTransportation Code]"
+                      name="ConvTransportation Code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Code]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvTransportation Accomodation(s)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvTransportation Accomodation(s)]"
+                      name="ConvTransportation Accomodation(s)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Accomodation(s)]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvTransportation Monitor (Y/N)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvTransportation Monitor (Y/N)]"
+                      name="ConvTransportation Monitor (Y/N)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Monitor (Y/N)]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvUtilize Proposed Trans]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvUtilize Proposed Trans]"
+                      name="ConvUtilize Proposed Trans"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Utilize Proposed Trans]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Edfi_FileLoad\EDPlanToAspen"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="EDPlanToAspen"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[EDPlanToAspen]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Edfi_FileLoad\EDPlanToAspen.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvStudent Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvStudent Number"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Student Number]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvStudent Number]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvSpecial Education Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvSpecial Education Status"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Education Status]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Education Status]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvCurrent IEP Begin Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvCurrent IEP Begin Date"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Current IEP Begin Date]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvCurrent IEP Begin Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvCurrent IEP End Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvCurrent IEP End Date"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Current IEP End Date]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvCurrent IEP End Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvNext Evaluation Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvNext Evaluation Date"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Next Evaluation Date]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvNext Evaluation Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvNext Review Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvNext Review Date"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Next Review Date]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvNext Review Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvSpecial Education Exit Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvSpecial Education Exit Date"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Education Exit Date]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Education Exit Date]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvSetting]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvSetting"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Setting]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSetting]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvProgram]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvProgram"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Program]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvProgram]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvRelated Services]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvRelated Services"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Services]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvRelated Services]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvRelated Service Minutes General Ed Setting (B Grid)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvRelated Service Minutes General Ed Setting (B Grid)"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvRelated Service Minutes General Ed Setting (B Grid)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvRelated Service Minutes Other Setting (C Grid)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvRelated Service Minutes Other Setting (C Grid)"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvRelated Service Minutes Other Setting (C Grid)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvSpecial Ed Service Minutes General Ed Setting (B Grid)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvSpecial Ed Service Minutes General Ed Setting (B Grid)"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Ed Service Minutes General Ed Setting (B Grid)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvSpecial Ed Service Minutes Other Setting (C Grid)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvSpecial Ed Service Minutes Other Setting (C Grid)"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes Other Setting (C Grid)]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvSpecial Ed Service Minutes Other Setting (C Grid)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvTransportation Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvTransportation Code"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Transportation Code]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvTransportation Code]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvTransportation Accomodation(s)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvTransportation Accomodation(s)"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Transportation Accomodation(s)]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvTransportation Accomodation(s)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvTransportation Monitor (Y/N)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvTransportation Monitor (Y/N)"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Transportation Monitor (Y/N)]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvTransportation Monitor (Y/N)]" />
+                    <inputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvUtilize Proposed Trans]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ConvUtilize Proposed Trans"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Utilize Proposed Trans]"
+                      lineageId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output].Columns[ConvUtilize Proposed Trans]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Student Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Student Number" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Education Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Special Education Status" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Current IEP Begin Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Current IEP Begin Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Current IEP End Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Current IEP End Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Next Evaluation Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Next Evaluation Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Next Review Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Next Review Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Education Exit Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Special Education Exit Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Setting]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Setting" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Program]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Program" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Services]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Related Services" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Related Service Minutes General Ed Setting (B Grid)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Related Service Minutes Other Setting (C Grid)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Special Ed Service Minutes General Ed Setting (B Grid)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes Other Setting (C Grid)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Special Ed Service Minutes Other Setting (C Grid)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Transportation Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Transportation Code" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Transportation Accomodation(s)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Transportation Accomodation(s)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Transportation Monitor (Y/N)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Transportation Monitor (Y/N)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Utilize Proposed Trans]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Utilize Proposed Trans" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Edfi_FileLoad\EDPlanToAspen.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Edfi_FileLoad\EDPlanToAspen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlanToAspen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Edfi_FileLoad\EDPlanToAspen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Edfi_FileLoad\EDPlan_Aspen"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="EDPlan_Aspen"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Data$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Edfi_FileLoad\EDPlan_Aspen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Student Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Student Number]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Student Number]"
+                      name="Student Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Education Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Special Education Status]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Education Status]"
+                      name="Special Education Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Current IEP Begin Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Current IEP Begin Date]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Current IEP Begin Date]"
+                      name="Current IEP Begin Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Current IEP End Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Current IEP End Date]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Current IEP End Date]"
+                      name="Current IEP End Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Next Evaluation Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Next Evaluation Date]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Next Evaluation Date]"
+                      name="Next Evaluation Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Next Review Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Next Review Date]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Next Review Date]"
+                      name="Next Review Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Education Exit Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Special Education Exit Date]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Education Exit Date]"
+                      name="Special Education Exit Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Setting]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Setting]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Setting]"
+                      name="Setting"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Program]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Program]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Program]"
+                      name="Program"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Services]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Related Services]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Services]"
+                      name="Related Services"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Service Minutes General Ed Setting (B Grid)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Service Minutes General Ed Setting (B Grid)]"
+                      name="Related Service Minutes General Ed Setting (B Grid)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Service Minutes Other Setting (C Grid)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Related Service Minutes Other Setting (C Grid)]"
+                      name="Related Service Minutes Other Setting (C Grid)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                      name="Special Ed Service Minutes General Ed Setting (B Grid)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Ed Service Minutes Other Setting (C Grid)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Special Ed Service Minutes Other Setting (C Grid)]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Special Ed Service Minutes Other Setting (C Grid)]"
+                      name="Special Ed Service Minutes Other Setting (C Grid)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Transportation Code]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Code]"
+                      name="Transportation Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Accomodation(s)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Transportation Accomodation(s)]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Accomodation(s)]"
+                      name="Transportation Accomodation(s)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Monitor (Y/N)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Transportation Monitor (Y/N)]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Transportation Monitor (Y/N)]"
+                      name="Transportation Monitor (Y/N)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Utilize Proposed Trans]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Utilize Proposed Trans]"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].Columns[Utilize Proposed Trans]"
+                      name="Utilize Proposed Trans"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Student Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Student Number" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Special Education Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Special Education Status" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Current IEP Begin Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Current IEP Begin Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Current IEP End Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Current IEP End Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Next Evaluation Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Next Evaluation Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Next Review Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Next Review Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Special Education Exit Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Special Education Exit Date" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Setting]"
+                      dataType="wstr"
+                      length="255"
+                      name="Setting" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Program]"
+                      dataType="wstr"
+                      length="255"
+                      name="Program" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Related Services]"
+                      dataType="wstr"
+                      length="255"
+                      name="Related Services" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Related Service Minutes General Ed Setting (B Grid)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Related Service Minutes Other Setting (C Grid)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Special Ed Service Minutes General Ed Setting (B Grid)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Special Ed Service Minutes Other Setting (C Grid)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Special Ed Service Minutes Other Setting (C Grid)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Transportation Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Transportation Code" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Transportation Accomodation(s)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Transportation Accomodation(s)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Transportation Monitor (Y/N)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Transportation Monitor (Y/N)" />
+                    <externalMetadataColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output].ExternalColumns[Utilize Proposed Trans]"
+                      dataType="wstr"
+                      length="255"
+                      name="Utilize Proposed Trans" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Student Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Student Number]"
+                      name="Student Number" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Special Education Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Special Education Status]"
+                      name="Special Education Status" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Current IEP Begin Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Current IEP Begin Date]"
+                      name="Current IEP Begin Date" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Current IEP End Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Current IEP End Date]"
+                      name="Current IEP End Date" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Next Evaluation Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Next Evaluation Date]"
+                      name="Next Evaluation Date" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Next Review Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Next Review Date]"
+                      name="Next Review Date" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Special Education Exit Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Special Education Exit Date]"
+                      name="Special Education Exit Date" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Setting]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Setting]"
+                      name="Setting" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Program]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Program]"
+                      name="Program" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Related Services]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Related Services]"
+                      name="Related Services" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Related Service Minutes General Ed Setting (B Grid)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Related Service Minutes General Ed Setting (B Grid)]"
+                      name="Related Service Minutes General Ed Setting (B Grid)" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Related Service Minutes Other Setting (C Grid)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Related Service Minutes Other Setting (C Grid)]"
+                      name="Related Service Minutes Other Setting (C Grid)" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                      name="Special Ed Service Minutes General Ed Setting (B Grid)" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Special Ed Service Minutes Other Setting (C Grid)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Special Ed Service Minutes Other Setting (C Grid)]"
+                      name="Special Ed Service Minutes Other Setting (C Grid)" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Transportation Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Transportation Code]"
+                      name="Transportation Code" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Transportation Accomodation(s)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Transportation Accomodation(s)]"
+                      name="Transportation Accomodation(s)" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Transportation Monitor (Y/N)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Transportation Monitor (Y/N)]"
+                      name="Transportation Monitor (Y/N)" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Utilize Proposed Trans]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[Utilize Proposed Trans]"
+                      name="Utilize Proposed Trans" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Edfi_FileLoad.Paths[Data Conversion Output]"
+              endId="Package\Edfi_FileLoad\EDPlanToAspen.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Edfi_FileLoad\Convert DataTypes.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Edfi_FileLoad.Paths[Excel Source Output]"
+              endId="Package\Edfi_FileLoad\Convert DataTypes.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Edfi_FileLoad\EDPlan_Aspen.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Edfi_FileLoad"
+          TopLeft="116,88" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Edfi_FileLoad">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Edfi_FileLoad\EDPlan_Aspen"
+          TopLeft="105,56" />
+        <NodeLayout
+          Size="153,43"
+          Id="Package\Edfi_FileLoad\EDPlanToAspen"
+          TopLeft="113,256" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Edfi_FileLoad\Convert DataTypes"
+          TopLeft="100,158" />
+        <EdgeLayout
+          Id="Package\Edfi_FileLoad.Paths[Excel Source Output]"
+          TopLeft="181.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Edfi_FileLoad.Paths[Data Conversion Output]"
+          TopLeft="187,200">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Edfi_FileLoad\EDPlan_Aspen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Edfi_FileLoad\EDPlanToAspen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
