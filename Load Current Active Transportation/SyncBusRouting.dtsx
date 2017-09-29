@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="158"
-  DTS:VersionGUID="{AA40B93F-B53D-491D-BD08-9BF905C88B07}">
+  DTS:VersionBuild="160"
+  DTS:VersionGUID="{61B0E0B6-AD26-4E92-8A4E-4DC752FE38F5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -11206,6 +11206,12 @@ SELECT StudentNo,
                'T'
            WHEN 51 THEN
                'O'
+           WHEN 80 THEN 
+		       'A'
+		   WHEN 81 THEN 
+		       'A'
+		   WHEN 82 THEN 
+		       'A'
        END as varchar(10)))  steEligibility1 ,
        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(Days, 'M', 'Mo'), 'T', 'Tu'), 'W', 'We'), 'H', 'Th'), 'F', 'Fr') Days,
        CAST(EffectiveDate AS DATE) EffectiveDate,
