@@ -1,0 +1,2518 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/17/2017 2:10:57 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="084-138051-004"
+  DTS:CreatorName="ADMINDOM\X05112"
+  DTS:DTSID="{588EE4E0-FB69-4CC8-AEA1-9D0857BE3BC9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="SyncSchoolCapacity"
+  DTS:PackageType="5"
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{D054E545-F87D-4008-BE3E-B8662F5A50E4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{27F293E1-B9E0-469D-B615-D88EAD6FF544}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\AspenSchool"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="AspenSchool"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT     ESC.SCaID,         
+         S.skl_school_Id as scaSchId,
+                 SCA_OID as scaSCA_OID,
+              	     SCA_Grade_Level collate SQL_Latin1_General_CP1_CI_AS as scaGradeLevel,
+	    SCA_Program_Code  collate SQL_Latin1_General_CP1_CI_AS as ScaProgramId ,
+     DS.CTX_CONTEXT_ID COLLATE SQL_Latin1_General_CP1_CI_AS   as scaYearContext,
+	    SCA_Assign_Limit as scaAssignLimit,
+	    SCA_Actual_Total as ScaActualToTal,
+	                  isnull(null,0) as scaPendingTotal,
+      SCA_WAITLIST_Total as scaWaitlistTotal,
+ISNULL(SCA_FIELDA_007,0) as ScaIsSpecialAdmission
+
+from ASPENDB.x2data.dbo.SCHOOL_CAPACITY SC
+JOIN    ASPENDB.x2data.dbo.DISTRICT_SCHOOL_YEAR_CONTEXT  DS ON DS.CTX_CONTEXT_ID = '2017-2018'
+                                                              AND DS.CTX_OID = SC.SCA_CTX_OID
+JOIN    ASPENDB.x2data.dbo.SCHOOL S ON S.SKL_OID = SCA_SKL_OID
+left join Eligibility.SchoolCapacity ESC on ESC.scaSCA_OID=SC.SCA_OID AND  ESC.scaSchId=s.skl_school_Id COLLATE SQL_Latin1_General_CP1_CI_AS and ESC.scaGradeLevel= SC.SCA_Grade_Level COLLATE SQL_Latin1_General_CP1_CI_AS
+ and   ESC.scaYearContext='2017-2018'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\AspenSchool.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaSchId]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]"
+                      name="scaSchId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaSCA_OID]"
+                      length="14"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]"
+                      name="scaSCA_OID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaGradeLevel]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]"
+                      name="scaGradeLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[ScaProgramId]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]"
+                      name="ScaProgramId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaYearContext]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]"
+                      name="scaYearContext"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaAssignLimit]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaAssignLimit]"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaAssignLimit]"
+                      name="scaAssignLimit"
+                      precision="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaActualToTal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[ScaActualToTal]"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaActualToTal]"
+                      name="ScaActualToTal"
+                      precision="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaPendingTotal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaPendingTotal]"
+                      length="1"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaPendingTotal]"
+                      name="scaPendingTotal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaWaitlistTotal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaWaitlistTotal]"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaWaitlistTotal]"
+                      name="scaWaitlistTotal"
+                      precision="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaIsSpecialAdmission]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[ScaIsSpecialAdmission]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaIsSpecialAdmission]"
+                      name="ScaIsSpecialAdmission"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[SCaID]"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCaID]"
+                      name="SCaID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaSchId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="scaSchId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaSCA_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="scaSCA_OID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaGradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="scaGradeLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[ScaProgramId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ScaProgramId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaYearContext]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="scaYearContext" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaAssignLimit]"
+                      dataType="numeric"
+                      name="scaAssignLimit"
+                      precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[ScaActualToTal]"
+                      dataType="numeric"
+                      name="ScaActualToTal"
+                      precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaPendingTotal]"
+                      dataType="i4"
+                      name="scaPendingTotal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[scaWaitlistTotal]"
+                      dataType="numeric"
+                      name="scaWaitlistTotal"
+                      precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[ScaIsSpecialAdmission]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ScaIsSpecialAdmission" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[SCaID]"
+                      dataType="i4"
+                      name="SCaID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[SCaID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[SCaID]"
+                      name="SCaID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaSchId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaSchId]"
+                      name="scaSchId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaSCA_OID]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaSCA_OID]"
+                      name="scaSCA_OID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaGradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaGradeLevel]"
+                      name="scaGradeLevel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ScaProgramId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ScaProgramId]"
+                      name="ScaProgramId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaYearContext]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaYearContext]"
+                      name="scaYearContext" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaAssignLimit]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaAssignLimit]"
+                      name="scaAssignLimit"
+                      precision="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ScaActualToTal]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ScaActualToTal]"
+                      name="ScaActualToTal"
+                      precision="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaPendingTotal]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaPendingTotal]"
+                      name="scaPendingTotal" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaWaitlistTotal]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[scaWaitlistTotal]"
+                      name="scaWaitlistTotal"
+                      precision="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ScaIsSpecialAdmission]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ScaIsSpecialAdmission]"
+                      name="ScaIsSpecialAdmission" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[scaAssignLimit]"
+                      cachedDataType="numeric"
+                      cachedName="scaAssignLimit"
+                      cachedPrecision="5"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaAssignLimit]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[ScaActualToTal]"
+                      cachedDataType="numeric"
+                      cachedName="ScaActualToTal"
+                      cachedPrecision="5"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaActualToTal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[scaPendingTotal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="scaPendingTotal"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaPendingTotal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[scaWaitlistTotal]"
+                      cachedDataType="numeric"
+                      cachedName="scaWaitlistTotal"
+                      cachedPrecision="5"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaWaitlistTotal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[ScaIsSpecialAdmission]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaIsSpecialAdmission"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaIsSpecialAdmission]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaAssignLimit]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaAssignLimit]"
+                      name="ConscaAssignLimit"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaAssignLimit]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaActualToTal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaActualToTal]"
+                      name="ConScaActualToTal"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaActualToTal]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaPendingTotal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaPendingTotal]"
+                      name="ConscaPendingTotal"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaPendingTotal]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaWaitlistTotal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaWaitlistTotal]"
+                      name="ConscaWaitlistTotal"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaWaitlistTotal]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaIsSpecialAdmission]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaIsSpecialAdmission]"
+                      name="ConScaIsSpecialAdmission"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaIsSpecialAdmission]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[LastUpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[LastUpdatedDate]"
+                      name="LastUpdatedDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Insert"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Eligibility].[SchoolCapacity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Insert.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[scaSchId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaSchId"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaSchId]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaSchId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[scaSCA_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="scaSCA_OID"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaSCA_OID]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaSCA_OID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[scaGradeLevel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaGradeLevel"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaGradeLevel]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaGradeLevel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[ScaProgramId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaProgramId"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaProgramId]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ScaProgramId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[scaYearContext]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaYearContext"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaYearContext]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaYearContext]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[ConscaAssignLimit]"
+                      cachedDataType="i4"
+                      cachedName="ConscaAssignLimit"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaAssignLimit]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaAssignLimit]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[ConScaActualToTal]"
+                      cachedDataType="i4"
+                      cachedName="ConScaActualToTal"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaActualTotal]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConScaActualToTal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[ConscaPendingTotal]"
+                      cachedDataType="i4"
+                      cachedName="ConscaPendingTotal"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaPendingTotal]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaPendingTotal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[ConscaWaitlistTotal]"
+                      cachedDataType="i4"
+                      cachedName="ConscaWaitlistTotal"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaWaitlistTotal]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaWaitlistTotal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[ConScaIsSpecialAdmission]"
+                      cachedDataType="bool"
+                      cachedName="ConScaIsSpecialAdmission"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaIsSpecialAdmission]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConScaIsSpecialAdmission]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].Columns[LastUpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastUpdatedDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaLastUpdated]"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[LastUpdatedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaId]"
+                      dataType="i4"
+                      name="scaId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaSchId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="scaSchId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaSCA_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="scaSCA_OID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaLastUpdated]"
+                      dataType="dbTimeStamp"
+                      name="scaLastUpdated" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaGradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="scaGradeLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaProgramId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="scaProgramId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaYearContext]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="scaYearContext" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaAssignLimit]"
+                      dataType="i4"
+                      name="scaAssignLimit" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaActualTotal]"
+                      dataType="i4"
+                      name="scaActualTotal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaPendingTotal]"
+                      dataType="i4"
+                      name="scaPendingTotal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaWaitlistTotal]"
+                      dataType="i4"
+                      name="scaWaitlistTotal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input].ExternalColumns[scaIsSpecialAdmission]"
+                      dataType="bool"
+                      name="scaIsSpecialAdmission" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Insert.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Insert Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Insert Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[scaSchId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaSchId"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[scaSCA_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="scaSCA_OID"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[scaGradeLevel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaGradeLevel"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[ScaProgramId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaProgramId"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[scaYearContext]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaYearContext"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[SCaID]"
+                      cachedDataType="i4"
+                      cachedName="SCaID"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCaID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[ConscaAssignLimit]"
+                      cachedDataType="i4"
+                      cachedName="ConscaAssignLimit"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaAssignLimit]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[ConScaActualToTal]"
+                      cachedDataType="i4"
+                      cachedName="ConScaActualToTal"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaActualToTal]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[ConscaPendingTotal]"
+                      cachedDataType="i4"
+                      cachedName="ConscaPendingTotal"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaPendingTotal]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[ConscaWaitlistTotal]"
+                      cachedDataType="i4"
+                      cachedName="ConscaWaitlistTotal"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaWaitlistTotal]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[ConScaIsSpecialAdmission]"
+                      cachedDataType="bool"
+                      cachedName="ConScaIsSpecialAdmission"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaIsSpecialAdmission]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaSchId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaSchId]"
+                      name="scaSchId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaSCA_OID]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaSCA_OID]"
+                      name="scaSCA_OID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaGradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaGradeLevel]"
+                      name="scaGradeLevel">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ScaProgramId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ScaProgramId]"
+                      name="ScaProgramId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaYearContext]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaYearContext]"
+                      name="scaYearContext">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[SCaID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[SCaID]"
+                      name="SCaID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCaID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaAssignLimit]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaAssignLimit]"
+                      name="ConscaAssignLimit">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaAssignLimit]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConScaActualToTal]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConScaActualToTal]"
+                      name="ConScaActualToTal">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaActualToTal]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaPendingTotal]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaPendingTotal]"
+                      name="ConscaPendingTotal">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaPendingTotal]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaWaitlistTotal]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaWaitlistTotal]"
+                      name="ConscaWaitlistTotal">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaWaitlistTotal]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConScaIsSpecialAdmission]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConScaIsSpecialAdmission]"
+                      name="ConScaIsSpecialAdmission">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaIsSpecialAdmission]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Eligibility].[SchoolCapacity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[SchoolCapacity]) [refTable]
+where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[scaGradeLevel] = ? and [refTable].[scaProgramId] = ? and [refTable].[scaYearContext] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="scaId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaSchId" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaSCA_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaGradeLevel" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaProgramId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaYearContext" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaAssignLimit" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaActualTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaPendingTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaWaitlistTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaIsSpecialAdmission" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[scaSchId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaSchId"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">scaSchId</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[scaGradeLevel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaGradeLevel"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">scaGradeLevel</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[scaSCA_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="scaSCA_OID"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">scaSCA_OID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[ScaProgramId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaProgramId"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">scaProgramId</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[scaYearContext]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaYearContext"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">scaYearContext</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [Eligibility].[proc_UpsertSchoolCapacity] ?,?,?,?,?,?,?,?,?,?,?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[scaSchId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaSchId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaSchId]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaSchId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[scaSCA_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="scaSCA_OID"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaSCA_OID]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaSCA_OID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[scaGradeLevel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaGradeLevel"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaGradeLevel]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaGradeLevel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[ScaProgramId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaProgramId"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaProgramId]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ScaProgramId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[scaYearContext]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaYearContext"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaYearContext]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaYearContext]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConscaAssignLimit]"
+                      cachedDataType="i4"
+                      cachedName="ConscaAssignLimit"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaAssignLimit]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConscaAssignLimit]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConScaActualToTal]"
+                      cachedDataType="i4"
+                      cachedName="ConScaActualToTal"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaActualTotal]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConScaActualToTal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConscaPendingTotal]"
+                      cachedDataType="i4"
+                      cachedName="ConscaPendingTotal"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaPendingTotal]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConscaPendingTotal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConscaWaitlistTotal]"
+                      cachedDataType="i4"
+                      cachedName="ConscaWaitlistTotal"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaWaitlistTotal]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConscaWaitlistTotal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConScaIsSpecialAdmission]"
+                      cachedDataType="bool"
+                      cachedName="ConScaIsSpecialAdmission"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaIsSpecialAdmission]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConScaIsSpecialAdmission]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[SCaID]"
+                      cachedDataType="i4"
+                      cachedName="SCaID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaId]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCaID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaId]"
+                      dataType="i4"
+                      name="@scaId">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaSchId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="@scaSchId">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaSCA_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="@scaSCA_OID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaGradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="@scaGradeLevel">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaProgramId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="@scaProgramId">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaYearContext]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="@scaYearContext">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaAssignLimit]"
+                      dataType="i4"
+                      name="@scaAssignLimit">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaActualTotal]"
+                      dataType="i4"
+                      name="@scaActualTotal">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaPendingTotal]"
+                      dataType="i4"
+                      name="@scaPendingTotal">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaWaitlistTotal]"
+                      dataType="i4"
+                      name="@scaWaitlistTotal">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@scaIsSpecialAdmission]"
+                      dataType="bool"
+                      name="@scaIsSpecialAdmission">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Update sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Update sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Update sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[scaSchId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaSchId"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[scaSCA_OID]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="scaSCA_OID"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[scaGradeLevel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaGradeLevel"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[ScaProgramId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaProgramId"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[scaYearContext]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="scaYearContext"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[ConscaAssignLimit]"
+                      cachedDataType="i4"
+                      cachedName="ConscaAssignLimit"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaAssignLimit]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[ConScaActualToTal]"
+                      cachedDataType="i4"
+                      cachedName="ConScaActualToTal"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaActualToTal]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[ConscaPendingTotal]"
+                      cachedDataType="i4"
+                      cachedName="ConscaPendingTotal"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaPendingTotal]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[ConscaWaitlistTotal]"
+                      cachedDataType="i4"
+                      cachedName="ConscaWaitlistTotal"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaWaitlistTotal]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[ConScaIsSpecialAdmission]"
+                      cachedDataType="bool"
+                      cachedName="ConScaIsSpecialAdmission"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaIsSpecialAdmission]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[SCaID]"
+                      cachedDataType="i4"
+                      cachedName="SCaID"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCaID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Update sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaSchId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaSchId]"
+                      name="scaSchId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaSCA_OID]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaSCA_OID]"
+                      name="scaSCA_OID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaGradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaGradeLevel]"
+                      name="scaGradeLevel">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ScaProgramId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ScaProgramId]"
+                      name="ScaProgramId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaYearContext]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[scaYearContext]"
+                      name="scaYearContext">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConscaAssignLimit]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConscaAssignLimit]"
+                      name="ConscaAssignLimit">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaAssignLimit]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConScaActualToTal]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConScaActualToTal]"
+                      name="ConScaActualToTal">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaActualToTal]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConscaPendingTotal]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConscaPendingTotal]"
+                      name="ConscaPendingTotal">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaPendingTotal]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConscaWaitlistTotal]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConscaWaitlistTotal]"
+                      name="ConscaWaitlistTotal">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConscaWaitlistTotal]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConScaIsSpecialAdmission]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConScaIsSpecialAdmission]"
+                      name="ConScaIsSpecialAdmission">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaIsSpecialAdmission]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCaID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCaID]"
+                      name="SCaID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCaID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Insert.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task\Update sort.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Update sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{203D7D96-8377-4E6B-B4B3-49A99D415ABE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9AE2705B-C330-42D3-A894-7FD29A51E11A}"
+          SQLTask:SqlStatementSource="IF EXISTS(SELECt 1 from  Eligibility.SchoolCapacity SC &#xA;where scaSCA_OID is null)&#xA;BEGIN&#xA;&#xA;UPDATE   SC&#xA;SET SC.scaSCA_OID=a.SCA_OID&#xA;FROM&#xA;Eligibility.SchoolCapacity SC, (SELECT SKL_SCHOOL_ID ,&#xA;SCA_GRADE_LEVEL ,&#xA;SCA_PROGRAM_CODE ,&#xA;CTX_CONTEXT_ID ,&#xA;SCA_OID&#xA;FROM ASPENDB.x2data.dbo.SCHOOL&#xA;JOIN ASPENDB.x2data.dbo.SCHOOL_CAPACITY ON SKL_OID = SCA_SKL_OID&#xA;JOIN ASPENDB.x2data.dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID&#xA;AND CTX_CONTEXT_ID = '2017-2018') a&#xA;where scaSCA_OID is null &#xA;and scayearcontext='2017-2018'&#xA;and sc.scaschid collate SQL_Latin1_General_CP1_CI_AS=a.SKL_SCHOOL_ID&#xA;and sc.scaGradelevel collate SQL_Latin1_General_CP1_CI_AS =a.SCA_GRADE_LEVEL&#xA;and sc.scaProgramid collate SQL_Latin1_General_CP1_CI_AS =a.SCA_PROGRAM_CODE&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{769F42D3-2E94-4B31-A436-8CB384C20EDF}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="134,134" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="121,37" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="206,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data Flow Task\AspenSchool"
+          TopLeft="183,43" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="179,113" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="254.5,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,2.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Data Flow Task\OLE DB Command"
+          TopLeft="62,340" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Data Flow Task\Insert"
+          TopLeft="307,364" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Data Flow Task\Lookup"
+          TopLeft="195,179" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="254.25,155">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,0.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Data Flow Task\Update sort"
+          TopLeft="81,262" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="234,221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-86,41"
+              Start="0,0"
+              End="-86,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.7434554973822" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.7434554973822"
+                    Point2="0,16.7434554973822"
+                    Point3="-4,16.7434554973822" />
+                  <mssgle:LineSegment
+                    End="-82,16.7434554973822" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82,16.7434554973822"
+                    Point2="-86,16.7434554973822"
+                    Point3="-86,20.7434554973822" />
+                  <mssgle:LineSegment
+                    End="-86,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-100.0600390625,21.7434554973822,114.120078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="146.5,304">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Data Flow Task\Insert Sort"
+          TopLeft="312,257" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="269,221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.5,36"
+              Start="0,0"
+              End="107.5,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.7015706806283" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.7015706806283"
+                    Point2="0,14.7015706806283"
+                    Point3="4,14.7015706806283" />
+                  <mssgle:LineSegment
+                    End="103.5,14.7015706806283" />
+                  <mssgle:CubicBezierSegment
+                    Point1="103.5,14.7015706806283"
+                    Point2="107.5,14.7015706806283"
+                    Point3="107.5,18.7015706806283" />
+                  <mssgle:LineSegment
+                    End="107.5,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-10.9250390625,19.7015706806283,129.350078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="436,312" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="441,278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72,34"
+              Start="0,0"
+              End="72,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="68,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68,0"
+                    Point2="72,0"
+                    Point3="72,4" />
+                  <mssgle:LineSegment
+                    End="72,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="436,333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-75.5,31"
+              Start="0,0"
+              End="-75.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-71.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71.5,0"
+                    Point2="-75.5,0"
+                    Point3="-75.5,4" />
+                  <mssgle:LineSegment
+                    End="-75.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\AspenSchool">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Insert">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Eligibility].[SchoolCapacity]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

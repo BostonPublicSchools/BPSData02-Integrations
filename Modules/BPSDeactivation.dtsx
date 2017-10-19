@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{5C8AD5B1-70C5-4481-B13D-656622294F35}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.1000.281"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{D32025E3-BB59-43EB-A7E5-856E59FD03C2}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{8B13586F-0219-4A53-B089-462281075782}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -33,7 +33,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="D:\BPSPassDeactivation01042017.txt">
+          DTS:ConnectionString="D:\BPSPassDeactivation10162017.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -42,7 +42,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="BPSID"
-              DTS:DTSID="{1ED791FA-B7DF-406F-8273-39AAA748D49B}"
+              DTS:DTSID="{405885B4-500C-4C0A-AB65-D6C5CCD531A3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -51,7 +51,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="SerialNumber"
-              DTS:DTSID="{1565537E-806C-4420-8B92-9C896CAAE14B}"
+              DTS:DTSID="{B5E3AC62-6678-4B9A-86FA-9100ED90C31D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -60,7 +60,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DeactivateCode"
-              DTS:DTSID="{4A7D7851-2A65-4A7C-9720-556416DB4C97}"
+              DTS:DTSID="{E781FD70-1B2C-47E7-8A0A-56860CF6ACD6}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -77,7 +77,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4bUSaiWh4U683R9vp2YDsQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABsht51R/HNV3weh7Lv8D43AAAAAASAAACgAAAAEAAAANeGyYUAyPgjlZA0ZND0VPwYAAAATWyDigtRwWDyVbaKGCEEfBpFZCqosIooFAAAADCq55ZXSxGo/zwpB8DHcXB7Lerg</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2QogScSd3EiHAU5wG26b1wAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACBKtefDFQ4hMjEATfVaWoAAAAAAASAAACgAAAAEAAAAFjaPVK8iK5JbDaP1vCmCS4YAAAA0y9eUqrIkurPWSHEBKYY4yxwDelTGNclFAAAAD9qxKbVgUX8wDhkkZan89O4zCsu</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -366,12 +366,12 @@ WHERE   C.TRS_FIELDA_002 = 1
         <SendMailTask:SendMailTaskData
           SendMailTask:SMTPServer="{9980CA04-2FE5-4A52-A8A0-ECF92D37F0CC}"
           SendMailTask:From="do-not-reply@bostonpublicschools.org"
-          SendMailTask:To="studentpassprogram@mbta.com"
-          SendMailTask:CC="krice@bostonpublicschools.org; jsteketee@bostonpublicschools.org; mhughes@bostonpublicschools.org; mchau@bostonpublicschools.org; mdepina@mbta.com; OIIT-AppDev@bostonpublicschools.org"
+          SendMailTask:To="studentpassprogram@mbta.com;mdepina@mbta.com"
+          SendMailTask:CC="AppDevTransport@bostonpublicschools.org;AppDevAdmin@bostonpublicschools.org"
           SendMailTask:Subject="BPS Pass Deactivations"
           SendMailTask:MessageSource="BPS Pass Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="D:/BPSPassDeactivation01042017.txt" />
+            SendMailTask:FileName="D:/BPSPassDeactivation10162017.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -431,5 +431,43 @@ WHERE   C.TRS_FIELDA_002 = 1
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\dftBPSPassesDeactivation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="189,42"
+          Id="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation"
+          TopLeft="23.5,107.5" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\dftBPSPassesDeactivation.Paths[ADO NET Source Output]"
+          TopLeft="118,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

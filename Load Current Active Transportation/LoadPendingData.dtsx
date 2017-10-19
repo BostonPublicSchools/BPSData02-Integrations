@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadPendingData"
   DTS:PackageType="5"
-  DTS:VersionBuild="138"
-  DTS:VersionGUID="{4EA85573-94A7-4255-8751-0C897F6B7395}">
+  DTS:VersionBuild="140"
+  DTS:VersionGUID="{040A85A3-FF70-48B7-8832-2835E4FFD87D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -20273,9 +20273,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               startId="Package\LoadPendingData\Routing Lkp.Outputs[Lookup Match Output]" />
             <path
               refId="Package\LoadPendingData.Paths[Lookup No Match Output2]"
-              endId="Package\LoadPendingData\Merge Join.Inputs[Merge Join Left Input]"
+              endId="Package\LoadPendingData\Insert Error Table.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
-              startId="Package\LoadPendingData\Live data Lkp.Outputs[Lookup No Match Output]" />
+              startId="Package\LoadPendingData\Error_Table Lkp.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\LoadPendingData.Paths[Lookup No Match Output1]"
               endId="Package\LoadPendingData\Insert Sort.Inputs[Sort Input]"
@@ -20283,9 +20283,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
               startId="Package\LoadPendingData\Routing Lkp.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\LoadPendingData.Paths[Lookup No Match Output]"
-              endId="Package\LoadPendingData\Insert Error Table.Inputs[OLE DB Destination Input]"
+              endId="Package\LoadPendingData\Merge Join.Inputs[Merge Join Left Input]"
               name="Lookup No Match Output"
-              startId="Package\LoadPendingData\Error_Table Lkp.Outputs[Lookup No Match Output]" />
+              startId="Package\LoadPendingData\Live data Lkp.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\LoadPendingData.Paths[Merge Join Output]"
               endId="Package\LoadPendingData\Delete duplicate rows.Inputs[Sort Input]"
@@ -25634,7 +25634,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -25644,7 +25644,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -26356,7 +26356,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\LoadPendingData.Paths[Lookup No Match Output]"
+          Id="Package\LoadPendingData.Paths[Lookup No Match Output2]"
           TopLeft="610.090909090909,521.818181818182">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -26428,7 +26428,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\LoadPendingData.Paths[Lookup No Match Output2]"
+          Id="Package\LoadPendingData.Paths[Lookup No Match Output]"
           TopLeft="168.333333333333,139">
           <EdgeLayout.Curve>
             <mssgle:Curve

@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="BPSDATA"
   DTS:CreatorName="ADMINDOM\114600"
-  DTS:DTSID="{562618C5-23F3-4AA1-9067-7B6DE4391C59}"
+  DTS:DTSID="{D136E2E4-DF9C-4312-B658-7F298A11885A}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.1000.281"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1033"
   DTS:ObjectName="StoredValueDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{32EFDDC4-A440-4449-87A2-DBFE39C1EEA4}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{00533163-93C8-4BA7-8FC5-781B544FB387}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -31,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="D:\StoredValuePassDeactivation01042017.txt">
+          DTS:ConnectionString="D:\StoredValuePassDeactivation10162017.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -40,7 +40,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="BPSID"
-              DTS:DTSID="{1741DD8C-0F7F-47BC-A8E1-65BEE5F9708A}"
+              DTS:DTSID="{87359235-D8AA-430C-9473-961430789ED6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="SerialNumber"
-              DTS:DTSID="{C1EC2C34-F120-45FB-9A8D-85A9768450F4}"
+              DTS:DTSID="{D8DD18D9-2C95-43E5-9F3D-4E812B6C2342}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -58,24 +58,9 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DeactivateCode"
-              DTS:DTSID="{3D00E867-2718-4586-BC58-EE94560057F4}"
+              DTS:DTSID="{1B3C7573-187D-4858-9497-34EF91034BAC}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SISSQL-01.x2data]"
-      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{855F310C-3BC9-47F1-AFE3-74AE8AB22A26}"
-      DTS:ObjectName="SISSQL-01.x2data">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.244.1.136;User ID=BPSIntegration;Initial Catalog=x2data;Persist Security Info=True;Application Name=SSIS-StoredValueDeactivation-{855F310C-3BC9-47F1-AFE3-74AE8AB22A26}10.23.12.31.x2data.bps_user3;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4bUSaiWh4U683R9vp2YDsQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAfLgMpGaknW80tCLYxezgaAAAAAASAAACgAAAAEAAAAOmecmZKi/i5TqA1eNs0LQwYAAAA0vG9JO32sa+6RljhNp6cT0xbbwHxCyVqFAAAAPtnT2rA0hFXc0zkLZCHPRHL7Hbw</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -164,8 +149,8 @@ WHERE   C.TRS_FIELDA_002 = 1
               <connections>
                 <connection
                   refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[SISSQL-01.x2data]"
-                  connectionManagerRefId="Package.ConnectionManagers[SISSQL-01.x2data]"
+                  connectionManagerID="{855F310C-3BC9-47F1-AFE3-74AE8AB22A26}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SISSQL-01.x2data]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -367,12 +352,12 @@ WHERE   C.TRS_FIELDA_002 = 1
         <SendMailTask:SendMailTaskData
           SendMailTask:SMTPServer="{B0829F60-E6F6-4675-AAE1-E2F1FBF129F5}"
           SendMailTask:From="do-not-reply@bostonpublicschools.org"
-          SendMailTask:To="studentpassprogram@mbta.com"
-          SendMailTask:CC="krice@bostonpublicschools.org; jsteketee@bostonpublicschools.org; mhughes@bostonpublicschools.org; mchau@bostonpublicschools.org; mdepina@mbta.com; OIIT-AppDev@bostonpublicschools.org"
+          SendMailTask:To="studentpassprogram@mbta.com;mdepina@mbta.com"
+          SendMailTask:CC="AppDevTransport@bostonpublicschools.org;AppDevAdmin@bostonpublicschools.org"
           SendMailTask:Subject="Stored Value Deactivations"
           SendMailTask:MessageSource="Stored Value Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="D:\StoredValuePassDeactivation01042017.txt" />
+            SendMailTask:FileName="D:\StoredValuePassDeactivation10162017.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -402,25 +387,25 @@ WHERE   C.TRS_FIELDA_002 = 1
         <NodeLayout
           Size="136,44"
           Id="Package\dftBPSPassesDeactivation"
-          TopLeft="5.5,5.5" />
+          TopLeft="4.5,5.5" />
         <NodeLayout
           Size="136,44"
           Id="Package\Send Mail Task"
           TopLeft="5.5,99.9150943396226" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="73.3867924528302,49.4245283018868">
+          TopLeft="73,49.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.4905660377358"
+              EndConnector="0,50.4150943396226"
               Start="0,0"
-              End="0,42.9905660377358">
+              End="0,42.9150943396226">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.9905660377358" />
+                    End="0,42.9150943396226" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -470,5 +455,13 @@ WHERE   C.TRS_FIELDA_002 = 1
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
