@@ -1,0 +1,82 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/20/2017 2:08:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="084-138051-004"
+  DTS:CreatorName="ADMINDOM\X05112"
+  DTS:DTSID="{E9E7171E-166E-43BF-8E06-9CC7F8C8254B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TransferLogins"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{A7A41E67-27A8-4B59-A73F-F99C26FE1403}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSDATA-03]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{6D6F00FF-CD93-4C24-8A85-3E61B510392D}"
+      DTS:ObjectName="BPSDATA-03">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=BPSDATA-03;UseWindowsAuthentication=True;UserName=;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSDATA02]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{006779CB-1DBA-4228-8C43-32D8BC0EFB90}"
+      DTS:ObjectName="BPSDATA02">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=BPSDATA02;UseWindowsAuthentication=True;UserName=;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Logins Task"
+      DTS:CreationName="Microsoft.TransferLoginsTask"
+      DTS:Description="Transfer Logins Task"
+      DTS:DTSID="{34E16E56-3A5A-451B-B0EC-AC41DAE327F9}"
+      DTS:ExecutableType="Microsoft.TransferLoginsTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Logins Task"
+      DTS:TaskContact="Transfer Error Messages Task; Microsoft Corporation; SQL Server 2017 RC1; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferLoginsTaskData
+          LoginList="12,19,ADMINDOM\EnrollOIIT,16,ADMINDOM\Finance,22,AspenBPSTransportation,8,AspenInt,12,BPSAspenUser,14,BPSIntegration,11,BPSIntranet,8,BPSRASVC,13,COBDataAccess,11,dleadbetter,8,jobcheck,10,SchProfile,"
+          IfObjectExists="Skip"
+          SourceConnection="{006779CB-1DBA-4228-8C43-32D8BC0EFB90}"
+          DestinationConnection="{6D6F00FF-CD93-4C24-8A85-3E61B510392D}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Transfer Logins Task"
+          TopLeft="180,148" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/20/2017 1:48:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="084-138051-004"
+  DTS:CreatorName="ADMINDOM\X05112"
+  DTS:DTSID="{08187F3C-168D-4456-A216-E192ADD3ECD8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TransferJob"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{4FA177AE-B306-40A0-87A0-1218480D2F09}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSDATA-03]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{1F7EBE28-FCDA-4CFF-9948-60A3F3349268}"
+      DTS:ObjectName="BPSDATA-03">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=BPSDATA-03;UseWindowsAuthentication=True;UserName=;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSDATA02]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{0689DA41-4601-4D31-8EC8-BB81C51D3ACE}"
+      DTS:ObjectName="BPSDATA02">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=BPSDATA02;UseWindowsAuthentication=True;UserName=;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Jobs Task"
+      DTS:CreationName="Microsoft.TransferJobsTask"
+      DTS:Description="Transfer Jobs Task"
+      DTS:DTSID="{E1D1B8B1-3D91-4DD4-A045-D9FE9E1C4125}"
+      DTS:ExecutableType="Microsoft.TransferJobsTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Jobs Task"
+      DTS:TaskContact="Transfer Jobs Task; Microsoft Corporation; SQL Server 2017 RC1; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferJobsTaskData
+          JobsList="5,14,Create Choices,61,Load BPSInterface.Transportation.StudentTransportationRouting,37,Load StudentTransportationEligibility,16,LoadVerstranData,27,LoadVerstranDataBPSInteface,"
+          IfObjectExists="Overwrite"
+          SourceConnection="{0689DA41-4601-4D31-8EC8-BB81C51D3ACE}"
+          DestinationConnection="{1F7EBE28-FCDA-4CFF-9948-60A3F3349268}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Transfer Jobs Task"
+          TopLeft="163,131" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

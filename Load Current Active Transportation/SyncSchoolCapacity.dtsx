@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncSchoolCapacity"
   DTS:PackageType="5"
-  DTS:VersionBuild="54"
-  DTS:VersionGUID="{214187EE-C3CD-49C1-BE0B-79833487889D}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{A9FB04D8-C065-4BFD-B321-B38523517B1E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1265,7 +1265,7 @@ left join Eligibility.SchoolCapacity ESC on ESC.scaSCA_OID=SC.SCA_OID AND  ESC.s
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[SchoolCapacity]) [refTable]
-where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[scaGradeLevel] = ? and [refTable].[scaProgramId] = ? and [refTable].[scaYearContext] = ?</property>
+where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable].[scaProgramId] = ? and [refTable].[scaYearContext] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1296,12 +1296,12 @@ where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="scaId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaSchId" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaSCA_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaGradeLevel" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaProgramId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaYearContext" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaAssignLimit" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaActualTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaPendingTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaWaitlistTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaIsSpecialAdmission" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="scaId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaSchId" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaSCA_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaGradeLevel" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaProgramId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaYearContext" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaAssignLimit" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaActualTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaPendingTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaWaitlistTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaIsSpecialAdmission" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]};</property>
+                  name="ParameterMap">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSchId]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaGradeLevel]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramId]};#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaYearContext]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1354,23 +1354,6 @@ where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">scaGradeLevel</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\SchoolCapacityLKP.Inputs[Lookup Input].Columns[scaSCA_OID]"
-                      cachedDataType="wstr"
-                      cachedLength="14"
-                      cachedName="scaSCA_OID"
-                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[scaSCA_OID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">scaSCA_OID</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -2173,7 +2156,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9AE2705B-C330-42D3-A894-7FD29A51E11A}"
-          SQLTask:SqlStatementSource="IF EXISTS(SELECt 1 from  Eligibility.SchoolCapacity SC &#xA;where scaSCA_OID is null)&#xA;BEGIN&#xA;&#xA;UPDATE   SC&#xA;SET SC.scaSCA_OID=a.SCA_OID&#xA;FROM&#xA;Eligibility.SchoolCapacity SC, (SELECT SKL_SCHOOL_ID ,&#xA;SCA_GRADE_LEVEL ,&#xA;SCA_PROGRAM_CODE ,&#xA;CTX_CONTEXT_ID ,&#xA;SCA_OID&#xA;FROM ASPENDB.x2data.dbo.SCHOOL&#xA;JOIN ASPENDB.x2data.dbo.SCHOOL_CAPACITY ON SKL_OID = SCA_SKL_OID&#xA;JOIN ASPENDB.x2data.dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID&#xA;AND CTX_CONTEXT_ID &gt;= '2017-2018') a&#xA;where scaSCA_OID is null &#xA;and scayearcontext &gt;='2017-2018'&#xA;and sc.scaschid collate SQL_Latin1_General_CP1_CI_AS=a.SKL_SCHOOL_ID&#xA;and sc.scaGradelevel collate SQL_Latin1_General_CP1_CI_AS =a.SCA_GRADE_LEVEL&#xA;and sc.scaProgramid collate SQL_Latin1_General_CP1_CI_AS =a.SCA_PROGRAM_CODE&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="IF EXISTS(SELECt 1 from  Eligibility.SchoolCapacity SC &#xA;where (scaSCA_OID is null or scaSCA_OID = ' '))&#xA;BEGIN&#xA;&#xA;UPDATE   SC&#xA;SET SC.scaSCA_OID=a.SCA_OID&#xA;FROM&#xA;Eligibility.SchoolCapacity SC, (SELECT SKL_SCHOOL_ID ,&#xA;SCA_GRADE_LEVEL ,&#xA;SCA_PROGRAM_CODE ,&#xA;CTX_CONTEXT_ID ,&#xA;SCA_OID&#xA;FROM ASPENDB.x2data.dbo.SCHOOL&#xA;JOIN ASPENDB.x2data.dbo.SCHOOL_CAPACITY ON SKL_OID = SCA_SKL_OID&#xA;JOIN ASPENDB.x2data.dbo.DISTRICT_SCHOOL_YEAR_CONTEXT ON CTX_OID = SCA_CTX_OID&#xA;AND CTX_CONTEXT_ID &gt;= '2017-2018') a&#xA;where (scaSCA_OID is null or scaSCA_OID = ' ')&#xA;and scayearcontext &gt;='2017-2018'&#xA;and sc.scaschid collate SQL_Latin1_General_CP1_CI_AS=a.SKL_SCHOOL_ID&#xA;and sc.scaGradelevel collate SQL_Latin1_General_CP1_CI_AS =a.SCA_GRADE_LEVEL&#xA;and sc.scaProgramid collate SQL_Latin1_General_CP1_CI_AS =a.SCA_PROGRAM_CODE&#xA;END&#xA;&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2202,14 +2185,14 @@ where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[
         <NodeLayout
           Size="151,42"
           Id="Package\Data Flow Task"
-          TopLeft="134,134" />
+          TopLeft="123,134" />
         <NodeLayout
           Size="163,42"
           Id="Package\Execute SQL Task"
           TopLeft="121,37" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="206,79">
+          TopLeft="200.5,79">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2238,13 +2221,81 @@ where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="138,42"
-          Id="Package\Data Flow Task\AspenSchool"
-          TopLeft="171,23" />
-        <NodeLayout
           Size="156,42"
           Id="Package\Data Flow Task\Data Conversion"
           TopLeft="168,102" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Data Flow Task\SchoolCapacityLKP"
+          TopLeft="170,168" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Data Flow Task\Insert Sort"
+          TopLeft="332,249" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Data Flow Task\Update SchoolCapacity"
+          TopLeft="10,344" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Data Flow Task\Insert Into SChool Cap"
+          TopLeft="295,415" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data Flow Task\LastUpdated"
+          TopLeft="323,344" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Data Flow Task\Update sort"
+          TopLeft="36,259" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data Flow Task\AspenSchool"
+          TopLeft="171,23" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="394.25,291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="103,301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="243,65">
@@ -2267,44 +2318,42 @@ where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Data Flow Task\Update SchoolCapacity"
-          TopLeft="10,344" />
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Data Flow Task\Insert Into SChool Cap"
-          TopLeft="295,415" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Data Flow Task\SchoolCapacityLKP"
-          TopLeft="170,168" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="249.75,144">
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="280,210">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24"
+              EndConnector="116.5,39"
               Start="0,0"
-              End="0,16.5">
+              End="116.5,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
+                    End="0,11.8220640569395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.8220640569395"
+                    Point2="0,15.8220640569395"
+                    Point3="4,15.8220640569395" />
+                  <mssgle:LineSegment
+                    End="112.5,15.8220640569395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="112.5,15.8220640569395"
+                    Point2="116.5,15.8220640569395"
+                    Point3="116.5,19.8220640569395" />
+                  <mssgle:LineSegment
+                    End="116.5,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="2.44361328125,20.8220640569395,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="134,42"
-          Id="Package\Data Flow Task\Update sort"
-          TopLeft="36,259" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup Match Output]"
           TopLeft="227,210">
@@ -2342,94 +2391,6 @@ where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output]"
-          TopLeft="103,301">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="129,42"
-          Id="Package\Data Flow Task\Insert Sort"
-          TopLeft="332,249" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="280,210">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="116.5,39"
-              Start="0,0"
-              End="116.5,31.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.8220640569395" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.8220640569395"
-                    Point2="0,15.8220640569395"
-                    Point3="4,15.8220640569395" />
-                  <mssgle:LineSegment
-                    End="112.5,15.8220640569395" />
-                  <mssgle:CubicBezierSegment
-                    Point1="112.5,15.8220640569395"
-                    Point2="116.5,15.8220640569395"
-                    Point3="116.5,19.8220640569395" />
-                  <mssgle:LineSegment
-                    End="116.5,31.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="2.44361328125,20.8220640569395,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Data Flow Task\LastUpdated"
-          TopLeft="323,344" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output1]"
-          TopLeft="394.25,291">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53"
-              Start="0,0"
-              End="0,45.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output]"
           TopLeft="390,386">
           <EdgeLayout.Curve>
@@ -2451,12 +2412,49 @@ where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="249.75,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\AspenSchool">
+    design-time-name="Package\Data Flow Task\SchoolCapacityLKP">
     <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Eligibility].[SchoolCapacity]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -2476,23 +2474,8 @@ where [refTable].[scaSchId] = ? and [refTable].[scaSCA_OID] = ? and [refTable].[
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\SchoolCapacityLKP">
+    design-time-name="Package\Data Flow Task\AspenSchool">
     <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Eligibility].[SchoolCapacity]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
