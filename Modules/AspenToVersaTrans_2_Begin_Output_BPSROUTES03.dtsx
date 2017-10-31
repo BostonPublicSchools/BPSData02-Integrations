@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -7,37 +7,22 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{2F14D14F-CE44-44CC-B677-38FD83A8CB15}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.1000.281"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_2_Begin_Output_BPSROUTES03"
   DTS:PackageType="5"
-  DTS:VersionBuild="164"
-  DTS:VersionGUID="{2C2E5A93-1C95-4F6D-8955-CC175C9E747A}">
+  DTS:VersionBuild="167"
+  DTS:VersionGUID="{758498CD-1B23-4CDA-BD41-5FAC31B63965}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BPSDATA02.AspenInterface]"
-      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{7A179009-B07B-4CFF-89E1-52FF70F6FEF2}"
-      DTS:ObjectName="BPSDATA02.AspenInterface">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSData02;User ID=BPSIntegration;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{7A179009-B07B-4CFF-89E1-52FF70F6FEF2}BPSData.AspenInterface;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/HST7cnWREu84OXV1bOTYwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABtx9u2z8niXfo0q53C8qCnAAAAAASAAACgAAAAEAAAALDzzomi1aqjEKulKtByScMYAAAAHBkQh/VeWP2/pRZ30puHUakO9llCaUFtFAAAABtz6IRoEEKdYvfqkSS78SyxxGDb</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BPSROUTES03 Transporation RMU]"
+      DTS:refId="Package.ConnectionManagers[STAGDATA-03 Transporation RMU]"
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{88791F00-CD38-4170-A85B-E59A66A44332}"
-      DTS:ObjectName="BPSROUTES03 Transporation RMU">
+      DTS:ObjectName="STAGDATA-03 Transporation RMU">
       <DTS:PropertyExpression
-        DTS:Name="ConnectionString">"\\\\BPSROUTES03\\RMU\\" + (DT_STR, 4, 1252) YEAR(GETDATE()) +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH(GETDATE()), 2) + RIGHT("0" + (DT_STR, 2, 1252) DAY(GETDATE()), 2) + "BPSTransportationExportFull.txt"</DTS:PropertyExpression>
+        DTS:Name="ConnectionString">"\\\\STAGDATA-03\\RMU\\" + (DT_STR, 4, 1252) YEAR(GETDATE()) +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH(GETDATE()), 2) + RIGHT("0" + (DT_STR, 2, 1252) DAY(GETDATE()), 2) + "BPSTransportationExportFull.txt"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -46,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="\\BPSROUTES03\RMU\20170728BPSTransportationExportFull.txt">
+          DTS:ConnectionString="\\STAGDATA-03\RMU\20171031BPSTransportationExportFull.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -55,7 +40,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="StudentNo"
-              DTS:DTSID="{DB11E48A-8FB9-4C29-AB4F-E0557F164168}"
+              DTS:DTSID="{D71EB212-1A32-4981-8D9D-36499679979D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -64,7 +49,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="LastName"
-              DTS:DTSID="{3A75F1EF-E73E-4EA1-BEEC-2874EA1BFA8A}"
+              DTS:DTSID="{BED18F61-98BA-459E-A02E-1F88968F0C4C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -73,7 +58,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="FirstName"
-              DTS:DTSID="{D422BD2F-37A8-46D9-BA56-1C988FA8C225}"
+              DTS:DTSID="{E68F4417-1C77-42CF-8648-B58A12FF649C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -82,7 +67,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="MiddleName"
-              DTS:DTSID="{3986C3C4-5CEE-419B-AA89-609C544B9E69}"
+              DTS:DTSID="{F488D80B-FBC0-45D8-97D9-6911FF4844BD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -91,7 +76,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Grade"
-              DTS:DTSID="{BBB413AB-F7C0-4DF3-AEF0-931316E413D4}"
+              DTS:DTSID="{C5FD533D-B3C7-4A4C-A170-6FF5CE3F1DEC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -100,7 +85,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="sch"
-              DTS:DTSID="{AB81952C-30E2-4C9A-8E07-344A2AEF2EFA}"
+              DTS:DTSID="{C05C1C13-AA1F-472C-95F0-4A3C10D49DBA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -109,7 +94,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="streetno"
-              DTS:DTSID="{BDF08A01-4B2B-43A6-8653-6722380C818F}"
+              DTS:DTSID="{4BA64CA3-F01B-4E1B-ADF1-F47D05DE3E91}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -118,7 +103,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="street"
-              DTS:DTSID="{BC7931E7-5BB7-4584-8C93-6EA3E6CAF639}"
+              DTS:DTSID="{4475225D-9560-4748-9043-252ECB51B776}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -127,7 +112,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="apt"
-              DTS:DTSID="{DF2ED060-EF8C-4913-8ABA-D378FB051335}"
+              DTS:DTSID="{E9F4171A-EFF0-4197-B929-7DB93796B06F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -136,7 +121,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="city"
-              DTS:DTSID="{7BC88401-21DA-4950-B2DB-468E1C885032}"
+              DTS:DTSID="{13BFF910-E94D-4A59-A155-41BDD41A5569}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -145,7 +130,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{3C223084-6472-408E-8EB1-63EA56C9DFB7}"
+              DTS:DTSID="{C2AECF9A-0EDF-4932-9E9A-6DF301C754AF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -154,7 +139,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="zip"
-              DTS:DTSID="{F417A544-963F-47D7-BDF9-F3B3B72F7FA9}"
+              DTS:DTSID="{FF991493-2692-499D-8405-BC353F610217}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -163,7 +148,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DOB"
-              DTS:DTSID="{366DD9E2-E91F-4B6C-8D41-CDA412F1A2CB}"
+              DTS:DTSID="{3E0A0F9C-DFB2-4250-B1AE-0E0296E039AB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -172,7 +157,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="parent1phones"
-              DTS:DTSID="{FC0C7135-2D16-4833-90D9-AE9A251FD244}"
+              DTS:DTSID="{AF4EDD4C-0673-4C64-A6B5-B5A51A98D228}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -181,7 +166,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="parent2phones"
-              DTS:DTSID="{2EA0CA57-2B0A-45E5-B011-1B09D7D26954}"
+              DTS:DTSID="{93C1D2B3-28D6-435F-801D-74BE5BE2798D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -190,7 +175,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="emergencycontactphones"
-              DTS:DTSID="{8986C8FF-DE31-4ED4-BA69-1CFC8E19A3BA}"
+              DTS:DTSID="{D4822A48-8E11-433A-AE61-576469A68C92}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -199,7 +184,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="parent1name"
-              DTS:DTSID="{6616D965-5AA3-464F-A6DE-5439A54490CE}"
+              DTS:DTSID="{68CF163C-00EA-4541-84ED-0FF032BA200F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -208,7 +193,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="parent2name"
-              DTS:DTSID="{3D9D3CAB-2AF5-4C43-AE1E-A13A564AB53D}"
+              DTS:DTSID="{62BAE90F-446A-4E25-B3B5-075594B4711E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -217,7 +202,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="emergencycontactname"
-              DTS:DTSID="{2DDCB379-80B5-4B49-B294-2B4624F644E5}"
+              DTS:DTSID="{7E2D6573-0405-4BE9-A102-5E4073D25C90}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -226,7 +211,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="sex"
-              DTS:DTSID="{C64CA8D6-72F9-408B-A145-ADF229A60209}"
+              DTS:DTSID="{BB311492-7E4C-4BBD-B652-0283D318CE09}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -235,7 +220,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="program"
-              DTS:DTSID="{85A22AF1-7E09-4C37-A0C1-FED4D1962A94}"
+              DTS:DTSID="{2D44C3E0-A0BC-412E-B858-FBC3C6C9D7C2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -244,7 +229,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupHouseNumber"
-              DTS:DTSID="{3D149703-8A3C-4D55-B1D7-F69ADFA14069}"
+              DTS:DTSID="{F61D1637-93D9-4668-9B01-B4126D95B665}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -253,7 +238,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupStreetname"
-              DTS:DTSID="{F4D09246-0294-47CF-B380-A582F7F3DC98}"
+              DTS:DTSID="{695A3A7D-96EF-42DD-AE48-956189E69741}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -262,7 +247,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupApartmentNumber"
-              DTS:DTSID="{DF2D33C8-0007-424E-B472-8855531797CB}"
+              DTS:DTSID="{2BE76994-5910-4687-B96D-497FB0820D44}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -271,7 +256,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupCity"
-              DTS:DTSID="{C329D4E5-6AC2-4874-9C5A-8F2858F27CBE}"
+              DTS:DTSID="{49240AC1-921C-4887-AA62-BE0893FA2530}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -280,7 +265,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupState"
-              DTS:DTSID="{3A2FFC0B-B20D-438F-8775-6068FB1A5770}"
+              DTS:DTSID="{E2465ADC-3BE9-411F-A6C1-94EF6E25DE03}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -289,7 +274,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Pickupzip"
-              DTS:DTSID="{CD71383F-B347-4461-91B3-C14C467C0894}"
+              DTS:DTSID="{1B2471A3-0FAD-49A9-B052-0FABCB7D2F92}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -298,7 +283,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffHouseNumber"
-              DTS:DTSID="{FB926E7E-22DA-41E1-8A17-E1171259C01B}"
+              DTS:DTSID="{527A3879-8BDE-47E7-AAF4-8647362F1894}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -307,7 +292,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffStreetname"
-              DTS:DTSID="{0F0CE817-CED0-4CF1-8999-D372D251FCF4}"
+              DTS:DTSID="{723AB509-BD76-4678-AB58-BD69C194DECA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -316,7 +301,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffApartmentNumber"
-              DTS:DTSID="{4855A8F3-6A05-44FD-A9C8-34A60138C737}"
+              DTS:DTSID="{383EB768-12EA-4635-953F-6D07A2F68A3C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -325,7 +310,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffCity"
-              DTS:DTSID="{F759C52E-1E0F-4AE8-86F3-1E8C5FBF7E48}"
+              DTS:DTSID="{2CA1EEFF-289B-4748-8CD7-7C3759D6EB62}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -334,7 +319,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffState"
-              DTS:DTSID="{C40B3176-4B6B-41AC-BEDA-FF9E4CD47FED}"
+              DTS:DTSID="{97BF1092-544A-409C-9578-C8385C81536D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -343,7 +328,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffzip"
-              DTS:DTSID="{8377C471-0C61-4A1A-80D6-52752069C129}"
+              DTS:DTSID="{C020967B-6078-43D1-8CE1-C2FD652E67C1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -352,7 +337,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="MedicaData"
-              DTS:DTSID="{89F2900C-3BC7-475D-8E87-870D23974097}"
+              DTS:DTSID="{081D1372-4CB7-414F-AC00-1B2572C61458}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -361,7 +346,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="sncode"
-              DTS:DTSID="{DB081B27-7BDB-4AED-A0B5-E623FA669D36}"
+              DTS:DTSID="{A84B6685-9239-446A-978A-E8A38D3CE9AA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -370,7 +355,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="bilingual"
-              DTS:DTSID="{E50A6ACF-65D1-4A6A-95F0-603456AAD785}"
+              DTS:DTSID="{4585CD81-86FD-43D4-9A0D-78CEB619ECE7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -379,7 +364,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="aw"
-              DTS:DTSID="{A7876E1F-7E3F-4A8E-BA11-07827927EE6C}"
+              DTS:DTSID="{09C21C3B-2D40-41F0-A3FE-ECE79D06BE98}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -388,7 +373,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="voced"
-              DTS:DTSID="{E02FFE60-8A87-4A2D-AC21-3E1BFA84E05B}"
+              DTS:DTSID="{14F1EEAD-8D88-4FD1-B9D3-5B9FFB2996FF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -397,7 +382,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="theme"
-              DTS:DTSID="{353D4B3B-6D86-43A6-9D4E-B6FAEA03B03F}"
+              DTS:DTSID="{1CEEC788-79A2-41B9-962D-91EFC9B987D7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -406,7 +391,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="monitor"
-              DTS:DTSID="{871FCBC5-ACAD-44F2-9074-1CC44BABDE20}"
+              DTS:DTSID="{E0D33D60-0CB9-4C76-9796-5EBB64277418}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -415,7 +400,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="hzone"
-              DTS:DTSID="{47ED2C6E-FD66-48A8-BB5B-EE5D8BAD3553}"
+              DTS:DTSID="{67BB90D2-D1BA-4757-B72A-03DF5D136054}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -424,7 +409,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="zone"
-              DTS:DTSID="{BF6AA542-2ED7-4013-A0B6-FA4D4EE200A9}"
+              DTS:DTSID="{03FC42CA-3B22-4D2D-AFE3-1F22BF90D498}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -433,7 +418,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="geo"
-              DTS:DTSID="{59934561-FB3D-47EF-B896-CB648CBF9038}"
+              DTS:DTSID="{95835513-6C86-4969-AC01-FC54860D70A6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -442,7 +427,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="hphone"
-              DTS:DTSID="{BB95201C-17E1-4F58-8C03-0A7805ABA457}"
+              DTS:DTSID="{C749E8A5-26AF-4B6B-B7D2-3047DDEF4BEB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -451,7 +436,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="BufferZone"
-              DTS:DTSID="{CD8AC8FA-8F11-447F-A5DF-E8B99AD6975E}"
+              DTS:DTSID="{B8775AA5-70FA-4973-878E-3C7F2035FC57}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -460,7 +445,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="HomeRoom"
-              DTS:DTSID="{092514A9-00A5-4C61-B95C-313C7952E45B}"
+              DTS:DTSID="{AB17424B-20CB-4A4B-93DC-ACABF1AD4E3E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -469,7 +454,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="IsWithDrawn"
-              DTS:DTSID="{9731E30D-D0B3-48B1-A754-7879304F7709}"
+              DTS:DTSID="{D371673D-97DF-419E-8E3D-80964E19D4ED}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -478,7 +463,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="ishomeless"
-              DTS:DTSID="{6D6F8D76-6378-4CB5-AC8E-E9C46D3C305F}"
+              DTS:DTSID="{F82DD770-A969-417F-9ECB-B7B5D4E2EAC5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -487,7 +472,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="IsProtectedAddress"
-              DTS:DTSID="{36F4F9A0-3A1D-4AAC-8025-39E10F2D886E}"
+              DTS:DTSID="{6A3D70DA-094D-4EA2-BBF4-4D27ECBB42F8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -496,7 +481,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="TapCardID"
-              DTS:DTSID="{89F1C842-15AA-48F4-859B-ED8F0E21DE7A}"
+              DTS:DTSID="{4FBA89D2-6A26-43D6-AFB3-2935CABF1D63}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -505,19 +490,19 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="FamilyId"
-              DTS:DTSID="{FE88578C-D8CA-4032-ADE4-0690EE37C4EF}"
+              DTS:DTSID="{681D5888-393A-4845-B15C-C79BC35DDD20}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BPSROUTES03 Transporation RMU Difference]"
+      DTS:refId="Package.ConnectionManagers[STAGDATA-03 Transporation RMU Difference]"
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{1B925833-EA8D-48B8-A44F-B6DF1D152E4C}"
-      DTS:ObjectName="BPSROUTES03 Transporation RMU Difference">
+      DTS:ObjectName="STAGDATA-03 Transporation RMU Difference">
       <DTS:PropertyExpression
-        DTS:Name="ConnectionString">"\\\\BPSROUTES03\\RMU\\" + (DT_STR, 4, 1252) YEAR(GETDATE()) +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH(GETDATE()), 2) + RIGHT("0" + (DT_STR, 2, 1252) DAY(GETDATE()), 2) + "BPSTransportationExportDiff.txt"</DTS:PropertyExpression>
+        DTS:Name="ConnectionString">"\\\\STAGDATA-03\\RMU\\" + (DT_STR, 4, 1252) YEAR(GETDATE()) +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH(GETDATE()), 2) + RIGHT("0" + (DT_STR, 2, 1252) DAY(GETDATE()), 2) + "BPSTransportationExportDiff.txt"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -526,7 +511,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="\\BPSROUTES03\RMU\20170728BPSTransportationExportDiff.txt">
+          DTS:ConnectionString="\\STAGDATA-03\RMU\20171031BPSTransportationExportDiff.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -535,7 +520,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="StudentNo"
-              DTS:DTSID="{C89D47CF-D9D9-452B-A045-B617D1F8D298}"
+              DTS:DTSID="{C3B57B9E-D786-46DE-9322-F2E072BF0DD6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -544,7 +529,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="LastName"
-              DTS:DTSID="{06A5E610-7CA6-4D58-ACEF-36764C9F337B}"
+              DTS:DTSID="{ACEA1B1F-D1FA-4B7F-A4DB-E51955601789}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -553,7 +538,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="FirstName"
-              DTS:DTSID="{917C35E6-4E87-4514-99C8-C78FA8A8DF53}"
+              DTS:DTSID="{989DDDC8-3101-441D-B8C7-AF5A04C835DF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -562,7 +547,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="MiddleName"
-              DTS:DTSID="{DE4FE56F-A036-4328-B69B-60A0F044A1A9}"
+              DTS:DTSID="{80C26CDA-3E57-46C6-A0EF-8AC8CFC8F52F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -571,7 +556,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Grade"
-              DTS:DTSID="{CB4AC04F-F0A3-4B96-9210-B1C357A94A68}"
+              DTS:DTSID="{59E981FB-746F-482D-BFDF-962E68964C09}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -580,7 +565,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="sch"
-              DTS:DTSID="{F63EA3C9-293F-4F17-B71E-850354012CE1}"
+              DTS:DTSID="{888AB107-6AAF-4D7C-A763-6B526453074B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -589,7 +574,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="streetno"
-              DTS:DTSID="{2F820802-4052-45C2-86A1-10F8836DB4A8}"
+              DTS:DTSID="{391D3769-4773-4E19-B495-186949F9CD22}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -598,7 +583,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="street"
-              DTS:DTSID="{5EC381B0-A5C4-409E-AB34-EFAB64525DA7}"
+              DTS:DTSID="{DF2C66C1-3C0E-4F33-8E85-20D825069ACC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -607,7 +592,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="apt"
-              DTS:DTSID="{1DE0149F-321C-4138-883B-3F2B2710B498}"
+              DTS:DTSID="{6C448442-35B5-4C25-A854-A44BE7B4FBFE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -616,7 +601,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="city"
-              DTS:DTSID="{C7D10084-0987-43B0-8217-346679FCB7A3}"
+              DTS:DTSID="{FDB6E652-42EA-4E8D-95DD-13B6412AD471}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -625,7 +610,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{C26089D8-173F-42B1-A4CF-4DDC15ADEF11}"
+              DTS:DTSID="{12FB9439-41CC-4B59-BC06-6BCCCF498478}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -634,7 +619,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="zip"
-              DTS:DTSID="{5EF6C186-C8BB-437F-B483-3EA681C474E7}"
+              DTS:DTSID="{1CCEE0DC-B699-4FC1-8477-20B4901FAD5B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -643,7 +628,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DOB"
-              DTS:DTSID="{34FD9B5C-CE31-426D-B925-1EA60A657B53}"
+              DTS:DTSID="{83A14AF0-E1B0-455D-82FA-D092645B2754}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -652,7 +637,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="parent1phones"
-              DTS:DTSID="{C30A0E10-2F3F-4C25-895D-FFEB647AD0BF}"
+              DTS:DTSID="{A7F86F96-88A1-4B6F-AE78-F0875818C667}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -661,7 +646,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="parent2phones"
-              DTS:DTSID="{21DCC7BE-BECC-4E7C-A71A-3BDB1FCE5DBB}"
+              DTS:DTSID="{842A7797-CD16-4EAF-B1FF-A48706093CF9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -670,7 +655,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="emergencycontactphones"
-              DTS:DTSID="{4B7A5932-E4B0-40E8-883A-44815B3E8B09}"
+              DTS:DTSID="{3FC60DBB-63C7-4ABE-A508-5B756FA06E7F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -679,7 +664,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="parent1name"
-              DTS:DTSID="{734B3713-0541-4E32-81D7-F09F473E6D56}"
+              DTS:DTSID="{3D083C46-D951-4C1E-82F4-FEDBE9C3B533}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -688,7 +673,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="parent2name"
-              DTS:DTSID="{58C84E14-CA2F-4CB9-A1D8-D6E84872F022}"
+              DTS:DTSID="{F8931923-A7F5-4684-A469-73FEBB14A2D4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -697,7 +682,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="emergencycontactname"
-              DTS:DTSID="{637C8570-168D-4327-99D3-03A108007B70}"
+              DTS:DTSID="{25360371-93DB-4C17-A967-CE8FA410313A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -706,7 +691,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="sex"
-              DTS:DTSID="{5A305298-00EF-4BCF-8DBE-DE6E3893A930}"
+              DTS:DTSID="{31213473-EF0E-4D08-9B0D-49FFCA077031}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -715,7 +700,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="program"
-              DTS:DTSID="{32F34060-B89E-410E-BE0F-82229E5DC471}"
+              DTS:DTSID="{E512AC0F-86F4-4D44-8F35-8E81EEFBCB06}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -724,7 +709,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupHouseNumber"
-              DTS:DTSID="{5EC5A159-6E26-4324-BAD8-CD4E01DA55C1}"
+              DTS:DTSID="{6CC5B4B9-670D-4AF6-94F5-B50F2BB9CD49}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -733,7 +718,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupStreetname"
-              DTS:DTSID="{20662992-0A10-4DC5-8744-81F5A15352B7}"
+              DTS:DTSID="{4239769C-38E5-4EE1-9F54-D6734B87E222}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -742,7 +727,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupApartmentNumber"
-              DTS:DTSID="{4DC2896C-229A-45BF-8497-517626155D79}"
+              DTS:DTSID="{B132805A-644D-460F-9DB1-7FA76BD88D44}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -751,7 +736,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupCity"
-              DTS:DTSID="{263DF863-4C02-4FE9-9D98-5A142CB2EBEC}"
+              DTS:DTSID="{4583246E-9C8C-466E-9218-3041D4963D1C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -760,7 +745,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="PickupState"
-              DTS:DTSID="{3326664D-8A75-4557-98A2-1A2457C1EE19}"
+              DTS:DTSID="{0AE2D152-8375-4108-B8A6-A55FF1999C66}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -769,7 +754,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Pickupzip"
-              DTS:DTSID="{A9F5944A-3735-402B-A896-5655B4B9F1FC}"
+              DTS:DTSID="{611F88B4-521A-416C-B57A-D3E5876CFB11}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -778,7 +763,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffHouseNumber"
-              DTS:DTSID="{CD8F0BB1-AC3F-41E6-8F13-86178CF45CEF}"
+              DTS:DTSID="{56AE5995-D4BF-4567-A652-F1301EE0D9CF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -787,7 +772,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffStreetname"
-              DTS:DTSID="{6030439B-A321-46C0-911D-3361FD0544D5}"
+              DTS:DTSID="{D962ABC5-ED80-47DC-9948-BC04D0758AA6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -796,7 +781,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffApartmentNumber"
-              DTS:DTSID="{11DDF441-F45E-4065-ABA0-813427039E14}"
+              DTS:DTSID="{3C7484B8-022F-4DB9-8DFE-65C2A6BA952D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -805,7 +790,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffCity"
-              DTS:DTSID="{17686F01-DAB4-4A4D-B509-AF1DF87CFD82}"
+              DTS:DTSID="{E8CA371B-AD45-414A-A8F2-50664466CA01}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -814,7 +799,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffState"
-              DTS:DTSID="{F097D1A6-46FE-465F-8309-78D46FD2C2E1}"
+              DTS:DTSID="{95EFAF26-EE89-4019-A250-7043C347E7FC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -823,7 +808,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="DropOffzip"
-              DTS:DTSID="{05FFAEA7-7671-49BE-AC2A-B517AF956872}"
+              DTS:DTSID="{D6248709-911A-41EE-BF82-2C2ECDFEE5A3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -832,7 +817,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="MedicaData"
-              DTS:DTSID="{6CA82192-8BEC-4C9E-9143-BFA57DA7BF2C}"
+              DTS:DTSID="{578B819F-3FE3-4268-AB21-21D8689D58C8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -841,7 +826,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="sncode"
-              DTS:DTSID="{BF36FA60-C0CA-496A-AC77-4C08EB05E517}"
+              DTS:DTSID="{6FF86F8A-FB32-4E6E-A5A7-5A99D19D958D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -850,7 +835,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="bilingual"
-              DTS:DTSID="{4E577C02-BAFC-4266-8A9A-611D5620F79F}"
+              DTS:DTSID="{20B995C4-0626-405E-87A1-C2F65715AF93}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -859,7 +844,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="aw"
-              DTS:DTSID="{A72ECC45-A949-4964-9DFF-E764EF230C3C}"
+              DTS:DTSID="{3F483AFD-8699-439D-A59F-6252FDA8C897}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -868,7 +853,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="voced"
-              DTS:DTSID="{10BFF922-9FB3-436F-B4A8-08E626144AE6}"
+              DTS:DTSID="{96FA476F-ABEA-4AF9-9093-841B42D0323E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -877,7 +862,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="theme"
-              DTS:DTSID="{D74E904F-5F7E-4FCE-A32E-6125B2212249}"
+              DTS:DTSID="{05FDF2A8-CC76-425B-88DF-E01F1D625CBD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -886,7 +871,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="monitor"
-              DTS:DTSID="{867593E6-310F-471B-9AA8-89380554C6E8}"
+              DTS:DTSID="{9221379D-4833-474C-ACB5-DA3F1660E089}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -895,7 +880,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="hzone"
-              DTS:DTSID="{068B3407-E14D-4B6F-824D-ED22D1C50B05}"
+              DTS:DTSID="{C6141E0F-C746-4A1E-94EF-12F4C84CF416}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -904,7 +889,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="zone"
-              DTS:DTSID="{F3AA6055-22AA-41C2-8EC0-2DE36C5CC62F}"
+              DTS:DTSID="{4AE8FCA6-D44E-442E-945E-67D351B34752}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -913,7 +898,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="geo"
-              DTS:DTSID="{90016F25-5322-4027-B818-1C4C106562A6}"
+              DTS:DTSID="{7ED35CE8-8623-49D1-A1E7-16A10366939E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -922,7 +907,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="hphone"
-              DTS:DTSID="{2A6F23BC-02D7-41AB-90C6-F5EC620C6B23}"
+              DTS:DTSID="{F5E63A8B-22F1-4772-95F7-51271633A581}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -931,7 +916,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="BufferZone"
-              DTS:DTSID="{622164F2-4D5E-4DFB-8D3A-F63B345F7176}"
+              DTS:DTSID="{90FBA6B7-20EF-41AA-982A-A53627B74F79}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -940,7 +925,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="HomeRoom"
-              DTS:DTSID="{0A158EF3-D59F-4AF7-9FAF-BC3211D99E9D}"
+              DTS:DTSID="{42F8AA74-A194-4AB4-8013-80815F0F9BB7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -949,7 +934,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="IsWithDrawn"
-              DTS:DTSID="{62988815-72AF-4F53-85C5-F7365D2F7448}"
+              DTS:DTSID="{B1E0A2B0-A088-4F4A-A191-35B010D0F40A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -958,7 +943,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="ishomeless"
-              DTS:DTSID="{D09DC9AD-107B-4F8C-9081-3F2B79735F58}"
+              DTS:DTSID="{A72CB327-4B21-4C49-B59E-5149B3868497}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -967,7 +952,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="IsProtectedAddress"
-              DTS:DTSID="{1B8D6773-A73A-4517-A9B2-743E857F597B}"
+              DTS:DTSID="{4E61E47C-0505-4281-AE71-F5FF2D3B388F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -976,7 +961,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="TapCardID"
-              DTS:DTSID="{725435C4-F242-4012-8692-A811FF0D3F33}"
+              DTS:DTSID="{A49D2D1B-CCD5-43FF-A339-4795323A6D2E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -985,10 +970,20 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="FamilyId"
-              DTS:DTSID="{F7E9DEC7-4BF4-4398-A4E2-665492D0F591}"
+              DTS:DTSID="{45762C20-1B6E-4981-B5DD-E553540AFE27}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{7A179009-B07B-4CFF-89E1-52FF70F6FEF2}"
+      DTS:ObjectName="STAGDATA-03.BPSInterface">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=STAGDATA-03;Initial Catalog=BPSInterface;Integrated Security=True;Application Name=SSIS-Package-{7A179009-B07B-4CFF-89E1-52FF70F6FEF2}BPSData.AspenInterface;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -1104,7 +1099,7 @@
         IsProtectedAddress ,
         TapCardID ,
         ctdFamilyId
-FROM    dbo.CurrentTransportationDaily
+FROM    Transportation.CurrentTransportationDaily
 WHERE   NOT program = '00'
         AND NOT zip = ''
         AND NOT street = ''
@@ -1135,8 +1130,8 @@ WHERE   NOT program = '00'
               <connections>
                 <connection
                   refId="Package\dftAspenDataExportFull\ADO NET Source.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSDATA02.AspenInterface]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSDATA02.AspenInterface]"
+                  connectionManagerID="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
+                  connectionManagerRefId="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -2264,8 +2259,8 @@ WHERE   NOT program = '00'
               <connections>
                 <connection
                   refId="Package\dftAspenDataExportFull\ffsExportFull.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSROUTES03 Transporation RMU]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSROUTES03 Transporation RMU]"
+                  connectionManagerID="Package.ConnectionManagers[STAGDATA-03 Transporation RMU]"
+                  connectionManagerRefId="Package.ConnectionManagers[STAGDATA-03 Transporation RMU]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -2997,8 +2992,8 @@ WHERE   NOT program = '00'
         atd.IsProtectedAddress ,
         atd.TapCardID,
         atd.atdFamilyId [ctdFamilyId]
-FROM    dbo.ArchiveTransportationDaily atd
-        LEFT JOIN dbo.CurrentTransportationDaily ctd ON atd.StudentNo = ctd.StudentNo
+FROM    Transportation.ArchiveTransportationDaily atd
+        LEFT JOIN Transportation.CurrentTransportationDaily ctd ON atd.StudentNo = ctd.StudentNo
 -- these are yesterday's valid student transportation records
 -- that are invalid today, or which are missing entirely
 WHERE   ( ctd.StudentNo IS NULL
@@ -3065,7 +3060,7 @@ UNION ALL
             IsProtectedAddress ,
             TapCardID,
             ctdFamilyId
-  FROM      CurrentTransportationDaily
+  FROM      Transportation.CurrentTransportationDaily
   WHERE     NOT program = '00'
             AND NOT zip = ''
             AND NOT street = ''
@@ -3122,7 +3117,7 @@ UNION ALL
             IsProtectedAddress ,
             TapCardID,
             atdFamilyId
-  FROM      ArchiveTransportationDaily
+  FROM      Transportation.ArchiveTransportationDaily
 )
 --ORDER BY StudentNo</property>
                 <property
@@ -3151,8 +3146,8 @@ UNION ALL
               <connections>
                 <connection
                   refId="Package\dftFindDifferences\adsDifferenceBetwenTables.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSDATA02.AspenInterface]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSDATA02.AspenInterface]"
+                  connectionManagerID="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
+                  connectionManagerRefId="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -4280,8 +4275,8 @@ UNION ALL
               <connections>
                 <connection
                   refId="Package\dftFindDifferences\ffdDifferences.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSROUTES03 Transporation RMU Difference]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSROUTES03 Transporation RMU Difference]"
+                  connectionManagerID="Package.ConnectionManagers[STAGDATA-03 Transporation RMU Difference]"
+                  connectionManagerRefId="Package.ConnectionManagers[STAGDATA-03 Transporation RMU Difference]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>

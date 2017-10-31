@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -7,28 +7,23 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{C95D0C34-FA1A-46A8-AFE4-7A90FD42E446}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.1000.281"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_3_End_Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="140"
-  DTS:VersionGUID="{2FA6F360-DD82-45DB-B634-98DE9F0499F7}">
+  DTS:VersionBuild="141"
+  DTS:VersionGUID="{7D6BB03E-569E-4818-9D4F-93EDAE90D8EE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BPSData02.AspenInterface]"
+      DTS:refId="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
       DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
       DTS:DTSID="{3E801ABE-46F3-4611-9549-261FAC232CAF}"
-      DTS:ObjectName="BPSData02.AspenInterface">
+      DTS:ObjectName="STAGDATA-03.BPSInterface">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSData02;User ID=BPSIntegration;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{3E801ABE-46F3-4611-9549-261FAC232CAF}BPSData.AspenInterface;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/HST7cnWREu84OXV1bOTYwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABvLfjzLHi/+VsTBuo90bRHAAAAAASAAACgAAAAEAAAABean5nua9c3JMMJXgZ3eY8YAAAAiVJ6x9AYhqT9O5CKFXFdLb38b4MDplIhFAAAAI1RzMUe4rRwedTB6nK+anyLvAA8</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=STAGDATA-03;Initial Catalog=BPSInterface;Integrated Security=True;Application Name=SSIS-Package-{3E801ABE-46F3-4611-9549-261FAC232CAF}BPSData.AspenInterface;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -83,7 +78,7 @@
                   description="The Destination database table name."
                   expressionType="Notify"
                   name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."ArchiveTransportationDaily"</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"Transportation"."ArchiveTransportationDaily"</property>
                 <property
                   dataType="System.Int32"
                   description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
@@ -106,8 +101,8 @@
               <connections>
                 <connection
                   refId="Package\dftTransferCurrenttoArchive\andArchiveTransportationDaily.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSData02.AspenInterface]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSData02.AspenInterface]"
+                  connectionManagerID="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
+                  connectionManagerRefId="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -826,7 +821,7 @@
         IsProtectedAddress ,
         TapCardID,
         ctdFamilyId
-FROM    CurrentTransportationDaily
+FROM    Transportation.CurrentTransportationDaily
 /*WHERE
  NOT program = '00'
 AND NOT zip = ''
@@ -859,8 +854,8 @@ AND NOT city is null
               <connections>
                 <connection
                   refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSData02.AspenInterface]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSData02.AspenInterface]"
+                  connectionManagerID="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
+                  connectionManagerRefId="Package.ConnectionManagers[STAGDATA-03.BPSInterface]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -1992,7 +1987,7 @@ AND NOT city is null
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{3E801ABE-46F3-4611-9549-261FAC232CAF}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.ArchiveTransportationDaily&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Transportation.ArchiveTransportationDaily&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
