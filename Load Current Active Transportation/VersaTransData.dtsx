@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="7/29/2016 1:59:50 PM"
@@ -13,7 +13,7 @@
   DTS:ObjectName="VersaTransData"
   DTS:PackageType="5"
   DTS:VersionBuild="77"
-  DTS:VersionGUID="{F72653F6-E2E9-4DC1-8D74-5C5D7982806D}">
+  DTS:VersionGUID="{467C14B4-38B6-4770-BA39-5AD17021E82A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -28,7 +28,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2QogScSd3EiHAU5wG26b1wAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADF+Drd/PAgxCWmn8fCRQdnAAAAAASAAACgAAAAEAAAANUTWSgv+UAkNHDVJ8vC/5cYAAAA24CRsN208GxYxqSrrjiBdlfV1q0SHucTFAAAALGKyUoFMRNj+LkuPBo9mXjI7aYO</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2QogScSd3EiHAU5wG26b1wAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADV+3/oDF28mTLnJpD5JpFwAAAAAASAAACgAAAAEAAAAEug+1mwDYaV7taYTVy250IYAAAADBB8d3fDZJ00xL9il9PwY0kCtEAYHy0NFAAAAE7aQO3s0ypmNij7wvLfgKVPRhy5</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -92,7 +92,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -126,8 +126,8 @@
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -515,7 +515,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -549,8 +549,8 @@
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -938,7 +938,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -972,8 +972,8 @@
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1361,7 +1361,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">USE SY_Live_RP;
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">USE SY_Live_RP;
 
 SELECT s.VisibleID AS StudentNo,
        CASE
@@ -1707,8 +1707,8 @@ WHERE LEN(VisibleID) = 6
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Connections[OleDbConnection]"
-                  connectionManagerID="{2EE57666-AD62-47D6-BDC6-723FD222B104}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSROUTES03.SY_Live_RP.BPSIntegration]"
+                  connectionManagerID="{2EE57666-AD62-47D6-BDC6-723FD222B104}:invalid"
+                  connectionManagerRefId="{2EE57666-AD62-47D6-BDC6-723FD222B104}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2295,7 +2295,7 @@ WHERE LEN(VisibleID) = 6
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -3227,7 +3227,7 @@ WHERE LEN(VisibleID) = 6
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -3571,8 +3571,8 @@ WHERE LEN(VisibleID) = 6
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Connections[OleDbConnection]"
-                  connectionManagerID="{9B7EABA2-5F31-4E19-AFB3-C453A62815BD}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSROUTES03.SY_Planning_RP.BPSIntegration]"
+                  connectionManagerID="{9B7EABA2-5F31-4E19-AFB3-C453A62815BD}:invalid"
+                  connectionManagerRefId="{9B7EABA2-5F31-4E19-AFB3-C453A62815BD}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4188,7 +4188,7 @@ WHERE LEN(VisibleID) = 6
 <!--If you manually edit this section and make a mistake, you can delete it. -->
 <!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
-  Version="8">
+  Version="sql12">
   <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">

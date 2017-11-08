@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="2/9/2016 4:41:59 PM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="MaintenancePlan"
   DTS:PackageType="6"
   DTS:VersionBuild="13"
-  DTS:VersionGUID="{A37997E3-6442-4FDA-BC60-7102D4256FAF}">
+  DTS:VersionGUID="{4449852B-FE53-4E2D-A492-74CE36BE946D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -164,7 +164,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Back Up Database (Full)"
           DTS:TaskContact="Back Up Database Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -243,11 +243,7 @@
               SQLTask:IsBackupEncrypted="False"
               SQLTask:BackupEncryptionAlgorithm="0"
               SQLTask:BackupEncryptorType="0"
-              SQLTask:BackupEncryptorName=""
-              SQLTask:Checksum="False"
-              SQLTask:ContinueOnError="False"
-              SQLTask:IsBlockSizeUsed="False"
-              SQLTask:IsMaxTransferSizeUsed="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:BackupEncryptorName="" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:SelectedDatabases
                 SQLTask:DatabaseName="AspenInterface" />
               <SQLTask:SelectedDatabases
@@ -399,7 +395,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Check Database Integrity"
           DTS:TaskContact="Check Database Integrity Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -454,10 +450,7 @@
               SQLTask:LocalConnectionForLogging="Local server connection"
               SQLTask:TaskName="Check Database Integrity"
               SQLTask:IgnoreDatabasesInNotOnlineState="True"
-              SQLTask:IncludeIndexes="True"
-              SQLTask:PhysicalOnly="False"
-              SQLTask:Tablock="False"
-              SQLTask:MaximumDegreeOfParallelismUsed="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:IncludeIndexes="True" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:SelectedDatabases
                 SQLTask:DatabaseName="AspenInterface" />
               <SQLTask:SelectedDatabases
@@ -780,7 +773,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Maintenance Cleanup Task"
           DTS:TaskContact="File Cleanup Task; Microsoft Corporation; Microsoft SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -940,7 +933,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Reporting Task for subplan-{10C3A6D3-6DAE-4647-AF24-359DDB6A09CA}"
       DTS:TaskContact="Maintenance Plan Reporting Task; Microsoft Corporation; Microsoft SQL Server v9; � 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -992,7 +985,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Reporting Task for subplan-{7DF43475-8124-45A5-BCCE-407B98BA72E6}"
       DTS:TaskContact="Maintenance Plan Reporting Task; Microsoft Corporation; Microsoft SQL Server v9; � 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="7">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1018,7 +1011,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Reporting Task for subplan-{86BB53A2-DAB3-44BE-B317-3573B668B5A2}"
       DTS:TaskContact="Maintenance Plan Reporting Task; Microsoft Corporation; Microsoft SQL Server v9; � 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1070,7 +1063,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Reporting Task for subplan-{A24E00B6-786F-4C82-B93B-312B0A0E002B}"
       DTS:TaskContact="Maintenance Plan Reporting Task; Microsoft Corporation; Microsoft SQL Server v9; � 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="8">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1096,7 +1089,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Reporting Task for subplan-{AB194E97-2CBD-4131-A508-C6CEBF551555}"
       DTS:TaskContact="Maintenance Plan Reporting Task; Microsoft Corporation; Microsoft SQL Server v9; � 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1122,7 +1115,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Reporting Task for subplan-{AF315AF4-F2CA-43A0-B0FC-D9C2555FC5D0}"
       DTS:TaskContact="Maintenance Plan Reporting Task; Microsoft Corporation; Microsoft SQL Server v9; � 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="7">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1148,7 +1141,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Reporting Task for subplan-{D811D396-CDA6-4257-B1EA-E1AF7DF8F2EC}"
       DTS:TaskContact="Maintenance Plan Reporting Task; Microsoft Corporation; Microsoft SQL Server v9; � 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="8">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1197,7 +1190,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Shrink Database"
           DTS:TaskContact="Shrink Database Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -1398,7 +1391,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Update Statistics"
           DTS:TaskContact="Update Statistics Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -1642,7 +1635,7 @@
 <!--If you manually edit this section and make a mistake, you can delete it. -->
 <!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
-  Version="8">
+  Version="sql12">
   <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
