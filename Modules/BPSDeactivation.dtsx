@@ -7,91 +7,14 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{5C8AD5B1-70C5-4481-B13D-656622294F35}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LastModifiedProductVersion="14.0.1000.169"
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{8B13586F-0219-4A53-B089-462281075782}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{50241CBE-0D52-4143-A4CC-DC2A583D56FB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[ffcmBPSDeactivation]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{AF4E11E4-48CD-45E3-B994-0A441DD15B94}"
-      DTS:ObjectName="ffcmBPSDeactivation">
-      <DTS:PropertyExpression
-        DTS:Name="ConnectionString">"D:\\BPSPassDeactivation" +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH( GETDATE()  ), 2) + RIGHT("0" + (DT_STR, 2, 1252)  DAY( GETDATE()  ), 2) + (DT_STR, 4, 1252)  YEAR( GETDATE()  )  + ".txt"</DTS:PropertyExpression>
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowsToSkip="2"
-          DTS:HeaderRowDelimiter="_x002C_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="D:\BPSPassDeactivation10162017.txt">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="25"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="BPSID"
-              DTS:DTSID="{405885B4-500C-4C0A-AB65-D6C5CCD531A3}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="25"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="SerialNumber"
-              DTS:DTSID="{B5E3AC62-6678-4B9A-86FA-9100ED90C31D}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="20"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="DeactivateCode"
-              DTS:DTSID="{E781FD70-1B2C-47E7-8A0A-56860CF6ACD6}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SISSQL-01.x2data]"
-      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{544A4645-EA6D-4098-86A8-62D7D51FC6FE}"
-      DTS:ObjectName="SISSQL-01.x2data">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.244.1.136;User ID=BPSIntegration;Initial Catalog=x2data;Persist Security Info=True;Application Name=SSIS-BPSDeactivation-{544A4645-EA6D-4098-86A8-62D7D51FC6FE}10.23.12.31.x2data.bps_user3;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2QogScSd3EiHAU5wG26b1wAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACBKtefDFQ4hMjEATfVaWoAAAAAAASAAACgAAAAEAAAAFjaPVK8iK5JbDaP1vCmCS4YAAAA0y9eUqrIkurPWSHEBKYY4yxwDelTGNclFAAAAD9qxKbVgUX8wDhkkZan89O4zCsu</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
-      DTS:CreationName="SMTP"
-      DTS:DTSID="{9980CA04-2FE5-4A52-A8A0-ECF92D37F0CC}"
-      DTS:ObjectName="SMTP Connection Manager">
-      <DTS:ObjectData>
-        <SmtpConnectionManager
-          ConnectionString="SmtpServer=smtp.boston.k12.ma.us;UseWindowsAuthentication=False;EnableSsl=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -163,8 +86,8 @@ WHERE   C.TRS_FIELDA_002 = 1
               <connections>
                 <connection
                   refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[SISSQL-01.x2data]"
-                  connectionManagerRefId="Package.ConnectionManagers[SISSQL-01.x2data]"
+                  connectionManagerID="{855F310C-3BC9-47F1-AFE3-74AE8AB22A26}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SISSQL-01.x2data]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -284,8 +207,8 @@ WHERE   C.TRS_FIELDA_002 = 1
               <connections>
                 <connection
                   refId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[ffcmBPSDeactivation]"
-                  connectionManagerRefId="Package.ConnectionManagers[ffcmBPSDeactivation]"
+                  connectionManagerID="{AF4E11E4-48CD-45E3-B994-0A441DD15B94}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ffcmBPSDeactivation]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -361,17 +284,20 @@ WHERE   C.TRS_FIELDA_002 = 1
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:PropertyExpression
+        DTS:Name="CCLine">@[$Project::MailCCLine]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
         DTS:Name="FileAttachments">"D:/BPSPassDeactivation" +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH( GETDATE()  ), 2) + RIGHT("0" + (DT_STR, 2, 1252)  DAY( GETDATE()  ), 2) + (DT_STR, 4, 1252)  YEAR( GETDATE()  )  + ".txt"</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ToLine">@[$Project::MailToLine]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <SendMailTask:SendMailTaskData
           SendMailTask:SMTPServer="{9980CA04-2FE5-4A52-A8A0-ECF92D37F0CC}"
           SendMailTask:From="do-not-reply@bostonpublicschools.org"
-          SendMailTask:To="studentpassprogram@mbta.com;mdepina@mbta.com"
           SendMailTask:CC="AppDevTransport@bostonpublicschools.org;AppDevAdmin@bostonpublicschools.org"
           SendMailTask:Subject="BPS Pass Deactivations"
           SendMailTask:MessageSource="BPS Pass Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="D:/BPSPassDeactivation10162017.txt" />
+            SendMailTask:FileName="D:/BPSPassDeactivation11272017.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -469,5 +395,13 @@ WHERE   C.TRS_FIELDA_002 = 1
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
