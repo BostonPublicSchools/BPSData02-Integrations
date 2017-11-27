@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="70"
-  DTS:VersionGUID="{50241CBE-0D52-4143-A4CC-DC2A583D56FB}">
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{71F1316B-4E91-4E23-A564-30EC6DF8D59A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -293,6 +293,7 @@ WHERE   C.TRS_FIELDA_002 = 1
         <SendMailTask:SendMailTaskData
           SendMailTask:SMTPServer="{9980CA04-2FE5-4A52-A8A0-ECF92D37F0CC}"
           SendMailTask:From="do-not-reply@bostonpublicschools.org"
+          SendMailTask:To="studentpassprogram@mbta.com;mdepina@mbta.com"
           SendMailTask:CC="AppDevTransport@bostonpublicschools.org;AppDevAdmin@bostonpublicschools.org"
           SendMailTask:Subject="BPS Pass Deactivations"
           SendMailTask:MessageSource="BPS Pass Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
