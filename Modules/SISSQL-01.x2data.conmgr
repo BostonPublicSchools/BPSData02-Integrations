@@ -1,14 +1,10 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="SISSQL-01.x2data"
-  DTS:DTSID="{855F310C-3BC9-47F1-AFE3-74AE8AB22A26}"
-  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  DTS:DTSID="{8CD2CD0B-852B-4CF9-A48E-7F48F4F776EA}"
+  DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=10.244.1.136;User ID=BPSIntegration;Initial Catalog=x2data;Persist Security Info=True;Application Name=SSIS-StoredValueDeactivation-{855F310C-3BC9-47F1-AFE3-74AE8AB22A26}10.23.12.31.x2data.bps_user3;">
-      <DTS:Password
-        DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAI8vNNiNrb0mRGY59V3s00QAAAAACAAAAAAADZgAAwAAAABAAAADe9uYIDXDih4YP9DB5alMRAAAAAASAAACgAAAAEAAAAF9BR/RkHCbkaH8s9H4UkZp4AAAA48NuAxFWZE7c8VgYG3Qc1qKpBWHHLerg5q09NWvAoQT2jTDBScHy+9RlSngrA/Rfhx6VHtDCMkg9iI9gzIMvKX+en5pzbhuL5h0Efc5EfNAAzcvVaMshv79qE8ESamVeZ5FCCVk04+X+2KeAoMYDBAfPQnFVLydYFAAAADa4TtWtC/pXrwL7GFwZPl6/AeG5</DTS:Password>
-    </DTS:ConnectionManager>
+      DTS:ConnectionString="Data Source=SISSQL-01;Initial Catalog=x2data;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

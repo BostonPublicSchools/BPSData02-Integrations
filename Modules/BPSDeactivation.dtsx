@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{5C8AD5B1-70C5-4481-B13D-656622294F35}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="71"
-  DTS:VersionGUID="{71F1316B-4E91-4E23-A564-30EC6DF8D59A}">
+  DTS:VersionBuild="79"
+  DTS:VersionGUID="{427770D7-242E-4B30-96CB-DEB2F395B1E0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -35,17 +35,28 @@
           <components>
             <component
               refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation"
-              componentClassID="Microsoft.ManagedComponentHost"
-              contactInfo="Extracts data from a relational database by using a .NET provider.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="Extracts data from a relational database by using a .NET provider."
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
               name="ansBPS Passes for deactivation"
               usesDispositions="true"
-              version="4">
+              version="7">
               <properties>
                 <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
                   dataType="System.String"
-                  description="Specifies the SQL statement used by the component to extract data."
-                  expressionType="Notify"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  DISTINCT
         C.TRS_ID AS BPSID ,
@@ -61,124 +72,132 @@ WHERE   C.TRS_FIELDA_002 = 1
         AND ISNULL(C.TRS_FIELDB_005, '') = ''
         AND C.TRS_TYPE = 'PASS';</property>
                 <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
                   dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">30</property>
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
                 <property
                   dataType="System.Boolean"
-                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
-                  name="AllowImplicitStringConversion">true</property>
-                <property
-                  dataType="System.String"
-                  description="The Destination database table name."
-                  expressionType="Notify"
-                  name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
                 <property
                   dataType="System.Int32"
-                  description="Specify the mode to retrieve external column information"
+                  description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
-                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Connections[IDbConnection]"
-                  connectionManagerID="{855F310C-3BC9-47F1-AFE3-74AE8AB22A26}:external"
+                  refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Connections[OleDbConnection]"
+                  connectionManagerID="{8CD2CD0B-852B-4CF9-A48E-7F48F4F776EA}:external"
                   connectionManagerRefId="Project.ConnectionManagers[SISSQL-01.x2data]"
-                  description="Managed connection manager"
-                  name="IDbConnection" />
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output]"
-                  name="ADO NET Source Output">
+                  refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].Columns[BPSID]"
-                      dataType="wstr"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].Columns[BPSID]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[BPSID]"
+                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].ExternalColumns[BPSID]"
                       length="25"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].Columns[BPSID]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].Columns[BPSID]"
                       name="BPSID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].Columns[SerialNumber]"
-                      dataType="wstr"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].Columns[SerialNumber]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[SerialNumber]"
+                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].ExternalColumns[SerialNumber]"
                       length="25"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].Columns[SerialNumber]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].Columns[SerialNumber]"
                       name="SerialNumber"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].Columns[DeactivateCode]"
-                      dataType="wstr"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].Columns[DeactivateCode]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[DeactivateCode]"
+                      externalMetadataColumnId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].ExternalColumns[DeactivateCode]"
                       length="20"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].Columns[DeactivateCode]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].Columns[DeactivateCode]"
                       name="DeactivateCode"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[BPSID]"
-                      dataType="wstr"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].ExternalColumns[BPSID]"
+                      codePage="1252"
+                      dataType="str"
                       length="25"
                       name="BPSID" />
                     <externalMetadataColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[SerialNumber]"
-                      dataType="wstr"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].ExternalColumns[SerialNumber]"
+                      codePage="1252"
+                      dataType="str"
                       length="25"
                       name="SerialNumber" />
                     <externalMetadataColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].ExternalColumns[DeactivateCode]"
-                      dataType="wstr"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].ExternalColumns[DeactivateCode]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="DeactivateCode" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output]"
+                  refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
-                  name="ADO NET Source Error Output">
+                  name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[BPSID]"
-                      dataType="wstr"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[BPSID]"
+                      codePage="1252"
+                      dataType="str"
                       length="25"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[BPSID]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[BPSID]"
                       name="BPSID" />
                     <outputColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[SerialNumber]"
-                      dataType="wstr"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[SerialNumber]"
+                      codePage="1252"
+                      dataType="str"
                       length="25"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[SerialNumber]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[SerialNumber]"
                       name="SerialNumber" />
                     <outputColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[DeactivateCode]"
-                      dataType="wstr"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[DeactivateCode]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[DeactivateCode]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[DeactivateCode]"
                       name="DeactivateCode" />
                     <outputColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -207,8 +226,8 @@ WHERE   C.TRS_FIELDA_002 = 1
               <connections>
                 <connection
                   refId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Connections[FlatFileConnection]"
-                  connectionManagerID="{AF4E11E4-48CD-45E3-B994-0A441DD15B94}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ffcmBPSDeactivation]"
+                  connectionManagerID="{0C9248DA-1AA1-4A16-BF1C-6E9810EC09B0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSPassesDeactivation]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -219,25 +238,28 @@ WHERE   C.TRS_FIELDA_002 = 1
                   <inputColumns>
                     <inputColumn
                       refId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input].Columns[BPSID]"
-                      cachedDataType="wstr"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
                       cachedLength="25"
                       cachedName="BPSID"
                       externalMetadataColumnId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input].ExternalColumns[BPSID]"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].Columns[BPSID]" />
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].Columns[BPSID]" />
                     <inputColumn
                       refId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input].Columns[SerialNumber]"
-                      cachedDataType="wstr"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
                       cachedLength="25"
                       cachedName="SerialNumber"
                       externalMetadataColumnId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input].ExternalColumns[SerialNumber]"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].Columns[SerialNumber]" />
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].Columns[SerialNumber]" />
                     <inputColumn
                       refId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input].Columns[DeactivateCode]"
-                      cachedDataType="wstr"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
                       cachedLength="20"
                       cachedName="DeactivateCode"
                       externalMetadataColumnId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input].ExternalColumns[DeactivateCode]"
-                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output].Columns[DeactivateCode]" />
+                      lineageId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output].Columns[DeactivateCode]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -263,10 +285,10 @@ WHERE   C.TRS_FIELDA_002 = 1
           </components>
           <paths>
             <path
-              refId="Package\dftBPSPassesDeactivation.Paths[ADO NET Source Output]"
+              refId="Package\dftBPSPassesDeactivation.Paths[OLE DB Source Output]"
               endId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input]"
-              name="ADO NET Source Output"
-              startId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[ADO NET Source Output]" />
+              name="OLE DB Source Output"
+              startId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -326,27 +348,27 @@ WHERE   C.TRS_FIELDA_002 = 1
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="136,44"
+          Size="199,42"
           Id="Package\dftBPSPassesDeactivation"
           TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="136,44"
+          Size="189,44"
           Id="Package\Send Mail Task"
-          TopLeft="5.5,126.518867924528" />
+          TopLeft="3.5,109.518867924528" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="73.3867924528302,49.4245283018868">
+          TopLeft="101.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,77.0943396226415"
+              EndConnector="0,62.018867924528"
               Start="0,0"
-              End="0,69.5943396226415">
+              End="0,54.518867924528">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.5943396226415" />
+                    End="0,54.518867924528" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -366,25 +388,25 @@ WHERE   C.TRS_FIELDA_002 = 1
         <NodeLayout
           Size="189,42"
           Id="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation"
-          TopLeft="23.5,107.5" />
+          TopLeft="45.5,141.5" />
         <NodeLayout
           Size="225,42"
           Id="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation"
-          TopLeft="5.50000000000001,5.5" />
+          TopLeft="28,38" />
         <EdgeLayout
-          Id="Package\dftBPSPassesDeactivation.Paths[ADO NET Source Output]"
-          TopLeft="118,47.5">
+          Id="Package\dftBPSPassesDeactivation.Paths[OLE DB Source Output]"
+          TopLeft="140.25,80">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,61.5"
               Start="0,0"
-              End="0,52.5">
+              End="0,54">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,54" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
