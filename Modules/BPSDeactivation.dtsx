@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="114"
-  DTS:VersionGUID="{EF57AC23-0106-46CF-AE2B-9FDB5F37D68F}">
+  DTS:VersionBuild="115"
+  DTS:VersionGUID="{2C1FE3DF-3DA7-4176-ABD4-0CC9EE12CC25}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -310,7 +310,6 @@ WHERE   C.TRS_FIELDA_002 = 1
       DTS:CreationName="Microsoft.SendMailTask"
       DTS:DelayValidation="True"
       DTS:Description="Send Mail Task"
-      DTS:Disabled="True"
       DTS:DTSID="{13A9634A-2087-4E64-8397-EC5258EA1546}"
       DTS:ExecutableType="Microsoft.SendMailTask"
       DTS:LocaleID="-1"
@@ -337,47 +336,16 @@ WHERE   C.TRS_FIELDA_002 = 1
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Send Mail Task 1"
-      DTS:CreationName="Microsoft.SendMailTask"
-      DTS:DelayValidation="True"
-      DTS:Description="Send Mail Task"
-      DTS:DTSID="{e29506ef-2b3e-4425-85f4-be5b79a60e20}"
-      DTS:ExecutableType="Microsoft.SendMailTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Send Mail Task 1"
-      DTS:TaskContact="Send Mail Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
-      <DTS:Variables />
-      <DTS:PropertyExpression
-        DTS:Name="CCLine">@[$Project::MailCCLine]</DTS:PropertyExpression>
-      <DTS:PropertyExpression
-        DTS:Name="FileAttachments">"D:/BPSPassDeactivation" +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH( GETDATE()  ), 2) + RIGHT("0" + (DT_STR, 2, 1252)  DAY( GETDATE()  ), 2) + (DT_STR, 4, 1252)  YEAR( GETDATE()  )  + ".txt"</DTS:PropertyExpression>
-      <DTS:PropertyExpression
-        DTS:Name="ToLine">@[$Project::MailToLine]</DTS:PropertyExpression>
-      <DTS:ObjectData>
-        <SendMailTask:SendMailTaskData
-          SendMailTask:SMTPServer="{4888A52D-FCD0-463E-894C-091343B134F6}"
-          SendMailTask:From="do-not-reply@bostonpublicschools.org"
-          SendMailTask:To="studentpassprogram@mbta.com;mdepina@mbta.com"
-          SendMailTask:CC="AppDevTransport@bostonpublicschools.org;AppDevAdmin@bostonpublicschools.org"
-          SendMailTask:Subject="BPS Pass Deactivations"
-          SendMailTask:MessageSource="BPS Pass Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
-          <SendMailTask:Attachments
-            SendMailTask:FileName="D:/BPSPassDeactivation11292017.txt" />
-        </SendMailTask:SendMailTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{9EA51AB0-6684-4A97-905A-4F66D19CAE3B}"
+      DTS:DTSID="{8B9E742A-D61B-438D-A545-DDDC978E0BC5}"
       DTS:From="Package\dftBPSPassesDeactivation"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Send Mail Task 1" />
+      DTS:To="Package\Send Mail Task" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -398,37 +366,21 @@ WHERE   C.TRS_FIELDA_002 = 1
         <NodeLayout
           Size="150,42"
           Id="Package\Send Mail Task"
-          TopLeft="75.5,128.518867924528" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Send Mail Task 1"
-          TopLeft="245,123" />
+          TopLeft="30.5,114.518867924528" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="105,47.5">
+          TopLeft="105.25,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="215,75.5"
+              EndConnector="0,67.018867924528"
               Start="0,0"
-              End="215,68">
+              End="0,59.518867924528">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.75"
-                    Point2="0,37.75"
-                    Point3="4,37.75" />
-                  <mssgle:LineSegment
-                    End="211,37.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="211,37.75"
-                    Point2="215,37.75"
-                    Point3="215,41.75" />
-                  <mssgle:LineSegment
-                    End="215,68" />
+                    End="0,59.518867924528" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
