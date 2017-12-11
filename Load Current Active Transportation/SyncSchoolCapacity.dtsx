@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncSchoolCapacity"
   DTS:PackageType="5"
-  DTS:VersionBuild="60"
-  DTS:VersionGUID="{8F6CB9FE-75A1-40F3-BD8C-967F1D006160}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{120C3836-9237-4372-B5A4-8B32F387FA3B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -56,24 +56,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT     ESC.SCaID,         
-         S.skl_school_Id as scaSchId,
-                 SCA_OID as scaSCA_OID,
-              	     SCA_Grade_Level collate SQL_Latin1_General_CP1_CI_AS as scaGradeLevel,
-	    SCA_Program_Code  collate SQL_Latin1_General_CP1_CI_AS as ScaProgramId ,
-     DS.CTX_CONTEXT_ID COLLATE SQL_Latin1_General_CP1_CI_AS   as scaYearContext,
-	    SCA_Assign_Limit as scaAssignLimit,
-	    SCA_Actual_Total as ScaActualToTal,
-	                  isnull(null,0) as scaPendingTotal,
-      SCA_WAITLIST_Total as scaWaitlistTotal,
-ISNULL(SCA_FIELDA_007,0) as ScaIsSpecialAdmission
-
-from ASPENDB.x2data.dbo.SCHOOL_CAPACITY SC
-JOIN    ASPENDB.x2data.dbo.DISTRICT_SCHOOL_YEAR_CONTEXT  DS ON DS.CTX_CONTEXT_ID &gt;= '2017-2018'
-                                                              AND DS.CTX_OID = SC.SCA_CTX_OID
-JOIN    ASPENDB.x2data.dbo.SCHOOL S ON S.SKL_OID = SCA_SKL_OID
-left join Eligibility.SchoolCapacity ESC on ESC.scaSCA_OID=SC.SCA_OID AND  ESC.scaSchId=s.skl_school_Id COLLATE SQL_Latin1_General_CP1_CI_AS and ESC.scaGradeLevel= SC.SCA_Grade_Level COLLATE SQL_Latin1_General_CP1_CI_AS
- and   ESC.scaYearContext&gt;='2017-2018'</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC [Eligibility].[VersaTransExtract]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."

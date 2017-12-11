@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/20/2017 1:48:49 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="TransferJob"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{64A9AEA7-9668-4CF5-AAF7-6CEB3A2817BB}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{DB83BBD9-617B-4366-BCF3-FEFC307EB00D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -36,6 +36,26 @@
           ConnectionString="SqlServerName=BPSDATA02;UseWindowsAuthentication=True;UserName=;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[STAGDATA-03]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{517A38CA-5F9B-4C7E-9028-18A0DB613F73}"
+      DTS:ObjectName="STAGDATA-03">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=STAGDATA-03;UseWindowsAuthentication=True;UserName=;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TESTDATA-03]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{ECF76659-3B29-4C48-9295-79B600558E27}"
+      DTS:ObjectName="TESTDATA-03">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=TESTDATA-03;UseWindowsAuthentication=True;UserName=;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
@@ -52,10 +72,10 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <TransferJobsTaskData
-          JobsList="2,49,Load BPSInterface.SutdentTransportationEligiblity,28,Run Analytic Rules - Round 2,"
+          JobsList="1,30,Sync SchoolCapacity with Aspen,"
           IfObjectExists="Overwrite"
-          SourceConnection="{0689DA41-4601-4D31-8EC8-BB81C51D3ACE}"
-          DestinationConnection="{1F7EBE28-FCDA-4CFF-9948-60A3F3349268}" />
+          SourceConnection="{1F7EBE28-FCDA-4CFF-9948-60A3F3349268}"
+          DestinationConnection="{517A38CA-5F9B-4C7E-9028-18A0DB613F73}" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -64,7 +84,7 @@
 <!--If you manually edit this section and make a mistake, you can delete it. -->
 <!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
-  Version="sql12">
+  Version="8">
   <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
