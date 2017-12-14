@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StoredValueDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{073D0B0D-78D9-46EA-BA51-01A3A6BE1256}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{A785A4D7-73B6-4A66-9C8E-7E5A7B6A74EA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -334,7 +334,7 @@ WHERE   C.TRS_FIELDA_002 = 1
           SendMailTask:Subject="Stored Value Deactivations"
           SendMailTask:MessageSource="Stored Value Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="D:\StoredValuePassDeactivation11272017.txt" />
+            SendMailTask:FileName="D:\StoredValuePassDeactivation12142017.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -400,13 +400,13 @@ WHERE   C.TRS_FIELDA_002 = 1
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="266,42"
-          Id="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation"
-          TopLeft="53,9" />
-        <NodeLayout
           Size="220,42"
           Id="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations"
           TopLeft="79,133" />
+        <NodeLayout
+          Size="266,42"
+          Id="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation"
+          TopLeft="53,9" />
         <EdgeLayout
           Id="Package\dftBPSPassesDeactivation.Paths[OLE DB Source Output]"
           TopLeft="187.5,51">
