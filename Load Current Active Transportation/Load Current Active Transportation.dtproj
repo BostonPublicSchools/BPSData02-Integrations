@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">084-170705-03</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAACAAAAAAADZgAAwAAAABAAAAAOmLAN+ZeXH2KtEKUhaa8iAAAAAASAAACgAAAAEAAAAC7qxRyCcQu/Wxfux0aefGiIAAAASLUoNLYAvG9DmJnYfH9XULGSfIKs7WD27RGOJQLTXkepANmB60BzoHvBF0jK9VnqNEsYCKUBBwBRbVzKLj5ZJDsqwNkU8hdXgzs3FXB8lLR7vOGLmVgWb2caMPjLAU7QFKJ7Se1WpsmaHiwYcDuVfv4OIq368fL8m/SJq/Tw+wt0+8goYNHychQAAADbmhvQJqWrp9J58yb3lasXYFiZng==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAACAAAAAAADZgAAwAAAABAAAABgAZxNPuEWFJfpG6AtJ+aJAAAAAASAAACgAAAAEAAAAJ2AZdcIlta5eVzjMzsM4K+IAAAA1kyo5CQclWiiTaqVHeyL680L93IpkPCi5gCPacCLT/AMpnu8JTmXmMwJM0+8wbXzoC1wS32W2F2bP2Q0tNA9uUxDv+AULqGthfaPq+v43NT1Kgn9qrH3F9+Y0uZKvfg1B6zMpldw/YYUq7RlPx54+ukGNqVFbbpPQzTpsKPYcyNKvO0dLnAkCRQAAAD69l/SeEiYBtF5SPmVFWuFlH3/rQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -45,6 +45,7 @@
           <SSIS:Package SSIS:Name="Export SibAppFrom _02.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="BPSTransportation_VersaTransData.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="RefreshTables - BPSDashboard.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="SyncSchoolwithAspen.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="BPSInterface.BPSIntegration.conmgr" />
@@ -1011,10 +1012,10 @@
                 <SSIS:Property SSIS:Name="Name">LoadPendingData</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">152</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">153</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{CB947DCD-FF8C-4D7A-8AD3-4E3A76F3BD01}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{56CCD493-B4CB-47C6-B101-56F1E2D86CB7}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -3689,6 +3690,23 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="SyncSchoolwithAspen.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{588B9DBC-85BE-4F4C-8867-6EE123D63E3F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">SyncSchoolwithAspen</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">42</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D29543FE-9A08-46AD-88A3-8D6B9BCBE32B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
       </SSIS:Project>
@@ -3710,7 +3728,7 @@
           <ConfigurationSetting>
             <Id>LastModifiedTime</Id>
             <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2017-12-11T18:59:19.6285372Z</Value>
+            <Value xsi:type="xsd:dateTime">2018-01-08T18:28:19.1901029Z</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>{7851F3D4-CB5B-44C3-9330-3CABD14C7073}</Id>
