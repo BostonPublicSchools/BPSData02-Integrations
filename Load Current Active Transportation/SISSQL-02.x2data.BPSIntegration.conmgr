@@ -3,14 +3,12 @@
   DTS:ObjectName="SISSQL-02 x2data BPSIntegration"
   DTS:DTSID="{55EB4070-6990-4015-9C0F-709726DDF85E}"
   DTS:CreationName="OLEDB">
-  <DTS:PropertyExpression
-    DTS:Name="ServerName">@[$Project::ServerName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=TESTDATA-03;User ID=BPSIntegration;Initial Catalog=x2data;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      DTS:ConnectionString="Data Source=SISSQL-02;User ID=BPSIntegration;Initial Catalog=x2data;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAACAAAAAAADZgAAwAAAABAAAABJE0tOmAY74+xulsgONFnKAAAAAASAAACgAAAAEAAAAEjqaKKVfxEzpFLpXk8eM/F4AAAAUnI5VEW6OB7XVbbDYwVTTe1zyvUq3JJ99NSG8Y8enw7vq2XncuBB+pM9zVud9n5fq3X+vfjlIoexAbOWqHjvQ6oQEdPiRRvM32oNTpEpYpdikChN51XNt8jcvEWQPd+XeJBDSjxNYAcrBJF4Flr96IoxDRD9nBa4FAAAAK9jwB7rxGILXUmzsGLcZy6ZxTi5</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAACAAAAAAADZgAAwAAAABAAAADTAgXCzH4ZnkXXQKYyGu9UAAAAAASAAACgAAAAEAAAAATM7dUW+p74i5lgCFThXVl4AAAA+GvVT97bWxae4w1RIxvcAVfyQS/NOo+dRVzxFoYDvcuuPei0prf/wSKFXDgbz7BL05PDrdlscMJo/ZwTG9Hwjch/eBMeOPz8YRvD0UUQz5T8Mm5geI64EdLR3scwxGXyeEdnJ5FOS2jcr/YcYQb9ZWB4/FSjGDe+FAAAALbe7rtuC6y6isWlG8zB1r5G3x7G</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
