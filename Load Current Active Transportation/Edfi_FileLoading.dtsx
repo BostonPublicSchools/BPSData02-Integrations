@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Edfi_FileLoading"
   DTS:PackageType="5"
-  DTS:VersionBuild="140"
-  DTS:VersionGUID="{8B90E929-647F-4632-9EC5-E347E4C520FB}">
+  DTS:VersionBuild="143"
+  DTS:VersionGUID="{EAB9741C-0E4B-4E8A-8A69-91B1461B2551}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -31,369 +31,178 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="E:\SSIS\SSIS_Data_Load">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Student Number"
-              DTS:DTSID="{C14C2A27-6039-414C-AC16-73AB627A0129}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Special Education Status"
-              DTS:DTSID="{CBB51FB7-3D92-485E-AA7C-B6CC2BEE9A55}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Current IEP Begin Date"
-              DTS:DTSID="{7D1716F4-C0D8-4590-B5BE-D1CE1495C1C5}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Current IEP End Date"
-              DTS:DTSID="{855A2D4B-A5E7-42CA-A042-C029B2F05BB4}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Next Evaluation Date"
-              DTS:DTSID="{40EA827C-DA0B-4B17-A956-602CDD999BD2}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Next Review Date"
-              DTS:DTSID="{6C2A9C2B-9327-4761-934A-6EFC6585CE21}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Special Education Exit Date"
-              DTS:DTSID="{72E2D699-04F4-433F-85C3-A854A6532974}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Setting"
-              DTS:DTSID="{EC91C8EF-FF0C-4B77-B4FE-907AAD44BADB}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Program"
-              DTS:DTSID="{4F22D6D5-1EF1-4E35-947C-729736A6FDB8}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="LRE Setting"
-              DTS:DTSID="{36880CD6-7796-458A-B5C2-9EF97B57CF8A}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Related Services"
-              DTS:DTSID="{FEABCFC3-A300-4687-830D-1236E7F4E6BA}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Related Service Minutes General Ed Setting (B Grid)"
-              DTS:DTSID="{7C776F24-E730-48E6-82BF-2A309AAE803B}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Related Service Minutes Other Setting (C Grid)"
-              DTS:DTSID="{025A9D66-F997-45F5-9BD5-83958A8A0EE9}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Special Ed Service Minutes General Ed Setting (B Grid)"
-              DTS:DTSID="{FDA2FBCD-6B85-4822-99A3-97928258A89D}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Special Ed Service Minutes Other Setting (C Grid)"
-              DTS:DTSID="{6518AA54-3202-41FA-A3EF-AEC7B8E7FBC1}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Transportation Code"
-              DTS:DTSID="{7AB4CB15-BB35-4FCC-944A-003C626DB6D9}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Transportation Accomodation(s)"
-              DTS:DTSID="{A6716E77-73D4-41A0-BF26-38D7880CBAB4}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Transportation Monitor (Y N)"
-              DTS:DTSID="{A4DA0C71-6111-41FE-97CC-A7C5B69CB48D}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Utilize Proposed Trans"
-              DTS:DTSID="{A7C54C6E-CDE9-421F-9108-73D5C3DD43AE}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 1]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{A26F1FA2-AC52-4E3F-81AA-11CBA8DB569F}"
-      DTS:ObjectName="Flat File Connection Manager 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
           DTS:ConnectionString="E:\SSIS\SSIS_Data_Load\EdPlanToAspen.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Student Number"
-              DTS:DTSID="{07C07846-45FD-4EE2-8CD1-A2B509CCBBB0}"
+              DTS:DTSID="{04710B90-9DB7-4850-99A4-91E6C9EC32D2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Special Education Status"
-              DTS:DTSID="{B56BCD70-D257-4F82-8E69-458848F0BFA9}"
+              DTS:DTSID="{18F73B13-1086-4590-811D-EAB03EC91516}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Current IEP Begin Date"
-              DTS:DTSID="{9C4BC58B-265B-4893-873B-36E7E5B7C781}"
+              DTS:DTSID="{03DCDDC1-8D3E-41FF-A8E6-CE0E91DBFE12}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Current IEP End Date"
-              DTS:DTSID="{144A2154-9471-4D1F-B6CF-97E8BBD4B13C}"
+              DTS:DTSID="{4E996D18-A835-4FCE-AD8A-86FEDA52F86F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Next Evaluation Date"
-              DTS:DTSID="{671738E9-115C-40BA-B15E-634616FBB971}"
+              DTS:DTSID="{AFD9BB93-3535-4B7A-8E93-AA3C9CB97D60}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Next Review Date"
-              DTS:DTSID="{1C33C077-64C7-4D28-8AA8-965916EE503F}"
+              DTS:DTSID="{B61CB579-4419-4835-B428-E14DD939444C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Special Education Exit Date"
-              DTS:DTSID="{F048F95D-7C29-40F6-A879-C627E038A470}"
+              DTS:DTSID="{6367209B-6603-4F84-B5B9-07AA513047F4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Setting"
-              DTS:DTSID="{EA1BA6DD-23F3-4F77-A9FD-E89CE15D5047}"
+              DTS:DTSID="{AC53E16D-16CE-47E2-8112-A3CDD39B3BF5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Program"
-              DTS:DTSID="{68418146-BFE4-4425-A46A-9CE838498A25}"
+              DTS:DTSID="{ED1B14A6-0777-4F0C-9DBB-53DC697FEDAC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="LRE Setting"
-              DTS:DTSID="{F1F5335A-E3FC-4780-8CB3-96CBBEEF7E7F}"
+              DTS:DTSID="{3A86B119-8133-4A66-BAA3-E0384AAA6CD7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Related Services"
-              DTS:DTSID="{4DAB5B73-C9BA-45BE-A0BA-3CAFFA99AB11}"
+              DTS:DTSID="{20464615-691B-4F90-BABB-DEB990A0E1D7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Related Service Minutes General Ed Setting (B Grid)"
-              DTS:DTSID="{D36C3B08-F52B-46C8-96E0-3F9357E081D2}"
+              DTS:DTSID="{457F2E16-4D47-47AB-8857-3483267643CB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Related Service Minutes Other Setting (C Grid)"
-              DTS:DTSID="{F50E80E9-142D-407D-B1D1-3548201265DE}"
+              DTS:DTSID="{D948F3E2-4F36-4B2A-9C3C-DEA0CD19C854}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Special Ed Service Minutes General Ed Setting (B Grid)"
-              DTS:DTSID="{0CE6B045-2767-4B28-8B6D-E551012F3D48}"
+              DTS:DTSID="{A875C155-A12D-4A8C-B408-268B0D8C84A5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Special Ed Service Minutes Other Setting (C Grid)"
-              DTS:DTSID="{A4A531E9-D5D1-412F-8C80-2FB3FCE03031}"
+              DTS:DTSID="{5E692E1E-7338-429E-A773-C85D1D1FBF0E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Transportation Code"
-              DTS:DTSID="{1B258354-1968-429A-ACCE-9EC3D855BE9B}"
+              DTS:DTSID="{1966A852-E853-4194-86F7-7E1147B45057}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Transportation Accomodation(s)"
-              DTS:DTSID="{E166631C-2EC1-41B1-AC19-FE68F41C8567}"
+              DTS:DTSID="{1D64D51D-5608-4736-A650-03C5FEF5853F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Transportation Monitor (Y N)"
-              DTS:DTSID="{3757CB3E-903D-498B-92B9-DB3EFA260D3C}"
+              DTS:DTSID="{DA30A8F2-9307-4BCE-A27F-B53CCB1D5049}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Utilize Proposed Trans"
-              DTS:DTSID="{73FF53D4-0F3A-4D21-B053-7883AA52ED70}"
+              DTS:DTSID="{596A1619-B368-49CC-AAE1-DD0893A7F957}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -842,8 +651,8 @@
                   <connections>
                     <connection
                       refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Connections[FlatFileConnection]"
-                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 1]"
-                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
                       name="FlatFileConnection" />
                   </connections>
                   <outputs>
@@ -1255,117 +1064,98 @@
                         isUsed="True">
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Student Number]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Student Number" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Special Education Status]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Special Education Status" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Current IEP Begin Date]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Current IEP Begin Date" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Current IEP End Date]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Current IEP End Date" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Next Evaluation Date]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Next Evaluation Date" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Next Review Date]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Next Review Date" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Special Education Exit Date]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Special Education Exit Date" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Setting]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Setting" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Program]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Program" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Related Services]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Related Services" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Related Service Minutes General Ed Setting (B Grid)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Related Service Minutes Other Setting (C Grid)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Special Ed Service Minutes General Ed Setting (B Grid)]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Special Ed Service Minutes General Ed Setting (B Grid)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Special Ed Service Minutes Other Setting (C Grid)]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Special Ed Service Minutes Other Setting (C Grid)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Transportation Code]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Transportation Code" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Transportation Accomodation(s)]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Transportation Accomodation(s)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Transportation Monitor (Y N)]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Transportation Monitor (Y N)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Utilize Proposed Trans]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="Utilize Proposed Trans" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LRE Setting]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
+                          dataType="wstr"
+                          length="255"
                           name="LRE Setting" />
                       </externalMetadataColumns>
                     </output>
