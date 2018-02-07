@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="084-138051-004"
   DTS:CreatorName="ADMINDOM\X05112"
-  DTS:DTSID="{C7B22B79-004A-48FC-AC5C-26B20AFB827D}"
+  DTS:DTSID="{BF4840D5-053D-40C9-A72B-23CAC8EAE191}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="14.0.0800.90"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="Daily_Person BPSGranary"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{6724AF20-F136-404E-B51B-1F32906D56BA}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{70A614FA-8191-4AD7-9336-9A3F385C5118}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADSuKGEGZ3sLFtbN2Pb1jx5AAAAAASAAACgAAAAEAAAAGvKnzE8UxnoFiVR/HstFUgYAAAAsyeQQHq1sL39jLweDu9dSHr5SuTXFl66FAAAAEu2lfMmXRuLLimOChvE6gWMYLK9</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAWniXwwdixT+6kkaY4Qd97AAAAAASAAACgAAAAEAAAADPQQK0i93bJJccVC4G7LkcYAAAAyE/wKvqowmpff2GGKVkhf/27EDFxvyDYFAAAALbLgZ0YArmha15LIZO1yZgXYv3V</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC9PXGwZyqCan46KV7vknXfAAAAAASAAACgAAAAEAAAAEZPXhswBCxUGhBeGOatZAwYAAAAMw9WqWzfLJx0hAyzH/hynS5HjXx6ggbEFAAAAILt1fg4GiLNGFviCG7x178xw3Qf</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAATzTyke0jbdWveno/5kGPUAAAAAASAAACgAAAAEAAAABXyAJ1Q9N0psbITml87Yx0YAAAAiEL0EMR3wDxHDK3RQNXI7fKhGsJlEy+UFAAAABFFZewsvUTHce7871/3Vkv/NGmU</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -4381,15 +4381,15 @@
     design-time-name="Package\Daily_PERSON">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Daily_PERSON\Dest_PERSON"
-          TopLeft="252,179" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="156,42"
           Id="Package\Daily_PERSON\Source_PERSON"
           TopLeft="246,60" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Daily_PERSON\Dest_PERSON"
+          TopLeft="252,179" />
         <EdgeLayout
           Id="Package\Daily_PERSON.Paths[OLE DB Source Output]"
           TopLeft="324.25,102">
@@ -4409,9 +4409,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

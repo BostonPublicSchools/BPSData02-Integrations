@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Edfi_FileLoading"
   DTS:PackageType="5"
-  DTS:VersionBuild="143"
-  DTS:VersionGUID="{EAB9741C-0E4B-4E8A-8A69-91B1461B2551}">
+  DTS:VersionBuild="148"
+  DTS:VersionGUID="{036EEAF4-9175-498E-999A-546CD162817E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1213,6 +1213,7 @@
       DTS:refId="Package\Time Delay"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{94D02B01-0850-42EE-9065-99D70FE00B27}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -1230,7 +1231,8 @@
       DTS:refId="Package\WinScp Sftp FIle"
       DTS:CreationName="Microsoft.ExecuteProcess"
       DTS:Description="Execute Process Task"
-      DTS:DTSID="{A22A8324-473A-45F6-9057-B42D8BA36CC7}"
+      DTS:Disabled="True"
+      DTS:DTSID="{325c327e-3f9a-49e0-b057-0ffc6401c362}"
       DTS:ExecutableType="Microsoft.ExecuteProcess"
       DTS:LocaleID="-1"
       DTS:ObjectName="WinScp Sftp FIle"
@@ -1249,7 +1251,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{2DA54689-CC23-474B-9FC0-EAACC709C890}"
+      DTS:DTSID="{D2C66BC4-24AC-4FA0-BEBD-9338C743B2DF}"
       DTS:From="Package\WinScp Sftp FIle"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1285,29 +1287,29 @@
           PanelSize="289,114"
           Size="289,157"
           Id="Package\Load Files"
-          TopLeft="125,294" />
+          TopLeft="180,294" />
         <NodeLayout
           Size="132,42"
           Id="Package\Time Delay"
-          TopLeft="198,194" />
+          TopLeft="252,192" />
         <NodeLayout
           Size="157,42"
           Id="Package\WinScp Sftp FIle"
-          TopLeft="186,98" />
+          TopLeft="237,77" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="264.25,140">
+          TopLeft="316.75,119">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,54"
+              EndConnector="0,73"
               Start="0,0"
-              End="0,46.5">
+              End="0,65.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.5" />
+                    End="0,65.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1318,18 +1320,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="266.75,236">
+          TopLeft="321.25,234">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,50.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
