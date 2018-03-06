@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{C95D0C34-FA1A-46A8-AFE4-7A90FD42E446}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LastModifiedProductVersion="14.0.3006.16"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_3_End_Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="148"
-  DTS:VersionGUID="{B6B6691D-5FBE-4857-AC62-733163668E5F}">
+  DTS:VersionBuild="149"
+  DTS:VersionGUID="{FA9B4448-24AA-4DA5-94CE-285373D87C1C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -125,7 +125,9 @@
         ishomeless ,
         IsProtectedAddress ,
         TapCardID,
-        ctdFamilyId
+        ctdFamilyId,
+       ctdRunNumber,
+       ctdRunDate
 FROM    Transportation.CurrentTransportationDaily
 /*WHERE
  NOT program = '00'
@@ -729,6 +731,24 @@ AND NOT city is null
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[ctdFamilyId]"
                       name="ctdFamilyId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[ctdRunNumber]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].ExternalColumns[ctdRunNumber]"
+                      lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[ctdRunNumber]"
+                      name="ctdRunNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[ctdRunDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].ExternalColumns[ctdRunDate]"
+                      lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[ctdRunDate]"
+                      name="ctdRunDate"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1038,6 +1058,14 @@ AND NOT city is null
                       dataType="str"
                       length="10"
                       name="ctdFamilyId" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].ExternalColumns[ctdRunNumber]"
+                      dataType="i8"
+                      name="ctdRunNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].ExternalColumns[ctdRunDate]"
+                      dataType="dbTimeStamp"
+                      name="ctdRunDate" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1403,6 +1431,16 @@ AND NOT city is null
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Error Output].Columns[ctdFamilyId]"
                       name="ctdFamilyId" />
                     <outputColumn
+                      refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Error Output].Columns[ctdRunNumber]"
+                      dataType="i8"
+                      lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Error Output].Columns[ctdRunNumber]"
+                      name="ctdRunNumber" />
+                    <outputColumn
+                      refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Error Output].Columns[ctdRunDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Error Output].Columns[ctdRunDate]"
+                      name="ctdRunDate" />
+                    <outputColumn
                       refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -1420,11 +1458,11 @@ AND NOT city is null
               </outputs>
             </component>
             <component
-              refId="Package\dftTransferCurrenttoArchive\OLE DB Destination"
+              refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="ArchiveDailyTransportation"
               usesDispositions="true"
               version="4">
               <properties>
@@ -1477,7 +1515,7 @@ AND NOT city is null
               </properties>
               <connections>
                 <connection
-                  refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Connections[OleDbConnection]"
                   connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:external"
                   connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1485,750 +1523,770 @@ AND NOT city is null
               </connections>
               <inputs>
                 <input
-                  refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StudentNo]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[StudentNo]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="StudentNo"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentNo]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[StudentNo]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[StudentNo]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[LastName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="LastName"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[LastName]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[FirstName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="FirstName"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[FirstName]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MiddleName]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[MiddleName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="MiddleName"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[MiddleName]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Grade]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[Grade]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="Grade"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Grade]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[Grade]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[Grade]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sch]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[sch]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="sch"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sch]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[sch]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[sch]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[streetno]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[streetno]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="streetno"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[streetno]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[streetno]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[streetno]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[street]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[street]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="street"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[street]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[street]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[street]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[apt]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[apt]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="apt"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[apt]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[apt]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[apt]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[city]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[city]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="city"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[city]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[city]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[state]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="4"
                       cachedName="state"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[state]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[state]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[zip]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[zip]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="9"
                       cachedName="zip"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[zip]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DOB]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[DOB]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="DOB"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DOB]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DOB]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[DOB]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[parent1phones]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[parent1phones]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="parent1phones"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parent1phones]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[parent1phones]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[parent1phones]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[parent2phones]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[parent2phones]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="parent2phones"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parent2phones]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[parent2phones]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[parent2phones]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[emergencycontactphones]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[emergencycontactphones]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="emergencycontactphones"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[emergencycontactphones]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[emergencycontactphones]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[emergencycontactphones]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[parent1name]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[parent1name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="parent1name"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parent1name]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[parent1name]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[parent1name]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[parent2name]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[parent2name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="parent2name"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parent2name]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[parent2name]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[parent2name]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[emergencycontactname]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[emergencycontactname]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="emergencycontactname"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[emergencycontactname]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[emergencycontactname]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[emergencycontactname]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sex]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[sex]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="sex"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sex]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[sex]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[sex]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[program]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[program]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="4"
                       cachedName="program"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[program]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[program]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[program]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PickupHouseNumber]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[PickupHouseNumber]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="PickupHouseNumber"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupHouseNumber]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupHouseNumber]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[PickupHouseNumber]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PickupStreetname]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[PickupStreetname]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="PickupStreetname"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupStreetname]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupStreetname]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[PickupStreetname]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PickupApartmentNumber]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[PickupApartmentNumber]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="PickupApartmentNumber"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupApartmentNumber]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupApartmentNumber]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[PickupApartmentNumber]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PickupCity]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[PickupCity]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="PickupCity"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupCity]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupCity]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[PickupCity]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PickupState]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[PickupState]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="PickupState"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupState]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupState]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[PickupState]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pickupzip]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[Pickupzip]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="Pickupzip"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pickupzip]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[Pickupzip]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[Pickupzip]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DropOffHouseNumber]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[DropOffHouseNumber]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="DropOffHouseNumber"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffHouseNumber]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffHouseNumber]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[DropOffHouseNumber]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DropOffStreetname]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[DropOffStreetname]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="80"
                       cachedName="DropOffStreetname"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffStreetname]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffStreetname]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[DropOffStreetname]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DropOffApartmentNumber]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[DropOffApartmentNumber]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="DropOffApartmentNumber"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffApartmentNumber]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffApartmentNumber]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[DropOffApartmentNumber]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DropOffCity]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[DropOffCity]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="DropOffCity"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffCity]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffCity]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[DropOffCity]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DropOffState]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[DropOffState]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="DropOffState"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffState]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffState]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[DropOffState]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DropOffzip]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[DropOffzip]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="DropOffzip"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffzip]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffzip]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[DropOffzip]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MedicaData]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[MedicaData]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="MedicaData"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MedicaData]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[MedicaData]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[MedicaData]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sncode]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[sncode]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="sncode"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sncode]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[sncode]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[sncode]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bilingual]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[bilingual]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="bilingual"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bilingual]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[bilingual]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[bilingual]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aw]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[aw]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="aw"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aw]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[aw]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[aw]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[voced]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[voced]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="voced"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[voced]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[voced]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[voced]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[theme]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[theme]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="theme"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[theme]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[theme]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[theme]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[monitor]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[monitor]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="monitor"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[monitor]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[monitor]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[monitor]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[hzone]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[hzone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="hzone"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hzone]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[hzone]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[hzone]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[zone]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[zone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="zone"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[zone]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[zone]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[zone]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[geo]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[geo]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="geo"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[geo]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[geo]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[geo]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[hphone]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[hphone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="hphone"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hphone]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[hphone]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[hphone]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BufferZone]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[BufferZone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="BufferZone"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BufferZone]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[BufferZone]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[BufferZone]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HomeRoom]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[HomeRoom]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="HomeRoom"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HomeRoom]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[HomeRoom]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[HomeRoom]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsWithDrawn]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[IsWithDrawn]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="IsWithDrawn"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsWithDrawn]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[IsWithDrawn]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[IsWithDrawn]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ishomeless]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[ishomeless]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="ishomeless"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ishomeless]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[ishomeless]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[ishomeless]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsProtectedAddress]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[IsProtectedAddress]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="IsProtectedAddress"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsProtectedAddress]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[IsProtectedAddress]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[IsProtectedAddress]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TapCardID]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[TapCardID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="TapCardID"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TapCardID]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[TapCardID]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[TapCardID]" />
                     <inputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ctdFamilyId]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[ctdFamilyId]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="ctdFamilyId"
-                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[atdFamilyId]"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[atdFamilyId]"
                       lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[ctdFamilyId]" />
+                    <inputColumn
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[ctdRunNumber]"
+                      cachedDataType="i8"
+                      cachedName="ctdRunNumber"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[atdRunNumber]"
+                      lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[ctdRunNumber]" />
+                    <inputColumn
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].Columns[ctdRunDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ctdRunDate"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[atdRunDate]"
+                      lineageId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output].Columns[ctdRunDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentNo]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[StudentNo]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="StudentNo" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
                       codePage="1252"
                       dataType="str"
                       length="60"
                       name="LastName" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
                       codePage="1252"
                       dataType="str"
                       length="60"
                       name="FirstName" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
                       codePage="1252"
                       dataType="str"
                       length="60"
                       name="MiddleName" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Grade]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[Grade]"
                       codePage="1252"
                       dataType="str"
                       length="2"
                       name="Grade" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sch]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[sch]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="sch" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[streetno]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[streetno]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="streetno" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[street]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[street]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="street" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[apt]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[apt]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="apt" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[city]"
                       codePage="1252"
                       dataType="str"
                       length="30"
                       name="city" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[state]"
                       codePage="1252"
                       dataType="str"
                       length="4"
                       name="state" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
                       codePage="1252"
                       dataType="str"
                       length="9"
                       name="zip" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DOB]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DOB]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="DOB" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parent1phones]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[parent1phones]"
                       codePage="1252"
                       dataType="str"
                       length="60"
                       name="parent1phones" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parent2phones]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[parent2phones]"
                       codePage="1252"
                       dataType="str"
                       length="60"
                       name="parent2phones" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[emergencycontactphones]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[emergencycontactphones]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="emergencycontactphones" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parent1name]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[parent1name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="parent1name" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parent2name]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[parent2name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="parent2name" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[emergencycontactname]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[emergencycontactname]"
                       codePage="1252"
                       dataType="str"
                       length="60"
                       name="emergencycontactname" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sex]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[sex]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="sex" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[program]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[program]"
                       codePage="1252"
                       dataType="str"
                       length="4"
                       name="program" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupHouseNumber]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupHouseNumber]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="PickupHouseNumber" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupStreetname]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupStreetname]"
                       codePage="1252"
                       dataType="str"
                       length="30"
                       name="PickupStreetname" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupApartmentNumber]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupApartmentNumber]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="PickupApartmentNumber" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupCity]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupCity]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="PickupCity" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PickupState]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[PickupState]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="PickupState" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pickupzip]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[Pickupzip]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="Pickupzip" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffHouseNumber]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffHouseNumber]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="DropOffHouseNumber" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffStreetname]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffStreetname]"
                       codePage="1252"
                       dataType="str"
                       length="80"
                       name="DropOffStreetname" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffApartmentNumber]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffApartmentNumber]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="DropOffApartmentNumber" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffCity]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffCity]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="DropOffCity" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffState]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffState]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="DropOffState" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DropOffzip]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[DropOffzip]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="DropOffzip" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MedicaData]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[MedicaData]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="MedicaData" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sncode]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[sncode]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="sncode" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bilingual]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[bilingual]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="bilingual" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aw]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[aw]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="aw" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[voced]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[voced]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="voced" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[theme]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[theme]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="theme" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[monitor]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[monitor]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="monitor" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hzone]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[hzone]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="hzone" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[zone]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[zone]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="zone" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[geo]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[geo]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="geo" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hphone]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[hphone]"
                       codePage="1252"
                       dataType="str"
                       length="60"
                       name="hphone" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BufferZone]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[BufferZone]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="BufferZone" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HomeRoom]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[HomeRoom]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="HomeRoom" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsWithDrawn]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[IsWithDrawn]"
                       codePage="1252"
                       dataType="str"
                       length="2"
                       name="IsWithDrawn" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ishomeless]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[ishomeless]"
                       codePage="1252"
                       dataType="str"
                       length="2"
                       name="ishomeless" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsProtectedAddress]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[IsProtectedAddress]"
                       codePage="1252"
                       dataType="str"
                       length="2"
                       name="IsProtectedAddress" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TapCardID]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[TapCardID]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="TapCardID" />
                     <externalMetadataColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[atdFamilyId]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[atdFamilyId]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="atdFamilyId" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[atdRunNumber]"
+                      dataType="i8"
+                      name="atdRunNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input].ExternalColumns[atdRunDate]"
+                      dataType="dbTimeStamp"
+                      name="atdRunDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2240,41 +2298,14 @@ AND NOT city is null
           <paths>
             <path
               refId="Package\dftTransferCurrenttoArchive.Paths[OLE DB Source Output]"
-              endId="Package\dftTransferCurrenttoArchive\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\estTruncateArchiveTransportationDaily"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{3786F033-0742-45CB-8B03-B1D7C19B9AB3}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="estTruncateArchiveTransportationDaily"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{567991DC-DAB6-4D46-8927-7AE9726750D8}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE Transportation.ArchiveTransportationDaily&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
-  <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint]"
-      DTS:CreationName=""
-      DTS:DTSID="{68CEBDB9-B2C8-4854-B888-B9B26FF6BCB3}"
-      DTS:From="Package\estTruncateArchiveTransportationDaily"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint"
-      DTS:To="Package\dftTransferCurrenttoArchive" />
-  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -2286,37 +2317,11 @@ AND NOT city is null
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="210,42"
           Id="Package\dftTransferCurrenttoArchive"
-          TopLeft="457,213" />
-        <NodeLayout
-          Size="261,42"
-          Id="Package\estTruncateArchiveTransportationDaily"
-          TopLeft="434,118" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="563.25,160">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53"
-              Start="0,0"
-              End="0,45.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="196,103" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2326,27 +2331,27 @@ AND NOT city is null
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171,42"
-          Id="Package\dftTransferCurrenttoArchive\OLE DB Destination"
-          TopLeft="91,166" />
+          Size="205,42"
+          Id="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation"
+          TopLeft="65,163" />
         <NodeLayout
           Size="222,42"
           Id="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily"
           TopLeft="60,60" />
         <EdgeLayout
           Id="Package\dftTransferCurrenttoArchive.Paths[OLE DB Source Output]"
-          TopLeft="173.75,102">
+          TopLeft="169.25,102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,64"
+              EndConnector="0,61"
               Start="0,0"
-              End="0,56.5">
+              End="0,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.5" />
+                    End="0,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2363,6 +2368,19 @@ AND NOT city is null
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
