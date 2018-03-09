@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\X05112"
   DTS:DTSID="{588EE4E0-FB69-4CC8-AEA1-9D0857BE3BC9}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LastModifiedProductVersion="14.0.3006.16"
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncSchoolCapacity"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{C83386DD-7182-41B0-A2AE-F864F809E401}">
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{31D7C76C-3B2B-41B7-9457-6EA0F02D0340}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -207,6 +207,16 @@
                       lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCaID]"
                       name="SCaID"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCA_CAPACITY]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[SCA_CAPACITY]"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCA_CAPACITY]"
+                      name="SCA_CAPACITY"
+                      precision="5"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -268,6 +278,11 @@
                       refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[SCaID]"
                       dataType="i4"
                       name="SCaID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[SCA_CAPACITY]"
+                      dataType="numeric"
+                      name="SCA_CAPACITY"
+                      precision="5" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -344,6 +359,12 @@
                       length="10"
                       lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ScaIsSpecialAdmission]"
                       name="ScaIsSpecialAdmission" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[SCA_CAPACITY]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[SCA_CAPACITY]"
+                      name="SCA_CAPACITY"
+                      precision="5" />
                     <outputColumn
                       refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -690,6 +711,13 @@
                       cachedName="LastUpdatedDate"
                       externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaLastUpdated]"
                       lineageId="Package\Data Flow Task\LastUpdated.Outputs[Derived Column Output].Columns[LastUpdatedDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[SCA_CAPACITY]"
+                      cachedDataType="numeric"
+                      cachedName="SCA_CAPACITY"
+                      cachedPrecision="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaCapacity]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[SCA_CAPACITY]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -716,7 +744,7 @@
                       refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaGradeLevel]"
                       codePage="1252"
                       dataType="str"
-                      length="2"
+                      length="10"
                       name="scaGradeLevel" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaProgramId]"
@@ -750,6 +778,15 @@
                       refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaIsSpecialAdmission]"
                       dataType="bool"
                       name="scaIsSpecialAdmission" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaIdPathway]"
+                      dataType="i4"
+                      name="scaIdPathway" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaCapacity]"
+                      dataType="numeric"
+                      name="scaCapacity"
+                      precision="5" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -986,6 +1023,23 @@
                           name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[SCA_CAPACITY]"
+                      cachedDataType="numeric"
+                      cachedName="SCA_CAPACITY"
+                      cachedPrecision="5"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCA_CAPACITY]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1147,6 +1201,20 @@
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
                           name="SortColumnId">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[ConScaIsSpecialAdmission]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[SCA_CAPACITY]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[SCA_CAPACITY]"
+                      name="SCA_CAPACITY"
+                      precision="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCA_CAPACITY]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1442,7 +1510,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [Eligibility].[UpsertSchoolCapacity] ?,?,?,?,?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [Eligibility].[UpsertSchoolCapacity] ?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1540,6 +1608,13 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                       cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].ExternalColumns[@scaId]"
                       lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCaID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].Columns[SCA_CAPACITY]"
+                      cachedDataType="numeric"
+                      cachedName="SCA_CAPACITY"
+                      cachedPrecision="5"
+                      externalMetadataColumnId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].ExternalColumns[@ScaCapacity]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCA_CAPACITY]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1671,6 +1746,18 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
                           name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].ExternalColumns[@ScaCapacity]"
+                      dataType="numeric"
+                      name="@ScaCapacity"
+                      precision="5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -1916,6 +2003,23 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                           name="NewSortKeyPosition">1</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[SCA_CAPACITY]"
+                      cachedDataType="numeric"
+                      cachedName="SCA_CAPACITY"
+                      cachedPrecision="5"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCA_CAPACITY]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2077,6 +2181,20 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
                           name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCaID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCA_CAPACITY]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCA_CAPACITY]"
+                      name="SCA_CAPACITY"
+                      precision="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCA_CAPACITY]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2428,7 +2546,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2438,7 +2556,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
