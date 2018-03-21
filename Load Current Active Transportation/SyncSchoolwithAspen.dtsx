@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\X05112"
   DTS:DTSID="{588B9DBC-85BE-4F4C-8867-6EE123D63E3F}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LastModifiedProductVersion="14.0.3006.16"
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncSchoolwithAspen"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{40B75C43-DF1B-4083-8D02-423A7CD7BEF3}">
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{ED883A48-E231-44D6-BB20-D359A71121AD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -83,7 +83,8 @@
        s.SKL_FIELDC_002 AS SchHours,
        adrs.ADR_ADDRESS_LINE_01 AS schAddress,
        adrs.ADR_CITY AS schCity,
-       adrs.ADR_PHONE_01 AS schPhone
+       adrs.ADR_PHONE_01 AS schPhone,
+	   CASE WHEN s.SKL_INACTIVE_IND=1 then 'Inactive' else 'Active' end as schStatus
 FROM ASPENDB.x2data.dbo.SCHOOL s WITH (NOLOCK)
     INNER JOIN ASPENDB.x2data.dbo.ORGANIZATION WITH (NOLOCK)
         ON s.SKL_ORG_OID_1 = ORG_OID
@@ -401,6 +402,17 @@ ORDER BY SchID;</property>
                       lineageId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[schPhone]"
                       name="schPhone"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[schStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].ExternalColumns[schStatus]"
+                      length="8"
+                      lineageId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[schStatus]"
+                      name="schStatus"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -552,6 +564,12 @@ ORDER BY SchID;</property>
                       dataType="str"
                       length="20"
                       name="schPhone" />
+                    <externalMetadataColumn
+                      refId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].ExternalColumns[schStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="schStatus" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -732,6 +750,13 @@ ORDER BY SchID;</property>
                       length="20"
                       lineageId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Error Output].Columns[schPhone]"
                       name="schPhone" />
+                    <outputColumn
+                      refId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Error Output].Columns[schStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Error Output].Columns[schStatus]"
+                      name="schStatus" />
                     <outputColumn
                       refId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1263,6 +1288,14 @@ ORDER BY SchID;</property>
                       cachedName="Network"
                       externalMetadataColumnId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].ExternalColumns[Network]"
                       lineageId="Package\Sync Schools\Insert Sort.Outputs[Sort Output].Columns[Network]" />
+                    <inputColumn
+                      refId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].Columns[schStatus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="schStatus"
+                      externalMetadataColumnId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].ExternalColumns[schStatus]"
+                      lineageId="Package\Sync Schools\Insert Sort.Outputs[Sort Output].Columns[schStatus]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1413,6 +1446,12 @@ ORDER BY SchID;</property>
                       refId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].ExternalColumns[AspenUpdatedDate]"
                       dataType="dbTimeStamp"
                       name="AspenUpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].ExternalColumns[schStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="schStatus" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1907,6 +1946,24 @@ ORDER BY SchID;</property>
                           name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Sync Schools\Insert Sort.Inputs[Sort Input].Columns[schStatus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="schStatus"
+                      lineageId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[schStatus]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2286,6 +2343,21 @@ ORDER BY SchID;</property>
                           name="SortColumnId">#{Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[Network]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Sync Schools\Insert Sort.Outputs[Sort Output].Columns[schStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Sync Schools\Insert Sort.Outputs[Sort Output].Columns[schStatus]"
+                      name="schStatus">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[schStatus]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2343,12 +2415,12 @@ where [refTable].[SchID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SchID" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName_f" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LowGrade" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="HighGrade" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchLevel" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SpecialAdmInd" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsCityWide" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ExamSchoolInd" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISEECChoice" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pathway" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolGroup" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SharedSchoolID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Network" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Zone" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ELLCluster" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SPEDCluster" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchType" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UseTierForHMB" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LastUpdatedDt" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schZipCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchHours" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schAddress" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schCity" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schPhone" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AspenUpdatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SchID" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName_f" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LowGrade" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="HighGrade" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchLevel" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SpecialAdmInd" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsCityWide" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ExamSchoolInd" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISEECChoice" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pathway" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolGroup" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SharedSchoolID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Network" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Zone" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ELLCluster" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SPEDCluster" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchType" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UseTierForHMB" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LastUpdatedDt" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schZipCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchHours" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schAddress" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schCity" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schPhone" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AspenUpdatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schStatus" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Sync Schools\20:invalid};</property>
+                  name="ParameterMap">#{Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[SchID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2452,7 +2524,7 @@ where [refTable].[SchID] = ?</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC BPS.Update_SyncSchool ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC BPS.Update_SyncSchool ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2668,6 +2740,14 @@ where [refTable].[SchID] = ?</property>
                       cachedName="Network"
                       externalMetadataColumnId="Package\Sync Schools\Update Bps_school.Inputs[OLE DB Command Input].ExternalColumns[@Network]"
                       lineageId="Package\Sync Schools\Update Sort.Outputs[Sort Output].Columns[Network]" />
+                    <inputColumn
+                      refId="Package\Sync Schools\Update Bps_school.Inputs[OLE DB Command Input].Columns[schStatus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="schStatus"
+                      externalMetadataColumnId="Package\Sync Schools\Update Bps_school.Inputs[OLE DB Command Input].ExternalColumns[@schStatus]"
+                      lineageId="Package\Sync Schools\Update Sort.Outputs[Sort Output].Columns[schStatus]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2982,6 +3062,19 @@ where [refTable].[SchID] = ?</property>
                       dataType="wstr"
                       length="100"
                       name="@schPhone">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Sync Schools\Update Bps_school.Inputs[OLE DB Command Input].ExternalColumns[@schStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="@schStatus">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -3490,6 +3583,24 @@ where [refTable].[SchID] = ?</property>
                           name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Sync Schools\Update Sort.Inputs[Sort Input].Columns[schStatus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="schStatus"
+                      lineageId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[schStatus]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3869,6 +3980,21 @@ where [refTable].[SchID] = ?</property>
                           name="SortColumnId">#{Package\Sync Schools\Data Conversion.Outputs[Data Conversion Output].Columns[ConvSchType]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Sync Schools\Update Sort.Outputs[Sort Output].Columns[schStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Sync Schools\Update Sort.Outputs[Sort Output].Columns[schStatus]"
+                      name="schStatus">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[schStatus]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -3936,6 +4062,14 @@ where [refTable].[SchID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="129,42"
+          Id="Package\Sync Schools\Insert Sort"
+          TopLeft="388,370" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Sync Schools\Lookup"
+          TopLeft="260,279" />
+        <NodeLayout
           Size="165,42"
           Id="Package\Sync Schools\Insert BPS_School"
           TopLeft="372,459" />
@@ -3944,12 +4078,64 @@ where [refTable].[SchID] = ?</property>
           Id="Package\Sync Schools\Data Conversion"
           TopLeft="242,177" />
         <NodeLayout
-          Size="113,42"
-          Id="Package\Sync Schools\Lookup"
-          TopLeft="260,279" />
+          Size="135,42"
+          Id="Package\Sync Schools\Update Sort"
+          TopLeft="97,372" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Sync Schools\Aspen School Table"
+          TopLeft="230,75" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Sync Schools\Update Bps_school"
+          TopLeft="77,466" />
         <EdgeLayout
-          Id="Package\Sync Schools.Paths[Data Conversion Output]"
-          TopLeft="318.25,219">
+          Id="Package\Sync Schools.Paths[Sort Output1]"
+          TopLeft="162.75,414">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sync Schools.Paths[Sort Output]"
+          TopLeft="453.5,412">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sync Schools.Paths[OLE DB Source Output]"
+          TopLeft="317.75,117">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3967,50 +4153,6 @@ where [refTable].[SchID] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Sync Schools\Update Sort"
-          TopLeft="91,366" />
-        <NodeLayout
-          Size="129,42"
-          Id="Package\Sync Schools\Insert Sort"
-          TopLeft="388,370" />
-        <EdgeLayout
-          Id="Package\Sync Schools.Paths[Lookup Match Output]"
-          TopLeft="299,321">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-140.5,45"
-              Start="0,0"
-              End="-140.5,37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.3769633507853" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.3769633507853"
-                    Point2="0,18.3769633507853"
-                    Point3="-4,18.3769633507853" />
-                  <mssgle:LineSegment
-                    End="-136.5,18.3769633507853" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-136.5,18.3769633507853"
-                    Point2="-140.5,18.3769633507853"
-                    Point3="-140.5,22.3769633507853" />
-                  <mssgle:LineSegment
-                    End="-140.5,37.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-118.44138671875,23.3769633507853,96.3827734375,11.609375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4050,60 +4192,44 @@ where [refTable].[SchID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sync Schools.Paths[Sort Output]"
-          TopLeft="453.5,412">
+          Id="Package\Sync Schools.Paths[Lookup Match Output]"
+          TopLeft="299,321">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47"
+              EndConnector="-134.5,51"
               Start="0,0"
-              End="0,39.5">
+              End="-134.5,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="0,16.82722513089" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.82722513089"
+                    Point2="0,20.82722513089"
+                    Point3="-4,20.82722513089" />
+                  <mssgle:LineSegment
+                    End="-130.5,20.82722513089" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-130.5,20.82722513089"
+                    Point2="-134.5,20.82722513089"
+                    Point3="-134.5,24.82722513089" />
+                  <mssgle:LineSegment
+                    End="-134.5,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-115.44138671875,25.82722513089,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Sync Schools\Update Bps_school"
-          TopLeft="72,450" />
         <EdgeLayout
-          Id="Package\Sync Schools.Paths[Sort Output1]"
-          TopLeft="157.25,408">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Sync Schools\Aspen School Table"
-          TopLeft="230,75" />
-        <EdgeLayout
-          Id="Package\Sync Schools.Paths[OLE DB Source Output]"
-          TopLeft="317.75,117">
+          Id="Package\Sync Schools.Paths[Data Conversion Output]"
+          TopLeft="318.25,219">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4127,25 +4253,12 @@ where [refTable].[SchID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sync Schools\Insert BPS_School">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Sync Schools\Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4155,10 +4268,23 @@ where [refTable].[SchID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sync Schools\Insert BPS_School">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

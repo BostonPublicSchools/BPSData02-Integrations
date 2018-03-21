@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="TransferJob"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{0D45559C-27B1-46A3-9FFE-3F388B389922}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{C74087E2-4BAC-4A98-A6AD-ACBC503B6BD4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -72,10 +72,10 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <TransferJobsTaskData
-          JobsList="9,25,Export VersaTrans Extract,16,LoadVerstranData,27,LoadVerstranDataBPSInteface,29,Restore ExtractAspen Database,26,Sync BPS.School with Aspen,30,Sync SchoolCapacity with Aspen,34,Sync Student Table in BPSInterface,33,SynchSiblingBookOfRecordFromAspen,12,SyncStudents,"
+          JobsList="35,30,Aggregate Data SQLdmRepository,18,BatchAssignmentJob,23,BPSDashboard Attendance,15,ClosestFacility,18,CommandLog Cleanup,14,Create Choices,25,Export VersaTrans Extract,53,Export VersaTrans Extract (DEPRECATED AspenInterface),35,Export VersaTrans Extract Next Year,30,Get Duplicate student local ID,21,Groom SQLdmRepository,49,Load BPSInterface.StudentTransportationEligiblity,61,Load BPSInterface.Transportation.StudentTransportationRouting,16,Load Edplan File,26,Load PIC Tables in BPSMart,37,Load StudentTransportationEligibility,16,LoadVerstranData,27,LoadVerstranDataBPSInteface,19,Output File Cleanup,29,Restore ExtractAspen Database,28,Run Analytic Rules - Round 2,26,Send Deactivations to MBTA,23,sp_delete_backuphistory,19,sp_purge_jobhistory,27,SSIS Server Maintenance Job,27,StudentSchoolChoiceTestAuto,26,Sync BPS.School with Aspen,30,Sync SchoolCapacity with Aspen,34,Sync Student Table in BPSInterface,33,SynchSiblingBookOfRecordFromAspen,12,SyncStudents,23,syspolicy_purge_history,27,TransformVersatransDataLive,30,TransformVersatransDataPending,31,TransformVersatransDataPlanning,"
           IfObjectExists="Overwrite"
           SourceConnection="{1F7EBE28-FCDA-4CFF-9948-60A3F3349268}"
-          DestinationConnection="{517A38CA-5F9B-4C7E-9028-18A0DB613F73}" />
+          DestinationConnection="{ECF76659-3B29-4C48-9295-79B600558E27}" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
