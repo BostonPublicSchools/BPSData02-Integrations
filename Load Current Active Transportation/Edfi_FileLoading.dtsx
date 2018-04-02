@@ -8,12 +8,12 @@
   DTS:DelayValidation="True"
   DTS:DTSID="{DB11FA20-2EF7-474E-9AB7-081F1DE4C945}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LastModifiedProductVersion="14.0.3006.16"
   DTS:LocaleID="1033"
   DTS:ObjectName="Edfi_FileLoading"
   DTS:PackageType="5"
-  DTS:VersionBuild="164"
-  DTS:VersionGUID="{DA8B5CE8-2D31-4BF3-860D-03CB2FB0EC30}">
+  DTS:VersionBuild="168"
+  DTS:VersionGUID="{38CA9404-D6DD-45DE-9411-C591A524B454}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -48,7 +48,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ArchiveFullFilePath">
       <DTS:VariableValue
-        DTS:DataType="8">E:\SSIS\ArchiveFolder\EdPlanToAspen_20180212.txt</DTS:VariableValue>
+        DTS:DataType="8">E:\SSIS\ArchiveFolder\EdPlanToAspen_20180329.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -1143,13 +1143,13 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="141,42"
-          Id="Package\Load Files\Edfi_FileLoad"
-          TopLeft="95,28" />
-        <NodeLayout
           Size="138,42"
           Id="Package\Load Files\ArchivingFile"
           TopLeft="104,117" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Load Files\Edfi_FileLoad"
+          TopLeft="95,28" />
         <EdgeLayout
           Id="Package\Load Files.PrecedenceConstraints[Constraint]"
           TopLeft="169.25,70">
@@ -1178,7 +1178,7 @@
           PanelSize="343,198"
           Size="343,241"
           Id="Package\Load Files"
-          TopLeft="178,147" />
+          TopLeft="263,153" />
         <NodeLayout
           Size="132,42"
           Id="Package\Time Delay"
