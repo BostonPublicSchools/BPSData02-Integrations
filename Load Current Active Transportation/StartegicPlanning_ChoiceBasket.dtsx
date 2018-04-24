@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\X05112"
   DTS:DTSID="{0349B590-397A-423F-BC66-0AB2BAA64822}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3006.16"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="StartegicPlanning_ChoiceBasket"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{D7C2E85E-1C3C-4D23-A0EA-8E124B5CB407}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{ABAFC3B4-7B76-4AE2-BF6E-1A803A633478}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,10 +27,10 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[StrategicPlanningFIle]"
+      DTS:refId="Package.ConnectionManagers[ChoiceBasket]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{FD7BB914-0F60-466E-9DD6-9AC0B16CB824}"
-      DTS:ObjectName="StrategicPlanningFIle">
+      DTS:DTSID="{AC146DE4-86BF-476D-A32D-1F53F321600E}"
+      DTS:ObjectName="ChoiceBasket">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -40,7 +40,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\X05112\Desktop\StrategicPlanning.csv">
+          DTS:ConnectionString="C:\Users\X05112\Desktop\ChoiceBasket_2014-2015.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaAcademicYearDesignator"
-              DTS:DTSID="{170E28A1-AEA6-45D8-B977-B2C6535E3854}"
+              DTS:DTSID="{FC2CA745-798C-4DDD-9DEE-8C3CA1A16CD0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -58,7 +58,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaSchoolLocalID"
-              DTS:DTSID="{7C5A2DB9-1875-4992-B815-FE5161F0DF42}"
+              DTS:DTSID="{96BF84F4-66CD-48D7-A156-82E0C4FD5E7D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -67,7 +67,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaSchoolName"
-              DTS:DTSID="{8AD53F6C-B84D-4DAC-A87D-F80CD30D5529}"
+              DTS:DTSID="{F3BED817-E5F0-4787-97D9-CB41D0586DCA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaSchoolEligibility"
-              DTS:DTSID="{7C0C2135-7600-4AA0-9199-9AF0BD5C2024}"
+              DTS:DTSID="{C3072DD5-63D4-4181-B264-7743195472FF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -85,7 +85,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaSchoolRank"
-              DTS:DTSID="{D3B07777-6B3B-4CD3-B69B-6888AE241AE8}"
+              DTS:DTSID="{DC623D0D-08C9-46ED-B431-BB8F5EC3E1E5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -93,7 +93,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaRound"
-              DTS:DTSID="{791875CB-DA14-4E42-9CE0-CF1F4A531040}"
+              DTS:DTSID="{B0DF4C1E-E966-48E0-8909-C9337584E5B9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -101,7 +101,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaChoice"
-              DTS:DTSID="{A759EA2A-9D11-4037-9E41-3449918F72AE}"
+              DTS:DTSID="{8E9C9FB9-E929-4432-B244-A7196B9348E6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -110,7 +110,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ExternalStudentNo"
-              DTS:DTSID="{E5E8AB1A-80EE-4DEB-A431-C6F38A3A2C40}"
+              DTS:DTSID="{361C6E23-5255-42DB-9C02-F450EC9F3A85}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -119,7 +119,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaGradeLevel"
-              DTS:DTSID="{73229563-CA5C-4B3A-8A65-F0EC2B68F151}"
+              DTS:DTSID="{08742AFC-388F-4DBE-BFFC-5BA13A0F96A0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -128,7 +128,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaRace"
-              DTS:DTSID="{D30CDCA3-D151-4C4F-99E9-9A6520920CC8}"
+              DTS:DTSID="{5BE3FB60-82E2-4BFD-82E2-099B6F3E4592}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -137,7 +137,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaProgramCode"
-              DTS:DTSID="{B98C0655-56F2-4EB0-B258-ED9AC6E02043}"
+              DTS:DTSID="{E61C7FDF-D417-4AE8-9B68-FDCAEEB494D0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -146,7 +146,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaNeighborhood"
-              DTS:DTSID="{885ADEC4-1D68-4F2F-ABAA-59954D30B64F}"
+              DTS:DTSID="{9DE88FA8-2907-4044-8B5B-087FFC17D568}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -155,7 +155,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaZipCode"
-              DTS:DTSID="{B1D16208-FBE8-4744-8C3B-CD9811CE4ED9}"
+              DTS:DTSID="{3BFCCA46-142D-44BA-893E-9F982AEC724F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -164,7 +164,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaCluster"
-              DTS:DTSID="{A68575F9-02A8-4473-A0E7-F6AB187D7011}"
+              DTS:DTSID="{25374793-6595-445F-B703-78C48366C5BB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -172,7 +172,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaCartesianXCoordinate"
-              DTS:DTSID="{673A7954-DEA1-4585-BC49-1C6178B215AE}"
+              DTS:DTSID="{4945C153-2799-4D32-B80E-FBEED4386C34}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -180,7 +180,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaCartesianYCoordinate"
-              DTS:DTSID="{3846BFBB-9143-49B8-82DA-2F98D41A669D}"
+              DTS:DTSID="{26B551F4-1E40-4767-8143-E8496AE30A46}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -189,7 +189,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaGeo"
-              DTS:DTSID="{2CAF7171-4555-4DC5-BA33-F2F9126AC94A}"
+              DTS:DTSID="{3A64B439-482E-47AD-ABB5-9F61C17FED79}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -198,7 +198,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="cbaAddressLine"
-              DTS:DTSID="{E030B406-49AF-42FC-8D4A-A28CE0B406FA}"
+              DTS:DTSID="{EFAC4BBA-2BB8-4FED-9A1D-1FDD968CA9F4}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -242,8 +242,8 @@
               <connections>
                 <connection
                   refId="Package\Large CSV File\Bari File.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[StrategicPlanningFIle]"
-                  connectionManagerRefId="Package.ConnectionManagers[StrategicPlanningFIle]"
+                  connectionManagerID="Package.ConnectionManagers[ChoiceBasket]"
+                  connectionManagerRefId="Package.ConnectionManagers[ChoiceBasket]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -525,7 +525,8 @@ cbaRound,cbaChoice,ExternalStudentNo,cbaGradeLevel,cbaRace,cbaProgramCode,cbaNei
 cbaCluster,cbaCartesianXCoordinate,cbaCartesianYCoordinate,cbaGeo,cbaAddressLine
 from ChoiceBasket
 inner join ExternalStudent
-on cbaStudentLocalID = StudentNo collate SQL_Latin1_General_CP1_CI_AS</property>
+on cbaStudentLocalID = StudentNo collate SQL_Latin1_General_CP1_CI_AS
+--where cbaacademicyeardesignator='SY 2014-2015'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1033,13 +1034,13 @@ on cbaStudentLocalID = StudentNo collate SQL_Latin1_General_CP1_CI_AS</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="189,42"
-          Id="Package\Large CSV File\StartegicPlanningQuery"
-          TopLeft="221,51" />
-        <NodeLayout
           Size="117,42"
           Id="Package\Large CSV File\Bari File"
           TopLeft="258,182" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Large CSV File\StartegicPlanningQuery"
+          TopLeft="221,51" />
         <EdgeLayout
           Id="Package\Large CSV File.Paths[OLE DB Source Output]"
           TopLeft="316,93">
