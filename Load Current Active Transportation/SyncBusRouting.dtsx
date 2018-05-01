@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="183"
-  DTS:VersionGUID="{F9FC5760-39E1-4B97-B7D4-2546EF2F65C4}">
+  DTS:VersionBuild="185"
+  DTS:VersionGUID="{7660758D-3741-4579-A9F4-AB089182DE1D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -6276,7 +6276,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9AE2705B-C330-42D3-A894-7FD29A51E11A}"
-          SQLTask:SqlStatementSource="Update Transportation.StudentTransportationRouting&#xA;&#x9;SET IsDeleted=1&#xA;&#x9;where [strSteId] not in (SELECT Steid from Transportation.StudentTransportationEligibility STE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;INNER JOIN Transportation.VersatransDataLive VL on STE.[steStudentLocalId]=VL.StudentNo and STE.[steSchoolLocalId]=VL.Sch&#xA;&#x9;&#x9;&#x9;&#x9;        AND STE.[steEligibility]= (SELECT convert(char(10),Cast(CASE VL.ProgID&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 10 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 11 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 12 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 20 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'D'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 21 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'D'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 30 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 31 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 32 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 40 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 41 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 42 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 50 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'T'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 51 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'O'&#xA;                                                                                                                                                                                                                    WHEN 61 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'P'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 80 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 81 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 82 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   END as varchar(10)))  steEligibility &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHERE VL.ProgID NOT IN ( 50, 62, 70, 60 )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;-- AND STE.steEligiblityEndDate IS NULL --- there are some cases where we have eligibility enddate not null still showing up&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  &#xA;&#x9;   )&#xA;&#x9;   and strsourcedata='Live'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Update Transportation.StudentTransportationRouting&#xA;&#x9;SET IsDeleted=1&#xA;&#x9;where [strSteId] not in (SELECT Steid from Transportation.StudentTransportationEligibility STE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;INNER JOIN Transportation.VersatransDataLive VL on STE.[steStudentLocalId]=VL.StudentNo and STE.[steSchoolLocalId]=VL.Sch&#xA;&#x9;&#x9;&#x9;&#x9;        AND STE.[steEligibility]= (SELECT convert(char(10),Cast(CASE VL.ProgID&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 10 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 11 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 12 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 20 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'D'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 21 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'D'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 30 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 31 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 32 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 40 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 41 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 42 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 50 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'T'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 51 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'O'&#xA;                                                                                                                                                                                                                    WHEN 61 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'P'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 80 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 81 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 82 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   END as varchar(10)))  steEligibility &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHERE VL.ProgID NOT IN ( 50, 62, 70, 60 )&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND STE.steEligiblityEndDate IS NULL --- there are some cases where we have eligibility enddate not null still showing up&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  &#xA;&#x9;   )&#xA;&#x9;   and strsourcedata='Live'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -6351,7 +6351,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         <NodeLayout
           Size="195,42"
           Id="Package\dftMergeBusRounting\Existing Rows stircurrent"
-          TopLeft="517.555555555556,242" />
+          TopLeft="487.555555555556,242" />
         <NodeLayout
           Size="165,42"
           Id="Package\dftMergeBusRounting\Update St Routing"
@@ -6383,15 +6383,15 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         <NodeLayout
           Size="162,42"
           Id="Package\dftMergeBusRounting\Insert Error Table"
-          TopLeft="662.555555555556,425.666666666667" />
+          TopLeft="639.555555555556,425.666666666667" />
         <NodeLayout
           Size="154,42"
           Id="Package\dftMergeBusRounting\Error_Table Lkp"
-          TopLeft="540.555555555556,319.888888888889" />
+          TopLeft="510.555555555556,319.888888888889" />
         <NodeLayout
           Size="165,42"
           Id="Package\dftMergeBusRounting\Update ErrorTable"
-          TopLeft="440.888888888889,427.333333333333" />
+          TopLeft="429.888888888889,427.333333333333" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Sort Output]"
           TopLeft="114.861111111111,476.666666666667">
@@ -6474,13 +6474,13 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Lookup No Match Output1]"
-          TopLeft="641.888888888889,361.888888888889">
+          TopLeft="611.888888888889,361.888888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="101.666666666667,63.777777777778"
+              EndConnector="108.666666666667,63.777777777778"
               Start="0,0"
-              End="101.666666666667,56.277777777778">
+              End="108.666666666667,56.277777777778">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -6491,20 +6491,20 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                     Point2="0,25.9045986860898"
                     Point3="4,25.9045986860898" />
                   <mssgle:LineSegment
-                    End="97.6666666666666,25.9045986860898" />
+                    End="104.666666666667,25.9045986860898" />
                   <mssgle:CubicBezierSegment
-                    Point1="97.6666666666666,25.9045986860898"
-                    Point2="101.666666666667,25.9045986860898"
-                    Point3="101.666666666667,29.9045986860898" />
+                    Point1="104.666666666667,25.9045986860898"
+                    Point2="108.666666666667,25.9045986860898"
+                    Point3="108.666666666667,29.9045986860898" />
                   <mssgle:LineSegment
-                    End="101.666666666667,56.277777777778" />
+                    End="108.666666666667,56.277777777778" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-4.97305338541668,30.9045986860898,111.6127734375,11.609375"
+              BoundingBox="-1.47305338541668,30.9045986860898,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6546,13 +6546,13 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Lookup Match Output1]"
-          TopLeft="593.222222222223,361.888888888889">
+          TopLeft="563.222222222223,361.888888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-69.8333333333336,65.4444444444439"
+              EndConnector="-50.8333333333336,65.4444444444439"
               Start="0,0"
-              End="-69.8333333333336,57.9444444444439">
+              End="-50.8333333333336,57.9444444444439">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -6563,20 +6563,20 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                     Point2="0,26.5815481291058"
                     Point3="-4,26.5815481291058" />
                   <mssgle:LineSegment
-                    End="-65.8333333333336,26.5815481291058" />
+                    End="-46.8333333333336,26.5815481291058" />
                   <mssgle:CubicBezierSegment
-                    Point1="-65.8333333333336,26.5815481291058"
-                    Point2="-69.8333333333336,26.5815481291058"
-                    Point3="-69.8333333333336,30.5815481291058" />
+                    Point1="-46.8333333333336,26.5815481291058"
+                    Point2="-50.8333333333336,26.5815481291058"
+                    Point3="-50.8333333333336,30.5815481291058" />
                   <mssgle:LineSegment
-                    End="-69.8333333333336,57.9444444444439" />
+                    End="-50.8333333333336,57.9444444444439" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-83.1080533854168,31.5815481291058,96.3827734375,11.609375"
+              BoundingBox="-73.6080533854168,31.5815481291058,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6622,9 +6622,9 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="229.166666666666,48.777777777778"
+              EndConnector="199.166666666666,48.777777777778"
               Start="0,0"
-              End="229.166666666666,41.277777777778">
+              End="199.166666666666,41.277777777778">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -6635,26 +6635,26 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                     Point2="0,19.8539124776315"
                     Point3="4,19.8539124776315" />
                   <mssgle:LineSegment
-                    End="225.166666666666,19.8539124776315" />
+                    End="195.166666666666,19.8539124776315" />
                   <mssgle:CubicBezierSegment
-                    Point1="225.166666666666,19.8539124776315"
-                    Point2="229.166666666666,19.8539124776315"
-                    Point3="229.166666666666,23.8539124776315" />
+                    Point1="195.166666666666,19.8539124776315"
+                    Point2="199.166666666666,19.8539124776315"
+                    Point3="199.166666666666,23.8539124776315" />
                   <mssgle:LineSegment
-                    End="229.166666666666,41.277777777778" />
+                    End="199.166666666666,41.277777777778" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="83.695755208333,24.8539124776315,61.77515625,11.384765625"
+              BoundingBox="68.6957552083331,24.8539124776315,61.77515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Derived Column Output1]"
-          TopLeft="616.305555555556,284">
+          TopLeft="586.305555555556,284">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
