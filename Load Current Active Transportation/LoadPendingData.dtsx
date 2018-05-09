@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadPendingData"
   DTS:PackageType="5"
-  DTS:VersionBuild="164"
-  DTS:VersionGUID="{7820C7D6-E146-4179-9F43-4353C590D2F8}">
+  DTS:VersionBuild="176"
+  DTS:VersionGUID="{258E81D5-2ECA-4D86-B6F8-DB7A9749981F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,7 +31,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9AE2705B-C330-42D3-A894-7FD29A51E11A}"
-          SQLTask:SqlStatementSource="Update Transportation.StudentTransportationRouting&#xA;&#x9;SET IsDeleted=1&#xA;&#x9;where [strSteId] not in (SELECT Steid from Transportation.StudentTransportationEligibility STE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;INNER JOIN Transportation.VersatransDataPending VL on STE.[steStudentLocalId]=VL.StudentNo and STE.[steSchoolLocalId]=VL.Sch&#xA;&#x9;&#x9;&#x9;&#x9;        AND STE.[steEligibility]= (SELECT convert(char(10),Cast(CASE VL.ProgID&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 10 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 11 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 12 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 20 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'D'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 21 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'D'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 30 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 31 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 32 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 40 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 41 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 42 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 50 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'T'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 51 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'O'&#xA;                                                                                                                                                                                                                   WHEN 61 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'P'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 80 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 81 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 82 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   END as varchar(10)))  steEligibility &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   )&#xA;                                                                                                                                                                                                   WHERE VL.ProgID NOT IN ( 50, 62, 70, 60 )&#xA;                                                                                                AND STE.steEligiblityEndDate IS NULL --- there are some cases where we have eligibility enddate not null still showing up&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   )&#xA;&#x9;&#x9;&#x9;&#x9;and StrSourceData='Pending' " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Update Transportation.StudentTransportationRouting&#xA;&#x9;SET IsDeleted=1&#xA;&#x9;where [strSteId] not in (SELECT Steid from Transportation.StudentTransportationEligibility STE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;INNER JOIN Transportation.VersatransDataPending VL on STE.[steStudentLocalId]=VL.StudentNo and STE.[steSchoolLocalId]=VL.Sch&#xA;&#x9;&#x9;&#x9;&#x9;        AND STE.[steEligibility]= (SELECT convert(char(10),Cast(CASE VL.ProgID&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 10 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 11 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 12 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'C'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 20 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'D'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 21 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'D'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 30 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 31 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 32 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'M'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 40 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 41 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 42 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'W'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 50 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'T'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 51 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'O'&#xA;                                                                                                                                                                                                                   WHEN 61 THEN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'P'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 80 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 81 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHEN 82 THEN &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   'A'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   END as varchar(10)))  steEligibility &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   )&#xA;                                                                                                                                                                                                   WHERE VL.ProgID NOT IN ( 50, 62, 70, 60 )&#xA;                                                                                                -- AND STE.steEligiblityEndDate IS NULL --- there are some cases where we have eligibility enddate not null still showing up&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   )&#xA;&#x9;&#x9;&#x9;&#x9;and StrSourceData='Pending' " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -69,7 +69,7 @@
                       refId="Package\LoadPending\Data Conversion.Inputs[Data Conversion Input].Columns[strSourceData]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="10"
+                      cachedLength="7"
                       cachedName="strSourceData"
                       cachedSortKeyPosition="19"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strSourceData]" />
@@ -182,7 +182,6 @@
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="StudentNo"
-                      cachedSortKeyPosition="1"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StudentNo]">
                       <properties>
                         <property
@@ -201,7 +200,6 @@
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="Sch"
-                      cachedSortKeyPosition="2"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Sch]">
                       <properties>
                         <property
@@ -220,7 +218,6 @@
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="steEligibility"
-                      cachedSortKeyPosition="3"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[steEligibility]">
                       <properties>
                         <property
@@ -239,7 +236,6 @@
                       cachedDataType="str"
                       cachedLength="8000"
                       cachedName="Days"
-                      cachedSortKeyPosition="5"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Days]">
                       <properties>
                         <property
@@ -275,7 +271,6 @@
                       cachedDataType="str"
                       cachedLength="8"
                       cachedName="Trip"
-                      cachedSortKeyPosition="4"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Trip]">
                       <properties>
                         <property
@@ -666,7 +661,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Inputs[Sort Input].Columns[strDayOfWeek]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="7"
+                      cachedLength="15"
                       cachedName="strDayOfWeek"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[strDayOfWeek]">
                       <properties>
@@ -716,7 +711,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Inputs[Sort Input].Columns[strRoutingdirection]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="8"
+                      cachedLength="10"
                       cachedName="strRoutingdirection"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[strRoutingdirection]">
                       <properties>
@@ -734,7 +729,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Inputs[Sort Input].Columns[strSourceData]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="10"
+                      cachedLength="7"
                       cachedName="strSourceData"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[strSourceData]">
                       <properties>
@@ -1194,7 +1189,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strDayOfWeek]"
                       codePage="1252"
                       dataType="str"
-                      length="7"
+                      length="15"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strDayOfWeek]"
                       name="strDayOfWeek">
                       <properties>
@@ -1236,7 +1231,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strRoutingdirection]"
                       codePage="1252"
                       dataType="str"
-                      length="8"
+                      length="10"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strRoutingdirection]"
                       name="strRoutingdirection">
                       <properties>
@@ -1251,7 +1246,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strSourceData]"
                       codePage="1252"
                       dataType="str"
-                      length="10"
+                      length="7"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strSourceData]"
                       name="strSourceData"
                       sortKeyPosition="19">
@@ -1998,7 +1993,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[strSourceData]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="10"
+                      cachedLength="7"
                       cachedName="strSourceData"
                       cachedSortKeyPosition="19"
                       externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[strSourceData]"
@@ -2735,7 +2730,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Sort.Inputs[Sort Input].Columns[strSourceData]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="10"
+                      cachedLength="7"
                       cachedName="strSourceData"
                       cachedSortKeyPosition="19"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strSourceData]">
@@ -3144,7 +3139,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Sort.Outputs[Sort Output].Columns[strSourceData]"
                       codePage="1252"
                       dataType="str"
-                      length="10"
+                      length="7"
                       lineageId="Package\LoadPending\Insert Sort.Outputs[Sort Output].Columns[strSourceData]"
                       name="strSourceData">
                       <properties>
@@ -3354,221 +3349,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">-- Pending
-
-
-SELECT    ISNULL(a.BusID,0) BusID,
-            ISNULL(a.Days,0) Days,
-            a.EffectiveDate,
-            ISNULL(a.InBusID,0) InBusID,
-            ISNULL(a.inLatitude,0) inLatitude,
-            ISNULL(a.inLongitude,0) inLongitude,
-            ISNULL(a.InStopDescription,0) InStopDescription,
-            ISNULL(a.InStopTime,'00:00:00') InStopTime ,
-            ISNULL(a.inX,0) inX ,
-            ISNULL(a.inY,0) inY,
-            ISNULL(a.OutBusID,0) OutBusID ,
-            ISNULL(a.outLatitude,0) outLatitude,
-            ISNULL(a.outLongitude,0) outLongitude,
-            ISNULL(a.OutStopDescription,0) OutStopDescription,
-            ISNULL(a.OutStopTime,'00:00:00') OutStopTime,
-            ISNULL(a.outX,0)outX ,
-            ISNULL(a.outY,0) outY ,
-            a.ProgID,
-            a.Sch,
-            a.steEligibility1,
-            b.steEligibility,
-            b.steId,
-            b.steSchoolLocalId,
-            b.steStudentLocalId,
-            ISNULL(a.StopDescription,0) StopDescription,
-            ISNULL(a.StopTime,'00:00:00') StopTime ,
-            ISNULL(b.strDayOfWeek,0) strDayOfWeek,
-            b.strId,
-            b.strisCurrent,
-            b.strRoutingdirection,
-           CASE WHEN  a.strSourceData IS NULL THEN 'Pending' ELSE b.strSourceData END AS strSourceData,
-            b.strSourceId,
-            a.StudentNo,
-            a.Trip FROM
-			 (
-
-SELECT StudentNo,
-       VersatransDataPending.Sch,
-       Null as StrSourceData,
-       ProgID,
-	   BusID,
-	   StopDescription,
-	   StopTime,
-	  convert(char(10),Cast(CASE ProgID
-           WHEN 10 THEN
-               'C'
-           WHEN 11 THEN
-               'C'
-           WHEN 12 THEN
-               'C'
-           WHEN 20 THEN
-               'D'
-           WHEN 21 THEN
-               'D'
-           WHEN 30 THEN
-               'M'
-           WHEN 31 THEN
-               'M'
-           WHEN 32 THEN
-               'M'
-           WHEN 40 THEN
-               'W'
-           WHEN 41 THEN
-               'W'
-           WHEN 42 THEN
-               'W'
-           WHEN 50 THEN
-               'T'
-           WHEN 51 THEN
-               'O'
-		   WHEN 61 THEN
-               'P'
-           WHEN 80 THEN 
-		       'A'
-		   WHEN 81 THEN 
-		       'A'
-		   WHEN 82 THEN 
-		       'A'
-       END as varchar(10))) steEligibility1,
-       REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(Days, 'M', 'Mo'), 'T', 'Tu'), 'W', 'We'), 'H', 'Th'), 'F', 'Fr') Days,
-       CAST(EffectiveDate AS DATE) EffectiveDate,
-       CASE
-           WHEN InTrip IS NOT NULL THEN
-               'InBound'
-           WHEN OutTrip IS NOT NULL THEN
-               'OutBound'
-           ELSE
-               'Unknown'
-       END Trip,
-       BusID InBusID,
-       CASE
-           WHEN InTrip IS NOT NULL THEN
-               StopDescription
-           ELSE
-               S.SchName COLLATE SQL_Latin1_General_CP1_CI_AS
-       END InStopDescription,
-       CASE
-           WHEN InTrip IS NOT NULL THEN
-               CAST(StopTime AS TIME)
-           ELSE
-               vdldropofftime
-       END InStopTime,
-       CASE
-           WHEN InTrip IS NOT NULL THEN
-               vdpeVersatransX
-           ELSE
-               SGI.sgiCartesianXCoordinate
-       END inX,
-       CASE
-           WHEN InTrip IS NOT NULL THEN
-               vdpeVersatransY
-           ELSE
-               SGI.sgiCartesianYCoordinate
-       END inY,
-       CASE
-           WHEN InTrip IS NOT NULL THEN
-               vdpeVersatransLatitude
-           ELSE
-               SGI.sgiLatitude
-       END inLatitude,
-       CASE
-           WHEN InTrip IS NOT NULL THEN
-               vdpeVersatransLongitude
-           ELSE
-               SGI.sgiLongitude
-       END inLongitude,
-       BusID OutBusID,
-       CASE
-           WHEN OutTrip IS NOT NULL THEN
-               StopDescription
-           ELSE
-               S.SchName COLLATE SQL_Latin1_General_CP1_CI_AS
-       END OutStopDescription,
-       CASE
-           WHEN OutTrip IS NOT NULL THEN
-               CAST(StopTime AS TIME)
-           ELSE
-               vdldropofftime
-       END OutStopTime,
-       CASE
-           WHEN OutTrip IS NOT NULL THEN
-               vdpeVersatransX
-           ELSE
-               SGI.sgiCartesianXCoordinate
-       END outX,
-       CASE
-           WHEN OutTrip IS NOT NULL THEN
-               vdpeVersatransY
-           ELSE
-               SGI.sgiCartesianYCoordinate
-       END outY,
-       CASE
-           WHEN OutTrip IS NOT NULL THEN
-               vdpeVersatransLatitude
-           ELSE
-               SGI.sgiLatitude
-       END outLatitude,
-       CASE
-           WHEN OutTrip IS NOT NULL THEN
-               vdpeVersatransLongitude
-           ELSE
-               SGI.sgiLongitude
-       END outLongitude
-FROM Transportation.VersatransDataPending
---LEFT JOIN dbo.schoollocation ON schoollocation.sch = Transportation.VersatransDataPending.Sch
-LEFT JOIN [BPS].[SchoolGeographicInformation] SGI ON SGI.sgiSchoolId = Transportation.VersatransDataPending.Sch
-INNER JOIN BPS.School S ON S.SchID=VersatransDataPending.Sch
-WHERE NOT ProgID IN ( 50, 62, 70, 60 )
-      AND VersatransDataPending.Sch IN (
-                     SELECT DISTINCT
-                         SKL_SCHOOL_ID COLLATE DATABASE_DEFAULT
-                     FROM ASPENDB.x2data.dbo.STUDENT
-                         JOIN ASPENDB.x2data.dbo.SCHOOL
-                             ON SKL_OID = STD_SKL_OID
-                     WHERE STD_ENROLLMENT_STATUS IN ( 'Active', 'Registered' )
-  ))a
-   
-  --ORDER BY StudentNo,Sch,steEligibility,Days,Trip
-  INNER JOIN (
-
-  SELECT steId,
-       steStudentLocalId ,
-       steSchoolLocalId ,
-      steEligibility,
-       strId,
-       strSourceId,
-        strisCurrent ,
-		strSourceData,
-       CONVERT(VARCHAR(7),strDayOfWeek) strDayOfWeek ,
-       strEffectiveDate,
-       CONVERT(Varchar(8),strRoutingdirection) strRoutingdirection,
-       strOriginPointVehicleNumber,
-       strOriginPointBusStopDescription,
-       strOriginPointArrivalTime,
-       strOriginCartesianXCoordinate,
-       strOriginCartesianYCoordinate,
-       strOriginLatitude,
-       strOriginLongitude,
-       strDestinationPointVehicleNumber,
-       strDestinationPointBusStopDescription,
-       strDestinationPointArrivalTime,
-       strDestinationCartesianXCoordinate,
-       strDestinationCartesianYCoordinate,
-       strDestinationLatitude,
-       strDestinationLongitude
-FROM Transportation.StudentTransportationEligibility
-    left JOIN Transportation.StudentTransportationRouting
-        ON StudentTransportationRouting.strSteId = StudentTransportationEligibility.steId AND ISNULL(StudentTransportationRouting.strSourceData,'Pending')='Pending'
- WHERE steAcademicYearDesignator =CASE WHEN MONTH(GETDATE()) &gt;= 1 AND MONTH(GETDATE()) &lt; 6 then CONCAT(YEAR(GETDATE())-1,'-', (YEAR(GETDATE())-1)+1)
-                                 ELSE CONCAT(YEAR(GETDATE()),'-', (YEAR(GETDATE()))+1) END 
-AND StudentTransportationEligibility.steisCurrent=1)b
-on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibility1=b.SteEligibility and a.Trip=ISNULL(b.StrRoutingDirection,a.trip)</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC  Transportation.LoadPendingDataToRouting</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3602,44 +3383,18 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
               <outputs>
                 <output
                   refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output]"
-                  isSorted="true"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StudentNo]"
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[BusID]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StudentNo]"
-                      length="10"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StudentNo]"
-                      name="StudentNo"
-                      sortKeyPosition="1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Sch]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[Sch]"
-                      length="10"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Sch]"
-                      name="Sch"
-                      sortKeyPosition="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[steEligibility]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[steEligibility]"
-                      length="10"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[steEligibility]"
-                      name="steEligibility"
-                      sortKeyPosition="3"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[BusID]"
+                      length="5"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[BusID]"
+                      name="BusID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Days]"
@@ -3651,7 +3406,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="8000"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Days]"
                       name="Days"
-                      sortKeyPosition="5"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[EffectiveDate]"
@@ -3664,18 +3418,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       name="EffectiveDate"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Trip]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[Trip]"
-                      length="8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Trip]"
-                      name="Trip"
-                      sortKeyPosition="4"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[InBusID]"
                       codePage="1252"
                       dataType="str"
@@ -3685,6 +3427,24 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="5"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[InBusID]"
                       name="InBusID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[inLatitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[inLatitude]"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[inLatitude]"
+                      name="inLatitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[inLongitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[inLongitude]"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[inLongitude]"
+                      name="inLongitude"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[InStopDescription]"
@@ -3726,24 +3486,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       name="inY"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[inLatitude]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[inLatitude]"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[inLatitude]"
-                      name="inLatitude"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[inLongitude]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[inLongitude]"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[inLongitude]"
-                      name="inLongitude"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[OutBusID]"
                       codePage="1252"
                       dataType="str"
@@ -3753,6 +3495,24 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="5"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[OutBusID]"
                       name="OutBusID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[outLatitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[outLatitude]"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[outLatitude]"
+                      name="outLatitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[outLongitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[outLongitude]"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[outLongitude]"
+                      name="outLongitude"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[OutStopDescription]"
@@ -3794,24 +3554,6 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       name="outY"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[outLatitude]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[outLatitude]"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[outLatitude]"
-                      name="outLatitude"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[outLongitude]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[outLongitude]"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[outLongitude]"
-                      name="outLongitude"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[ProgID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
@@ -3821,37 +3563,15 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       name="ProgID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[BusID]"
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Sch]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[BusID]"
-                      length="5"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[BusID]"
-                      name="BusID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StopDescription]"
-                      length="50"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StopDescription]"
-                      name="StopDescription"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StopTime]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StopTime]"
-                      length="8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StopTime]"
-                      name="StopTime"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[Sch]"
+                      length="10"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Sch]"
+                      name="Sch"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[steEligibility1]"
@@ -3863,6 +3583,17 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="10"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[steEligibility1]"
                       name="steEligibility1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[steEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[steEligibility]"
+                      length="10"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[steEligibility]"
+                      name="steEligibility"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[steId]"
@@ -3896,13 +3627,35 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       name="steStudentLocalId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StopDescription]"
+                      length="50"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StopDescription]"
+                      name="StopDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StopTime]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StopTime]"
+                      length="8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StopTime]"
+                      name="StopTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[strDayOfWeek]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[strDayOfWeek]"
-                      length="7"
+                      length="15"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[strDayOfWeek]"
                       name="strDayOfWeek"
                       truncationRowDisposition="FailComponent" />
@@ -3931,7 +3684,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[strRoutingdirection]"
-                      length="8"
+                      length="10"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[strRoutingdirection]"
                       name="strRoutingdirection"
                       truncationRowDisposition="FailComponent" />
@@ -3942,7 +3695,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[strSourceData]"
-                      length="10"
+                      length="7"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[strSourceData]"
                       name="strSourceData"
                       truncationRowDisposition="FailComponent" />
@@ -3956,27 +3709,37 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[strSourceId]"
                       name="strSourceId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StudentNo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StudentNo]"
+                      length="10"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[StudentNo]"
+                      name="StudentNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Trip]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[Trip]"
+                      length="8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[Trip]"
+                      name="Trip"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StudentNo]"
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[BusID]"
                       codePage="1252"
                       dataType="str"
-                      length="10"
-                      name="StudentNo" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[Sch]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="Sch" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[steEligibility]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="steEligibility" />
+                      length="5"
+                      name="BusID" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[Days]"
                       codePage="1252"
@@ -3989,17 +3752,19 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="10"
                       name="EffectiveDate" />
                     <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[Trip]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      name="Trip" />
-                    <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[InBusID]"
                       codePage="1252"
                       dataType="str"
                       length="5"
                       name="InBusID" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[inLatitude]"
+                      dataType="r8"
+                      name="inLatitude" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[inLongitude]"
+                      dataType="r8"
+                      name="inLongitude" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[InStopDescription]"
                       codePage="1252"
@@ -4020,19 +3785,19 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       dataType="r8"
                       name="inY" />
                     <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[inLatitude]"
-                      dataType="r8"
-                      name="inLatitude" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[inLongitude]"
-                      dataType="r8"
-                      name="inLongitude" />
-                    <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[OutBusID]"
                       codePage="1252"
                       dataType="str"
                       length="5"
                       name="OutBusID" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[outLatitude]"
+                      dataType="r8"
+                      name="outLatitude" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[outLongitude]"
+                      dataType="r8"
+                      name="outLongitude" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[OutStopDescription]"
                       codePage="1252"
@@ -4053,41 +3818,27 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       dataType="r8"
                       name="outY" />
                     <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[outLatitude]"
-                      dataType="r8"
-                      name="outLatitude" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[outLongitude]"
-                      dataType="r8"
-                      name="outLongitude" />
-                    <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[ProgID]"
                       dataType="i4"
                       name="ProgID" />
                     <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[BusID]"
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[Sch]"
                       codePage="1252"
                       dataType="str"
-                      length="5"
-                      name="BusID" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="StopDescription" />
-                    <externalMetadataColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StopTime]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      name="StopTime" />
+                      length="10"
+                      name="Sch" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[steEligibility1]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="steEligibility1" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[steEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="steEligibility" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[steId]"
                       dataType="i4"
@@ -4105,10 +3856,22 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       length="10"
                       name="steStudentLocalId" />
                     <externalMetadataColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StopDescription" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StopTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="StopTime" />
+                    <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[strDayOfWeek]"
                       codePage="1252"
                       dataType="str"
-                      length="7"
+                      length="15"
                       name="strDayOfWeek" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[strId]"
@@ -4122,7 +3885,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[strRoutingdirection]"
                       codePage="1252"
                       dataType="str"
-                      length="8"
+                      length="10"
                       name="strRoutingdirection" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[strSourceData]"
@@ -4135,6 +3898,18 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       dataType="wstr"
                       length="14"
                       name="strSourceId" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[StudentNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="StudentNo" />
+                    <externalMetadataColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[Trip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="Trip" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -4143,52 +3918,12 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StudentNo]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StudentNo]"
-                      name="StudentNo" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[Sch]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[Sch]"
-                      name="Sch" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[ProgID]"
-                      dataType="i4"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[ProgID]"
-                      name="ProgID" />
-                    <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[BusID]"
                       codePage="1252"
                       dataType="str"
                       length="5"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[BusID]"
                       name="BusID" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StopDescription]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StopDescription]"
-                      name="StopDescription" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StopTime]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StopTime]"
-                      name="StopTime" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[steEligibility]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[steEligibility]"
-                      name="steEligibility" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[Days]"
                       codePage="1252"
@@ -4203,19 +3938,22 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[EffectiveDate]"
                       name="EffectiveDate" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[Trip]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[Trip]"
-                      name="Trip" />
-                    <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[InBusID]"
                       codePage="1252"
                       dataType="str"
                       length="5"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[InBusID]"
                       name="InBusID" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[inLatitude]"
+                      dataType="r8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[inLatitude]"
+                      name="inLatitude" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[inLongitude]"
+                      dataType="r8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[inLongitude]"
+                      name="inLongitude" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[InStopDescription]"
                       codePage="1252"
@@ -4240,22 +3978,22 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[inY]"
                       name="inY" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[inLatitude]"
-                      dataType="r8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[inLatitude]"
-                      name="inLatitude" />
-                    <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[inLongitude]"
-                      dataType="r8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[inLongitude]"
-                      name="inLongitude" />
-                    <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutBusID]"
                       codePage="1252"
                       dataType="str"
                       length="5"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutBusID]"
                       name="OutBusID" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outLatitude]"
+                      dataType="r8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outLatitude]"
+                      name="outLatitude" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outLongitude]"
+                      dataType="r8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outLongitude]"
+                      name="outLongitude" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
                       codePage="1252"
@@ -4264,6 +4002,34 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
                       name="OutStopDescription" />
                     <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutStopTime]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutStopTime]"
+                      name="OutStopTime" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outX]"
+                      dataType="r8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outX]"
+                      name="outX" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outY]"
+                      dataType="r8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outY]"
+                      name="outY" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[ProgID]"
+                      dataType="i4"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[ProgID]"
+                      name="ProgID" />
+                    <outputColumn
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[Sch]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[Sch]"
+                      name="Sch" />
+                    <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[steEligibility1]"
                       codePage="1252"
                       dataType="str"
@@ -4271,11 +4037,12 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[steEligibility1]"
                       name="steEligibility1" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutStopTime]"
-                      dataType="wstr"
-                      length="16"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutStopTime]"
-                      name="OutStopTime" />
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[steEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[steEligibility]"
+                      name="steEligibility" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[steId]"
                       dataType="i4"
@@ -4296,20 +4063,24 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[steStudentLocalId]"
                       name="steStudentLocalId" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outX]"
-                      dataType="r8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outX]"
-                      name="outX" />
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StopDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StopDescription]"
+                      name="StopDescription" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outY]"
-                      dataType="r8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outY]"
-                      name="outY" />
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StopTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StopTime]"
+                      name="StopTime" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[strDayOfWeek]"
                       codePage="1252"
                       dataType="str"
-                      length="7"
+                      length="15"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[strDayOfWeek]"
                       name="strDayOfWeek" />
                     <outputColumn
@@ -4326,7 +4097,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[strRoutingdirection]"
                       codePage="1252"
                       dataType="str"
-                      length="8"
+                      length="10"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[strRoutingdirection]"
                       name="strRoutingdirection" />
                     <outputColumn
@@ -4343,15 +4114,19 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[strSourceId]"
                       name="strSourceId" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outLatitude]"
-                      dataType="r8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outLatitude]"
-                      name="outLatitude" />
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StudentNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[StudentNo]"
+                      name="StudentNo" />
                     <outputColumn
-                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outLongitude]"
-                      dataType="r8"
-                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[outLongitude]"
-                      name="outLongitude" />
+                      refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[Trip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[Trip]"
+                      name="Trip" />
                     <outputColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -4390,7 +4165,7 @@ on a.StudentNo=b.steStudentLocalId and a.sch=b.SteSchoolLocalId and a.SteEligibi
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Transportation].[StudentTransportationRouting]) [refTable]
-where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable].[strSourceData] = ?</property>
+where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable].[strRoutingdirection] = ? and [refTable].[strisCurrent] = ? and [refTable].[strSourceData] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -4421,12 +4196,12 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="strId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSteId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSourceId" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strisCurrent" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSourceData" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDayOfWeek" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strEffectiveDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strRoutingdirection" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointVehicleNumber" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointBusStopDescription" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointArrivalTime" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginCartesianXCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginCartesianYCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginLatitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginLongitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationPointVehicleNumber" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDestinationPointBusStopDescription" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDestinationPointArrivalTime" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationCartesianXCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationCartesianYCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationLatitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationLongitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="strId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSteId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSourceId" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strisCurrent" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSourceData" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDayOfWeek" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strEffectiveDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strRoutingdirection" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointVehicleNumber" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointBusStopDescription" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointArrivalTime" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginCartesianXCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginCartesianYCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginLatitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginLongitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationPointVehicleNumber" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDestinationPointBusStopDescription" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDestinationPointArrivalTime" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationCartesianXCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationCartesianYCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationLatitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationLongitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsDeleted" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steId]};#{Package\LoadPending\Data Conversion.Outputs[Data Conversion Output].Columns[ConvstrisCurrent]};#{Package\LoadPending\Data Conversion.Outputs[Data Conversion Output].Columns[ConvStrSourceData]};</property>
+                  name="ParameterMap">#{Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[steId]};#{Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strDayOfWeek]};#{Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strRoutingdirection]};#{Package\LoadPending\Data Conversion.Outputs[Data Conversion Output].Columns[ConvstrisCurrent]};#{Package\LoadPending\Data Conversion.Outputs[Data Conversion Output].Columns[ConvStrSourceData]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4494,6 +4269,42 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">strSourceData</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\LoadPending\Routing Lkp.Inputs[Lookup Input].Columns[strRoutingdirection]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="strRoutingdirection"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strRoutingdirection]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">strRoutingdirection</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\LoadPending\Routing Lkp.Inputs[Lookup Input].Columns[strDayOfWeek]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="strDayOfWeek"
+                      lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[strDayOfWeek]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">strDayOfWeek</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -6593,23 +6404,23 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         <NodeLayout
           Size="160,42"
           Id="Package\LoadPending\Insert Error table"
-          TopLeft="568,434.363636363636" />
+          TopLeft="631,435.363636363636" />
         <NodeLayout
           Size="139,42"
           Id="Package\LoadPending\PendingData"
-          TopLeft="304.909090909091,12" />
+          TopLeft="304,13" />
         <NodeLayout
           Size="135,42"
           Id="Package\LoadPending\Steid Is null"
-          TopLeft="306,178.363636363636" />
+          TopLeft="306,172.363636363636" />
         <NodeLayout
           Size="129,42"
           Id="Package\LoadPending\Insert Sort"
-          TopLeft="280,529.585858585858" />
+          TopLeft="254,524.585858585858" />
         <NodeLayout
           Size="172,42"
           Id="Package\LoadPending\New rows Stcurrent"
-          TopLeft="140,269.363636363636" />
+          TopLeft="124,267.363636363636" />
         <NodeLayout
           Size="196,42"
           Id="Package\LoadPending\Delete duplicate Records"
@@ -6617,49 +6428,49 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         <NodeLayout
           Size="134,42"
           Id="Package\LoadPending\Update sort"
-          TopLeft="40,524.585858585858" />
+          TopLeft="56,529.585858585858" />
         <NodeLayout
           Size="107,42"
           Id="Package\LoadPending\Insert"
-          TopLeft="295.909090909091,614.494949494949" />
+          TopLeft="271.909090909091,615.494949494949" />
         <NodeLayout
           Size="189,42"
           Id="Package\LoadPending\Existing Rows stcurrent"
-          TopLeft="449,258.585858585858" />
+          TopLeft="495,258.585858585858" />
         <NodeLayout
           Size="154,42"
           Id="Package\LoadPending\Error_Table Lkp"
-          TopLeft="461.030303030303,335.494949494949" />
+          TopLeft="517.030303030303,339.494949494949" />
         <NodeLayout
           Size="165,42"
           Id="Package\LoadPending\Update ErrorTable"
-          TopLeft="371.272727272727,433.21212121212" />
+          TopLeft="419.272727272727,434.21212121212" />
         <NodeLayout
           Size="113,42"
           Id="Package\LoadPending\Update"
-          TopLeft="48.545454545455,620.494949494949" />
+          TopLeft="60.545454545455,620.494949494949" />
         <NodeLayout
           Size="156,42"
           Id="Package\LoadPending\Data Conversion"
-          TopLeft="148,349.585858585858" />
+          TopLeft="132,349.585858585858" />
         <NodeLayout
           Size="135,42"
           Id="Package\LoadPending\Routing Lkp"
-          TopLeft="162,433.585858585858" />
+          TopLeft="150,433.585858585858" />
         <EdgeLayout
           Id="Package\LoadPending.Paths[Sort Output]"
           TopLeft="375.25,136.363636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="0,36"
               Start="0,0"
-              End="0,34.5">
+              End="0,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6670,18 +6481,18 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[OLE DB Source Output]"
-          TopLeft="375.704545454546,54">
+          TopLeft="375.25,55">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40.363636363636"
+              EndConnector="0,39.363636363636"
               Start="0,0"
-              End="0,32.863636363636">
+              End="0,31.863636363636">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.863636363636" />
+                    End="0,31.863636363636" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6692,49 +6503,157 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[New Rows]"
-          TopLeft="352.333333333333,220.363636363636">
+          TopLeft="352.333333333333,214.363636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-126.333333333333,48.9999999999999"
+              EndConnector="-142.333333333333,53"
               Start="0,0"
-              End="-126.333333333333,41.4999999999999">
+              End="-142.333333333333,45.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.9443631039531" />
+                    End="0,17.5724743777452" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.9443631039531"
-                    Point2="0,19.9443631039531"
-                    Point3="-4,19.9443631039531" />
+                    Point1="0,17.5724743777452"
+                    Point2="0,21.5724743777452"
+                    Point3="-4,21.5724743777452" />
                   <mssgle:LineSegment
-                    End="-122.333333333333,19.9443631039531" />
+                    End="-138.333333333333,21.5724743777452" />
                   <mssgle:CubicBezierSegment
-                    Point1="-122.333333333333,19.9443631039531"
-                    Point2="-126.333333333333,19.9443631039531"
-                    Point3="-126.333333333333,23.9443631039531" />
+                    Point1="-138.333333333333,21.5724743777452"
+                    Point2="-142.333333333333,21.5724743777452"
+                    Point3="-142.333333333333,25.5724743777452" />
                   <mssgle:LineSegment
-                    End="-126.333333333333,41.4999999999999" />
+                    End="-142.333333333333,45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-86.7042447916665,24.9443631039531,47.07515625,9.421875"
+              BoundingBox="-94.7042447916667,26.5724743777452,47.07515625,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Lookup No Match Output1]"
-          TopLeft="250.666666666667,475.585858585858">
+          TopLeft="238.666666666667,475.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="93.8333333333333,54"
+              EndConnector="79.8333333333333,49"
               Start="0,0"
-              End="93.8333333333333,46.5">
+              End="79.8333333333333,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.9443631039532" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.9443631039532"
+                    Point2="0,19.9443631039532"
+                    Point3="4,19.9443631039532" />
+                  <mssgle:LineSegment
+                    End="75.8333333333333,19.9443631039532" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.8333333333333,19.9443631039532"
+                    Point2="79.8333333333333,19.9443631039532"
+                    Point3="79.8333333333333,23.9443631039532" />
+                  <mssgle:LineSegment
+                    End="79.8333333333333,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.8897200520833,24.9443631039532,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending.Paths[Lookup No Match Output]"
+          TopLeft="618.363636363636,381.494949494949">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="92.6363636363636,53.868686868687"
+              Start="0,0"
+              End="92.6363636363636,46.368686868687">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.8798265430656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.8798265430656"
+                    Point2="0,21.8798265430656"
+                    Point3="4,21.8798265430656" />
+                  <mssgle:LineSegment
+                    End="88.6363636363636,21.8798265430656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="88.6363636363636,21.8798265430656"
+                    Point2="92.6363636363636,21.8798265430656"
+                    Point3="92.6363636363636,25.8798265430656" />
+                  <mssgle:LineSegment
+                    End="92.6363636363636,46.368686868687" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.48820490056819,26.8798265430656,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending.Paths[Lookup Match Output1]"
+          TopLeft="569.69696969697,381.494949494949">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-67.9242424242426,52.717171717171"
+              Start="0,0"
+              End="-67.9242424242426,45.217171717171">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.4121160187995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.4121160187995"
+                    Point2="0,21.4121160187995"
+                    Point3="-4,21.4121160187995" />
+                  <mssgle:LineSegment
+                    End="-63.9242424242426,21.4121160187995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-63.9242424242426,21.4121160187995"
+                    Point2="-67.9242424242426,21.4121160187995"
+                    Point3="-67.9242424242426,25.4121160187995" />
+                  <mssgle:LineSegment
+                    End="-67.9242424242426,45.217171717171" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-82.1535079308713,26.4121160187995,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending.Paths[Lookup Match Output]"
+          TopLeft="196.333333333333,475.585858585858">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-73.3333333333333,54"
+              Start="0,0"
+              End="-73.3333333333333,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -6743,183 +6662,75 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
                   <mssgle:CubicBezierSegment
                     Point1="0,17.9795021961933"
                     Point2="0,21.9795021961933"
-                    Point3="4,21.9795021961933" />
+                    Point3="-4,21.9795021961933" />
                   <mssgle:LineSegment
-                    End="89.8333333333333,21.9795021961933" />
+                    End="-69.3333333333333,21.9795021961933" />
                   <mssgle:CubicBezierSegment
-                    Point1="89.8333333333333,21.9795021961933"
-                    Point2="93.8333333333333,21.9795021961933"
-                    Point3="93.8333333333333,25.9795021961933" />
+                    Point1="-69.3333333333333,21.9795021961933"
+                    Point2="-73.3333333333333,21.9795021961933"
+                    Point3="-73.3333333333333,25.9795021961933" />
                   <mssgle:LineSegment
-                    End="93.8333333333333,46.5" />
+                    End="-73.3333333333333,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8.88972005208335,26.9795021961933,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\LoadPending.Paths[Lookup No Match Output]"
-          TopLeft="562.363636363636,377.494949494949">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="85.6363636363636,56.868686868687"
-              Start="0,0"
-              End="85.6363636363636,49.368686868687">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.098335540495" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.098335540495"
-                    Point2="0,23.098335540495"
-                    Point3="4,23.098335540495" />
-                  <mssgle:LineSegment
-                    End="81.6363636363636,23.098335540495" />
-                  <mssgle:CubicBezierSegment
-                    Point1="81.6363636363636,23.098335540495"
-                    Point2="85.6363636363636,23.098335540495"
-                    Point3="85.6363636363636,27.098335540495" />
-                  <mssgle:LineSegment
-                    End="85.6363636363636,49.368686868687" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-12.9882049005682,28.098335540495,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\LoadPending.Paths[Lookup Match Output1]"
-          TopLeft="513.69696969697,377.494949494949">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-59.9242424242426,55.717171717171"
-              Start="0,0"
-              End="-59.9242424242426,48.217171717171">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.6306250162288" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.6306250162288"
-                    Point2="0,22.6306250162288"
-                    Point3="-4,22.6306250162288" />
-                  <mssgle:LineSegment
-                    End="-55.9242424242426,22.6306250162288" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-55.9242424242426,22.6306250162288"
-                    Point2="-59.9242424242426,22.6306250162288"
-                    Point3="-59.9242424242426,26.6306250162288" />
-                  <mssgle:LineSegment
-                    End="-59.9242424242426,48.217171717171" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-78.1535079308713,27.6306250162288,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\LoadPending.Paths[Lookup Match Output]"
-          TopLeft="208.333333333333,475.585858585858">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-101.333333333333,49"
-              Start="0,0"
-              End="-101.333333333333,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.9443631039531" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.9443631039531"
-                    Point2="0,19.9443631039531"
-                    Point3="-4,19.9443631039531" />
-                  <mssgle:LineSegment
-                    End="-97.3333333333333,19.9443631039531" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-97.3333333333333,19.9443631039531"
-                    Point2="-101.333333333333,19.9443631039531"
-                    Point3="-101.333333333333,23.9443631039531" />
-                  <mssgle:LineSegment
-                    End="-101.333333333333,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-98.8580533854167,24.9443631039531,96.3827734375,11.609375"
+              BoundingBox="-84.8580533854167,26.9795021961933,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Existing Rows]"
-          TopLeft="394.666666666667,220.363636363636">
+          TopLeft="394.666666666667,214.363636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="148.833333333333,38.2222222222219"
+              EndConnector="194.833333333333,44.222222222222"
               Start="0,0"
-              End="148.833333333333,30.7222222222219">
+              End="194.833333333333,36.722222222222">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.5575077273466" />
+                    End="0,13.9996746380347" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,11.5575077273466"
-                    Point2="0,15.5575077273466"
-                    Point3="4,15.5575077273466" />
+                    Point1="0,13.9996746380347"
+                    Point2="0,17.9996746380347"
+                    Point3="4,17.9996746380347" />
                   <mssgle:LineSegment
-                    End="144.833333333333,15.5575077273466" />
+                    End="190.833333333333,17.9996746380347" />
                   <mssgle:CubicBezierSegment
-                    Point1="144.833333333333,15.5575077273466"
-                    Point2="148.833333333333,15.5575077273466"
-                    Point3="148.833333333333,19.5575077273466" />
+                    Point1="190.833333333333,17.9996746380347"
+                    Point2="194.833333333333,17.9996746380347"
+                    Point3="194.833333333333,21.9996746380347" />
                   <mssgle:LineSegment
-                    End="148.833333333333,30.7222222222219" />
+                    End="194.833333333333,36.722222222222" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="43.5290885416665,20.5575077273466,61.77515625,11.384765625"
+              BoundingBox="66.5290885416667,22.9996746380347,61.77515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Derived Column Output1]"
-          TopLeft="540.765151515152,300.585858585858">
+          TopLeft="591.765151515152,300.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.909090909091"
+              EndConnector="0,38.909090909091"
               Start="0,0"
-              End="0,27.409090909091">
+              End="0,31.409090909091">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.409090909091" />
+                    End="0,31.409090909091" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6930,18 +6741,18 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Derived Column Output]"
-          TopLeft="226,311.363636363636">
+          TopLeft="210,309.363636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.222222222222"
+              EndConnector="0,40.222222222222"
               Start="0,0"
-              End="0,30.722222222222">
+              End="0,32.722222222222">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.722222222222" />
+                    End="0,32.722222222222" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6952,7 +6763,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Data Conversion Output]"
-          TopLeft="227.75,391.585858585858">
+          TopLeft="213.75,391.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6974,18 +6785,18 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Sort Output2]"
-          TopLeft="346.954545454546,571.585858585858">
+          TopLeft="321.954545454546,566.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42.909090909091"
+              EndConnector="0,48.909090909091"
               Start="0,0"
-              End="0,35.409090909091">
+              End="0,41.409090909091">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.409090909091" />
+                    End="0,41.409090909091" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6996,18 +6807,18 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Sort Output1]"
-          TopLeft="106.022727272728,566.585858585858">
+          TopLeft="120.022727272728,571.585858585858">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53.909090909091"
+              EndConnector="0,48.909090909091"
               Start="0,0"
-              End="0,46.409090909091">
+              End="0,41.409090909091">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.409090909091" />
+                    End="0,41.409090909091" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7059,7 +6870,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7082,7 +6893,7 @@ where [refTable].[strSteId] = ? and [refTable].[strisCurrent] = ? and [refTable]
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
