@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">084-170705-03</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAySEBGKXvgEa1y4LzHPDuBQAAAAACAAAAAAADZgAAwAAAABAAAABzTHO6HYToJSX0kkvRIB0WAAAAAASAAACgAAAAEAAAAFYKLhxmIOfMBTDwwZTGISuIAAAAwTV+mHFcN0/8J0da2XTdXRQZq1Gxb8f7EjQ+LAS2HB9OTQlnwsEZCesHUMx3c3ezM+dkjRRnjnYbVTzv8Yzg5FKV9hkPj4S6VZ6IQiibRB1MV0DI6e9eiGpj8xputKJcx3h7ED+oZ1hjvu9trnQ/2c8GVqQY3HrjQgYoO8MtzsdEU+RrmAkvyxQAAAAdlHz+/cZGwWDLC22bPR26DqGQ3Q==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAySEBGKXvgEa1y4LzHPDuBQAAAAACAAAAAAADZgAAwAAAABAAAABIoAGLVwBv14RYT0DU97g7AAAAAASAAACgAAAAEAAAAC946eFH4uUsLsZt3/Da+9uIAAAAGyz0UapAlQiLLvCJPMPnfuW+XPJaOMTsc2UzXgkGQN97hzSrn6tqIFOmfZu5ZhMyvLjz8jqM2cCmSvJuMwZHPNXHzBDpwtYrcfRuPQtguaoxZ1Hd8wZpzqLjrs9VeuI03nFa9i4IODXhzFzYepv5hyhherDdohz2pHA3dMH7Z3Maix8RnuR2cRQAAABjb0gldnO8mfKjCiC4n5VGhxB6fw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -71,7 +71,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=TESTDATA-03;Initial Catalog=BPSInterface;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Load Current Active Transportation-{9AE2705B-C330-42D3-A894-7FD29A51E11A}084-137984-003.BPSInterface.BPSIntegration;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=BPSDATA-03;Initial Catalog=BPSInterface;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Load Current Active Transportation-{9AE2705B-C330-42D3-A894-7FD29A51E11A}084-137984-003.BPSInterface.BPSIntegration;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -1925,8 +1925,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -2107,8 +2105,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -3978,14 +3974,14 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="RefreshTables - BPSDashboard.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B08416FE-9FE7-45DF-AFC6-E15227BDF367}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">RefreshTables - BPSDashboard</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{E5357867-082A-420E-81AD-498C940F31C2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">BPSDashboardTables</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">229</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{02451354-5D61-41F3-B2D0-7C888B946333}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EEDAB174-625B-491A-BBDA-BE405835D151}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -4460,7 +4456,7 @@
           <ConfigurationSetting>
             <Id>LastModifiedTime</Id>
             <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2018-05-18T15:22:26.5181269Z</Value>
+            <Value xsi:type="xsd:dateTime">2018-05-18T15:54:33.0813774Z</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>{7851F3D4-CB5B-44C3-9330-3CABD14C7073}</Id>
