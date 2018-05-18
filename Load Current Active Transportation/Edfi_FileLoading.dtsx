@@ -8,12 +8,12 @@
   DTS:DelayValidation="True"
   DTS:DTSID="{DB11FA20-2EF7-474E-9AB7-081F1DE4C945}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3006.16"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
   DTS:LocaleID="1033"
   DTS:ObjectName="Edfi_FileLoading"
   DTS:PackageType="5"
-  DTS:VersionBuild="168"
-  DTS:VersionGUID="{38CA9404-D6DD-45DE-9411-C591A524B454}">
+  DTS:VersionBuild="175"
+  DTS:VersionGUID="{6A6FA8C6-02B3-4C2B-B6D7-CF2865F4DF96}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -48,7 +48,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ArchiveFullFilePath">
       <DTS:VariableValue
-        DTS:DataType="8">E:\SSIS\ArchiveFolder\EdPlanToAspen_20180329.txt</DTS:VariableValue>
+        DTS:DataType="8">E:\SSIS\ArchiveFolder\EdPlanToAspen_20180518.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -127,7 +127,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="ArchivingFile"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -153,6 +153,82 @@
             <pipeline
               version="1">
               <components>
+                <component
+                  refId="Package\Load Files\Edfi_FileLoad\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Inputs[Data Conversion Input].Columns[Related Services]"
+                          cachedCodepage="1252"
+                          cachedDataType="text"
+                          cachedName="Related Services"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Services]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Load Files\Edfi_FileLoad\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[ConvRelatedServices]"
+                          dataType="nText"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[ConvRelatedServices]"
+                          name="ConvRelatedServices"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Services]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Load Files\Edfi_FileLoad\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
                 <component
                   refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen"
                   componentClassID="Microsoft.OLEDBDestination"
@@ -275,26 +351,12 @@
                           externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Education Exit Date]"
                           lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Special Education Exit Date]" />
                         <inputColumn
-                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Setting]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="Setting"
-                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Setting]"
-                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Setting]" />
-                        <inputColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Program]"
                           cachedDataType="wstr"
                           cachedLength="255"
                           cachedName="Program"
                           externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Program]"
                           lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Program]" />
-                        <inputColumn
-                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Related Services]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="Related Services"
-                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Services]"
-                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Services]" />
                         <inputColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Related Service Minutes General Ed Setting (B Grid)]"
                           cachedDataType="wstr"
@@ -358,6 +420,35 @@
                           cachedName="LRE Setting"
                           externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[LRE Setting]"
                           lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[LRE Setting]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Placement School]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Placement School"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[PlacementSchool]"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Placement School]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Cost Share]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="Cost Share"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[CostShare]"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Cost Share]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Agency]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Agency"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Agency]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[ConvRelatedServices]"
+                          cachedDataType="nText"
+                          cachedName="ConvRelatedServices"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Services]"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[ConvRelatedServices]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -401,19 +492,13 @@
                           length="255"
                           name="Special Education Exit Date" />
                         <externalMetadataColumn
-                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Setting]"
-                          dataType="wstr"
-                          length="255"
-                          name="Setting" />
-                        <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Program]"
                           dataType="wstr"
                           length="255"
                           name="Program" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Services]"
-                          dataType="wstr"
-                          length="255"
+                          dataType="nText"
                           name="Related Services" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
@@ -464,6 +549,23 @@
                           dataType="wstr"
                           length="255"
                           name="LRE Setting" />
+                        <externalMetadataColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[PlacementSchool]"
+                          dataType="wstr"
+                          length="255"
+                          name="PlacementSchool" />
+                        <externalMetadataColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[CostShare]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="CostShare" />
+                        <externalMetadataColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Agency" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -671,27 +773,6 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Setting]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Setting]"
-                          length="255"
-                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Setting]"
-                          name="Setting"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Program]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
@@ -714,11 +795,11 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Services]"
-                          dataType="wstr"
+                          codePage="1252"
+                          dataType="text"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Related Services]"
-                          length="255"
                           lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Services]"
                           name="Related Services"
                           truncationRowDisposition="FailComponent">
@@ -922,6 +1003,71 @@
                               name="UseBinaryFormat">false</property>
                           </properties>
                         </outputColumn>
+                        <outputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Placement School]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Placement School]"
+                          length="255"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Placement School]"
+                          name="Placement School"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Cost Share]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Cost Share]"
+                          length="25"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Cost Share]"
+                          name="Cost Share"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Agency]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Agency]"
+                          length="100"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Agency]"
+                          name="Agency"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -961,19 +1107,14 @@
                           length="255"
                           name="Special Education Exit Date" />
                         <externalMetadataColumn
-                          refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Setting]"
-                          dataType="wstr"
-                          length="255"
-                          name="Setting" />
-                        <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Program]"
                           dataType="wstr"
                           length="255"
                           name="Program" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Related Services]"
-                          dataType="wstr"
-                          length="255"
+                          codePage="1252"
+                          dataType="text"
                           name="Related Services" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
@@ -1020,6 +1161,23 @@
                           dataType="wstr"
                           length="255"
                           name="LRE Setting" />
+                        <externalMetadataColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Placement School]"
+                          dataType="wstr"
+                          length="255"
+                          name="Placement School" />
+                        <externalMetadataColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Cost Share]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="Cost Share" />
+                        <externalMetadataColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Agency]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Agency" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1054,8 +1212,13 @@
               </components>
               <paths>
                 <path
-                  refId="Package\Load Files\Edfi_FileLoad.Paths[Flat File Source Output]"
+                  refId="Package\Load Files\Edfi_FileLoad.Paths[Data Conversion Output]"
                   endId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Load Files\Edfi_FileLoad.Paths[Flat File Source Output]"
+                  endId="Package\Load Files\Edfi_FileLoad\Data Conversion.Inputs[Data Conversion Input]"
                   name="Flat File Source Output"
                   startId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output]" />
               </paths>
@@ -1076,8 +1239,8 @@
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{F2D1BE06-B9A5-4C06-84B8-CA2019C7B97A}"
-          DTS:ObjectName="{F2D1BE06-B9A5-4C06-84B8-CA2019C7B97A}"
+          DTS:DTSID="{DFE34B03-F303-4C2F-88E7-52506060F77D}"
+          DTS:ObjectName="{DFE34B03-F303-4C2F-88E7-52506060F77D}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::ForLoopVar" />
       </DTS:ForEachVariableMappings>
@@ -1092,7 +1255,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Time Delay"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1110,7 +1273,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="WinScp Sftp FIle"
       DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecuteProcessData
@@ -1228,7 +1391,7 @@
     design-time-name="Package\Load Files\Edfi_FileLoad">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="151,42"
           Id="Package\Load Files\Edfi_FileLoad\Flat File Source"
@@ -1236,21 +1399,71 @@
         <NodeLayout
           Size="151,42"
           Id="Package\Load Files\Edfi_FileLoad\EdPlanToAspen"
-          TopLeft="91,173" />
+          TopLeft="92,206" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Files\Edfi_FileLoad\Data Conversion"
+          TopLeft="269,135" />
         <EdgeLayout
           Id="Package\Load Files\Edfi_FileLoad.Paths[Flat File Source Output]"
           TopLeft="166.5,106">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,67"
+              EndConnector="180.5,29"
               Start="0,0"
-              End="0,59.5">
+              End="180.5,21.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.5" />
+                    End="0,10.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5"
+                    Point2="0,14.5"
+                    Point3="4,14.5" />
+                  <mssgle:LineSegment
+                    End="176.5,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="176.5,14.5"
+                    Point2="180.5,14.5"
+                    Point3="180.5,18.5" />
+                  <mssgle:LineSegment
+                    End="180.5,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Files\Edfi_FileLoad.Paths[Data Conversion Output]"
+          TopLeft="347,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-179.5,29"
+              Start="0,0"
+              End="-179.5,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5"
+                    Point2="0,14.5"
+                    Point3="-4,14.5" />
+                  <mssgle:LineSegment
+                    End="-175.5,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-175.5,14.5"
+                    Point2="-179.5,14.5"
+                    Point3="-179.5,18.5" />
+                  <mssgle:LineSegment
+                    End="-179.5,21.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
