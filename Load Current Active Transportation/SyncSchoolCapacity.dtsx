@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\X05112"
   DTS:DTSID="{588EE4E0-FB69-4CC8-AEA1-9D0857BE3BC9}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3006.16"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncSchoolCapacity"
   DTS:PackageType="5"
-  DTS:VersionBuild="71"
-  DTS:VersionGUID="{31D7C76C-3B2B-41B7-9457-6EA0F02D0340}">
+  DTS:VersionBuild="72"
+  DTS:VersionGUID="{CDC020D0-AFBE-4CF2-97F0-256B4CBB18E8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -565,11 +565,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Insert Into SChool Cap"
+              refId="Package\Data Flow Task\Insert Into School Cap"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Insert Into SChool Cap"
+              name="Insert Into School Cap"
               usesDispositions="true"
               version="4">
               <properties>
@@ -622,7 +622,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Insert Into SChool Cap.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task\Insert Into School Cap.Connections[OleDbConnection]"
                   connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
                   connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
@@ -630,160 +630,160 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input]"
+                  refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[scaSchId]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[scaSchId]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="scaSchId"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSchId]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSchId]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaSchId]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[scaSCA_OID]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[scaSCA_OID]"
                       cachedDataType="wstr"
                       cachedLength="14"
                       cachedName="scaSCA_OID"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSCA_OID]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSCA_OID]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaSCA_OID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[scaGradeLevel]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[scaGradeLevel]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="scaGradeLevel"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaGradeLevel]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaGradeLevel]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaGradeLevel]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[ScaProgramId]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[ScaProgramId]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="ScaProgramId"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaProgramId]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaProgramId]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ScaProgramId]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[scaYearContext]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[scaYearContext]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="scaYearContext"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaYearContext]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaYearContext]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[scaYearContext]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[ConscaAssignLimit]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[ConscaAssignLimit]"
                       cachedDataType="i4"
                       cachedName="ConscaAssignLimit"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaAssignLimit]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaAssignLimit]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaAssignLimit]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[ConScaActualToTal]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[ConScaActualToTal]"
                       cachedDataType="i4"
                       cachedName="ConScaActualToTal"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaActualTotal]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaActualTotal]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConScaActualToTal]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[ConscaPendingTotal]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[ConscaPendingTotal]"
                       cachedDataType="i4"
                       cachedName="ConscaPendingTotal"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaPendingTotal]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaPendingTotal]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaPendingTotal]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[ConscaWaitlistTotal]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[ConscaWaitlistTotal]"
                       cachedDataType="i4"
                       cachedName="ConscaWaitlistTotal"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaWaitlistTotal]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaWaitlistTotal]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConscaWaitlistTotal]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[ConScaIsSpecialAdmission]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[ConScaIsSpecialAdmission]"
                       cachedDataType="bool"
                       cachedName="ConScaIsSpecialAdmission"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaIsSpecialAdmission]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaIsSpecialAdmission]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ConScaIsSpecialAdmission]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[LastUpdatedDate]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[LastUpdatedDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="LastUpdatedDate"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaLastUpdated]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaLastUpdated]"
                       lineageId="Package\Data Flow Task\LastUpdated.Outputs[Derived Column Output].Columns[LastUpdatedDate]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].Columns[SCA_CAPACITY]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[SCA_CAPACITY]"
                       cachedDataType="numeric"
                       cachedName="SCA_CAPACITY"
                       cachedPrecision="5"
-                      externalMetadataColumnId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaCapacity]"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaCapacity]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[SCA_CAPACITY]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaId]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaId]"
                       dataType="i4"
                       name="scaId" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSchId]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSchId]"
                       codePage="1252"
                       dataType="str"
                       length="20"
                       name="scaSchId" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSCA_OID]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSCA_OID]"
                       dataType="wstr"
                       length="14"
                       name="scaSCA_OID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaLastUpdated]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaLastUpdated]"
                       dataType="dbTimeStamp"
                       name="scaLastUpdated" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaGradeLevel]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaGradeLevel]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="scaGradeLevel" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaProgramId]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaProgramId]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="scaProgramId" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaYearContext]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaYearContext]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="scaYearContext" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaAssignLimit]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaAssignLimit]"
                       dataType="i4"
                       name="scaAssignLimit" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaActualTotal]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaActualTotal]"
                       dataType="i4"
                       name="scaActualTotal" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaPendingTotal]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaPendingTotal]"
                       dataType="i4"
                       name="scaPendingTotal" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaWaitlistTotal]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaWaitlistTotal]"
                       dataType="i4"
                       name="scaWaitlistTotal" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaIsSpecialAdmission]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaIsSpecialAdmission]"
                       dataType="bool"
                       name="scaIsSpecialAdmission" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaIdPathway]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaIdPathway]"
                       dataType="i4"
                       name="scaIdPathway" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaCapacity]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaCapacity]"
                       dataType="numeric"
                       name="scaCapacity"
                       precision="5" />
@@ -792,22 +792,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Insert Into SChool Cap.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Data Flow Task\Insert Into School Cap.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Insert Into SChool Cap.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\Insert Into School Cap.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Insert Into SChool Cap.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Insert Into School Cap.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Insert Into SChool Cap.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\Insert Into School Cap.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2211,7 +2211,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
               startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Derived Column Output]"
-              endId="Package\Data Flow Task\Insert Into SChool Cap.Inputs[OLE DB Destination Input]"
+              endId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\LastUpdated.Outputs[Derived Column Output]" />
             <path
@@ -2322,95 +2322,37 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="134,42"
+          Id="Package\Data Flow Task\Update sort"
+          TopLeft="36,259" />
+        <NodeLayout
           Size="156,42"
           Id="Package\Data Flow Task\Data Conversion"
           TopLeft="168,102" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Data Flow Task\Insert Into School Cap"
+          TopLeft="295,415" />
         <NodeLayout
           Size="167,42"
           Id="Package\Data Flow Task\SchoolCapacityLKP"
           TopLeft="170,168" />
         <NodeLayout
-          Size="129,42"
-          Id="Package\Data Flow Task\Insert Sort"
-          TopLeft="332,249" />
-        <NodeLayout
           Size="186,42"
           Id="Package\Data Flow Task\Update SchoolCapacity"
           TopLeft="10,344" />
         <NodeLayout
-          Size="186,42"
-          Id="Package\Data Flow Task\Insert Into SChool Cap"
-          TopLeft="295,415" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Data Flow Task\LastUpdated"
-          TopLeft="323,344" />
-        <NodeLayout
-          Size="134,42"
-          Id="Package\Data Flow Task\Update sort"
-          TopLeft="36,259" />
+          Size="129,42"
+          Id="Package\Data Flow Task\Insert Sort"
+          TopLeft="332,249" />
         <NodeLayout
           Size="138,42"
           Id="Package\Data Flow Task\AspenSchool"
           TopLeft="171,23" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="227,210">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-124,49"
-              Start="0,0"
-              End="-124,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.8790035587189" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.8790035587189"
-                    Point2="0,19.8790035587189"
-                    Point3="-4,19.8790035587189" />
-                  <mssgle:LineSegment
-                    End="-120,19.8790035587189" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-120,19.8790035587189"
-                    Point2="-124,19.8790035587189"
-                    Point3="-124,23.8790035587189" />
-                  <mssgle:LineSegment
-                    End="-124,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-110.19138671875,24.8790035587189,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="390,386">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29"
-              Start="0,0"
-              End="0,21.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data Flow Task\LastUpdated"
+          TopLeft="323,344" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output]"
           TopLeft="249.75,144">
@@ -2452,9 +2394,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,14.75,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2537,9 +2477,80 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="227,210">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-124,49"
+              Start="0,0"
+              End="-124,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.8790035587189" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.8790035587189"
+                    Point2="0,19.8790035587189"
+                    Point3="-4,19.8790035587189" />
+                  <mssgle:LineSegment
+                    End="-120,19.8790035587189" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-120,19.8790035587189"
+                    Point2="-124,19.8790035587189"
+                    Point3="-124,23.8790035587189" />
+                  <mssgle:LineSegment
+                    End="-124,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-110.19138671875,24.8790035587189,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="389.75,386">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Insert Into School Cap">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\SchoolCapacityLKP">
     <Properties>
@@ -2560,19 +2571,6 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Insert Into SChool Cap">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

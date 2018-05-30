@@ -7,76 +7,14 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{8C13AE9B-6F89-4794-BE3E-101CD2CED0EE}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSTransportation_VersaTransData"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{73D017A2-2CFB-4DE8-B4E0-737E69867B2A}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{08CE3F93-AF74-4803-8FBE-A345AFD15CEC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BPSROUTES03.SY_Live_RP.BPSIntegration]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{14A4822A-2A69-471E-A05A-1B3EFA4C0F14}"
-      DTS:ObjectName="BPSROUTES03.SY_Live_RP.BPSIntegration">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSROUTES03;User ID=BPSIntegration;Initial Catalog=SY_Live_RP;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADUwKSeSPhVss7HVshS2YevAAAAAASAAACgAAAAEAAAAJHUPdioh2ZjnRH+/mXxREEYAAAAAp0eB6cGZ3U1jtvefHPnEuvRg52VcPocFAAAAJ1nnvlFUbPPCsCYkmX5pdBJy/Gl</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BPSROUTES03.SY_Pending_RP.BPSIntegration]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{AFC71B9C-1A55-411D-B4AA-F94BCF3057AA}"
-      DTS:ObjectName="BPSROUTES03.SY_Pending_RP.BPSIntegration">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSROUTES03;User ID=BPSIntegration;Initial Catalog=SY_Pending_RP;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAA32iubC3fA/7CgStwhdTuVAAAAAASAAACgAAAAEAAAAKG8SlMmbDdtkh2YpYbJ4UMYAAAAEd0zzJTqi2CDP1Np7mwAFc7HK3RHYFpPFAAAAAurfnYAF13KBCQKvWfxzBGTyAzc</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BPSROUTES03.SY_Planning_RP.BPSIntegration]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{5033914D-809F-4A2F-ADA5-2749A1E47575}"
-      DTS:ObjectName="BPSROUTES03.SY_Planning_RP.BPSIntegration">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSROUTES03;User ID=BPSIntegration;Initial Catalog=SY_Planning_RP;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADYFOpPBWefVFck7WbfhPXhAAAAAASAAACgAAAAEAAAAL1pUjMofKHRdH67ZLyhnDcYAAAAQq5qn47LM2o2RY9yA188QO0BPV3vx/dKFAAAAJ4KXdffgQvHg9KHcrcejpZH8X9W</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BPSTransportation.BPSIntegration]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{47F08621-6317-4348-9F53-832F23002960}"
-      DTS:ObjectName="BPSTransportation.BPSIntegration">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSDATA-03;User ID=BPSIntegration;Initial Catalog=BPSTransportation;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjTrWNIQRF0a3OAusKHtbsAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB4Hx0RHvM+qntomIR2Y4xgAAAAAASAAACgAAAAEAAAAH9WK+yyZYXcd3XQwyYEHLEYAAAAwWRmfOLY3NyILNj83sFLL98NTkbAac+RFAAAABKhCSDNYdijyZSaZngA/1Y6GfEw</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -152,8 +90,8 @@
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSTransportation.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSTransportation.BPSIntegration]"
+                  connectionManagerID="{47F08621-6317-4348-9F53-832F23002960}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSTransportation.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -533,8 +471,8 @@
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSTransportation.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSTransportation.BPSIntegration]"
+                  connectionManagerID="{47F08621-6317-4348-9F53-832F23002960}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSTransportation.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -914,8 +852,8 @@
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSTransportation.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSTransportation.BPSIntegration]"
+                  connectionManagerID="{47F08621-6317-4348-9F53-832F23002960}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSTransportation.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1433,8 +1371,8 @@ WHERE   LEN(VisibleID) = 6
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSROUTES03.SY_Live_RP.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSROUTES03.SY_Live_RP.BPSIntegration]"
+                  connectionManagerID="{14A4822A-2A69-471E-A05A-1B3EFA4C0F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSROUTES03.SY_Live_RP.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2151,8 +2089,8 @@ WHERE   LEN(VisibleID) = 6
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSROUTES03.SY_Pending_RP.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSROUTES03.SY_Pending_RP.BPSIntegration]"
+                  connectionManagerID="{AFC71B9C-1A55-411D-B4AA-F94BCF3057AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSROUTES03 SY_Pending_RP BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2869,8 +2807,8 @@ WHERE   LEN(VisibleID) = 6
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BPSROUTES03.SY_Planning_RP.BPSIntegration]"
-                  connectionManagerRefId="Package.ConnectionManagers[BPSROUTES03.SY_Planning_RP.BPSIntegration]"
+                  connectionManagerID="{5033914D-809F-4A2F-ADA5-2749A1E47575}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSROUTES03.SY_Planning_RP.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
