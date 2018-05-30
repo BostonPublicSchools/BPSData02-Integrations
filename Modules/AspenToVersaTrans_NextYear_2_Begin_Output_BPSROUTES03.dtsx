@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{13690AB0-9C86-4A74-B804-A0ED37BE0B62}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.1000.281"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_NextYear_2_Begin_Output_BPSROUTES03"
   DTS:PackageType="5"
   DTS:VersionBuild="174"
-  DTS:VersionGUID="{C7D8A207-E66E-4CF7-931A-334367CC16D7}">
+  DTS:VersionGUID="{DB91D292-C521-4DD5-8941-1C69F958D14E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,12 +23,7 @@
       DTS:ObjectName="BPSDATA02.AspenInterface">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSData02;User ID=BPSIntegration;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{1728A70B-8D2A-4852-9496-680BF121C5CD}BPSData.AspenInterface;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/HST7cnWREu84OXV1bOTYwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAo0KyxMMowo0O/bAzeHOZbAAAAAASAAACgAAAAEAAAACuWxRinWd4vAYSF2CAXensYAAAARaxcUUlBGKAglGuCmuEjEONTNboW1H48FAAAAMuAOD9KQN7bOFj6wMLzyONf7d+P</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=BPSData02;User ID=BPSIntegration;Initial Catalog=AspenInterface;Persist Security Info=True;Application Name=SSIS-Package-{1728A70B-8D2A-4852-9496-680BF121C5CD}BPSData.AspenInterface;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -46,7 +41,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="\\BPSROUTES03\RMU\20170728BPSTransportationExportDiff.txt">
+          DTS:ConnectionString="\\BPSROUTES03\RMU\20180530BPSTransportationExportDiff.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -526,7 +521,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="\\BPSROUTES03\RMU\20170728BPSTransportationExportFull.txt">
+          DTS:ConnectionString="\\BPSROUTES03\RMU\20180530BPSTransportationExportFull.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"

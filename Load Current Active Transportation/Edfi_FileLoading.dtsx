@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/27/2017 10:43:35 AM"
@@ -13,7 +13,7 @@
   DTS:ObjectName="Edfi_FileLoading"
   DTS:PackageType="5"
   DTS:VersionBuild="176"
-  DTS:VersionGUID="{6A029007-6165-4DCA-BEDF-251C1D35945A}">
+  DTS:VersionGUID="{B9B82AE7-5E97-4C10-999A-8976AF2BFBE7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -275,8 +275,8 @@
                   <connections>
                     <connection
                       refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Connections[OleDbConnection]"
-                      connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                      connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                      connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -603,8 +603,8 @@
                   <connections>
                     <connection
                       refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Connections[FlatFileConnection]"
-                      connectionManagerID="{FC8E3C83-5318-4D9C-BDCB-2B7D849911F0}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[EdplanFileDownload]"
+                      connectionManagerID="{FC8E3C83-5318-4D9C-BDCB-2B7D849911F0}:invalid"
+                      connectionManagerRefId="{FC8E3C83-5318-4D9C-BDCB-2B7D849911F0}:invalid"
                       name="FlatFileConnection" />
                   </connections>
                   <outputs>

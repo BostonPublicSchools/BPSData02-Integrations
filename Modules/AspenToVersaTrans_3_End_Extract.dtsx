@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{C95D0C34-FA1A-46A8-AFE4-7A90FD42E446}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3006.16"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_3_End_Extract"
   DTS:PackageType="5"
   DTS:VersionBuild="150"
-  DTS:VersionGUID="{F9CCBAED-B879-4228-9BC2-A8DD62A6AC28}">
+  DTS:VersionGUID="{A4F7C55A-E70A-4626-88AD-A7DFB0B48030}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -160,8 +160,8 @@ AND NOT city is null
               <connections>
                 <connection
                   refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Connections[OleDbConnection]"
-                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
+                  connectionManagerRefId="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1516,8 +1516,8 @@ AND NOT city is null
               <connections>
                 <connection
                   refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Connections[OleDbConnection]"
-                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
+                  connectionManagerRefId="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

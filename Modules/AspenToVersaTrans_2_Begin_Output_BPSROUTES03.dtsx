@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{2F14D14F-CE44-44CC-B677-38FD83A8CB15}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3006.16"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_2_Begin_Output_BPSROUTES03"
   DTS:PackageType="5"
   DTS:VersionBuild="200"
-  DTS:VersionGUID="{458142BD-5852-4FFB-8A19-20E9BFC5DBB7}">
+  DTS:VersionGUID="{F637C8C1-1051-4FE9-A481-7806FF87C222}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -168,8 +168,8 @@ WHERE   NOT program = '00'
               <connections>
                 <connection
                   refId="Package\dftAspen_DataExportFull\CurrentTransportationDaily.Connections[OleDbConnection]"
-                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
+                  connectionManagerRefId="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1450,8 +1450,8 @@ WHERE   NOT program = '00'
               <connections>
                 <connection
                   refId="Package\dftAspen_DataExportFull\ffsExportFull.Connections[FlatFileConnection]"
-                  connectionManagerID="{88791F00-CD38-4170-A85B-E59A66A44332}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Transporation RMU]"
+                  connectionManagerID="{88791F00-CD38-4170-A85B-E59A66A44332}:invalid"
+                  connectionManagerRefId="{88791F00-CD38-4170-A85B-E59A66A44332}:invalid"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -2399,8 +2399,8 @@ UNION ALL
               <connections>
                 <connection
                   refId="Package\dftFind_Differences\adsDifferenceBetwenTables.Connections[OleDbConnection]"
-                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
+                  connectionManagerRefId="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3681,8 +3681,8 @@ UNION ALL
               <connections>
                 <connection
                   refId="Package\dftFind_Differences\ffdDifferences.Connections[FlatFileConnection]"
-                  connectionManagerID="{1B925833-EA8D-48B8-A44F-B6DF1D152E4C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Transporation RMU Difference]"
+                  connectionManagerID="{1B925833-EA8D-48B8-A44F-B6DF1D152E4C}:invalid"
+                  connectionManagerRefId="{1B925833-EA8D-48B8-A44F-B6DF1D152E4C}:invalid"
                   name="FlatFileConnection" />
               </connections>
               <inputs>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/11/2017 3:57:57 PM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="LoadPendingData"
   DTS:PackageType="5"
   DTS:VersionBuild="176"
-  DTS:VersionGUID="{258E81D5-2ECA-4D86-B6F8-DB7A9749981F}">
+  DTS:VersionGUID="{F735B798-474E-463A-98AB-7480C89E32C5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1347,8 +1347,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\LoadPending\Error_Table Lkp.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -1614,8 +1614,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\LoadPending\Insert.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1976,8 +1976,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\LoadPending\Insert Error table.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3375,8 +3375,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\LoadPending\PendingData.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4214,8 +4214,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\LoadPending\Routing Lkp.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -4473,8 +4473,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\LoadPending\Update.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4923,8 +4923,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\LoadPending\Update ErrorTable.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="11/14/2017 2:21:57 PM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="Archivedatadaily"
   DTS:PackageType="5"
   DTS:VersionBuild="38"
-  DTS:VersionGUID="{4BAC555F-7EC5-4261-97E4-988BC1DA2CBA}">
+  DTS:VersionGUID="{18C8398E-9C30-415F-9FDF-8370925889C7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -90,8 +90,8 @@
               <connections>
                 <connection
                   refId="Package\Archive Daily\ArchiveTransportationDaily.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -870,8 +870,8 @@
               <connections>
                 <connection
                   refId="Package\Archive Daily\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="{FBC222B1-C9A3-4174-A368-19D447C64342}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ArchiveDailyConnection]"
+                  connectionManagerID="{FBC222B1-C9A3-4174-A368-19D447C64342}:invalid"
+                  connectionManagerRefId="{FBC222B1-C9A3-4174-A368-19D447C64342}:invalid"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -2389,8 +2389,8 @@
               <connections>
                 <connection
                   refId="Package\Current Daily\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="{DAC88E9D-553F-4520-B046-F9AC2A67D15E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[CurrentDailyConnection]"
+                  connectionManagerID="{DAC88E9D-553F-4520-B046-F9AC2A67D15E}:invalid"
+                  connectionManagerRefId="{DAC88E9D-553F-4520-B046-F9AC2A67D15E}:invalid"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -3919,8 +3919,8 @@
               <connections>
                 <connection
                   refId="Package\Current Daily\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

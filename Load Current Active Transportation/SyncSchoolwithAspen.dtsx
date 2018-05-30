@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="1/3/2018 10:08:19 AM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\X05112"
   DTS:DTSID="{588B9DBC-85BE-4F4C-8867-6EE123D63E3F}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3006.16"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncSchoolwithAspen"
   DTS:PackageType="5"
   DTS:VersionBuild="46"
-  DTS:VersionGUID="{ED883A48-E231-44D6-BB20-D359A71121AD}">
+  DTS:VersionGUID="{1EC8E708-06D5-47BB-9042-D4DE2C2A832E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -119,8 +119,8 @@ ORDER BY SchID;</property>
               <connections>
                 <connection
                   refId="Package\Sync Schools\Aspen School Table.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1081,8 +1081,8 @@ ORDER BY SchID;</property>
               <connections>
                 <connection
                   refId="Package\Sync Schools\Insert BPS_School.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2433,8 +2433,8 @@ where [refTable].[SchID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Sync Schools\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -2533,8 +2533,8 @@ where [refTable].[SchID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Sync Schools\Update Bps_school.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

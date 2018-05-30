@@ -7,26 +7,14 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{D136E2E4-DF9C-4312-B658-7F298A11885A}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="StoredValueDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{A785A4D7-73B6-4A66-9C8E-7E5A7B6A74EA}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{B92435E8-86D2-4E28-A03B-A7D615D641DD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
-      DTS:CreationName="SMTP"
-      DTS:DTSID="{B0829F60-E6F6-4675-AAE1-E2F1FBF129F5}"
-      DTS:ObjectName="SMTP Connection Manager">
-      <DTS:ObjectData>
-        <SmtpConnectionManager
-          ConnectionString="SmtpServer=smtp.boston.k12.ma.us;UseWindowsAuthentication=False;EnableSsl=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -70,7 +58,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">/* Deactive Query*/
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">/* Deactive Query*/
 SELECT  
 --S.STD_ID_LOCAL ,
         C.TRS_ID AS BPSID ,
@@ -111,8 +99,8 @@ WHERE   C.TRS_FIELDA_002 = 1
               <connections>
                 <connection
                   refId="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation.Connections[OleDbConnection]"
-                  connectionManagerID="{8CD2CD0B-852B-4CF9-A48E-7F48F4F776EA}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SISSQL-01.x2data]"
+                  connectionManagerID="{DDAD38BD-3B92-47B6-93E5-2A85DEAC97CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SISSQL-02.x2data.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -241,8 +229,8 @@ WHERE   C.TRS_FIELDA_002 = 1
               <connections>
                 <connection
                   refId="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations.Connections[FlatFileConnection]"
-                  connectionManagerID="{2D4F9BD2-9076-4E86-91DA-5716B4DCC08C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Stored Value Deactivation]"
+                  connectionManagerID="{269FBB00-8FD3-4C7E-A477-FA846665CECF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[StoredValueDeactivationConnection]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -334,7 +322,7 @@ WHERE   C.TRS_FIELDA_002 = 1
           SendMailTask:Subject="Stored Value Deactivations"
           SendMailTask:MessageSource="Stored Value Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="D:\StoredValuePassDeactivation12142017.txt" />
+            SendMailTask:FileName="D:\StoredValuePassDeactivation05302018.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>

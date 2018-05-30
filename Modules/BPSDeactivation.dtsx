@@ -7,31 +7,20 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{5C8AD5B1-70C5-4481-B13D-656622294F35}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="115"
-  DTS:VersionGUID="{2C1FE3DF-3DA7-4176-ABD4-0CC9EE12CC25}">
+  DTS:VersionBuild="129"
+  DTS:VersionGUID="{B0D9C7FB-7787-498A-B810-9902C9726DF1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
-      DTS:CreationName="SMTP"
-      DTS:DTSID="{4888A52D-FCD0-463E-894C-091343B134F6}"
-      DTS:ObjectName="SMTP Connection Manager">
-      <DTS:ObjectData>
-        <SmtpConnectionManager
-          ConnectionString="SmtpServer=smtp.boston.k12.ma.us;UseWindowsAuthentication=False;EnableSsl=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\dftBPSPassesDeactivation"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{67966BA7-14D6-48E3-827B-51A3DEE70A7E}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -70,7 +59,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  DISTINCT
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  DISTINCT
         C.TRS_ID AS BPSID ,
         C.TRS_FIELDB_001 AS SerialNumber ,
         ISNULL(( SELECT TOP 1
@@ -108,8 +97,8 @@ WHERE   C.TRS_FIELDA_002 = 1
               <connections>
                 <connection
                   refId="Package\dftBPSPassesDeactivation\ansBPS Passes for deactivation.Connections[OleDbConnection]"
-                  connectionManagerID="{8CD2CD0B-852B-4CF9-A48E-7F48F4F776EA}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SISSQL-01.x2data]"
+                  connectionManagerID="{DDAD38BD-3B92-47B6-93E5-2A85DEAC97CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SISSQL-02.x2data.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -238,8 +227,8 @@ WHERE   C.TRS_FIELDA_002 = 1
               <connections>
                 <connection
                   refId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Connections[FlatFileConnection]"
-                  connectionManagerID="{0C9248DA-1AA1-4A16-BF1C-6E9810EC09B0}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSPassesDeactivation]"
+                  connectionManagerID="{B1C9218D-81A7-40D9-8424-0D0B0799C69C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSDeactivation Connection]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -277,17 +266,20 @@ WHERE   C.TRS_FIELDA_002 = 1
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input].ExternalColumns[BPSID]"
-                      dataType="wstr"
+                      codePage="1252"
+                      dataType="str"
                       length="25"
                       name="BPSID" />
                     <externalMetadataColumn
                       refId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input].ExternalColumns[SerialNumber]"
-                      dataType="wstr"
+                      codePage="1252"
+                      dataType="str"
                       length="25"
                       name="SerialNumber" />
                     <externalMetadataColumn
                       refId="Package\dftBPSPassesDeactivation\ffdBPSPassDeactivation.Inputs[Flat File Destination Input].ExternalColumns[DeactivateCode]"
-                      dataType="wstr"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="DeactivateCode" />
                   </externalMetadataColumns>
@@ -332,7 +324,7 @@ WHERE   C.TRS_FIELDA_002 = 1
           SendMailTask:Subject="BPS Pass Deactivations"
           SendMailTask:MessageSource="BPS Pass Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="D:/BPSPassDeactivation11292017.txt" />
+            SendMailTask:FileName="D:/BPSPassDeactivation05302018.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>

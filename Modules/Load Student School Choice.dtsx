@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/31/2016 4:23:38 PM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{E5A60E1F-AF7B-4214-A22B-FDEC411268A1}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.900.80"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Student School Choice"
   DTS:PackageType="5"
   DTS:VersionBuild="183"
-  DTS:VersionGUID="{27BBBDBD-A1DD-4300-BC5E-3E322609D283}">
+  DTS:VersionGUID="{32D2F426-8988-406B-BD29-99AA6C802E60}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,12 +23,7 @@
       DTS:ObjectName="10.23.12.31.x2data.BPSIntegration">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.23.12.31;User ID=bps_user3;Initial Catalog=x2data;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAACFmt0c8Lt2Ox5Fjy+PWg8AAAAAASAAACgAAAAEAAAADkl7rIfVoys8XSJeyv22vIYAAAAzV6kWC4W1lmWMWMpr5vYsUBYdNvUrFgfFAAAANYTUiNXdFdGZOg8fEQLX12KVB5O</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=10.23.12.31;User ID=bps_user3;Initial Catalog=x2data;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -38,12 +33,7 @@
       DTS:ObjectName="BpsInterface.BPSIntegration">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntegration;Initial Catalog=BpsInterface;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEkv3WIcCqkmgo4wUAMgKEwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAHwFBFQJ04tlYVukVVrcH8AAAAAASAAACgAAAAEAAAAFVSlssV1+JyVJ42TJxvIsYYAAAAePHcVB/hyvPvDy0CgdQPQU9Y4UGoKDraFAAAAD2YtHzqNjVnM/hCpX7lxWeVJBEJ</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=BPSDATA02;User ID=BPSIntegration;Initial Catalog=BpsInterface;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>

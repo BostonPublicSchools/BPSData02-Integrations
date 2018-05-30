@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/17/2017 2:10:57 PM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="SyncSchoolCapacity"
   DTS:PackageType="5"
   DTS:VersionBuild="72"
-  DTS:VersionGUID="{CDC020D0-AFBE-4CF2-97F0-256B4CBB18E8}">
+  DTS:VersionGUID="{E7395496-E196-4A7B-A716-118F7BBD2028}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -82,8 +82,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\AspenSchool.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -623,8 +623,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Insert Into School Cap.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1365,8 +1365,8 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
               <connections>
                 <connection
                   refId="Package\Data Flow Task\SchoolCapacityLKP.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -1519,8 +1519,8 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Update SchoolCapacity.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

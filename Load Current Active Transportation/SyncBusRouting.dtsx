@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/21/2017 11:14:06 AM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
   DTS:VersionBuild="246"
-  DTS:VersionGUID="{B600A656-9257-405B-9C99-DE5714558F23}">
+  DTS:VersionGUID="{6DF694F0-8A18-4001-A039-952D0B4371AC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -112,8 +112,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Error_Table Lkp.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -353,8 +353,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Insert Error Table.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1596,8 +1596,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Insert St Routing.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1946,8 +1946,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\LiveData.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3985,8 +3985,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Routing Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -4245,8 +4245,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Update ErrorTable.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -5588,8 +5588,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Update St Routing.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
