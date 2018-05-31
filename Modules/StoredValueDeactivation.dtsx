@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="StoredValueDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{B92435E8-86D2-4E28-A03B-A7D615D641DD}">
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{7178C63C-1351-44A4-AA7E-8EAD2998B337}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -322,7 +322,7 @@ WHERE   C.TRS_FIELDA_002 = 1
           SendMailTask:Subject="Stored Value Deactivations"
           SendMailTask:MessageSource="Stored Value Deactivations" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="D:\StoredValuePassDeactivation05302018.txt" />
+            SendMailTask:FileName="D:\StoredValuePassDeactivation05312018.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -356,21 +356,21 @@ WHERE   C.TRS_FIELDA_002 = 1
         <NodeLayout
           Size="202,44"
           Id="Package\Send Mail Task"
-          TopLeft="5.5,99.9150943396226" />
+          TopLeft="8.5,101.915094339623" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="105.75,49.5">
+          TopLeft="107.25,49.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.4150943396226"
+              EndConnector="0,52.4150943396226"
               Start="0,0"
-              End="0,42.9150943396226">
+              End="0,44.9150943396226">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.9150943396226" />
+                    End="0,44.9150943396226" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -390,25 +390,37 @@ WHERE   C.TRS_FIELDA_002 = 1
         <NodeLayout
           Size="220,42"
           Id="Package\dftBPSPassesDeactivation\ffdStoredValuePassActivations"
-          TopLeft="79,133" />
+          TopLeft="96,136" />
         <NodeLayout
           Size="266,42"
           Id="Package\dftBPSPassesDeactivation\ansStored Value Passes for deactivation"
           TopLeft="53,9" />
         <EdgeLayout
           Id="Package\dftBPSPassesDeactivation.Paths[OLE DB Source Output]"
-          TopLeft="187.5,51">
+          TopLeft="186,51">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,82"
+              EndConnector="20,85"
               Start="0,0"
-              End="0,74.5">
+              End="20,77.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,74.5" />
+                    End="0,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.5"
+                    Point2="0,42.5"
+                    Point3="4,42.5" />
+                  <mssgle:LineSegment
+                    End="16,42.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16,42.5"
+                    Point2="20,42.5"
+                    Point3="20,46.5" />
+                  <mssgle:LineSegment
+                    End="20,77.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
