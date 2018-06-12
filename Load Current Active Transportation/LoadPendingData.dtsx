@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/11/2017 3:57:57 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadPendingData"
   DTS:PackageType="5"
-  DTS:VersionBuild="176"
-  DTS:VersionGUID="{F735B798-474E-463A-98AB-7480C89E32C5}">
+  DTS:VersionBuild="177"
+  DTS:VersionGUID="{67B430DE-556A-47F1-9CD2-6D39C7647CF6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1291,13 +1291,13 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Transportation].[Error_StudentTransportationRouting]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Transportation].[Error_StudentTransportationRouting]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Transportation].[Error_StudentTransportationRouting]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Transportation].[Error_StudentTransportationRouting]) [refTable]
 where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_StudentEligibilty] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -1347,8 +1347,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\LoadPending\Error_Table Lkp.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -1580,7 +1580,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1614,8 +1614,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\LoadPending\Insert.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1942,7 +1942,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1976,8 +1976,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\LoadPending\Insert Error table.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3349,7 +3349,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC  Transportation.LoadPendingDataToRouting</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC  Transportation.LoadPendingDataToRouting</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3375,8 +3375,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\LoadPending\PendingData.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4158,13 +4158,13 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Transportation].[StudentTransportationRouting]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Transportation].[StudentTransportationRouting]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Transportation].[StudentTransportationRouting]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Transportation].[StudentTransportationRouting]) [refTable]
 where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable].[strRoutingdirection] = ? and [refTable].[strisCurrent] = ? and [refTable].[strSourceData] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -4214,8 +4214,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\LoadPending\Routing Lkp.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -4464,7 +4464,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Transportation.MergeStudentTransportationRouting ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC Transportation.MergeStudentTransportationRouting ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4473,8 +4473,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\LoadPending\Update.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4914,7 +4914,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Transportation.Update_ErrorStudentTransportationRouting ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC Transportation.Update_ErrorStudentTransportationRouting ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4923,8 +4923,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\LoadPending\Update ErrorTable.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -6402,17 +6402,17 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="160,42"
-          Id="Package\LoadPending\Insert Error table"
-          TopLeft="631,435.363636363636" />
+          Size="135,42"
+          Id="Package\LoadPending\Steid Is null"
+          TopLeft="306,172.363636363636" />
         <NodeLayout
           Size="139,42"
           Id="Package\LoadPending\PendingData"
           TopLeft="304,13" />
         <NodeLayout
-          Size="135,42"
-          Id="Package\LoadPending\Steid Is null"
-          TopLeft="306,172.363636363636" />
+          Size="160,42"
+          Id="Package\LoadPending\Insert Error table"
+          TopLeft="631,435.363636363636" />
         <NodeLayout
           Size="129,42"
           Id="Package\LoadPending\Insert Sort"
@@ -6426,13 +6426,17 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           Id="Package\LoadPending\Delete duplicate Records"
           TopLeft="279,94.363636363636" />
         <NodeLayout
-          Size="134,42"
-          Id="Package\LoadPending\Update sort"
-          TopLeft="56,529.585858585858" />
+          Size="113,42"
+          Id="Package\LoadPending\Update"
+          TopLeft="60.545454545455,620.494949494949" />
         <NodeLayout
           Size="107,42"
           Id="Package\LoadPending\Insert"
           TopLeft="271.909090909091,615.494949494949" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\LoadPending\Update sort"
+          TopLeft="56,529.585858585858" />
         <NodeLayout
           Size="189,42"
           Id="Package\LoadPending\Existing Rows stcurrent"
@@ -6446,10 +6450,6 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           Id="Package\LoadPending\Update ErrorTable"
           TopLeft="419.272727272727,434.21212121212" />
         <NodeLayout
-          Size="113,42"
-          Id="Package\LoadPending\Update"
-          TopLeft="60.545454545455,620.494949494949" />
-        <NodeLayout
           Size="156,42"
           Id="Package\LoadPending\Data Conversion"
           TopLeft="132,349.585858585858" />
@@ -6457,194 +6457,6 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           Size="135,42"
           Id="Package\LoadPending\Routing Lkp"
           TopLeft="150,433.585858585858" />
-        <EdgeLayout
-          Id="Package\LoadPending.Paths[Sort Output]"
-          TopLeft="375.25,136.363636363636">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\LoadPending.Paths[OLE DB Source Output]"
-          TopLeft="375.25,55">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39.363636363636"
-              Start="0,0"
-              End="0,31.863636363636">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.863636363636" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\LoadPending.Paths[New Rows]"
-          TopLeft="352.333333333333,214.363636363636">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-142.333333333333,53"
-              Start="0,0"
-              End="-142.333333333333,45.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.5724743777452" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.5724743777452"
-                    Point2="0,21.5724743777452"
-                    Point3="-4,21.5724743777452" />
-                  <mssgle:LineSegment
-                    End="-138.333333333333,21.5724743777452" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-138.333333333333,21.5724743777452"
-                    Point2="-142.333333333333,21.5724743777452"
-                    Point3="-142.333333333333,25.5724743777452" />
-                  <mssgle:LineSegment
-                    End="-142.333333333333,45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-94.7042447916667,26.5724743777452,47.07515625,9.421875"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\LoadPending.Paths[Lookup No Match Output1]"
-          TopLeft="238.666666666667,475.585858585858">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="79.8333333333333,49"
-              Start="0,0"
-              End="79.8333333333333,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.9443631039532" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.9443631039532"
-                    Point2="0,19.9443631039532"
-                    Point3="4,19.9443631039532" />
-                  <mssgle:LineSegment
-                    End="75.8333333333333,19.9443631039532" />
-                  <mssgle:CubicBezierSegment
-                    Point1="75.8333333333333,19.9443631039532"
-                    Point2="79.8333333333333,19.9443631039532"
-                    Point3="79.8333333333333,23.9443631039532" />
-                  <mssgle:LineSegment
-                    End="79.8333333333333,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-15.8897200520833,24.9443631039532,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\LoadPending.Paths[Lookup No Match Output]"
-          TopLeft="618.363636363636,381.494949494949">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="92.6363636363636,53.868686868687"
-              Start="0,0"
-              End="92.6363636363636,46.368686868687">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.8798265430656" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.8798265430656"
-                    Point2="0,21.8798265430656"
-                    Point3="4,21.8798265430656" />
-                  <mssgle:LineSegment
-                    End="88.6363636363636,21.8798265430656" />
-                  <mssgle:CubicBezierSegment
-                    Point1="88.6363636363636,21.8798265430656"
-                    Point2="92.6363636363636,21.8798265430656"
-                    Point3="92.6363636363636,25.8798265430656" />
-                  <mssgle:LineSegment
-                    End="92.6363636363636,46.368686868687" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-9.48820490056819,26.8798265430656,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\LoadPending.Paths[Lookup Match Output1]"
-          TopLeft="569.69696969697,381.494949494949">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-67.9242424242426,52.717171717171"
-              Start="0,0"
-              End="-67.9242424242426,45.217171717171">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.4121160187995" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.4121160187995"
-                    Point2="0,21.4121160187995"
-                    Point3="-4,21.4121160187995" />
-                  <mssgle:LineSegment
-                    End="-63.9242424242426,21.4121160187995" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-63.9242424242426,21.4121160187995"
-                    Point2="-67.9242424242426,21.4121160187995"
-                    Point3="-67.9242424242426,25.4121160187995" />
-                  <mssgle:LineSegment
-                    End="-67.9242424242426,45.217171717171" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-82.1535079308713,26.4121160187995,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\LoadPending.Paths[Lookup Match Output]"
           TopLeft="196.333333333333,475.585858585858">
@@ -6713,7 +6525,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="66.5290885416667,22.9996746380347,61.77515625,11.384765625"
+              BoundingBox="66.5290885416665,22.9996746380347,61.77515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6827,9 +6639,205 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending.Paths[Sort Output]"
+          TopLeft="375.25,136.363636363636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending.Paths[OLE DB Source Output]"
+          TopLeft="375.25,55">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.363636363636"
+              Start="0,0"
+              End="0,31.863636363636">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.863636363636" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending.Paths[New Rows]"
+          TopLeft="352.333333333333,214.363636363636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-142.333333333333,53"
+              Start="0,0"
+              End="-142.333333333333,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5724743777452" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5724743777452"
+                    Point2="0,21.5724743777452"
+                    Point3="-4,21.5724743777452" />
+                  <mssgle:LineSegment
+                    End="-138.333333333333,21.5724743777452" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-138.333333333333,21.5724743777452"
+                    Point2="-142.333333333333,21.5724743777452"
+                    Point3="-142.333333333333,25.5724743777452" />
+                  <mssgle:LineSegment
+                    End="-142.333333333333,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-94.7042447916665,26.5724743777452,47.07515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending.Paths[Lookup No Match Output1]"
+          TopLeft="238.666666666667,475.585858585858">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.8333333333333,49"
+              Start="0,0"
+              End="79.8333333333333,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.9443631039532" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.9443631039532"
+                    Point2="0,19.9443631039532"
+                    Point3="4,19.9443631039532" />
+                  <mssgle:LineSegment
+                    End="75.8333333333333,19.9443631039532" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.8333333333333,19.9443631039532"
+                    Point2="79.8333333333333,19.9443631039532"
+                    Point3="79.8333333333333,23.9443631039532" />
+                  <mssgle:LineSegment
+                    End="79.8333333333333,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.8897200520833,24.9443631039532,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending.Paths[Lookup No Match Output]"
+          TopLeft="618.363636363636,381.494949494949">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="92.6363636363636,53.868686868687"
+              Start="0,0"
+              End="92.6363636363636,46.368686868687">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.8798265430656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.8798265430656"
+                    Point2="0,21.8798265430656"
+                    Point3="4,21.8798265430656" />
+                  <mssgle:LineSegment
+                    End="88.6363636363636,21.8798265430656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="88.6363636363636,21.8798265430656"
+                    Point2="92.6363636363636,21.8798265430656"
+                    Point3="92.6363636363636,25.8798265430656" />
+                  <mssgle:LineSegment
+                    End="92.6363636363636,46.368686868687" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.4882049005682,26.8798265430656,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPending.Paths[Lookup Match Output1]"
+          TopLeft="569.69696969697,381.494949494949">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-67.9242424242426,52.717171717171"
+              Start="0,0"
+              End="-67.9242424242426,45.217171717171">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.4121160187995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.4121160187995"
+                    Point2="0,21.4121160187995"
+                    Point3="-4,21.4121160187995" />
+                  <mssgle:LineSegment
+                    End="-63.9242424242426,21.4121160187995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-63.9242424242426,21.4121160187995"
+                    Point2="-67.9242424242426,21.4121160187995"
+                    Point3="-67.9242424242426,25.4121160187995" />
+                  <mssgle:LineSegment
+                    End="-67.9242424242426,45.217171717171" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-82.1535079308713,26.4121160187995,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\LoadPending\PendingData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\LoadPending\Insert Error table">
     <Properties>
@@ -6840,14 +6848,6 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\LoadPending\PendingData">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6870,7 +6870,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6903,7 +6903,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

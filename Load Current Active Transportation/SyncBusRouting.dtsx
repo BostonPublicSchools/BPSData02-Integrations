@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/21/2017 11:14:06 AM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="246"
-  DTS:VersionGUID="{6DF694F0-8A18-4001-A039-952D0B4371AC}">
+  DTS:VersionBuild="248"
+  DTS:VersionGUID="{CBE876A8-8139-4509-A0BE-AD4ED21D8A99}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -56,13 +56,13 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Transportation].[Error_StudentTransportationRouting]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Transportation].[Error_StudentTransportationRouting]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Transportation].[Error_StudentTransportationRouting]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Transportation].[Error_StudentTransportationRouting]) [refTable]
 where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_StudentEligibilty] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -112,8 +112,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Error_Table Lkp.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -319,7 +319,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -353,8 +353,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Insert Error Table.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1562,7 +1562,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1596,8 +1596,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Insert St Routing.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1920,7 +1920,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Transportation.LoadLiveDataToRouting</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC Transportation.LoadLiveDataToRouting</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1946,8 +1946,8 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\LiveData.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3929,13 +3929,13 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Transportation].[StudentTransportationRouting]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Transportation].[StudentTransportationRouting]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Transportation].[StudentTransportationRouting]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Transportation].[StudentTransportationRouting]) [refTable]
 where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable].[strisCurrent] = ? and [refTable].[strRoutingdirection] = ? and [refTable].[strSourceData] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -3985,8 +3985,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Routing Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -4236,7 +4236,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Transportation.Update_ErrorStudentTransportationRouting ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC Transportation.Update_ErrorStudentTransportationRouting ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4245,8 +4245,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Update ErrorTable.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -5579,7 +5579,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC Transportation.MergeStudentTransportationRouting ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC Transportation.MergeStudentTransportationRouting ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -5588,8 +5588,8 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
               <connections>
                 <connection
                   refId="Package\dftMergeBusRounting\Update St Routing.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -6156,21 +6156,21 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="135,42"
-          Id="Package\dftMergeBusRounting\Steid Is null"
-          TopLeft="388.222222222223,179.222222222222" />
-        <NodeLayout
           Size="129,42"
           Id="Package\dftMergeBusRounting\Insert Sort"
           TopLeft="293.111111111112,432.666666666667" />
         <NodeLayout
           Size="195,42"
           Id="Package\dftMergeBusRounting\Existing Rows stircurrent"
-          TopLeft="564.555555555556,279" />
+          TopLeft="550.555555555556,277" />
         <NodeLayout
           Size="165,42"
-          Id="Package\dftMergeBusRounting\Update St Routing"
-          TopLeft="53,523.888888888889" />
+          Id="Package\dftMergeBusRounting\Update ErrorTable"
+          TopLeft="467.888888888889,456.333333333333" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\dftMergeBusRounting\Update sort"
+          TopLeft="66.2222222222223,435.666666666667" />
         <NodeLayout
           Size="205,42"
           Id="Package\dftMergeBusRounting\Remove Duplicate Records"
@@ -6180,195 +6180,33 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           Id="Package\dftMergeBusRounting\Insert St Routing"
           TopLeft="272.666666666667,523.666666666667" />
         <NodeLayout
-          Size="134,42"
-          Id="Package\dftMergeBusRounting\Update sort"
-          TopLeft="66.2222222222223,435.666666666667" />
-        <NodeLayout
           Size="182,42"
           Id="Package\dftMergeBusRounting\New Rows StirCurrent"
-          TopLeft="178.222222222222,277.555555555555" />
+          TopLeft="178.222222222222,270.555555555555" />
         <NodeLayout
           Size="153,42"
           Id="Package\dftMergeBusRounting\Routing Lookup"
           TopLeft="185.111111111111,346.111111111111" />
         <NodeLayout
+          Size="135,42"
+          Id="Package\dftMergeBusRounting\Steid Is null"
+          TopLeft="388.222222222223,179.222222222222" />
+        <NodeLayout
           Size="162,42"
           Id="Package\dftMergeBusRounting\Insert Error Table"
-          TopLeft="717.555555555556,445.666666666667" />
+          TopLeft="684.555555555556,451.666666666667" />
         <NodeLayout
           Size="154,42"
           Id="Package\dftMergeBusRounting\Error_Table Lkp"
-          TopLeft="581.555555555556,349.888888888889" />
+          TopLeft="576.555555555556,347.888888888889" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\dftMergeBusRounting\LiveData"
+          TopLeft="392,19" />
         <NodeLayout
           Size="165,42"
-          Id="Package\dftMergeBusRounting\Update ErrorTable"
-          TopLeft="460.888888888889,442.333333333333" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Sort Output]"
-          TopLeft="134.361111111111,477.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46.222222222222"
-              Start="0,0"
-              End="0,38.722222222222">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.722222222222" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[New Rows]"
-          TopLeft="434.555555555556,221.222222222222">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-165.333333333334,56.333333333333"
-              Start="0,0"
-              End="-165.333333333334,48.833333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.9292337725718" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.9292337725718"
-                    Point2="0,22.9292337725718"
-                    Point3="-4,22.9292337725718" />
-                  <mssgle:LineSegment
-                    End="-161.333333333334,22.9292337725718" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-161.333333333334,22.9292337725718"
-                    Point2="-165.333333333334,22.9292337725718"
-                    Point3="-165.333333333334,26.9292337725718" />
-                  <mssgle:LineSegment
-                    End="-165.333333333334,48.833333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-106.204244791667,27.9292337725718,47.07515625,9.421875"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Lookup No Match Output1]"
-          TopLeft="682.888888888889,391.888888888889">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="115.666666666667,53.777777777778"
-              Start="0,0"
-              End="115.666666666667,46.277777777778">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.8429020279921" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.8429020279921"
-                    Point2="0,21.8429020279921"
-                    Point3="4,21.8429020279921" />
-                  <mssgle:LineSegment
-                    End="111.666666666667,21.8429020279921" />
-                  <mssgle:CubicBezierSegment
-                    Point1="111.666666666667,21.8429020279921"
-                    Point2="115.666666666667,21.8429020279921"
-                    Point3="115.666666666667,25.8429020279921" />
-                  <mssgle:LineSegment
-                    End="115.666666666667,46.277777777778" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="2.02694661458332,26.8429020279921,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Lookup No Match Output]"
-          TopLeft="285.777777777778,388.111111111111">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="71.8333333333344,44.5555555555561"
-              Start="0,0"
-              End="71.8333333333344,37.0555555555561">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.0988932010926" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.0988932010926"
-                    Point2="0,18.0988932010926"
-                    Point3="4,18.0988932010926" />
-                  <mssgle:LineSegment
-                    End="67.8333333333344,18.0988932010926" />
-                  <mssgle:CubicBezierSegment
-                    Point1="67.8333333333344,18.0988932010926"
-                    Point2="71.8333333333344,18.0988932010926"
-                    Point3="71.8333333333344,22.0988932010926" />
-                  <mssgle:LineSegment
-                    End="71.8333333333344,37.0555555555561" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-19.8897200520828,23.0988932010926,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Lookup Match Output1]"
-          TopLeft="634.222222222223,391.888888888889">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-90.8333333333336,50.4444444444439"
-              Start="0,0"
-              End="-90.8333333333336,42.9444444444439">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.4890031419592" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.4890031419592"
-                    Point2="0,20.4890031419592"
-                    Point3="-4,20.4890031419592" />
-                  <mssgle:LineSegment
-                    End="-86.8333333333336,20.4890031419592" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-86.8333333333336,20.4890031419592"
-                    Point2="-90.8333333333336,20.4890031419592"
-                    Point3="-90.8333333333336,24.4890031419592" />
-                  <mssgle:LineSegment
-                    End="-90.8333333333336,42.9444444444439" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-93.6080533854168,25.4890031419592,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Id="Package\dftMergeBusRounting\Update St Routing"
+          TopLeft="53,523.888888888889" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Lookup Match Output]"
           TopLeft="237.444444444444,388.111111111111">
@@ -6411,39 +6249,39 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="185.166666666666,57.777777777778"
+              EndConnector="171.166666666666,55.777777777778"
               Start="0,0"
-              End="185.166666666666,50.277777777778">
+              End="171.166666666666,48.277777777778">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.5171628436637" />
+                    End="0,18.7031072067676" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.5171628436637"
-                    Point2="0,23.5171628436637"
-                    Point3="4,23.5171628436637" />
+                    Point1="0,18.7031072067676"
+                    Point2="0,22.7031072067676"
+                    Point3="4,22.7031072067676" />
                   <mssgle:LineSegment
-                    End="181.166666666666,23.5171628436637" />
+                    End="167.166666666666,22.7031072067676" />
                   <mssgle:CubicBezierSegment
-                    Point1="181.166666666666,23.5171628436637"
-                    Point2="185.166666666666,23.5171628436637"
-                    Point3="185.166666666666,27.5171628436637" />
+                    Point1="167.166666666666,22.7031072067676"
+                    Point2="171.166666666666,22.7031072067676"
+                    Point3="171.166666666666,26.7031072067676" />
                   <mssgle:LineSegment
-                    End="185.166666666666,50.277777777778" />
+                    End="171.166666666666,48.277777777778" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="61.6957552083331,28.5171628436637,61.77515625,11.384765625"
+              BoundingBox="54.6957552083331,27.7031072067676,61.77515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Derived Column Output1]"
-          TopLeft="660.305555555556,321">
+          TopLeft="650.805555555556,319">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6465,18 +6303,18 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
         </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Derived Column Output]"
-          TopLeft="265.416666666667,319.555555555555">
+          TopLeft="265.416666666667,312.555555555555">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,26.555555555556"
+              EndConnector="0,33.555555555556"
               Start="0,0"
-              End="0,19.055555555556">
+              End="0,26.055555555556">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.055555555556" />
+                    End="0,26.055555555556" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6529,10 +6367,28 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="120,42"
-          Id="Package\dftMergeBusRounting\LiveData"
-          TopLeft="392,19" />
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Sort Output]"
+          TopLeft="134.361111111111,477.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.222222222222"
+              Start="0,0"
+              End="0,38.722222222222">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.722222222222" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[OLE DB Source Output]"
           TopLeft="454.25,61">
@@ -6553,6 +6409,150 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[New Rows]"
+          TopLeft="434.555555555556,221.222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-165.333333333334,49.333333333333"
+              Start="0,0"
+              End="-165.333333333334,41.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.0800390434357" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.0800390434357"
+                    Point2="0,20.0800390434357"
+                    Point3="-4,20.0800390434357" />
+                  <mssgle:LineSegment
+                    End="-161.333333333334,20.0800390434357" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-161.333333333334,20.0800390434357"
+                    Point2="-165.333333333334,20.0800390434357"
+                    Point3="-165.333333333334,24.0800390434357" />
+                  <mssgle:LineSegment
+                    End="-165.333333333334,41.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-106.204244791667,25.0800390434357,47.07515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Lookup No Match Output1]"
+          TopLeft="677.888888888889,389.888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.6666666666666,61.777777777778"
+              Start="0,0"
+              End="87.6666666666666,54.277777777778">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0922593544702" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0922593544702"
+                    Point2="0,25.0922593544702"
+                    Point3="4,25.0922593544702" />
+                  <mssgle:LineSegment
+                    End="83.6666666666666,25.0922593544702" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.6666666666666,25.0922593544702"
+                    Point2="87.6666666666666,25.0922593544702"
+                    Point3="87.6666666666666,29.0922593544702" />
+                  <mssgle:LineSegment
+                    End="87.6666666666666,54.277777777778" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-11.9730533854167,30.0922593544702,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Lookup No Match Output]"
+          TopLeft="285.777777777778,388.111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.8333333333344,44.5555555555561"
+              Start="0,0"
+              End="71.8333333333344,37.0555555555561">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.0988932010926" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.0988932010926"
+                    Point2="0,18.0988932010926"
+                    Point3="4,18.0988932010926" />
+                  <mssgle:LineSegment
+                    End="67.8333333333344,18.0988932010926" />
+                  <mssgle:CubicBezierSegment
+                    Point1="67.8333333333344,18.0988932010926"
+                    Point2="71.8333333333344,18.0988932010926"
+                    Point3="71.8333333333344,22.0988932010926" />
+                  <mssgle:LineSegment
+                    End="71.8333333333344,37.0555555555561" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.8897200520828,23.0988932010926,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Lookup Match Output1]"
+          TopLeft="629.222222222223,389.888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-78.8333333333336,66.4444444444439"
+              Start="0,0"
+              End="-78.8333333333336,58.9444444444439">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.9877177949155" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.9877177949155"
+                    Point2="0,26.9877177949155"
+                    Point3="-4,26.9877177949155" />
+                  <mssgle:LineSegment
+                    End="-74.8333333333336,26.9877177949155" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.8333333333336,26.9877177949155"
+                    Point2="-78.8333333333336,26.9877177949155"
+                    Point3="-78.8333333333336,30.9877177949155" />
+                  <mssgle:LineSegment
+                    End="-78.8333333333336,58.9444444444439" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-87.6080533854168,31.9877177949155,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6613,7 +6613,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6623,7 +6623,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
