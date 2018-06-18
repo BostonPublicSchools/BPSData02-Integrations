@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_NextYear_3_End_Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="150"
-  DTS:VersionGUID="{7406F2CC-D3B0-45F3-81C7-557A7BB84B2E}">
+  DTS:VersionBuild="154"
+  DTS:VersionGUID="{1C508891-ACF0-4466-9D9A-419DFDE4CA8C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -530,6 +530,18 @@
                       cachedName="ctdFamilyId"
                       externalMetadataColumnId="Package\dftTransferCurrenttoArchiveNext\andArchiveTransportationDailyNext.Inputs[OLE DB Destination Input].ExternalColumns[atdFamilyId]"
                       lineageId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].Columns[ctdFamilyId]" />
+                    <inputColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\andArchiveTransportationDailyNext.Inputs[OLE DB Destination Input].Columns[ctdRunNumber]"
+                      cachedDataType="i8"
+                      cachedName="ctdRunNumber"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchiveNext\andArchiveTransportationDailyNext.Inputs[OLE DB Destination Input].ExternalColumns[atdRunNumber]"
+                      lineageId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].Columns[ctdRunNumber]" />
+                    <inputColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\andArchiveTransportationDailyNext.Inputs[OLE DB Destination Input].Columns[ctdRunDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ctdRunDate"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchiveNext\andArchiveTransportationDailyNext.Inputs[OLE DB Destination Input].ExternalColumns[atdRunDate]"
+                      lineageId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].Columns[ctdRunDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -839,6 +851,14 @@
                       dataType="str"
                       length="10"
                       name="atdFamilyId" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\andArchiveTransportationDailyNext.Inputs[OLE DB Destination Input].ExternalColumns[atdRunNumber]"
+                      dataType="i8"
+                      name="atdRunNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\andArchiveTransportationDailyNext.Inputs[OLE DB Destination Input].ExternalColumns[atdRunDate]"
+                      dataType="dbTimeStamp"
+                      name="atdRunDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -942,7 +962,9 @@
         ishomeless ,
         IsProtectedAddress ,
         TapCardID,
-        ctdFamilyId
+        ctdFamilyId,
+        ctdRunNumber,
+        ctdRunDate
 FROM    Transportation.CurrentTransportationNext
 /*WHERE
  NOT program = '00'
@@ -1546,6 +1568,24 @@ AND NOT city is null
                       lineageId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].Columns[ctdFamilyId]"
                       name="ctdFamilyId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].Columns[ctdRunNumber]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].ExternalColumns[ctdRunNumber]"
+                      lineageId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].Columns[ctdRunNumber]"
+                      name="ctdRunNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].Columns[ctdRunDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].ExternalColumns[ctdRunDate]"
+                      lineageId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].Columns[ctdRunDate]"
+                      name="ctdRunDate"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1855,6 +1895,14 @@ AND NOT city is null
                       dataType="str"
                       length="10"
                       name="ctdFamilyId" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].ExternalColumns[ctdRunNumber]"
+                      dataType="i8"
+                      name="ctdRunNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Output].ExternalColumns[ctdRunDate]"
+                      dataType="dbTimeStamp"
+                      name="ctdRunDate" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2219,6 +2267,16 @@ AND NOT city is null
                       length="10"
                       lineageId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Error Output].Columns[ctdFamilyId]"
                       name="ctdFamilyId" />
+                    <outputColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Error Output].Columns[ctdRunNumber]"
+                      dataType="i8"
+                      lineageId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Error Output].Columns[ctdRunNumber]"
+                      name="ctdRunNumber" />
+                    <outputColumn
+                      refId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Error Output].Columns[ctdRunDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Error Output].Columns[ctdRunDate]"
+                      name="ctdRunDate" />
                     <outputColumn
                       refId="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -4215,6 +4273,10 @@ AND NOT city is null
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="232,42"
+          Id="Package\dftTransferCurrenttoArchiveNext"
+          TopLeft="21,105" />
+        <NodeLayout
           Size="243,42"
           Id="Package\dftTransferCurrenttoArchiveNext_1"
           TopLeft="438.481132075472,163.349056603774" />
@@ -4222,10 +4284,6 @@ AND NOT city is null
           Size="254,44"
           Id="Package\estTruncateArchiveTransportationNext"
           TopLeft="431.5,73.481132075472" />
-        <NodeLayout
-          Size="232,42"
-          Id="Package\dftTransferCurrenttoArchiveNext"
-          TopLeft="21,105" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="559.240566037736,117.481132075472">
@@ -4252,56 +4310,18 @@ AND NOT city is null
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\dftTransferCurrenttoArchiveNext_1">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="228,42"
-          Id="Package\dftTransferCurrenttoArchiveNext_1\ansCurrentTransportationDaily1"
-          TopLeft="5.5,5.5" />
-        <NodeLayout
-          Size="234,42"
-          Id="Package\dftTransferCurrenttoArchiveNext_1\andArchiveTransportationDaily_1"
-          TopLeft="6.48113207547171,106.330188679245" />
-        <EdgeLayout
-          Id="Package\dftTransferCurrenttoArchiveNext_1.Paths[ADO NET Source Output]"
-          TopLeft="121.490566037736,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58.830188679245"
-              Start="0,0"
-              End="0,51.330188679245">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.330188679245" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
     design-time-name="Package\dftTransferCurrenttoArchiveNext">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="244,42"
-          Id="Package\dftTransferCurrenttoArchiveNext\andArchiveTransportationDailyNext"
-          TopLeft="60,165" />
-        <NodeLayout
-          Size="244,42"
           Id="Package\dftTransferCurrenttoArchiveNext\ansCurrentTransportationDailyNext"
           TopLeft="63,60" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\dftTransferCurrenttoArchiveNext\andArchiveTransportationDailyNext"
+          TopLeft="60,165" />
         <EdgeLayout
           Id="Package\dftTransferCurrenttoArchiveNext.Paths[OLE DB Source Output]"
           TopLeft="183.5,102">
@@ -4348,5 +4368,43 @@ AND NOT city is null
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\dftTransferCurrenttoArchiveNext_1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="228,42"
+          Id="Package\dftTransferCurrenttoArchiveNext_1\ansCurrentTransportationDaily1"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\dftTransferCurrenttoArchiveNext_1\andArchiveTransportationDaily_1"
+          TopLeft="6.48113207547171,106.330188679245" />
+        <EdgeLayout
+          Id="Package\dftTransferCurrenttoArchiveNext_1.Paths[ADO NET Source Output]"
+          TopLeft="121.490566037736,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.830188679245"
+              Start="0,0"
+              End="0,51.330188679245">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.330188679245" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_NextYear_2_Begin_Output_BPSROUTES03"
   DTS:PackageType="5"
-  DTS:VersionBuild="183"
-  DTS:VersionGUID="{E288FA80-6913-4107-B29B-0C02AF6B4B9A}">
+  DTS:VersionBuild="186"
+  DTS:VersionGUID="{6B4955F0-48E1-44CD-B659-4BD5D66DA7E0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -4082,6 +4082,22 @@ UNION ALL
                       cachedName="TapCardID"
                       externalMetadataColumnId="Package\dftFindDifferences\ffdDifferences.Inputs[Flat File Destination Input].ExternalColumns[TapCardID]"
                       lineageId="Package\dftFindDifferences\adsDifferenceBetwenTables.Outputs[OLE DB Source Output].Columns[TapCardID]" />
+                    <inputColumn
+                      refId="Package\dftFindDifferences\ffdDifferences.Inputs[Flat File Destination Input].Columns[isWithDrawn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="isWithDrawn"
+                      externalMetadataColumnId="Package\dftFindDifferences\ffdDifferences.Inputs[Flat File Destination Input].ExternalColumns[isWithDrawn]"
+                      lineageId="Package\dftFindDifferences\adsDifferenceBetwenTables.Outputs[OLE DB Source Output].Columns[isWithDrawn]" />
+                    <inputColumn
+                      refId="Package\dftFindDifferences\ffdDifferences.Inputs[Flat File Destination Input].Columns[ctdFamilyId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ctdFamilyId"
+                      externalMetadataColumnId="Package\dftFindDifferences\ffdDifferences.Inputs[Flat File Destination Input].ExternalColumns[ctdFamilyId]"
+                      lineageId="Package\dftFindDifferences\adsDifferenceBetwenTables.Outputs[OLE DB Source Output].Columns[ctdFamilyId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4417,13 +4433,13 @@ UNION ALL
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="137,42"
-          Id="Package\dftAspenDataExportFull\ffsExportFull"
-          TopLeft="41,120" />
-        <NodeLayout
           Size="156,42"
           Id="Package\dftAspenDataExportFull\FullCurrentTable"
           TopLeft="32,24" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\dftAspenDataExportFull\ffsExportFull"
+          TopLeft="41,120" />
         <EdgeLayout
           Id="Package\dftAspenDataExportFull.Paths[OLE DB Source Output]"
           TopLeft="109.75,66">
@@ -4449,6 +4465,14 @@ UNION ALL
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dftAspenDataExportFull\FullCurrentTable">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\dftFindDifferences">
     <LayoutInfo>
@@ -4489,14 +4513,6 @@ UNION ALL
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\dftFindDifferences\adsDifferenceBetwenTables">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\dftAspenDataExportFull\FullCurrentTable">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
