@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="7/29/2016 1:59:50 PM"
@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="VersaTransData"
   DTS:PackageType="5"
-  DTS:VersionBuild="79"
-  DTS:VersionGUID="{CBE41101-0DEB-46EA-AB04-D27C0B138269}">
+  DTS:VersionBuild="81"
+  DTS:VersionGUID="{8B7B6279-6ECD-408C-A795-358E197C11DC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Configurations>
@@ -75,7 +75,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -109,8 +109,8 @@
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -296,6 +296,30 @@
                       cachedName="DropoffTime"
                       externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[vdlDropOffTime]"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].Columns[AltStreetNo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="AltStreetNo"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[AltStreetNo]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[AltStreetNo]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].Columns[AltStreet]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AltStreet"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[AltStreet]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[AltStreet]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].Columns[AltZip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="AltZip"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataLive.Inputs[OLE DB Destination Input].ExternalColumns[AltZip]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[AltZip]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -498,7 +522,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -532,8 +556,8 @@
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -719,6 +743,30 @@
                       cachedName="DropoffTime"
                       externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[vdlDropOffTime]"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].Columns[AltStreetNo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="AltStreetNo"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[AltStreetNo]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[AltStreetNo]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].Columns[AltStreet]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AltStreet"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[AltStreet]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[AltStreet]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].Columns[AltZip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="AltZip"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPending.Inputs[OLE DB Destination Input].ExternalColumns[AltZip]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[AltZip]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -921,7 +969,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -955,8 +1003,8 @@
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1142,6 +1190,30 @@
                       cachedName="DropoffTime"
                       externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[vdlDropOffTime]"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[DropoffTime]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].Columns[ALtStreetNo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="ALtStreetNo"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[AltStreetNo]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[ALtStreetNo]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].Columns[AltStreet]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AltStreet"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[AltStreet]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[AltStreet]" />
+                    <inputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].Columns[AltZip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="AltZip"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\odd VersatransDataPlanning.Inputs[OLE DB Destination Input].ExternalColumns[AltZip]"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[AltZip]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1344,7 +1416,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">USE SY_Live_RP;
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">USE SY_Live_RP;
 
 SELECT s.VisibleID AS StudentNo,
        CASE
@@ -1460,6 +1532,9 @@ SELECT s.VisibleID AS StudentNo,
        h.HouseNumber AS StreetNo,
        h.Street AS Street,
        h.ZipCode AS Zip,
+	   pu.HouseNumber AS AltStreetNo,
+	   pu.Street AS AltStreet,
+	   pu.ZipCode AS AltZip,
        GETDATE() AS LastUpdateTime,
        p_IN.X,
        p_IN.Y,
@@ -1622,6 +1697,9 @@ SELECT s.VisibleID AS 'StudentNo',
        h.HouseNumber AS StreetNo,
        h.Street AS Street,
        h.ZipCode AS Zip,
+	   d.HouseNumber AS AltStreetNo,
+	   d.Street AS AltStreet,
+	   d.ZipCode AS AltZip,
        GETDATE() AS LastUpdateTime,
        p_OUT.X,
        p_OUT.Y,
@@ -1664,7 +1742,7 @@ FROM dbo.Student s WITH (NOLOCK)
     LEFT JOIN dbo.Vehicles vehicles_OUT WITH (NOLOCK)
         ON vehicles_OUT.RecordID = route_OUT.VehicleID
 WHERE LEN(VisibleID) = 6
-      AND ISNULL(ProgramCode, '') &lt;&gt; '70';</property>
+      AND ISNULL(ProgramCode, '') &lt;&gt; '70'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1690,8 +1768,8 @@ WHERE LEN(VisibleID) = 6
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Connections[OleDbConnection]"
-                  connectionManagerID="{14A4822A-2A69-471E-A05A-1B3EFA4C0F14}:invalid"
-                  connectionManagerRefId="{14A4822A-2A69-471E-A05A-1B3EFA4C0F14}:invalid"
+                  connectionManagerID="{14A4822A-2A69-471E-A05A-1B3EFA4C0F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSROUTES03.SY_Live_RP.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1946,6 +2024,39 @@ WHERE LEN(VisibleID) = 6
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]"
                       name="BusRideMinutes"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[AltStreetNo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreetNo]"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[AltStreetNo]"
+                      name="AltStreetNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[AltStreet]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreet]"
+                      length="50"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[AltStreet]"
+                      name="AltStreet"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[AltZip]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[AltZip]"
+                      length="10"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].Columns[AltZip]"
+                      name="AltZip"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2077,6 +2188,24 @@ WHERE LEN(VisibleID) = 6
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[BusRideMinutes]"
                       dataType="i4"
                       name="BusRideMinutes" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreetNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="AltStreetNo" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AltStreet" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Output].ExternalColumns[AltZip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="AltZip" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2212,6 +2341,27 @@ WHERE LEN(VisibleID) = 6
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[Zip]"
                       name="Zip" />
                     <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[AltStreetNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[AltStreetNo]"
+                      name="AltStreetNo" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[AltStreet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[AltStreet]"
+                      name="AltStreet" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[AltZip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[AltZip]"
+                      name="AltZip" />
+                    <outputColumn
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[LastUpdateTime]"
                       dataType="dbTimeStamp"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Live_RP.Outputs[OLE DB Source Error Output].Columns[LastUpdateTime]"
@@ -2278,7 +2428,7 @@ WHERE LEN(VisibleID) = 6
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -2392,6 +2542,9 @@ WHERE LEN(VisibleID) = 6
        h.HouseNumber AS StreetNo,
        h.Street AS Street,
        h.ZipCode AS Zip,
+	   pu.HouseNumber AS AltStreetNo,
+	   pu.Street AS AltStreet,
+	   pu.ZipCode AS AltZip,
        GETDATE() AS LastUpdateTime,
        p_IN.X,
        p_IN.Y,
@@ -2554,6 +2707,9 @@ SELECT s.VisibleID AS 'StudentNo',
        h.HouseNumber AS StreetNo,
        h.Street AS Street,
        h.ZipCode AS Zip,
+	   d.HouseNumber AS AltStreetNo,
+	   d.Street AS AltStreet,
+	   d.ZipCode AS AltZip,
        GETDATE() AS LastUpdateTime,
        p_OUT.X,
        p_OUT.Y,
@@ -2622,8 +2778,8 @@ WHERE LEN(VisibleID) = 6
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Connections[OleDbConnection]"
-                  connectionManagerID="{AFC71B9C-1A55-411D-B4AA-F94BCF3057AA}:invalid"
-                  connectionManagerRefId="{AFC71B9C-1A55-411D-B4AA-F94BCF3057AA}:invalid"
+                  connectionManagerID="{AFC71B9C-1A55-411D-B4AA-F94BCF3057AA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSROUTES03 SY_Pending_RP BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2878,6 +3034,39 @@ WHERE LEN(VisibleID) = 6
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]"
                       name="BusRideMinutes"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[AltStreetNo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreetNo]"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[AltStreetNo]"
+                      name="AltStreetNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[AltStreet]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreet]"
+                      length="50"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[AltStreet]"
+                      name="AltStreet"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[AltZip]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[AltZip]"
+                      length="10"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].Columns[AltZip]"
+                      name="AltZip"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3009,6 +3198,24 @@ WHERE LEN(VisibleID) = 6
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[BusRideMinutes]"
                       dataType="i4"
                       name="BusRideMinutes" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreetNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="AltStreetNo" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AltStreet" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Output].ExternalColumns[AltZip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="AltZip" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3144,6 +3351,27 @@ WHERE LEN(VisibleID) = 6
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[Zip]"
                       name="Zip" />
                     <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[AltStreetNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[AltStreetNo]"
+                      name="AltStreetNo" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[AltStreet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[AltStreet]"
+                      name="AltStreet" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[AltZip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[AltZip]"
+                      name="AltZip" />
+                    <outputColumn
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[LastUpdateTime]"
                       dataType="dbTimeStamp"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Pending_RP.Outputs[OLE DB Source Error Output].Columns[LastUpdateTime]"
@@ -3210,7 +3438,7 @@ WHERE LEN(VisibleID) = 6
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT s.VisibleID AS StudentNo,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT s.VisibleID AS StudentNo,
        CASE
            WHEN LEN(CAST(BuildingCode AS VARCHAR(4))) = 4 THEN
                CAST(BuildingCode AS VARCHAR(4))
@@ -3324,6 +3552,9 @@ WHERE LEN(VisibleID) = 6
        h.HouseNumber AS StreetNo,
        h.Street AS Street,
        h.ZipCode AS Zip,
+	   pu.HouseNumber AS ALtStreetNo,
+       pu.Street AS AltStreet,
+       pu.ZipCode AS AltZip,
        GETDATE() AS LastUpdateTime,
        p_IN.X,
        p_IN.Y,
@@ -3486,6 +3717,9 @@ SELECT s.VisibleID AS 'StudentNo',
        h.HouseNumber AS StreetNo,
        h.Street AS Street,
        h.ZipCode AS Zip,
+	   d.HouseNumber AS ALtStreetNo,
+       d.Street AS AltStreet,
+       d.ZipCode AS AltZip,
        GETDATE() AS LastUpdateTime,
        p_OUT.X,
        p_OUT.Y,
@@ -3554,8 +3788,8 @@ WHERE LEN(VisibleID) = 6
               <connections>
                 <connection
                   refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Connections[OleDbConnection]"
-                  connectionManagerID="{5033914D-809F-4A2F-ADA5-2749A1E47575}:invalid"
-                  connectionManagerRefId="{5033914D-809F-4A2F-ADA5-2749A1E47575}:invalid"
+                  connectionManagerID="{5033914D-809F-4A2F-ADA5-2749A1E47575}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSROUTES03.SY_Planning_RP.BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3810,6 +4044,39 @@ WHERE LEN(VisibleID) = 6
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[BusRideMinutes]"
                       name="BusRideMinutes"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[ALtStreetNo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[ALtStreetNo]"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[ALtStreetNo]"
+                      name="ALtStreetNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[AltStreet]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreet]"
+                      length="50"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[AltStreet]"
+                      name="AltStreet"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[AltZip]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[AltZip]"
+                      length="10"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].Columns[AltZip]"
+                      name="AltZip"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3941,6 +4208,24 @@ WHERE LEN(VisibleID) = 6
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[BusRideMinutes]"
                       dataType="i4"
                       name="BusRideMinutes" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[ALtStreetNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="ALtStreetNo" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[AltStreet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AltStreet" />
+                    <externalMetadataColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Output].ExternalColumns[AltZip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="AltZip" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -4075,6 +4360,27 @@ WHERE LEN(VisibleID) = 6
                       length="10"
                       lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[Zip]"
                       name="Zip" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[ALtStreetNo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[ALtStreetNo]"
+                      name="ALtStreetNo" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[AltStreet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[AltStreet]"
+                      name="AltStreet" />
+                    <outputColumn
+                      refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[AltZip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[AltZip]"
+                      name="AltZip" />
                     <outputColumn
                       refId="Package\dft TransferRaw VersaTrans Data\ods SY_Planning_RP.Outputs[OLE DB Source Error Output].Columns[LastUpdateTime]"
                       dataType="dbTimeStamp"
