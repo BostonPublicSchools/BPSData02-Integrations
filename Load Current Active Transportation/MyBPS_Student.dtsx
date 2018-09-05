@@ -1,0 +1,2517 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/4/2018 12:30:59 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="084-140697-003"
+  DTS:CreatorName="ADMINDOM\X05112"
+  DTS:DTSID="{91637A78-1380-4CF5-BC43-8962580BC224}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MyBPS_Student"
+  DTS:PackageType="5"
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{11A95AFD-8CC5-4D66-B1CB-B5E443414F09}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\MyBPS_Source"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A4161C23-1F63-44C1-9CC0-F443717D7AC9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MyBPS_Source"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MyBPS_Source\BPS_Student"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="BPS_Student"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[BPS].[Student]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MyBPS_Source\BPS_Student.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[STD_FamilyName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="STD_FamilyName"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_FamilyName]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_FamilyName]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[STD_GivenName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="STD_GivenName"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_GivenName]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_GivenName]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[STD_BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STD_BirthDate"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_BirthDate]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_BirthDate]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[stuCohortGraduationYear]"
+                      cachedDataType="i4"
+                      cachedName="stuCohortGraduationYear"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuCohortGraduationYear]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[stuCohortGraduationYear]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[ConSTD_LocalID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ConSTD_LocalID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_LocalID]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_LocalID]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[ConSTD_GradeLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ConSTD_GradeLevel"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_GradeLevel]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_GradeLevel]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[ConSTD_PhoneNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="ConSTD_PhoneNumber"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_PhoneNumber]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_PhoneNumber]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[ConSTD_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ConSTD_Type"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_Type]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_Type]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[STD_LastUpdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STD_LastUpdate"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_LastUpdate]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_LastUpdate]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[ConSTDCorrespLang]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="ConSTDCorrespLang"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STDCorrespLang]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTDCorrespLang]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[ConIsNonBPS]"
+                      cachedDataType="bool"
+                      cachedName="ConIsNonBPS"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[IsNonBPS]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConIsNonBPS]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stdId]"
+                      dataType="i4"
+                      name="stdId" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stdSTD_OID]"
+                      dataType="wstr"
+                      length="14"
+                      name="stdSTD_OID" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stdScaIdCurrent]"
+                      dataType="i4"
+                      name="stdScaIdCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stdScaIdNext]"
+                      dataType="i4"
+                      name="stdScaIdNext" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_LastUpdate]"
+                      dataType="dbTimeStamp"
+                      name="STD_LastUpdate" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stdToken]"
+                      dataType="guid"
+                      name="stdToken" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      name="STD_LocalID" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_FamilyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="STD_FamilyName" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_GivenName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="32"
+                      name="STD_GivenName" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_MiddleName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="32"
+                      name="STD_MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_BirthDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="STD_BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_GradeLevel]"
+                      dataType="wstr"
+                      length="10"
+                      name="STD_GradeLevel" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_AddressID]"
+                      dataType="i4"
+                      name="STD_AddressID" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuAddressOutOfBoston]"
+                      dataType="bool"
+                      name="stuAddressOutOfBoston" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_EmailAddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="STD_EmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_PhoneNumber]"
+                      dataType="wstr"
+                      length="20"
+                      name="STD_PhoneNumber" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_IsAWC]"
+                      dataType="bool"
+                      name="STD_IsAWC" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_IsBAS]"
+                      dataType="bool"
+                      name="STD_IsBAS" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_SNCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="STD_SNCode" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_LEPStatus]"
+                      dataType="wstr"
+                      length="10"
+                      name="STD_LEPStatus" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_ELDLevel]"
+                      dataType="wstr"
+                      length="1"
+                      name="STD_ELDLevel" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_SIFEStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="STD_SIFEStatus" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_FirstLang]"
+                      dataType="wstr"
+                      length="1"
+                      name="STD_FirstLang" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_RankedChoicesReceievedDate]"
+                      dataType="dbTimeStamp"
+                      name="STD_RankedChoicesReceievedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="STD_Type" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_EmailAddress2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="STD_EmailAddress2" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_RankedChoicesUsrID]"
+                      dataType="guid"
+                      name="STD_RankedChoicesUsrID" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STDCorrespLang]"
+                      dataType="wstr"
+                      length="3"
+                      name="STDCorrespLang" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stdPromotionStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="stdPromotionStatus" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stdWithDrawalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="stdWithDrawalCode" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuCurr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="stuCurr" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuVocEd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="stuVocEd" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[StuIsHomeless]"
+                      dataType="bool"
+                      name="StuIsHomeless" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuCohortGraduationYear]"
+                      dataType="i4"
+                      name="stuCohortGraduationYear" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuRandomNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="stuRandomNumber" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuRsvpCode]"
+                      dataType="i4"
+                      name="stuRsvpCode" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[StuCurrentTrasportationOverride]"
+                      dataType="bool"
+                      name="StuCurrentTrasportationOverride" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[StuNextTransportationOverride]"
+                      dataType="bool"
+                      name="StuNextTransportationOverride" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_EL_SERVICES_OPT_OUT_DATE]"
+                      dataType="dbTimeStamp"
+                      name="STD_EL_SERVICES_OPT_OUT_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_EL_SERVICES_OPT_OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="STD_EL_SERVICES_OPT_OUT" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[ParentLast]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ParentLast" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[ParentFirst]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ParentFirst" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[IsNonBPS]"
+                      dataType="bool"
+                      name="IsNonBPS" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MyBPS_Source\BPS_Student.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\BPS_Student.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\BPS_Student.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MyBPS_Source\Insert_Student"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Insert_Student"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[STD_FamilyName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="STD_FamilyName"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_FamilyName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[STD_GivenName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="STD_GivenName"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GivenName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[STD_BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STD_BirthDate"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_BirthDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[stuCohortGraduationYear]"
+                      cachedDataType="i4"
+                      cachedName="stuCohortGraduationYear"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[stuCohortGraduationYear]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[ConSTD_LocalID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ConSTD_LocalID"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[ConSTD_GradeLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ConSTD_GradeLevel"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_GradeLevel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[ConSTD_PhoneNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="ConSTD_PhoneNumber"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_PhoneNumber]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[ConSTD_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ConSTD_Type"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_Type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[ConIsNonBPS]"
+                      cachedDataType="bool"
+                      cachedName="ConIsNonBPS"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[STD_LastUpdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STD_LastUpdate"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LastUpdate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input].Columns[ConSTDCorrespLang]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="ConSTDCorrespLang"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTDCorrespLang]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_FamilyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_FamilyName]"
+                      name="STD_FamilyName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_FamilyName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_GivenName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_GivenName]"
+                      name="STD_GivenName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GivenName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_BirthDate]"
+                      name="STD_BirthDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_BirthDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[stuCohortGraduationYear]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[stuCohortGraduationYear]"
+                      name="stuCohortGraduationYear">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[stuCohortGraduationYear]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_LocalID]"
+                      name="ConSTD_LocalID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_GradeLevel]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_GradeLevel]"
+                      name="ConSTD_GradeLevel">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_GradeLevel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_PhoneNumber]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_PhoneNumber]"
+                      name="ConSTD_PhoneNumber">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_PhoneNumber]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_Type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTD_Type]"
+                      name="ConSTD_Type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_Type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConIsNonBPS]"
+                      dataType="bool"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConIsNonBPS]"
+                      name="ConIsNonBPS">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_LastUpdate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[STD_LastUpdate]"
+                      name="STD_LastUpdate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LastUpdate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTDCorrespLang]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTDCorrespLang]"
+                      name="ConSTDCorrespLang">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTDCorrespLang]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MyBPS_Source\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [BPS].[Student]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [BPS].[Student]) [refTable]
+where [refTable].[STD_LocalID] = ? and [refTable].[IsNonBPS] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="stdId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdSTD_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdScaIdCurrent" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdScaIdNext" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_LastUpdate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdToken" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_LocalID" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_FamilyName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_GivenName" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_MiddleName" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_BirthDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_GradeLevel" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_AddressID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuAddressOutOfBoston" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EmailAddress" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_PhoneNumber" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_IsAWC" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_IsBAS" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_SNCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_LEPStatus" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_ELDLevel" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_SIFEStatus" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_FirstLang" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_RankedChoicesReceievedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_Type" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EmailAddress2" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_RankedChoicesUsrID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STDCorrespLang" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdPromotionStatus" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="stdWithDrawalCode" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="stuCurr" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="stuVocEd" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StuIsHomeless" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuCohortGraduationYear" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuRandomNumber" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuRsvpCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StuCurrentTrasportationOverride" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StuNextTransportationOverride" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EL_SERVICES_OPT_OUT_DATE" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EL_SERVICES_OPT_OUT" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ParentLast" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ParentFirst" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsNonBPS" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]};#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MyBPS_Source\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MyBPS_Source\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Lookup.Inputs[Lookup Input].Columns[ConSTD_LocalID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ConSTD_LocalID"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">STD_LocalID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Lookup.Inputs[Lookup Input].Columns[ConIsNonBPS]"
+                      cachedDataType="bool"
+                      cachedName="ConIsNonBPS"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IsNonBPS</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MyBPS_Source\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\MyBPS_Source\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\MyBPS_Source\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\MyBPS_Source\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\MyBPS_Source\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\MyBPS_Source\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MyBPS_Source\MyBPS_Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="MyBPS_Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select 
+lastname as STD_FamilyName
+
+,firstname as STD_GivenName
+
+,dob as STD_BirthDate
+
+,grade as STD_GradeLevel
+
+,phone as STD_PhoneNumber
+
+,yog as stuCohortGraduationYear
+
+,case when isnull(withdate,'')='' then 'Active' else 'Inactive' end STD_Type
+
+,1 AS IsNonBPS 
+
+,studentno  as STD_LocalID
+
+,n.LastUpdate AS STD_LastUpdate
+
+,'E' as  STDCorrespLang
+
+from MYBPSSQL1.bpsstu.dbo.nonbpscsm n
+
+JOIN MYBPSSQL1.MyBPS.dbo.MyBPSConfig c
+
+ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MyBPS_Source\MyBPS_Source.Connections[OleDbConnection]"
+                  connectionManagerID="{A098AC70-FB5E-48E8-97FF-31352C16EA10}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MyBPSSQL1.bpsstu]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LocalID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_LocalID]"
+                      length="6"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LocalID]"
+                      name="STD_LocalID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_FamilyName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_FamilyName]"
+                      length="30"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_FamilyName]"
+                      name="STD_FamilyName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GivenName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_GivenName]"
+                      length="20"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GivenName]"
+                      name="STD_GivenName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_BirthDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_BirthDate]"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_BirthDate]"
+                      name="STD_BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_GradeLevel]"
+                      length="2"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GradeLevel]"
+                      name="STD_GradeLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_PhoneNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_PhoneNumber]"
+                      length="10"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_PhoneNumber]"
+                      name="STD_PhoneNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[stuCohortGraduationYear]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[stuCohortGraduationYear]"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[stuCohortGraduationYear]"
+                      name="stuCohortGraduationYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_Type]"
+                      length="8"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_Type]"
+                      name="STD_Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[IsNonBPS]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[IsNonBPS]"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[IsNonBPS]"
+                      name="IsNonBPS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LastUpdate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_LastUpdate]"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LastUpdate]"
+                      name="STD_LastUpdate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STDCorrespLang]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STDCorrespLang]"
+                      length="1"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STDCorrespLang]"
+                      name="STDCorrespLang"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_LocalID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="STD_LocalID" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_FamilyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="STD_FamilyName" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_GivenName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="STD_GivenName" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="STD_BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_GradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="STD_GradeLevel" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_PhoneNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="STD_PhoneNumber" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[stuCohortGraduationYear]"
+                      dataType="i4"
+                      name="stuCohortGraduationYear" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="STD_Type" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[IsNonBPS]"
+                      dataType="i4"
+                      name="IsNonBPS" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_LastUpdate]"
+                      dataType="dbTimeStamp"
+                      name="STD_LastUpdate" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STDCorrespLang]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="STDCorrespLang" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_LocalID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_LocalID]"
+                      name="STD_LocalID" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_FamilyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_FamilyName]"
+                      name="STD_FamilyName" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_GivenName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_GivenName]"
+                      name="STD_GivenName" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_BirthDate]"
+                      name="STD_BirthDate" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_GradeLevel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_GradeLevel]"
+                      name="STD_GradeLevel" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_PhoneNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_PhoneNumber]"
+                      name="STD_PhoneNumber" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[stuCohortGraduationYear]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[stuCohortGraduationYear]"
+                      name="stuCohortGraduationYear" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_Type]"
+                      name="STD_Type" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[IsNonBPS]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[IsNonBPS]"
+                      name="IsNonBPS" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_LastUpdate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_LastUpdate]"
+                      name="STD_LastUpdate" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STDCorrespLang]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STDCorrespLang]"
+                      name="STDCorrespLang" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MyBPS_Source\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC [BPS].[Update_StudentfromMyBPS] ?,?,?,?,?,?,?,?,?,?,?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MyBPS_Source\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[STD_FamilyName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="STD_FamilyName"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_FamilyName]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_FamilyName]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[STD_GivenName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="STD_GivenName"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_GivenName]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_GivenName]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[STD_BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STD_BirthDate"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_BirthDate]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_BirthDate]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[stuCohortGraduationYear]"
+                      cachedDataType="i4"
+                      cachedName="stuCohortGraduationYear"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@stuCohortGraduationYear]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[stuCohortGraduationYear]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConSTD_GradeLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ConSTD_GradeLevel"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_GradeLevel]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_GradeLevel]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConSTD_PhoneNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="ConSTD_PhoneNumber"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_PhoneNumber]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_PhoneNumber]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConSTD_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ConSTD_Type"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_Type]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_Type]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConSTD_LocalID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ConSTD_LocalID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_LocalID]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_LocalID]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConIsNonBPS]"
+                      cachedDataType="bool"
+                      cachedName="ConIsNonBPS"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@IsNonBPS]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConIsNonBPS]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[ConSTDCorrespLang]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="ConSTDCorrespLang"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STDCorrespLang]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTDCorrespLang]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].Columns[STD_LastUpdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STD_LastUpdate"
+                      externalMetadataColumnId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_LastUpdate]"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_LastUpdate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_FamilyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@STD_FamilyName">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_GivenName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@STD_GivenName">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_BirthDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="@STD_BirthDate">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_GradeLevel]"
+                      dataType="wstr"
+                      length="10"
+                      name="@STD_GradeLevel">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_PhoneNumber]"
+                      dataType="wstr"
+                      length="20"
+                      name="@STD_PhoneNumber">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@stuCohortGraduationYear]"
+                      dataType="i4"
+                      name="@stuCohortGraduationYear">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="@STD_Type">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@IsNonBPS]"
+                      dataType="bool"
+                      name="@IsNonBPS">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      name="@STD_LocalID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_LastUpdate]"
+                      dataType="dbTimeStamp"
+                      name="@STD_LastUpdate">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STDCorrespLang]"
+                      dataType="wstr"
+                      length="3"
+                      name="@STDCorrespLang">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MyBPS_Source\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\MyBPS_Source\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MyBPS_Source\Student-Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Student-Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input].Columns[STD_LocalID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="STD_LocalID"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LocalID]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input].Columns[STD_GradeLevel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="STD_GradeLevel"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GradeLevel]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input].Columns[STD_PhoneNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="STD_PhoneNumber"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_PhoneNumber]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input].Columns[STD_Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="STD_Type"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_Type]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input].Columns[IsNonBPS]"
+                      cachedDataType="i4"
+                      cachedName="IsNonBPS"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[IsNonBPS]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input].Columns[STDCorrespLang]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="STDCorrespLang"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STDCorrespLang]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]"
+                      name="ConSTD_LocalID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LocalID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_GradeLevel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_GradeLevel]"
+                      name="ConSTD_GradeLevel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GradeLevel]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_PhoneNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_PhoneNumber]"
+                      name="ConSTD_PhoneNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_PhoneNumber]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_Type]"
+                      name="ConSTD_Type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_Type]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]"
+                      name="ConIsNonBPS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[IsNonBPS]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTDCorrespLang]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="3"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTDCorrespLang]"
+                      name="ConSTDCorrespLang"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STDCorrespLang]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MyBPS_Source\Update_Student"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Update_Student"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[STD_LocalID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="STD_LocalID"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LocalID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[STD_FamilyName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="STD_FamilyName"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_FamilyName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[STD_GivenName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="STD_GivenName"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GivenName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[STD_BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STD_BirthDate"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_BirthDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[stuCohortGraduationYear]"
+                      cachedDataType="i4"
+                      cachedName="stuCohortGraduationYear"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[stuCohortGraduationYear]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[ConSTD_LocalID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ConSTD_LocalID"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[ConSTD_GradeLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ConSTD_GradeLevel"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_GradeLevel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[ConSTD_PhoneNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="ConSTD_PhoneNumber"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_PhoneNumber]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[ConSTD_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ConSTD_Type"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_Type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[ConIsNonBPS]"
+                      cachedDataType="bool"
+                      cachedName="ConIsNonBPS"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[STD_LastUpdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="STD_LastUpdate"
+                      lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LastUpdate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input].Columns[ConSTDCorrespLang]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="ConSTDCorrespLang"
+                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTDCorrespLang]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_LocalID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_LocalID]"
+                      name="STD_LocalID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LocalID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_FamilyName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_FamilyName]"
+                      name="STD_FamilyName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_FamilyName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_GivenName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_GivenName]"
+                      name="STD_GivenName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_GivenName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_BirthDate]"
+                      name="STD_BirthDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_BirthDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[stuCohortGraduationYear]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[stuCohortGraduationYear]"
+                      name="stuCohortGraduationYear">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[stuCohortGraduationYear]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_LocalID]"
+                      name="ConSTD_LocalID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_GradeLevel]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_GradeLevel]"
+                      name="ConSTD_GradeLevel">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_GradeLevel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_PhoneNumber]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_PhoneNumber]"
+                      name="ConSTD_PhoneNumber">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_PhoneNumber]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_Type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTD_Type]"
+                      name="ConSTD_Type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_Type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConIsNonBPS]"
+                      dataType="bool"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConIsNonBPS]"
+                      name="ConIsNonBPS">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_LastUpdate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[STD_LastUpdate]"
+                      name="STD_LastUpdate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].Columns[STD_LastUpdate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTDCorrespLang]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output].Columns[ConSTDCorrespLang]"
+                      name="ConSTDCorrespLang">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTDCorrespLang]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\MyBPS_Source.Paths[Data Conversion Output]"
+              endId="Package\MyBPS_Source\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\MyBPS_Source.Paths[Lookup Match Output]"
+              endId="Package\MyBPS_Source\Update_Student.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\MyBPS_Source\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\MyBPS_Source.Paths[Lookup No Match Output]"
+              endId="Package\MyBPS_Source\Insert_Student.Inputs[Sort Input]"
+              name="Lookup No Match Output"
+              startId="Package\MyBPS_Source\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\MyBPS_Source.Paths[OLE DB Source Output]"
+              endId="Package\MyBPS_Source\Student-Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\MyBPS_Source.Paths[Sort Output]"
+              endId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Sort Output"
+              startId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output]" />
+            <path
+              refId="Package\MyBPS_Source.Paths[Sort Output1]"
+              endId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\MyBPS_Source"
+          TopLeft="406,115" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\MyBPS_Source">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="113,42"
+          Id="Package\MyBPS_Source\Lookup"
+          TopLeft="352,244" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\MyBPS_Source\Student-Conversion"
+          TopLeft="322,160" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\MyBPS_Source\Update_Student"
+          TopLeft="215,337" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\MyBPS_Source\MyBPS_Source"
+          TopLeft="340,78" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\MyBPS_Source\Insert_Student"
+          TopLeft="479,338" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\MyBPS_Source\OLE DB Command"
+          TopLeft="209,456" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\MyBPS_Source\BPS_Student"
+          TopLeft="490,455" />
+        <EdgeLayout
+          Id="Package\MyBPS_Source.Paths[Sort Output1]"
+          TopLeft="556.5,380">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MyBPS_Source.Paths[Sort Output]"
+          TopLeft="292.25,379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77"
+              Start="0,0"
+              End="0,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MyBPS_Source.Paths[OLE DB Source Output]"
+          TopLeft="411,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MyBPS_Source.Paths[Lookup No Match Output]"
+          TopLeft="426,286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.5,52"
+              Start="0,0"
+              End="127.5,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.2356020942408" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.2356020942408"
+                    Point2="0,21.2356020942408"
+                    Point3="4,21.2356020942408" />
+                  <mssgle:LineSegment
+                    End="123.5,21.2356020942408" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.5,21.2356020942408"
+                    Point2="127.5,21.2356020942408"
+                    Point3="127.5,25.2356020942408" />
+                  <mssgle:LineSegment
+                    End="127.5,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.94361328125,26.2356020942408,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MyBPS_Source.Paths[Lookup Match Output]"
+          TopLeft="391,286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-98.5,51"
+              Start="0,0"
+              End="-98.5,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.82722513089" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.82722513089"
+                    Point2="0,20.82722513089"
+                    Point3="-4,20.82722513089" />
+                  <mssgle:LineSegment
+                    End="-94.5,20.82722513089" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-94.5,20.82722513089"
+                    Point2="-98.5,20.82722513089"
+                    Point3="-98.5,24.82722513089" />
+                  <mssgle:LineSegment
+                    End="-98.5,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-97.44138671875,25.82722513089,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MyBPS_Source.Paths[Data Conversion Output]"
+          TopLeft="408,202">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MyBPS_Source\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[BPS].[Student]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MyBPS_Source\MyBPS_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MyBPS_Source\BPS_Student">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,347 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/5/2018 11:51:02 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="084-140697-003"
+  DTS:CreatorName="ADMINDOM\X05112"
+  DTS:DTSID="{C0C8A063-B215-4013-B40E-7FD579BA8F04}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MyBPS_Eligibility"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{31D90E2A-29D5-47D4-887F-A8D2BBDD700A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\MyBPS_Eligibility"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1ACA3E80-91C0-440D-B138-173CABC284FE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MyBPS_Eligibility"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MyBPS_Eligibility\MyBPS_Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="MyBPS_Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select n.STUDENTNO as steStudentLocalId
+
+,getdate() as steLastUpdated
+
+,cast(n.schyear as char(4))+'-'+ cast(n.Schyear+1 as char(4)) as steAcademicYearDesignator
+
+,sch as steSchoolLocalId
+
+,case when isnull(transcode,'')='C0RR' then 'Z'
+
+when isnull(transcode,'')='' then 'K'
+
+when substring(transcode,1,1)='W' then 'W'
+
+when substring(transcode,1,1)='M' then 'M'
+
+when substring(transcode,1,1)='D' then 'D'
+
+when substring(transcode,1,1)='C' then 
+
+case when isnull(t.studentno,'') &lt;&gt;'' then 'T' else 'C' end
+
+when substring(transcode,1,1)='A' then 'A'
+
+when substring(transcode,1,1)='X' then 'X'
+
+when substring(transcode,1,1)='S' then 'N'
+
+END AS steEligibility
+
+,'NONBPS' as steProvider
+
+from MYBPSSQL1.bpsstu.dbo.nonbpscsm n
+
+JOIN MYBPSSQL1.MyBPS.dbo.MyBPSConfig c
+
+ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'
+
+left join MYBPSSQL1.bpsstu.dbo.tpasstracking t 
+
+on t.studentno=n.studentno and t.TpassLocation= n.sch
+
+and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MyBPS_Eligibility\MyBPS_Source.Connections[OleDbConnection]"
+                  connectionManagerID="{A098AC70-FB5E-48E8-97FF-31352C16EA10}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MyBPSSQL1.bpsstu]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steStudentLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steStudentLocalId]"
+                      length="6"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steStudentLocalId]"
+                      name="steStudentLocalId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steLastUpdated]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steLastUpdated]"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steLastUpdated]"
+                      name="steLastUpdated"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steAcademicYearDesignator]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steAcademicYearDesignator]"
+                      length="9"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steAcademicYearDesignator]"
+                      name="steAcademicYearDesignator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steSchoolLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steSchoolLocalId]"
+                      length="4"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steSchoolLocalId]"
+                      name="steSchoolLocalId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steEligibility]"
+                      length="1"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steEligibility]"
+                      name="steEligibility"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steProvider]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steProvider]"
+                      length="6"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].Columns[steProvider]"
+                      name="steProvider"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steStudentLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="steStudentLocalId" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steLastUpdated]"
+                      dataType="dbTimeStamp"
+                      name="steLastUpdated" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steAcademicYearDesignator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="steAcademicYearDesignator" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steSchoolLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="steSchoolLocalId" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="steEligibility" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[steProvider]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="steProvider" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steStudentLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steStudentLocalId]"
+                      name="steStudentLocalId" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steLastUpdated]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steLastUpdated]"
+                      name="steLastUpdated" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steAcademicYearDesignator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steAcademicYearDesignator]"
+                      name="steAcademicYearDesignator" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steSchoolLocalId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steSchoolLocalId]"
+                      name="steSchoolLocalId" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steEligibility]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steEligibility]"
+                      name="steEligibility" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steProvider]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[steProvider]"
+                      name="steProvider" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MyBPS_Eligibility\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\MyBPS_Eligibility"
+          TopLeft="373,77" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\MyBPS_Eligibility">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\MyBPS_Eligibility\MyBPS_Source"
+          TopLeft="312,77" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MyBPS_Eligibility\MyBPS_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
