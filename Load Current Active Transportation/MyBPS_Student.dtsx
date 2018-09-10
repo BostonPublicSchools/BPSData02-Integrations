@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MyBPS_Student"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{11A95AFD-8CC5-4D66-B1CB-B5E443414F09}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{5FC60F88-1E62-48A9-BEF1-C222DD02E45D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -173,12 +173,6 @@
                       cachedName="ConSTDCorrespLang"
                       externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STDCorrespLang]"
                       lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTDCorrespLang]" />
-                    <inputColumn
-                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[ConIsNonBPS]"
-                      cachedDataType="bool"
-                      cachedName="ConIsNonBPS"
-                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[IsNonBPS]"
-                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConIsNonBPS]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -366,31 +360,9 @@
                       dataType="bool"
                       name="StuNextTransportationOverride" />
                     <externalMetadataColumn
-                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_EL_SERVICES_OPT_OUT_DATE]"
-                      dataType="dbTimeStamp"
-                      name="STD_EL_SERVICES_OPT_OUT_DATE" />
-                    <externalMetadataColumn
-                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_EL_SERVICES_OPT_OUT]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="STD_EL_SERVICES_OPT_OUT" />
-                    <externalMetadataColumn
-                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[ParentLast]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="ParentLast" />
-                    <externalMetadataColumn
-                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[ParentFirst]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="ParentFirst" />
-                    <externalMetadataColumn
-                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[IsNonBPS]"
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuIsNonBPS]"
                       dataType="bool"
-                      name="IsNonBPS" />
+                      name="stuIsNonBPS" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -816,7 +788,7 @@
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [BPS].[Student]) [refTable]
-where [refTable].[STD_LocalID] = ? and [refTable].[IsNonBPS] = ?</property>
+where [refTable].[STD_LocalID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -847,12 +819,12 @@ where [refTable].[STD_LocalID] = ? and [refTable].[IsNonBPS] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="stdId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdSTD_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdScaIdCurrent" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdScaIdNext" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_LastUpdate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdToken" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_LocalID" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_FamilyName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_GivenName" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_MiddleName" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_BirthDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_GradeLevel" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_AddressID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuAddressOutOfBoston" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EmailAddress" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_PhoneNumber" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_IsAWC" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_IsBAS" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_SNCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_LEPStatus" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_ELDLevel" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_SIFEStatus" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_FirstLang" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_RankedChoicesReceievedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_Type" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EmailAddress2" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_RankedChoicesUsrID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STDCorrespLang" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdPromotionStatus" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="stdWithDrawalCode" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="stuCurr" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="stuVocEd" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StuIsHomeless" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuCohortGraduationYear" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuRandomNumber" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuRsvpCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StuCurrentTrasportationOverride" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StuNextTransportationOverride" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EL_SERVICES_OPT_OUT_DATE" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EL_SERVICES_OPT_OUT" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ParentLast" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ParentFirst" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsNonBPS" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="stdId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdSTD_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdScaIdCurrent" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdScaIdNext" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_LastUpdate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdToken" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_LocalID" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_FamilyName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_GivenName" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_MiddleName" dataType="DT_STR" length="32" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_BirthDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_GradeLevel" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_AddressID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuAddressOutOfBoston" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EmailAddress" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_PhoneNumber" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_IsAWC" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_IsBAS" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_SNCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_LEPStatus" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_ELDLevel" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_SIFEStatus" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_FirstLang" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_RankedChoicesReceievedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_Type" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STD_EmailAddress2" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STD_RankedChoicesUsrID" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STDCorrespLang" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stdPromotionStatus" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="stdWithDrawalCode" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="stuCurr" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="stuVocEd" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StuIsHomeless" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuCohortGraduationYear" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuRandomNumber" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuRsvpCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StuCurrentTrasportationOverride" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StuNextTransportationOverride" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stuIsNonBPS" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]};#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]};</property>
+                  name="ParameterMap">#{Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConSTD_LocalID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -886,22 +858,6 @@ where [refTable].[STD_LocalID] = ? and [refTable].[IsNonBPS] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">STD_LocalID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\MyBPS_Source\Lookup.Inputs[Lookup Input].Columns[ConIsNonBPS]"
-                      cachedDataType="bool"
-                      cachedName="ConIsNonBPS"
-                      lineageId="Package\MyBPS_Source\Student-Conversion.Outputs[Data Conversion Output].Columns[ConIsNonBPS]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">IsNonBPS</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -995,7 +951,7 @@ lastname as STD_FamilyName
 
 ,1 AS IsNonBPS 
 
-,studentno  as STD_LocalID
+,CAST(studentno as varchar(10))  as STD_LocalID
 
 ,n.LastUpdate AS STD_LastUpdate
 
@@ -1161,7 +1117,7 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
                       refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_LocalID]"
                       codePage="1252"
                       dataType="str"
-                      length="6"
+                      length="10"
                       name="STD_LocalID" />
                     <externalMetadataColumn
                       refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_FamilyName]"
@@ -1226,7 +1182,7 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
                       refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_LocalID]"
                       codePage="1252"
                       dataType="str"
-                      length="6"
+                      length="10"
                       lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_LocalID]"
                       name="STD_LocalID" />
                     <outputColumn
@@ -2325,7 +2281,9 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-8,25.75,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2475,7 +2433,7 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2485,7 +2443,7 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
