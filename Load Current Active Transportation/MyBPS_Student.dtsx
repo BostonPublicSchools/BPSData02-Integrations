@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MyBPS_Student"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{5FC60F88-1E62-48A9-BEF1-C222DD02E45D}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{7381A4E1-B2AE-4D92-8191-428BCE0C33CA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -173,6 +173,12 @@
                       cachedName="ConSTDCorrespLang"
                       externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STDCorrespLang]"
                       lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConSTDCorrespLang]" />
+                    <inputColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].Columns[ConIsNonBPS]"
+                      cachedDataType="bool"
+                      cachedName="ConIsNonBPS"
+                      externalMetadataColumnId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuIsNonBPS]"
+                      lineageId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output].Columns[ConIsNonBPS]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -363,6 +369,16 @@
                       refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuIsNonBPS]"
                       dataType="bool"
                       name="stuIsNonBPS" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_EL_SERVICES_OPT_OUT_DATE]"
+                      dataType="dbTimeStamp"
+                      name="STD_EL_SERVICES_OPT_OUT_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[STD_EL_SERVICES_OPT_OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="STD_EL_SERVICES_OPT_OUT" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2281,9 +2297,7 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,25.75,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
