@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MyBPS_Student"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{B24920E8-56DD-42E0-88CF-36DC9AC19FE9}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{E021722D-7DFA-4841-84A3-1D7CE744CF05}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2251,6 +2251,10 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="166,42"
+          Id="Package\MyBPS_Source\OLE DB Command"
+          TopLeft="209,456" />
+        <NodeLayout
           Size="113,42"
           Id="Package\MyBPS_Source\Lookup"
           TopLeft="352,244" />
@@ -2259,25 +2263,21 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
           Id="Package\MyBPS_Source\Student-Conversion"
           TopLeft="322,160" />
         <NodeLayout
-          Size="155,42"
-          Id="Package\MyBPS_Source\Update_Student"
-          TopLeft="215,337" />
+          Size="149,42"
+          Id="Package\MyBPS_Source\Insert_Student"
+          TopLeft="479,338" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\MyBPS_Source\BPS_Student"
+          TopLeft="490,455" />
         <NodeLayout
           Size="149,42"
           Id="Package\MyBPS_Source\MyBPS_Source"
           TopLeft="340,78" />
         <NodeLayout
-          Size="149,42"
-          Id="Package\MyBPS_Source\Insert_Student"
-          TopLeft="479,338" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\MyBPS_Source\OLE DB Command"
-          TopLeft="209,456" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\MyBPS_Source\BPS_Student"
-          TopLeft="490,455" />
+          Size="155,42"
+          Id="Package\MyBPS_Source\Update_Student"
+          TopLeft="215,337" />
         <EdgeLayout
           Id="Package\MyBPS_Source.Paths[Sort Output1]"
           TopLeft="556.5,380">
@@ -2447,7 +2447,7 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2457,16 +2457,8 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\MyBPS_Source\MyBPS_Source">
-    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -2482,6 +2474,14 @@ ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MyBPS_Source\MyBPS_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
