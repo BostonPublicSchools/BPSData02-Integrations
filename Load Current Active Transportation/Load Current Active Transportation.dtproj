@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">084-170705-03</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe6UIrDUQjkWsjomPufidxgAAAAACAAAAAAADZgAAwAAAABAAAAC49nI9dUYk6CLMls1VIJFoAAAAAASAAACgAAAAEAAAAL+0OUbYU68dGn2+mAzpN7qIAAAAKCZUh3A+sBhsxQJEHgLXoEcYCT67xWWYuBRinQSRxvGKhfBooXZDw6DaDjcopZZZ5CDDEBPwkT9vLDddcNv7KBU/UnDUALLIIBCi+mRSJIdNAOHtyFo39WUNXfTdLmCZYduteBRFtiq8R/zkA/gT0mw+y/Vc2O2aroCC0S422lmrgZixSBlyYBQAAADZfm1p9qhURJTFXp0OUpB2xjLQAQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe6UIrDUQjkWsjomPufidxgAAAAACAAAAAAADZgAAwAAAABAAAABifbM5YshWNXEXyQ4luAQ3AAAAAASAAACgAAAAEAAAAPdfwgxlSFOeeI/E5VYVSCaIAAAA4VbU0PyMbAQaMqD+tI1Ukpxp+vYaHjfC+jyL0kgIOD16ZyB63MHu1kry4zQ7UyxpFq7Q5MSR/BSRlp7tCR+1K+uU/+EGMEPo1jrsqClSojhToI+l11imtzXDhpdW0+MEiVX5yS5Czu/NjwpXGN+1GnpyKXLfkn4lDYPaPiTnIkfuItFcEXAllBQAAAABE4Pu+cAK8HNndlojjuVYHIonsQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -45,6 +45,7 @@
           <SSIS:Package SSIS:Name="ConvertCsvToXml.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="MyBPS_Student.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="MyBPS_Eligibility.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Load Parents.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="BPSInterface.BPSIntegration.conmgr" />
@@ -76,7 +77,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=BPSDATA-03;Initial Catalog=BPSInterface;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Load Current Active Transportation-{9AE2705B-C330-42D3-A894-7FD29A51E11A}084-137984-003.BPSInterface.BPSIntegration;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=TESTDATA-03;Initial Catalog=BPSInterface;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Load Current Active Transportation-{9AE2705B-C330-42D3-A894-7FD29A51E11A}084-137984-003.BPSInterface.BPSIntegration;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -2190,10 +2191,10 @@
                 <SSIS:Property SSIS:Name="Name">MyBPS_Student</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">40</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">41</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B24920E8-56DD-42E0-88CF-36DC9AC19FE9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E021722D-7DFA-4841-84A3-1D7CE744CF05}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -2364,8 +2365,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -2401,6 +2400,23 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Load Parents.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{EC2888A9-5F0F-47F1-B360-B0A8DAE8D050}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Load Parents</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">11</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A60E3FCB-13BC-401D-92ED-20C1629759BB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
       </SSIS:Project>
@@ -2422,7 +2438,7 @@
           <ConfigurationSetting>
             <Id>LastModifiedTime</Id>
             <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2018-09-13T18:43:10.7227184Z</Value>
+            <Value xsi:type="xsd:dateTime">2018-09-17T16:00:54.2719137Z</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>{7851F3D4-CB5B-44C3-9330-3CABD14C7073}</Id>
@@ -2432,7 +2448,7 @@
           <ConfigurationSetting>
             <Id>{e1ad9ee2-7d3d-4153-8a80-2ed26ff97f50}</Id>
             <Name>Project::ServerName</Name>
-            <Value xsi:type="xsd:string">STAGDATA-03</Value>
+            <Value xsi:type="xsd:string">BPSDATA-03</Value>
           </ConfigurationSetting>
         </ParameterConfigurationValues>
       </Options>
