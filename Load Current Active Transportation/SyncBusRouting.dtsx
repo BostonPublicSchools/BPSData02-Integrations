@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="248"
-  DTS:VersionGUID="{CBE876A8-8139-4509-A0BE-AD4ED21D8A99}">
+  DTS:VersionBuild="253"
+  DTS:VersionGUID="{8BFB9F7B-E57F-40F9-BBB5-0B1D30F65E30}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -1867,6 +1867,10 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       dataType="str"
                       length="10"
                       name="strSourceData" />
+                    <externalMetadataColumn
+                      refId="Package\dftMergeBusRounting\Insert St Routing.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -6275,7 +6279,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="54.6957552083331,27.7031072067676,61.77515625,11.384765625"
+              BoundingBox="45.827102864583,27.7031072067676,79.5124609375,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6577,7 +6581,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6587,7 +6591,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
