@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="EdplanFileDownload"
-  DTS:DTSID="{FC8E3C83-5318-4D9C-BDCB-2B7D849911F0}"
+  DTS:ObjectName="EdPlanFileLoad"
+  DTS:DTSID="{A9B522A7-C3BF-4635-840E-C2550FD2EFAE}"
   DTS:CreationName="FLATFILE">
   <DTS:ObjectData>
     <DTS:ConnectionManager
@@ -21,7 +21,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Student Number"
-          DTS:DTSID="{CD23FD3C-8D25-4E48-A116-64221844039F}"
+          DTS:DTSID="{6FFF73B6-E198-47EE-A511-6E89BBD811A4}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -30,7 +30,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Special Education Status"
-          DTS:DTSID="{DFCDC8F3-018D-44C9-9CAF-AF9640ED4627}"
+          DTS:DTSID="{3C5896BA-0E04-46EA-A0DA-5E1517E5567A}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -39,7 +39,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Current IEP Begin Date"
-          DTS:DTSID="{1298B912-E801-4C53-83D8-A12FEDD0E3EA}"
+          DTS:DTSID="{D2571667-1585-4447-9213-B31D27447EAD}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -48,7 +48,25 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Current IEP End Date"
-          DTS:DTSID="{87EDBFB5-3405-485F-A4FF-AAE5BB0BC9DB}"
+          DTS:DTSID="{4967B682-BFDE-4A1E-AF9D-1DD447AC1B20}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x0009_"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
+          DTS:TextQualified="True"
+          DTS:ObjectName="Parent Response"
+          DTS:DTSID="{758E9785-5C60-4F43-A37B-391FD7078C08}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x0009_"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
+          DTS:TextQualified="True"
+          DTS:ObjectName="Date Signed"
+          DTS:DTSID="{C9378D9B-08CA-4495-B7CA-0649819C99D2}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -57,7 +75,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Next Evaluation Date"
-          DTS:DTSID="{B77E62F1-9CC4-4CD4-8B0B-D7A9170F8A57}"
+          DTS:DTSID="{0C9D63B1-E126-4D77-98AA-751D54741DFC}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -66,7 +84,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Next Review Date"
-          DTS:DTSID="{8BB21E92-6A78-4958-9DA5-7C4EA046B65E}"
+          DTS:DTSID="{96E65A19-FFB0-4C2C-AE5F-60B9195DF9F8}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -75,7 +93,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Special Education Exit Date"
-          DTS:DTSID="{D87D8EA9-6A2D-4002-B8F4-D1D4C4C30B85}"
+          DTS:DTSID="{62CCB397-B8CD-41FD-B7BA-BFF614712074}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -84,7 +102,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Placement School"
-          DTS:DTSID="{C87FE612-C1F3-43BB-8D98-094E2733E19D}"
+          DTS:DTSID="{9BE94A50-1C3C-46F0-92C8-8AB78360BAA8}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -93,7 +111,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Program"
-          DTS:DTSID="{7131AC5D-7401-4180-BC1A-F88B5E821C7A}"
+          DTS:DTSID="{5648B2FF-D7EF-4365-862F-D58691D06357}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -102,7 +120,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="LRE Setting"
-          DTS:DTSID="{B1F795DE-7C12-4385-8C8C-B9F2C232B186}"
+          DTS:DTSID="{E524C0A1-B359-4AE1-9142-67E462ABA501}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -110,7 +128,7 @@
           DTS:DataType="302"
           DTS:TextQualified="True"
           DTS:ObjectName="Related Services"
-          DTS:DTSID="{F91621C4-F834-4153-81CA-311B563BA223}"
+          DTS:DTSID="{35A9FE44-4B4F-439D-8FC9-3D7B73692190}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -119,16 +137,15 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Related Service Minutes General Ed Setting (B Grid)"
-          DTS:DTSID="{86394748-3BB0-41D8-95CA-88A2DFC5F9B4}"
+          DTS:DTSID="{993B9096-3689-42F6-8306-53A55E577F71}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x0009_"
-          DTS:MaximumWidth="255"
-          DTS:DataType="130"
+          DTS:DataType="302"
           DTS:TextQualified="True"
           DTS:ObjectName="Related Service Minutes Other Setting (C Grid)"
-          DTS:DTSID="{73370C37-20B6-4391-AA57-8659CADE0FF6}"
+          DTS:DTSID="{16A826B8-D0B4-47C8-A63A-78266F36761D}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -137,7 +154,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Special Ed Service Minutes General Ed Setting (B Grid)"
-          DTS:DTSID="{4E830E05-304B-4B07-8AC7-720BB1BDC625}"
+          DTS:DTSID="{AD08F6BD-53CC-4B05-9083-2E34F3DB7A6D}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -146,7 +163,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Special Ed Service Minutes Other Setting (C Grid)"
-          DTS:DTSID="{B2064F9A-F2EF-41C3-AB22-F977BF7B06EB}"
+          DTS:DTSID="{A1452E20-BDCE-4AF0-8BA1-10383E6DB35F}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -155,7 +172,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Transportation Code"
-          DTS:DTSID="{EF3F05A1-94D5-4E6C-9116-521A7FB86A62}"
+          DTS:DTSID="{E5C3B6BE-8D6D-4B2C-BAAB-E22E69380BBE}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -164,7 +181,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Transportation Accomodation(s)"
-          DTS:DTSID="{F050C3BC-71C8-472C-8EC2-97EAD23A8744}"
+          DTS:DTSID="{CF85A027-D804-4AAB-89A2-C9CE43B99718}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -173,7 +190,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Transportation Monitor (Y N)"
-          DTS:DTSID="{084A05E9-D8C9-4909-97CD-497B005084D5}"
+          DTS:DTSID="{87FC2C20-0760-4F7C-9999-DD5B33D8D5DF}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -182,7 +199,7 @@
           DTS:DataType="130"
           DTS:TextQualified="True"
           DTS:ObjectName="Utilize Proposed Trans"
-          DTS:DTSID="{26B2D4ED-C732-4F0F-AAD6-BB423B35ED15}"
+          DTS:DTSID="{C508D236-A55C-46D5-990D-ADB4EDBA170F}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -191,7 +208,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="Cost Share"
-          DTS:DTSID="{675F5DD7-36BF-457B-A3DD-60B73DC6C71C}"
+          DTS:DTSID="{9ADF8431-17DC-41FA-A3B1-24D4D254E77F}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -200,7 +217,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="Agency"
-          DTS:DTSID="{404DA6B2-4701-4AE7-B934-CF7312A9859C}"
+          DTS:DTSID="{4DA0ECED-C2FD-4508-9429-026A92928455}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>

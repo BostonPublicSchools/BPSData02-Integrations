@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_2_Begin_Output_BPSROUTES03"
   DTS:PackageType="5"
-  DTS:VersionBuild="200"
-  DTS:VersionGUID="{F637C8C1-1051-4FE9-A481-7806FF87C222}">
+  DTS:VersionBuild="202"
+  DTS:VersionGUID="{EEE55BCF-AAE3-4E9E-8567-87FBA3BBCC07}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -87,7 +87,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  StudentNo ,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  StudentNo ,
         LastName ,
         FirstName ,
         MiddleName ,
@@ -168,8 +168,8 @@ WHERE   NOT program = '00'
               <connections>
                 <connection
                   refId="Package\dftAspen_DataExportFull\CurrentTransportationDaily.Connections[OleDbConnection]"
-                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
-                  connectionManagerRefId="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
+                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1450,8 +1450,8 @@ WHERE   NOT program = '00'
               <connections>
                 <connection
                   refId="Package\dftAspen_DataExportFull\ffsExportFull.Connections[FlatFileConnection]"
-                  connectionManagerID="{88791F00-CD38-4170-A85B-E59A66A44332}:invalid"
-                  connectionManagerRefId="{88791F00-CD38-4170-A85B-E59A66A44332}:invalid"
+                  connectionManagerID="{88791F00-CD38-4170-A85B-E59A66A44332}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Transporation RMU]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -2192,7 +2192,7 @@ WHERE   NOT program = '00'
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  atd.StudentNo ,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  atd.StudentNo ,
         atd.LastName ,
         atd.FirstName ,
         atd.MiddleName ,
@@ -2399,8 +2399,8 @@ UNION ALL
               <connections>
                 <connection
                   refId="Package\dftFind_Differences\adsDifferenceBetwenTables.Connections[OleDbConnection]"
-                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
-                  connectionManagerRefId="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
+                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3681,8 +3681,8 @@ UNION ALL
               <connections>
                 <connection
                   refId="Package\dftFind_Differences\ffdDifferences.Connections[FlatFileConnection]"
-                  connectionManagerID="{1B925833-EA8D-48B8-A44F-B6DF1D152E4C}:invalid"
-                  connectionManagerRefId="{1B925833-EA8D-48B8-A44F-B6DF1D152E4C}:invalid"
+                  connectionManagerID="{1B925833-EA8D-48B8-A44F-B6DF1D152E4C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Transporation RMU Difference]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -4434,13 +4434,13 @@ UNION ALL
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="206,42"
-          Id="Package\dftAspen_DataExportFull\CurrentTransportationDaily"
-          TopLeft="99,8" />
-        <NodeLayout
           Size="137,42"
           Id="Package\dftAspen_DataExportFull\ffsExportFull"
           TopLeft="126,103" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\dftAspen_DataExportFull\CurrentTransportationDaily"
+          TopLeft="99,8" />
         <EdgeLayout
           Id="Package\dftAspen_DataExportFull.Paths[OLE DB Source Output]"
           TopLeft="198.25,50">
