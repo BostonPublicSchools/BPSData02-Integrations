@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Edfi_FileLoading"
   DTS:PackageType="5"
-  DTS:VersionBuild="196"
-  DTS:VersionGUID="{E85C171A-CB45-4A13-9331-152E1B1E8B94}">
+  DTS:VersionBuild="199"
+  DTS:VersionGUID="{4CE2683C-8377-4CEF-BA79-395F1C99173A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -35,7 +35,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ArchiveFullFilePath">
       <DTS:VariableValue
-        DTS:DataType="8">E:\SSIS\ArchiveFolder\EdPlanToAspen_20181005.txt</DTS:VariableValue>
+        DTS:DataType="8">E:\SSIS\ArchiveFolder\EdPlanToAspen_20181219.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -158,6 +158,24 @@
                           cachedDataType="text"
                           cachedName="Related Services"
                           lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Services]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Inputs[Data Conversion Input].Columns[Related Service Minutes General Ed Setting (B Grid)]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Related Service Minutes General Ed Setting (B Grid)"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Service Minutes General Ed Setting (B Grid)]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Inputs[Data Conversion Input].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Special Ed Service Minutes General Ed Setting (B Grid)"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Inputs[Data Conversion Input].Columns[Special Ed Service Minutes Other Setting (C Grid)]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Special Ed Service Minutes Other Setting (C Grid)"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Special Ed Service Minutes Other Setting (C Grid)]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -183,6 +201,69 @@
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
                               name="SourceInputColumnLineageID">#{Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Services]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Related Service Minutes General Ed Setting (B Grid)]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Related Service Minutes General Ed Setting (B Grid)]"
+                          name="Copy of Related Service Minutes General Ed Setting (B Grid)"
+                          precision="18"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Service Minutes General Ed Setting (B Grid)]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Special Ed Service Minutes General Ed Setting (B Grid)]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Special Ed Service Minutes General Ed Setting (B Grid)]"
+                          name="Copy of Special Ed Service Minutes General Ed Setting (B Grid)"
+                          precision="18"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Special Ed Service Minutes Other Setting (C Grid)]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Special Ed Service Minutes Other Setting (C Grid)]"
+                          name="Copy of Special Ed Service Minutes Other Setting (C Grid)"
+                          precision="18"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Special Ed Service Minutes Other Setting (C Grid)]}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -345,34 +426,6 @@
                           externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Program]"
                           lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Program]" />
                         <inputColumn
-                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Related Service Minutes General Ed Setting (B Grid)]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="Related Service Minutes General Ed Setting (B Grid)"
-                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
-                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Service Minutes General Ed Setting (B Grid)]" />
-                        <inputColumn
-                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Related Service Minutes Other Setting (C Grid)]"
-                          cachedCodepage="1252"
-                          cachedDataType="text"
-                          cachedName="Related Service Minutes Other Setting (C Grid)"
-                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
-                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Service Minutes Other Setting (C Grid)]" />
-                        <inputColumn
-                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="Special Ed Service Minutes General Ed Setting (B Grid)"
-                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes General Ed Setting (B Grid)]"
-                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Special Ed Service Minutes General Ed Setting (B Grid)]" />
-                        <inputColumn
-                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Special Ed Service Minutes Other Setting (C Grid)]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="Special Ed Service Minutes Other Setting (C Grid)"
-                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes Other Setting (C Grid)]"
-                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Special Ed Service Minutes Other Setting (C Grid)]" />
-                        <inputColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Transportation Code]"
                           cachedDataType="wstr"
                           cachedLength="255"
@@ -450,6 +503,34 @@
                           cachedName="Date Signed"
                           externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Datesigned]"
                           lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Date Signed]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Copy of Related Service Minutes General Ed Setting (B Grid)]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of Related Service Minutes General Ed Setting (B Grid)"
+                          cachedPrecision="18"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Related Service Minutes General Ed Setting (B Grid)]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Related Service Minutes Other Setting (C Grid)]"
+                          cachedDataType="numeric"
+                          cachedName="Related Service Minutes Other Setting (C Grid)"
+                          cachedPrecision="18"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Service Minutes Other Setting (C Grid)]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Copy of Special Ed Service Minutes General Ed Setting (B Grid)]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of Special Ed Service Minutes General Ed Setting (B Grid)"
+                          cachedPrecision="18"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes General Ed Setting (B Grid)]"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Special Ed Service Minutes General Ed Setting (B Grid)]" />
+                        <inputColumn
+                          refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].Columns[Copy of Special Ed Service Minutes Other Setting (C Grid)]"
+                          cachedDataType="numeric"
+                          cachedName="Copy of Special Ed Service Minutes Other Setting (C Grid)"
+                          cachedPrecision="18"
+                          externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes Other Setting (C Grid)]"
+                          lineageId="Package\Load Files\Edfi_FileLoad\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Special Ed Service Minutes Other Setting (C Grid)]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -503,23 +584,19 @@
                           name="Related Services" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes General Ed Setting (B Grid)]"
-                          dataType="wstr"
-                          length="255"
+                          dataType="i4"
                           name="Related Service Minutes General Ed Setting (B Grid)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
-                          codePage="1252"
-                          dataType="text"
+                          dataType="i4"
                           name="Related Service Minutes Other Setting (C Grid)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes General Ed Setting (B Grid)]"
-                          dataType="wstr"
-                          length="255"
+                          dataType="i4"
                           name="Special Ed Service Minutes General Ed Setting (B Grid)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Special Ed Service Minutes Other Setting (C Grid)]"
-                          dataType="wstr"
-                          length="255"
+                          dataType="i4"
                           name="Special Ed Service Minutes Other Setting (C Grid)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\EdPlanToAspen.Inputs[OLE DB Destination Input].ExternalColumns[Transportation Code]"
@@ -848,13 +925,13 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Service Minutes Other Setting (C Grid)]"
-                          codePage="1252"
-                          dataType="text"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
                           lineageId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].Columns[Related Service Minutes Other Setting (C Grid)]"
                           name="Related Service Minutes Other Setting (C Grid)"
+                          precision="18"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -1176,9 +1253,9 @@
                           name="Related Service Minutes General Ed Setting (B Grid)" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Related Service Minutes Other Setting (C Grid)]"
-                          codePage="1252"
-                          dataType="text"
-                          name="Related Service Minutes Other Setting (C Grid)" />
+                          dataType="numeric"
+                          name="Related Service Minutes Other Setting (C Grid)"
+                          precision="18" />
                         <externalMetadataColumn
                           refId="Package\Load Files\Edfi_FileLoad\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Special Ed Service Minutes General Ed Setting (B Grid)]"
                           dataType="wstr"
