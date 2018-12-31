@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncBusRouting"
   DTS:PackageType="5"
-  DTS:VersionBuild="254"
-  DTS:VersionGUID="{842AB499-A78A-4C1D-88E5-C872532E1D67}">
+  DTS:VersionBuild="255"
+  DTS:VersionGUID="{2DF34C62-176C-4FDF-914B-F4A7F0574BED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -6169,20 +6169,24 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           TopLeft="550.555555555556,277" />
         <NodeLayout
           Size="165,42"
-          Id="Package\dftMergeBusRounting\Update ErrorTable"
-          TopLeft="467.888888888889,456.333333333333" />
+          Id="Package\dftMergeBusRounting\Update St Routing"
+          TopLeft="53,523.888888888889" />
         <NodeLayout
           Size="134,42"
           Id="Package\dftMergeBusRounting\Update sort"
           TopLeft="66.2222222222223,435.666666666667" />
         <NodeLayout
-          Size="205,42"
-          Id="Package\dftMergeBusRounting\Remove Duplicate Records"
-          TopLeft="354,104" />
+          Size="165,42"
+          Id="Package\dftMergeBusRounting\Update ErrorTable"
+          TopLeft="467.888888888889,456.333333333333" />
         <NodeLayout
           Size="159,42"
           Id="Package\dftMergeBusRounting\Insert St Routing"
           TopLeft="272.666666666667,523.666666666667" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\dftMergeBusRounting\LiveData"
+          TopLeft="392,19" />
         <NodeLayout
           Size="182,42"
           Id="Package\dftMergeBusRounting\New Rows StirCurrent"
@@ -6204,49 +6208,9 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           Id="Package\dftMergeBusRounting\Error_Table Lkp"
           TopLeft="576.555555555556,347.888888888889" />
         <NodeLayout
-          Size="120,42"
-          Id="Package\dftMergeBusRounting\LiveData"
-          TopLeft="392,19" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\dftMergeBusRounting\Update St Routing"
-          TopLeft="53,523.888888888889" />
-        <EdgeLayout
-          Id="Package\dftMergeBusRounting.Paths[Lookup Match Output]"
-          TopLeft="237.444444444444,388.111111111111">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-104.222222222222,47.5555555555561"
-              Start="0,0"
-              End="-104.222222222222,40.0555555555561">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.3175219203682" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.3175219203682"
-                    Point2="0,19.3175219203682"
-                    Point3="-4,19.3175219203682" />
-                  <mssgle:LineSegment
-                    End="-100.222222222222,19.3175219203682" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-100.222222222222,19.3175219203682"
-                    Point2="-104.222222222222,19.3175219203682"
-                    Point3="-104.222222222222,23.3175219203682" />
-                  <mssgle:LineSegment
-                    End="-104.222222222222,40.0555555555561" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-100.302497829861,24.3175219203682,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="205,42"
+          Id="Package\dftMergeBusRounting\Remove Duplicate Records"
+          TopLeft="354,104" />
         <EdgeLayout
           Id="Package\dftMergeBusRounting.Paths[Existing Rows]"
           TopLeft="476.88888888889,221.222222222222">
@@ -6279,7 +6243,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="45.827102864583,27.7031072067676,79.5124609375,16"
+              BoundingBox="54.695755208333,27.7031072067676,61.77515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6556,6 +6520,42 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-87.6080533854168,31.9877177949155,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dftMergeBusRounting.Paths[Lookup Match Output]"
+          TopLeft="237.444444444444,388.111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104.222222222222,47.5555555555561"
+              Start="0,0"
+              End="-104.222222222222,40.0555555555561">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.3175219203682" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.3175219203682"
+                    Point2="0,19.3175219203682"
+                    Point3="-4,19.3175219203682" />
+                  <mssgle:LineSegment
+                    End="-100.222222222222,19.3175219203682" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-100.222222222222,19.3175219203682"
+                    Point2="-104.222222222222,19.3175219203682"
+                    Point3="-104.222222222222,23.3175219203682" />
+                  <mssgle:LineSegment
+                    End="-104.222222222222,40.0555555555561" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-100.302497829861,24.3175219203682,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

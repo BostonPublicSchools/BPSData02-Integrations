@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/17/2017 2:10:57 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncSchoolCapacity"
   DTS:PackageType="5"
-  DTS:VersionBuild="72"
-  DTS:VersionGUID="{E7395496-E196-4A7B-A716-118F7BBD2028}">
+  DTS:VersionBuild="89"
+  DTS:VersionGUID="{0302AD7B-F289-41A2-A352-514A7D7D516D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -56,7 +56,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC [Eligibility].[VersaTransExtract]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC [Eligibility].[VersaTransExtract]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -82,8 +82,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\AspenSchool.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -217,6 +217,17 @@
                       name="SCA_CAPACITY"
                       precision="5"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramCodeSpecial]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[ScaProgramCodeSpecial]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramCodeSpecial]"
+                      name="ScaProgramCodeSpecial"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -283,6 +294,12 @@
                       dataType="numeric"
                       name="SCA_CAPACITY"
                       precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].ExternalColumns[ScaProgramCodeSpecial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ScaProgramCodeSpecial" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -365,6 +382,13 @@
                       lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[SCA_CAPACITY]"
                       name="SCA_CAPACITY"
                       precision="5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ScaProgramCodeSpecial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ScaProgramCodeSpecial]"
+                      name="ScaProgramCodeSpecial" />
                     <outputColumn
                       refId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -589,7 +613,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -623,8 +647,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Insert Into School Cap.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -718,6 +742,14 @@
                       cachedPrecision="5"
                       externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaCapacity]"
                       lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[SCA_CAPACITY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].Columns[ScaProgramCodeSpecial]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaProgramCodeSpecial"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSpecialProgram]"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ScaProgramCodeSpecial]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -787,6 +819,12 @@
                       dataType="numeric"
                       name="scaCapacity"
                       precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Into School Cap.Inputs[OLE DB Destination Input].ExternalColumns[scaSpecialProgram]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="scaSpecialProgram" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1040,6 +1078,24 @@
                           name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Inputs[Sort Input].Columns[ScaProgramCodeSpecial]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaProgramCodeSpecial"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramCodeSpecial]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1217,6 +1273,21 @@
                           name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCA_CAPACITY]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ScaProgramCodeSpecial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output].Columns[ScaProgramCodeSpecial]"
+                      name="ScaProgramCodeSpecial">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramCodeSpecial]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1309,13 +1380,13 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Eligibility].[SchoolCapacity]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Eligibility].[SchoolCapacity]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Eligibility].[SchoolCapacity]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Eligibility].[SchoolCapacity]) [refTable]
 where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable].[scaProgramId] = ? and [refTable].[scaYearContext] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -1347,7 +1418,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="scaId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaSchId" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaSCA_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaGradeLevel" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaProgramId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaYearContext" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaAssignLimit" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaActualTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaPendingTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaWaitlistTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaIsSpecialAdmission" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="scaId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaSchId" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaSCA_OID" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaGradeLevel" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaProgramId" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaYearContext" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="scaAssignLimit" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaActualTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaPendingTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaWaitlistTotal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaIsSpecialAdmission" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaIdPathway" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaCapacity" dataType="DT_NUMERIC" length="0" precision="5" scale="0" codePage="0"/&gt;&lt;referenceColumn name="scaSpecialProgram" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -1365,8 +1436,8 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
               <connections>
                 <connection
                   refId="Package\Data Flow Task\SchoolCapacityLKP.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -1510,7 +1581,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [Eligibility].[UpsertSchoolCapacity] ?,?,?,?,?,?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">exec [Eligibility].[UpsertSchoolCapacity] ?,?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1519,8 +1590,8 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Update SchoolCapacity.Connections[OleDbConnection]"
-                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
-                  connectionManagerRefId="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:invalid"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1532,6 +1603,13 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                   hasSideEffects="true"
                   name="OLE DB Command Input">
                   <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].Columns[SCaID]"
+                      cachedDataType="i4"
+                      cachedName="SCaID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].ExternalColumns[@scaId]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCaID]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].Columns[scaSchId]"
                       cachedCodepage="1252"
@@ -1602,19 +1680,20 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                       externalMetadataColumnId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].ExternalColumns[@scaIsSpecialAdmission]"
                       lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ConScaIsSpecialAdmission]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].Columns[SCaID]"
-                      cachedDataType="i4"
-                      cachedName="SCaID"
-                      cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].ExternalColumns[@scaId]"
-                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCaID]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].Columns[SCA_CAPACITY]"
                       cachedDataType="numeric"
                       cachedName="SCA_CAPACITY"
                       cachedPrecision="5"
                       externalMetadataColumnId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].ExternalColumns[@ScaCapacity]"
                       lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[SCA_CAPACITY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].Columns[ScaProgramCodeSpecial]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaProgramCodeSpecial"
+                      externalMetadataColumnId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].ExternalColumns[@scaProgramCodeSpecial]"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ScaProgramCodeSpecial]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1758,6 +1837,19 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
                           name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input].ExternalColumns[@scaProgramCodeSpecial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="@scaProgramCodeSpecial">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -2020,6 +2112,24 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                           name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update sort.Inputs[Sort Input].Columns[ScaProgramCodeSpecial]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ScaProgramCodeSpecial"
+                      lineageId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramCodeSpecial]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2197,6 +2307,21 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
                           name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[SCA_CAPACITY]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ScaProgramCodeSpecial]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Update sort.Outputs[Sort Output].Columns[ScaProgramCodeSpecial]"
+                      name="ScaProgramCodeSpecial">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output].Columns[ScaProgramCodeSpecial]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2231,14 +2356,14 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
               startId="Package\Data Flow Task\AspenSchool.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Sort Output]"
-              endId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input]"
-              name="Sort Output"
-              startId="Package\Data Flow Task\Update sort.Outputs[Sort Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Sort Output1]"
               endId="Package\Data Flow Task\LastUpdated.Inputs[Derived Column Input]"
               name="Sort Output"
               startId="Package\Data Flow Task\Insert Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Update SchoolCapacity.Inputs[OLE DB Command Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Update sort.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2265,7 +2390,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{769F42D3-2E94-4B31-A436-8CB384C20EDF}"
+      DTS:DTSID="{3512015B-8270-418F-B994-DA4B30CF9BE4}"
       DTS:From="Package\Execute SQL Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -2286,14 +2411,14 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
         <NodeLayout
           Size="151,42"
           Id="Package\Data Flow Task"
-          TopLeft="123,134" />
+          TopLeft="129,134" />
         <NodeLayout
           Size="163,42"
           Id="Package\Execute SQL Task"
           TopLeft="121,37" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="200.5,79">
+          TopLeft="203.5,79">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2324,49 +2449,49 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
         <NodeLayout
           Size="134,42"
           Id="Package\Data Flow Task\Update sort"
-          TopLeft="36,259" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="168,102" />
+          TopLeft="42,259" />
         <NodeLayout
           Size="185,42"
           Id="Package\Data Flow Task\Insert Into School Cap"
-          TopLeft="295,415" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Data Flow Task\SchoolCapacityLKP"
-          TopLeft="170,168" />
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Data Flow Task\Update SchoolCapacity"
-          TopLeft="10,344" />
-        <NodeLayout
-          Size="129,42"
-          Id="Package\Data Flow Task\Insert Sort"
-          TopLeft="332,249" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Data Flow Task\AspenSchool"
-          TopLeft="171,23" />
+          TopLeft="298,416" />
         <NodeLayout
           Size="138,42"
           Id="Package\Data Flow Task\LastUpdated"
-          TopLeft="323,344" />
+          TopLeft="329,344" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Data Flow Task\SchoolCapacityLKP"
+          TopLeft="176,168" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Data Flow Task\Insert Sort"
+          TopLeft="338,249" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="174,102" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data Flow Task\AspenSchool"
+          TopLeft="177,23" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Data Flow Task\Update SchoolCapacity"
+          TopLeft="15,352" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="249.75,144">
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="108.5,301">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24"
+              EndConnector="0,51"
               Start="0,0"
-              End="0,16.5">
+              End="0,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
+                    End="0,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2376,8 +2501,8 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output1]"
-          TopLeft="394.25,291">
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="400.25,291">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2398,30 +2523,8 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output]"
-          TopLeft="103,301">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="243,65">
+          TopLeft="249,65">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2443,7 +2546,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="280,210">
+          TopLeft="286,210">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2479,7 +2582,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="227,210">
+          TopLeft="233,210">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2515,18 +2618,40 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="389.75,386">
+          TopLeft="394.25,386">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29"
+              EndConnector="0,30"
               Start="0,0"
-              End="0,21.5">
+              End="0,22.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="255.75,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2557,7 +2682,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2567,7 +2692,7 @@ where [refTable].[scaSchId] = ? and [refTable].[scaGradeLevel] = ? and [refTable
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

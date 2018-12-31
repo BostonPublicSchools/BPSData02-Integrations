@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncSchoolwithAspen"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{23617AB4-FACE-40EF-9432-09913309E614}">
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{A03E7CA2-875B-4941-A7EC-F0D2D9400BDE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -58,7 +58,7 @@
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT   s.SKL_SCHOOL_ID AS SchID,
        s.SKL_SCHOOL_NAME AS SchName,
-	   s.SKL_FIELDD_001 AS SchName_f,
+       s.SKL_FIELDD_001 AS SchName_f,
        s.SKL_FIELDA_001 AS LowGrade,
        s.SKL_FIELDA_002 HighGrade,
        s.SKL_SCHOOL_LEVEL_CODE AS SchLevel,
@@ -70,10 +70,11 @@
        s.SKL_FIELDB_033 AS SchoolGroup,
        s.SKL_FIELDA_011 AS SharedSchoolID,
        NULLIF(s.SKL_FIELDA_005, '') AS Network
-       ,CONVERT(VARCHAR(10),SKL_FIELDA_004) AS Zone 
+       ,CONVERT(VARCHAR(10),SKL_ZONE) AS Zone 
        ,s.SKL_FIELDA_019 AS ELLCluster,
        s.SKL_FIELDA_020 AS SPEDCluster,
-       s.SKL_FIELDC_017 AS SchType
+     --  s.SKL_FIELDC_017 AS SchType
+        SKL_SCHOOL_TYPE_CODE AS SchType
        ,SKL_FIELDB_031 AS UseTierForHMB--?
       ,DATEADD(s, s.SKL_LAST_MODIFIED / 1000, '1970-01-01 00:00:00') AS AspenLastUpdated,
        adrs.ADR_POSTAL_CODE AS schZipCode,
@@ -517,7 +518,7 @@ ORDER BY SchID;</property>
                       refId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].ExternalColumns[SchType]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="20"
                       name="SchType" />
                     <externalMetadataColumn
                       refId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].ExternalColumns[UseTierForHMB]"
@@ -694,7 +695,7 @@ ORDER BY SchID;</property>
                       refId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Error Output].Columns[SchType]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="20"
                       lineageId="Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Error Output].Columns[SchType]"
                       name="SchType" />
                     <outputColumn
@@ -974,28 +975,6 @@ ORDER BY SchID;</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Sync Schools\Data Conversion.Outputs[Data Conversion Output].Columns[ConvSchType]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Sync Schools\Data Conversion.Outputs[Data Conversion Output].Columns[ConvSchType]"
-                      name="ConvSchType"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[SchType]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
                       refId="Package\Sync Schools\Data Conversion.Outputs[Data Conversion Output].Columns[ConvSchName_f]"
                       codePage="1252"
                       dataType="str"
@@ -1011,6 +990,28 @@ ORDER BY SchID;</property>
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
                           name="SourceInputColumnLineageID">#{Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[SchName_f]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sync Schools\Data Conversion.Outputs[Data Conversion Output].Columns[ConvSchType]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Sync Schools\Data Conversion.Outputs[Data Conversion Output].Columns[ConvSchType]"
+                      name="ConvSchType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Sync Schools\Aspen School Table.Outputs[OLE DB Source Output].Columns[SchType]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -2803,7 +2804,7 @@ where [refTable].[SchID] = ?</property>
                       refId="Package\Sync Schools\Update Bps_school.Inputs[OLE DB Command Input].ExternalColumns[@SchName_f]"
                       codePage="1252"
                       dataType="str"
-                      length="25"
+                      length="100"
                       name="@SchName_f">
                       <properties>
                         <property
@@ -4106,21 +4107,25 @@ where [refTable].[SchID] = ?</property>
         <NodeLayout
           Size="168,42"
           Id="Package\Sync Schools\Update Bps_school"
-          TopLeft="77,466" />
+          TopLeft="75,478" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Sync Schools\Aspen School Table"
+          TopLeft="230,70" />
         <EdgeLayout
           Id="Package\Sync Schools.Paths[Sort Output1]"
-          TopLeft="162.75,414">
+          TopLeft="161.75,414">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,52"
+              EndConnector="0,64"
               Start="0,0"
-              End="0,44.5">
+              End="0,56.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.5" />
+                    End="0,56.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4143,6 +4148,28 @@ where [refTable].[SchID] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sync Schools.Paths[OLE DB Source Output]"
+          TopLeft="317.75,112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4245,32 +4272,6 @@ where [refTable].[SchID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Sync Schools\Aspen School Table"
-          TopLeft="230,70" />
-        <EdgeLayout
-          Id="Package\Sync Schools.Paths[OLE DB Source Output]"
-          TopLeft="317.75,112">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65"
-              Start="0,0"
-              End="0,57.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4280,7 +4281,7 @@ where [refTable].[SchID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4290,7 +4291,7 @@ where [refTable].[SchID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
