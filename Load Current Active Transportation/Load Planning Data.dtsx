@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Planning Data"
   DTS:PackageType="5"
-  DTS:VersionBuild="215"
-  DTS:VersionGUID="{D238651F-8195-4B63-B17C-3F11C04AE10B}">
+  DTS:VersionBuild="218"
+  DTS:VersionGUID="{0994DF88-938E-4ECA-84A7-0D3F939291F7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -318,7 +318,7 @@
                       refId="Package\LoadPlanningData\Error table Insert.Inputs[OLE DB Destination Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       cachedSortKeyPosition="6"
                       externalMetadataColumnId="Package\LoadPlanningData\Error table Insert.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointBusStopDescription]"
@@ -372,7 +372,7 @@
                       refId="Package\LoadPlanningData\Error table Insert.Inputs[OLE DB Destination Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       cachedSortKeyPosition="13"
                       externalMetadataColumnId="Package\LoadPlanningData\Error table Insert.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointBusStopDescription]"
@@ -960,7 +960,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Insert.Inputs[OLE DB Destination Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       externalMetadataColumnId="Package\LoadPlanningData\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strOriginPointBusStopDescription]"
                       lineageId="Package\LoadPlanningData\Insert Sort.Outputs[Sort Output].Columns[InStopDescription]" />
@@ -999,7 +999,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Insert.Inputs[OLE DB Destination Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       externalMetadataColumnId="Package\LoadPlanningData\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strDestinationPointBusStopDescription]"
                       lineageId="Package\LoadPlanningData\Insert Sort.Outputs[Sort Output].Columns[OutStopDescription]" />
@@ -1360,7 +1360,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Insert Sort.Inputs[Sort Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       cachedSortKeyPosition="6"
                       lineageId="Package\LoadPlanningData\Remove Duplicates.Outputs[Sort Output].Columns[InStopDescription]">
@@ -1481,7 +1481,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Insert Sort.Inputs[Sort Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       cachedSortKeyPosition="13"
                       lineageId="Package\LoadPlanningData\Remove Duplicates.Outputs[Sort Output].Columns[OutStopDescription]">
@@ -1823,7 +1823,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Insert Sort.Outputs[Sort Output].Columns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\Insert Sort.Outputs[Sort Output].Columns[InStopDescription]"
                       name="InStopDescription">
                       <properties>
@@ -1917,7 +1917,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Insert Sort.Outputs[Sort Output].Columns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\Insert Sort.Outputs[Sort Output].Columns[OutStopDescription]"
                       name="OutStopDescription">
                       <properties>
@@ -2326,7 +2326,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].ExternalColumns[InStopDescription]"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].Columns[InStopDescription]"
                       name="InStopDescription"
                       truncationRowDisposition="FailComponent" />
@@ -2394,7 +2394,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].ExternalColumns[OutStopDescription]"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].Columns[OutStopDescription]"
                       name="OutStopDescription"
                       truncationRowDisposition="FailComponent" />
@@ -2642,7 +2642,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].ExternalColumns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="InStopDescription" />
                     <externalMetadataColumn
                       refId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].ExternalColumns[InStopTime]"
@@ -2675,7 +2675,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].ExternalColumns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="OutStopDescription" />
                     <externalMetadataColumn
                       refId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].ExternalColumns[OutStopTime]"
@@ -2831,7 +2831,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Error Output].Columns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Error Output].Columns[InStopDescription]"
                       name="InStopDescription" />
                     <outputColumn
@@ -2871,7 +2871,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
                       name="OutStopDescription" />
                     <outputColumn
@@ -3169,7 +3169,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Remove Duplicates.Inputs[Sort Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       lineageId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].Columns[InStopDescription]">
                       <properties>
@@ -3286,7 +3286,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Remove Duplicates.Inputs[Sort Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       lineageId="Package\LoadPlanningData\PlanningData.Outputs[OLE DB Source Output].Columns[OutStopDescription]">
                       <properties>
@@ -3746,7 +3746,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Remove Duplicates.Outputs[Sort Output].Columns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\Remove Duplicates.Outputs[Sort Output].Columns[InStopDescription]"
                       name="InStopDescription"
                       sortKeyPosition="6">
@@ -3849,7 +3849,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPlanningData\Remove Duplicates.Outputs[Sort Output].Columns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\Remove Duplicates.Outputs[Sort Output].Columns[OutStopDescription]"
                       name="OutStopDescription"
                       sortKeyPosition="13">
@@ -4193,7 +4193,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="strId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSteId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSourceId" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strisCurrent" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSourceData" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDayOfWeek" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strEffectiveDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strRoutingdirection" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointVehicleNumber" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointBusStopDescription" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointArrivalTime" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginCartesianXCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginCartesianYCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginLatitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginLongitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationPointVehicleNumber" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDestinationPointBusStopDescription" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDestinationPointArrivalTime" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationCartesianXCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationCartesianYCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationLatitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationLongitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsDeleted" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="strId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSteId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strLastUpdated" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSourceId" dataType="DT_WSTR" length="14" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strisCurrent" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strSourceData" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDayOfWeek" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strEffectiveDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strRoutingdirection" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointVehicleNumber" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointBusStopDescription" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strOriginPointArrivalTime" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginCartesianXCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginCartesianYCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginLatitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strOriginLongitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationPointVehicleNumber" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDestinationPointBusStopDescription" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="strDestinationPointArrivalTime" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationCartesianXCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationCartesianYCoordinate" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationLatitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="strDestinationLongitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsDeleted" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -4518,7 +4518,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update.Inputs[OLE DB Command Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       externalMetadataColumnId="Package\LoadPlanningData\Update.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
                       lineageId="Package\LoadPlanningData\Update sort.Outputs[Sort Output].Columns[InStopDescription]" />
@@ -4557,7 +4557,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update.Inputs[OLE DB Command Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       externalMetadataColumnId="Package\LoadPlanningData\Update.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
                       lineageId="Package\LoadPlanningData\Update sort.Outputs[Sort Output].Columns[OutStopDescription]" />
@@ -4711,7 +4711,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="@strOriginPointBusStopDescription">
                       <properties>
                         <property
@@ -4793,7 +4793,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="@strDestinationPointBusStopDescription">
                       <properties>
                         <property
@@ -4996,7 +4996,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update ErrorTable.Inputs[OLE DB Command Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       cachedSortKeyPosition="6"
                       externalMetadataColumnId="Package\LoadPlanningData\Update ErrorTable.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
@@ -5050,7 +5050,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update ErrorTable.Inputs[OLE DB Command Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       cachedSortKeyPosition="13"
                       externalMetadataColumnId="Package\LoadPlanningData\Update ErrorTable.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
@@ -5224,7 +5224,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update ErrorTable.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="@strOriginPointBusStopDescription">
                       <properties>
                         <property
@@ -5306,7 +5306,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update ErrorTable.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="@strDestinationPointBusStopDescription">
                       <properties>
                         <property
@@ -5562,7 +5562,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update sort.Inputs[Sort Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       cachedSortKeyPosition="6"
                       lineageId="Package\LoadPlanningData\Remove Duplicates.Outputs[Sort Output].Columns[InStopDescription]">
@@ -5683,7 +5683,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update sort.Inputs[Sort Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       cachedSortKeyPosition="13"
                       lineageId="Package\LoadPlanningData\Remove Duplicates.Outputs[Sort Output].Columns[OutStopDescription]">
@@ -6006,7 +6006,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update sort.Outputs[Sort Output].Columns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\Update sort.Outputs[Sort Output].Columns[InStopDescription]"
                       name="InStopDescription">
                       <properties>
@@ -6100,7 +6100,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPlanningData\Update sort.Outputs[Sort Output].Columns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPlanningData\Update sort.Outputs[Sort Output].Columns[OutStopDescription]"
                       name="OutStopDescription">
                       <properties>
@@ -6833,7 +6833,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6843,7 +6843,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

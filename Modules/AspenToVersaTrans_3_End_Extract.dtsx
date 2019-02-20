@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_3_End_Extract"
   DTS:PackageType="5"
-  DTS:VersionBuild="150"
-  DTS:VersionGUID="{A4F7C55A-E70A-4626-88AD-A7DFB0B48030}">
+  DTS:VersionBuild="151"
+  DTS:VersionGUID="{F13B219D-0154-4397-AE01-97AA64C885DC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -75,7 +75,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  StudentNo ,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  StudentNo ,
         LastName ,
         FirstName ,
         MiddleName ,
@@ -160,8 +160,8 @@ AND NOT city is null
               <connections>
                 <connection
                   refId="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily.Connections[OleDbConnection]"
-                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
-                  connectionManagerRefId="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
+                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1482,7 +1482,7 @@ AND NOT city is null
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1516,8 +1516,8 @@ AND NOT city is null
               <connections>
                 <connection
                   refId="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation.Connections[OleDbConnection]"
-                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
-                  connectionManagerRefId="{567991DC-DAB6-4D46-8927-7AE9726750D8}:invalid"
+                  connectionManagerID="{567991DC-DAB6-4D46-8927-7AE9726750D8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2331,13 +2331,13 @@ AND NOT city is null
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="205,42"
-          Id="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation"
-          TopLeft="65,163" />
-        <NodeLayout
           Size="222,42"
           Id="Package\dftTransferCurrenttoArchive\ansCurrentTransportationDaily"
           TopLeft="60,60" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\dftTransferCurrenttoArchive\ArchiveDailyTransportation"
+          TopLeft="65,163" />
         <EdgeLayout
           Id="Package\dftTransferCurrenttoArchive.Paths[OLE DB Source Output]"
           TopLeft="169.25,102">

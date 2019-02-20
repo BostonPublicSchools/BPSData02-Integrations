@@ -11,10 +11,22 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MyBPS_Student"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{E021722D-7DFA-4841-84A3-1D7CE744CF05}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{1CAA4B2B-158E-4BA8-B2DB-7BC8E2FB8CA4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSWorks.RMUWorkArea]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{10F77E39-6C1C-4B30-945F-BFD6E664E07A}"
+      DTS:ObjectName="BPSWorks.RMUWorkArea">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BPSWorks;Initial Catalog=RMUWorkArea;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable

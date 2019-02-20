@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadPendingData"
   DTS:PackageType="5"
-  DTS:VersionBuild="179"
-  DTS:VersionGUID="{DE8F5CEC-67FF-400C-904A-FFBBFB9C4544}">
+  DTS:VersionBuild="180"
+  DTS:VersionGUID="{C855FA7C-DCC5-467B-8A4F-621AD8AC1718}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -305,7 +305,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Inputs[Sort Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[InStopDescription]">
                       <properties>
@@ -422,7 +422,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Inputs[Sort Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[OutStopDescription]">
                       <properties>
@@ -882,7 +882,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InStopDescription]"
                       name="InStopDescription"
                       sortKeyPosition="6">
@@ -985,7 +985,7 @@
                       refId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutStopDescription]"
                       name="OutStopDescription"
                       sortKeyPosition="13">
@@ -1669,7 +1669,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert.Inputs[OLE DB Destination Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       externalMetadataColumnId="Package\LoadPending\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strOriginPointBusStopDescription]"
                       lineageId="Package\LoadPending\Insert Sort.Outputs[Sort Output].Columns[InStopDescription]" />
@@ -1708,7 +1708,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert.Inputs[OLE DB Destination Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       externalMetadataColumnId="Package\LoadPending\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strDestinationPointBusStopDescription]"
                       lineageId="Package\LoadPending\Insert Sort.Outputs[Sort Output].Columns[OutStopDescription]" />
@@ -1823,7 +1823,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strOriginPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="strOriginPointBusStopDescription" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strOriginPointArrivalTime]"
@@ -1856,7 +1856,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strDestinationPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="strDestinationPointBusStopDescription" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\Insert.Inputs[OLE DB Destination Input].ExternalColumns[strDestinationPointArrivalTime]"
@@ -2081,7 +2081,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       cachedSortKeyPosition="6"
                       externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strOriginPointBusStopDescription]"
@@ -2135,7 +2135,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       cachedSortKeyPosition="13"
                       externalMetadataColumnId="Package\LoadPending\Insert Error table.Inputs[OLE DB Destination Input].ExternalColumns[E_strDestinationPointBusStopDescription]"
@@ -2487,7 +2487,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Sort.Inputs[Sort Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       cachedSortKeyPosition="6"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InStopDescription]">
@@ -2608,7 +2608,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Sort.Inputs[Sort Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       cachedSortKeyPosition="13"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutStopDescription]">
@@ -2950,7 +2950,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Sort.Outputs[Sort Output].Columns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\Insert Sort.Outputs[Sort Output].Columns[InStopDescription]"
                       name="InStopDescription">
                       <properties>
@@ -3044,7 +3044,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\Insert Sort.Outputs[Sort Output].Columns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\Insert Sort.Outputs[Sort Output].Columns[OutStopDescription]"
                       name="OutStopDescription">
                       <properties>
@@ -3453,7 +3453,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[InStopDescription]"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[InStopDescription]"
                       name="InStopDescription"
                       truncationRowDisposition="FailComponent" />
@@ -3521,7 +3521,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[OutStopDescription]"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].Columns[OutStopDescription]"
                       name="OutStopDescription"
                       truncationRowDisposition="FailComponent" />
@@ -3769,7 +3769,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="InStopDescription" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[InStopTime]"
@@ -3802,7 +3802,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="OutStopDescription" />
                     <externalMetadataColumn
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Output].ExternalColumns[OutStopTime]"
@@ -3958,7 +3958,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[InStopDescription]"
                       name="InStopDescription" />
                     <outputColumn
@@ -3998,7 +3998,7 @@ where [refTable].[E_StudentNo] = ? and [refTable].[E_SCh] = ? and [refTable].[E_
                       refId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\PendingData.Outputs[OLE DB Source Error Output].Columns[OutStopDescription]"
                       name="OutStopDescription" />
                     <outputColumn
@@ -4521,7 +4521,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update.Inputs[OLE DB Command Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       externalMetadataColumnId="Package\LoadPending\Update.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
                       lineageId="Package\LoadPending\Update sort.Outputs[Sort Output].Columns[InStopDescription]" />
@@ -4560,7 +4560,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update.Inputs[OLE DB Command Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       externalMetadataColumnId="Package\LoadPending\Update.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
                       lineageId="Package\LoadPending\Update sort.Outputs[Sort Output].Columns[OutStopDescription]" />
@@ -4714,7 +4714,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="@strOriginPointBusStopDescription">
                       <properties>
                         <property
@@ -4796,7 +4796,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="@strDestinationPointBusStopDescription">
                       <properties>
                         <property
@@ -4999,7 +4999,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update ErrorTable.Inputs[OLE DB Command Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       cachedSortKeyPosition="6"
                       externalMetadataColumnId="Package\LoadPending\Update ErrorTable.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
@@ -5053,7 +5053,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update ErrorTable.Inputs[OLE DB Command Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       cachedSortKeyPosition="13"
                       externalMetadataColumnId="Package\LoadPending\Update ErrorTable.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
@@ -5227,7 +5227,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update ErrorTable.Inputs[OLE DB Command Input].ExternalColumns[@strOriginPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="@strOriginPointBusStopDescription">
                       <properties>
                         <property
@@ -5309,7 +5309,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update ErrorTable.Inputs[OLE DB Command Input].ExternalColumns[@strDestinationPointBusStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="@strDestinationPointBusStopDescription">
                       <properties>
                         <property
@@ -5565,7 +5565,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update sort.Inputs[Sort Input].Columns[InStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="InStopDescription"
                       cachedSortKeyPosition="6"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[InStopDescription]">
@@ -5686,7 +5686,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update sort.Inputs[Sort Input].Columns[OutStopDescription]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="OutStopDescription"
                       cachedSortKeyPosition="13"
                       lineageId="Package\LoadPending\Delete duplicate Records.Outputs[Sort Output].Columns[OutStopDescription]">
@@ -6009,7 +6009,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update sort.Outputs[Sort Output].Columns[InStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\Update sort.Outputs[Sort Output].Columns[InStopDescription]"
                       name="InStopDescription">
                       <properties>
@@ -6103,7 +6103,7 @@ where [refTable].[strSteId] = ? and [refTable].[strDayOfWeek] = ? and [refTable]
                       refId="Package\LoadPending\Update sort.Outputs[Sort Output].Columns[OutStopDescription]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\LoadPending\Update sort.Outputs[Sort Output].Columns[OutStopDescription]"
                       name="OutStopDescription">
                       <properties>

@@ -1,0 +1,804 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/17/2019 11:19:45 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="084-140697-003"
+  DTS:CreatorName="ADMINDOM\X05112"
+  DTS:DTSID="{7A6BD891-2C74-43F6-9D4B-E9206432CC88}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EdFi_UpdateLongitudeLatitude"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{D5211E90-5E15-488C-8C99-98F5DE8B5F8A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EDFISQL01.EdFi_BPS_Production_Ods.BPSIntegration]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C50177E2-575C-4363-8D35-03CE23ED0B2C}"
+      DTS:ObjectName="EDFISQL01.EdFi_BPS_Production_Ods.BPSIntegration">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=EDFISQL01;User ID=BPSIntegration;Initial Catalog=EdFi_BPS_Production_Ods;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjIurxkC0akej8dtMJBao8QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACdxpuWkeytnFQEthh54TqIAAAAAASAAACgAAAAEAAAANKBt1EJ4vGO7puiWDoSj+gYAAAAzdRBA5irIg2MM2Ob1hWQNeuoZQHjoIAcFAAAAKNiPw7QS+qDEu8NJD7qUmQqXiD7</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[STAGEDFISQL01.EdFi_BPS_Staging_Ods]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{579656F4-4FCB-439A-9CBA-29733D61CD8C}"
+      DTS:ObjectName="STAGEDFISQL01.EdFi_BPS_Staging_Ods">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=STAGEDFISQL01;User ID=BPSIntegration;Initial Catalog=EdFi_BPS_Staging_Ods;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjIurxkC0akej8dtMJBao8QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACPe6YqAI+5RNuEJB2ytATGAAAAAASAAACgAAAAEAAAAKeFnP1+rA9Vnpb7RkIJtvwYAAAA2imJ8AVPLJpu0TVYJFld3SDxakvfytj1FAAAANs7hIbcZUqnghgocgy9OxRM0jtf</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Prod-BPSInterface"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8a70aed2-ca92-46a9-a768-fae212d27b52}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Prod-BPSInterface"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Prod-BPSInterface\BPSInterfaceAddress"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="BPSInterfaceAddress"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT S.STD_LocalID,S.STD_AddressID,A.Longitude,A.Latitude FROM BPS.Student S
+INNER JOIN dbo.AddressFile A ON S.STD_AddressID=A.AddressID
+WHERE S.STD_Type='Active'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_LocalID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[STD_LocalID]"
+                      length="10"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_LocalID]"
+                      name="STD_LocalID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_AddressID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[STD_AddressID]"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_AddressID]"
+                      name="STD_AddressID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Longitude]"
+                      name="Longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Latitude]"
+                      name="Latitude"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[STD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      name="STD_LocalID" />
+                    <externalMetadataColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[STD_AddressID]"
+                      dataType="i4"
+                      name="STD_AddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[STD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[STD_LocalID]"
+                      name="STD_LocalID" />
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[STD_AddressID]"
+                      dataType="i4"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[STD_AddressID]"
+                      name="STD_AddressID" />
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                      dataType="r8"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                      name="Longitude" />
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                      dataType="r8"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                      name="Latitude" />
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Prod-BPSInterface\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC [EDFI].[Update_LatitudeLongitude] ?,?,?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Prod-BPSInterface\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[EDFISQL01.EdFi_BPS_Production_Ods.BPSIntegration]"
+                  connectionManagerRefId="Package.ConnectionManagers[EDFISQL01.EdFi_BPS_Production_Ods.BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].Columns[STD_LocalID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="STD_LocalID"
+                      externalMetadataColumnId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_LocalID]"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_LocalID]" />
+                    <inputColumn
+                      refId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].Columns[Longitude]"
+                      cachedDataType="r8"
+                      cachedName="Longitude"
+                      externalMetadataColumnId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@Longitude]"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Longitude]" />
+                    <inputColumn
+                      refId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].Columns[Latitude]"
+                      cachedDataType="r8"
+                      cachedName="Latitude"
+                      externalMetadataColumnId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@Latitude]"
+                      lineageId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Latitude]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      name="@STD_LocalID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@Longitude]"
+                      dataType="r8"
+                      name="@Longitude">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@Latitude]"
+                      dataType="r8"
+                      name="@Latitude">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Prod-BPSInterface\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Prod-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Prod-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Prod-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Prod-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Prod-BPSInterface.Paths[OLE DB Source Output]"
+              endId="Package\Prod-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="OLE DB Source Output"
+              startId="Package\Prod-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STAG-BPSInterface"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{F59FE16A-4AAC-4FA8-8593-06491631EF96}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STAG-BPSInterface"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\STAG-BPSInterface\BPSInterfaceAddress"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="BPSInterfaceAddress"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT S.STD_LocalID,S.STD_AddressID,A.Longitude,A.Latitude FROM BPS.Student S
+INNER JOIN dbo.AddressFile A ON S.STD_AddressID=A.AddressID
+WHERE S.STD_Type='Active'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Connections[OleDbConnection]"
+                  connectionManagerID="{9AE2705B-C330-42D3-A894-7FD29A51E11A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BPSInterface BPSIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_LocalID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[STD_LocalID]"
+                      length="10"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_LocalID]"
+                      name="STD_LocalID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_AddressID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[STD_AddressID]"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_AddressID]"
+                      name="STD_AddressID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Longitude]"
+                      name="Longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Latitude]"
+                      name="Latitude"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[STD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      name="STD_LocalID" />
+                    <externalMetadataColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[STD_AddressID]"
+                      dataType="i4"
+                      name="STD_AddressID" />
+                    <externalMetadataColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[STD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[STD_LocalID]"
+                      name="STD_LocalID" />
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[STD_AddressID]"
+                      dataType="i4"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[STD_AddressID]"
+                      name="STD_AddressID" />
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                      dataType="r8"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                      name="Longitude" />
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                      dataType="r8"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                      name="Latitude" />
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\STAG-BPSInterface\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC [EDFI].[Update_LatitudeLongitude] ?,?,?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STAG-BPSInterface\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[STAGEDFISQL01.EdFi_BPS_Staging_Ods]"
+                  connectionManagerRefId="Package.ConnectionManagers[STAGEDFISQL01.EdFi_BPS_Staging_Ods]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].Columns[STD_LocalID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="STD_LocalID"
+                      externalMetadataColumnId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_LocalID]"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[STD_LocalID]" />
+                    <inputColumn
+                      refId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].Columns[Longitude]"
+                      cachedDataType="r8"
+                      cachedName="Longitude"
+                      externalMetadataColumnId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@Longitude]"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Longitude]" />
+                    <inputColumn
+                      refId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].Columns[Latitude]"
+                      cachedDataType="r8"
+                      cachedName="Latitude"
+                      externalMetadataColumnId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@Latitude]"
+                      lineageId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output].Columns[Latitude]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STD_LocalID]"
+                      dataType="wstr"
+                      length="10"
+                      name="@STD_LocalID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@Longitude]"
+                      dataType="r8"
+                      name="@Longitude">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@Latitude]"
+                      dataType="r8"
+                      name="@Latitude">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STAG-BPSInterface\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\STAG-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STAG-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STAG-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STAG-BPSInterface\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\STAG-BPSInterface.Paths[OLE DB Source Output]"
+              endId="Package\STAG-BPSInterface\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="OLE DB Source Output"
+              startId="Package\STAG-BPSInterface\BPSInterfaceAddress.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\STAG-BPSInterface"
+          TopLeft="329,74" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Prod-BPSInterface"
+          TopLeft="706,132" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\STAG-BPSInterface">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\STAG-BPSInterface\BPSInterfaceAddress"
+          TopLeft="232,60" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\STAG-BPSInterface\OLE DB Command"
+          TopLeft="238,183" />
+        <EdgeLayout
+          Id="Package\STAG-BPSInterface.Paths[OLE DB Source Output]"
+          TopLeft="320.75,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STAG-BPSInterface\BPSInterfaceAddress">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Prod-BPSInterface">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Prod-BPSInterface\BPSInterfaceAddress"
+          TopLeft="232,60" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Prod-BPSInterface\OLE DB Command"
+          TopLeft="238,189" />
+        <EdgeLayout
+          Id="Package\Prod-BPSInterface.Paths[OLE DB Source Output]"
+          TopLeft="320.75,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

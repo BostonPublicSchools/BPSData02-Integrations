@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SyncSchoolwithAspen"
   DTS:PackageType="5"
-  DTS:VersionBuild="71"
-  DTS:VersionGUID="{A03E7CA2-875B-4941-A7EC-F0D2D9400BDE}">
+  DTS:VersionBuild="73"
+  DTS:VersionGUID="{3CA724DA-A4DC-4B60-A5D9-AF342BC2C150}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -958,7 +958,7 @@ ORDER BY SchID;</property>
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="50"
+                      length="100"
                       lineageId="Package\Sync Schools\Data Conversion.Outputs[Data Conversion Output].Columns[ConvSchName]"
                       name="ConvSchName"
                       truncationRowDisposition="FailComponent">
@@ -1283,7 +1283,7 @@ ORDER BY SchID;</property>
                       refId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].Columns[ConvSchName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="ConvSchName"
                       externalMetadataColumnId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].ExternalColumns[SchName]"
                       lineageId="Package\Sync Schools\Insert Sort.Outputs[Sort Output].Columns[ConvSchName]" />
@@ -1332,7 +1332,7 @@ ORDER BY SchID;</property>
                       refId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].ExternalColumns[SchName]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="SchName" />
                     <externalMetadataColumn
                       refId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].ExternalColumns[SchName_f]"
@@ -1475,6 +1475,12 @@ ORDER BY SchID;</property>
                       dataType="str"
                       length="10"
                       name="schStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Sync Schools\Insert BPS_School.Inputs[OLE DB Destination Input].ExternalColumns[schDESEAccountability]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="schDESEAccountability" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1901,7 +1907,7 @@ ORDER BY SchID;</property>
                       refId="Package\Sync Schools\Insert Sort.Inputs[Sort Input].Columns[ConvSchName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="ConvSchName"
                       lineageId="Package\Sync Schools\Data Conversion.Outputs[Data Conversion Output].Columns[ConvSchName]">
                       <properties>
@@ -2310,7 +2316,7 @@ ORDER BY SchID;</property>
                       refId="Package\Sync Schools\Insert Sort.Outputs[Sort Output].Columns[ConvSchName]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\Sync Schools\Insert Sort.Outputs[Sort Output].Columns[ConvSchName]"
                       name="ConvSchName">
                       <properties>
@@ -2438,7 +2444,7 @@ where [refTable].[SchID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SchID" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName_f" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LowGrade" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="HighGrade" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchLevel" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SpecialAdmInd" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsCityWide" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ExamSchoolInd" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISEECChoice" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pathway" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolGroup" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SharedSchoolID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Network" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Zone" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ELLCluster" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SPEDCluster" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchType" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UseTierForHMB" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LastUpdatedDt" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schZipCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchHours" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schAddress" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schCity" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schPhone" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AspenUpdatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schStatus" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SchID" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchName_f" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LowGrade" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="HighGrade" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchLevel" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SpecialAdmInd" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsCityWide" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ExamSchoolInd" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ISEECChoice" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Pathway" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchoolGroup" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SharedSchoolID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Network" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Zone" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ELLCluster" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SPEDCluster" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SchType" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UseTierForHMB" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LastUpdatedDt" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schZipCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SchHours" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schAddress" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schCity" dataType="DT_WSTR" length="1000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schPhone" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AspenUpdatedDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="schStatus" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="schDESEAccountability" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -2735,7 +2741,7 @@ where [refTable].[SchID] = ?</property>
                       refId="Package\Sync Schools\Update Bps_school.Inputs[OLE DB Command Input].Columns[ConvSchName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="ConvSchName"
                       externalMetadataColumnId="Package\Sync Schools\Update Bps_school.Inputs[OLE DB Command Input].ExternalColumns[@SchName]"
                       lineageId="Package\Sync Schools\Update Sort.Outputs[Sort Output].Columns[ConvSchName]" />
@@ -3556,7 +3562,7 @@ where [refTable].[SchID] = ?</property>
                       refId="Package\Sync Schools\Update Sort.Inputs[Sort Input].Columns[ConvSchName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="ConvSchName"
                       lineageId="Package\Sync Schools\Data Conversion.Outputs[Data Conversion Output].Columns[ConvSchName]">
                       <properties>
@@ -3962,7 +3968,7 @@ where [refTable].[SchID] = ?</property>
                       refId="Package\Sync Schools\Update Sort.Outputs[Sort Output].Columns[ConvSchName]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       lineageId="Package\Sync Schools\Update Sort.Outputs[Sort Output].Columns[ConvSchName]"
                       name="ConvSchName">
                       <properties>
@@ -4281,7 +4287,7 @@ where [refTable].[SchID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4291,7 +4297,7 @@ where [refTable].[SchID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
