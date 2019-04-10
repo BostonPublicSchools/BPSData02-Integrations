@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MyBPS_Student"
   DTS:PackageType="5"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{39E23514-6888-4A94-89C8-492C3F1801C6}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{42F5BCF9-9631-4BBA-84D2-708E91BAF8EF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1102,10 +1102,11 @@ lastname AS STD_FamilyName
 ,'E' AS  STDCorrespLang
 ,STD_AddressID = (
 	SELECT TOP 1 AddressID FROM [BPSData-03].BPSInterface.[dbo].[AddressFile] a
-	WHERE n.street = a.street
-	and n.streetno = a.streetno
-	and n.zip = a.zip
-	and n.geo = a.geo
+	WHERE 
+	ltrim(rtrim(n.street)) = a.street
+	and ltrim(rtrim(n.streetno))= a.streetno
+	and ltrim(rtrim(n.zip)) = a.zip
+	and ltrim(rtrim(n.geo)) = a.geo	
 	)
 ,n.sasid AS stuStateAssignedId
 ,n.sch AS stuSchIdCurrent
