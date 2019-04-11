@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Parents"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{E9F61B3F-314D-4941-AF51-8492E72BD556}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{A3A69694-19FB-4D26-938D-4CF48173D208}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -63,8 +63,7 @@ std.StdId as parStdId
 ,cp.PSN_NAME_MIDDLE as parMiddleName
 ,cp.PSN_NAME_LAST as parLastSurname
 ,isnull(DATEADD(S, CTJ_LAST_MODIFIED/1000, '1970-01-01 00:00:00'),getdate()) as parLastModifiedDate
-FROM 
-BPSInterface.BPS.Student std (NOLOCK)
+FROM BPSInterface.BPS.Student std (NOLOCK)
 JOIN ASPENDB.x2data.dbo.STUDENT s (NOLOCK)
 on std.std_localid = STD_ID_LOCAL collate database_default
 --JOIN ASPENDB.x2data.dbo.PERSON p (NOLOCK)
@@ -78,7 +77,7 @@ JOIN ASPENDB.x2data.dbo.PERSON cp
 ON cp.PSN_OID = c.CNT_PSN_OID
 --join ASPENDB.x2data.[dbo].PERSON_ADDRESS ca WITH (NOLOCK) ON ca.ADR_OID = cp.PSN_ADR_OID_PHYSICAL
 WHERE std.std_type in ('Active','Registered')
-and cp.PSN_NAME_FIRST is not null and cp.PSN_NAME_LAST is not null</property>
+and cp.PSN_NAME_FIRST is not null and cp.PSN_NAME_LAST is not NULL</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3087,6 +3086,10 @@ order by n.studentno</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="183,42"
+          Id="Package\Data Flow Task Aspen"
+          TopLeft="386,289" />
+        <NodeLayout
           Size="186,42"
           Id="Package\Data Flow Task MyBPS"
           TopLeft="324,88" />
@@ -3128,10 +3131,6 @@ order by n.studentno</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="183,42"
-          Id="Package\Data Flow Task Aspen"
-          TopLeft="386,289" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="491.5,233">
@@ -3169,6 +3168,178 @@ order by n.studentno</property>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task Aspen">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task Aspen\OLE DB Destination"
+          TopLeft="358,361" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Data Flow Task Aspen\Aspen OLE DB Source"
+          TopLeft="188,88" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Data Flow Task Aspen\Lookup"
+          TopLeft="324,273" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Flow Task Aspen\Data Conversion"
+          TopLeft="291,190" />
+        <EdgeLayout
+          Id="Package\Data Flow Task Aspen.Paths[OLE DB Source Output]"
+          TopLeft="279,130">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90,60"
+              Start="0,0"
+              End="90,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="86,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="86,30"
+                    Point2="90,30"
+                    Point3="90,34" />
+                  <mssgle:LineSegment
+                    End="90,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task Aspen.Paths[Lookup No Match Output]"
+          TopLeft="380.5,315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63,46"
+              Start="0,0"
+              End="63,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="4,23" />
+                  <mssgle:LineSegment
+                    End="59,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59,23"
+                    Point2="63,23"
+                    Point3="63,27" />
+                  <mssgle:LineSegment
+                    End="63,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.30638671875,28,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task Aspen.Paths[Data Conversion Output]"
+          TopLeft="369,232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.5,41"
+              Start="0,0"
+              End="11.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="7.5,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.5,20.5"
+                    Point2="11.5,20.5"
+                    Point3="11.5,24.5" />
+                  <mssgle:LineSegment
+                    End="11.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task Aspen\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task Aspen\Aspen OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task Aspen\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[BPS].[Parent]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Data Flow Task MyBPS">
     <LayoutInfo>
@@ -3542,178 +3713,6 @@ order by n.studentno</property>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Data Flow Task Aspen">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="182,42"
-          Id="Package\Data Flow Task Aspen\Aspen OLE DB Source"
-          TopLeft="188,88" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Data Flow Task Aspen\Data Conversion"
-          TopLeft="291,190" />
-        <EdgeLayout
-          Id="Package\Data Flow Task Aspen.Paths[OLE DB Source Output]"
-          TopLeft="279,130">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="90,60"
-              Start="0,0"
-              End="90,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
-                  <mssgle:LineSegment
-                    End="86,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="86,30"
-                    Point2="90,30"
-                    Point3="90,34" />
-                  <mssgle:LineSegment
-                    End="90,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="113,42"
-          Id="Package\Data Flow Task Aspen\Lookup"
-          TopLeft="324,273" />
-        <EdgeLayout
-          Id="Package\Data Flow Task Aspen.Paths[Data Conversion Output]"
-          TopLeft="369,232">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11.5,41"
-              Start="0,0"
-              End="11.5,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5"
-                    Point2="0,20.5"
-                    Point3="4,20.5" />
-                  <mssgle:LineSegment
-                    End="7.5,20.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.5,20.5"
-                    Point2="11.5,20.5"
-                    Point3="11.5,24.5" />
-                  <mssgle:LineSegment
-                    End="11.5,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task Aspen\OLE DB Destination"
-          TopLeft="358,361" />
-        <EdgeLayout
-          Id="Package\Data Flow Task Aspen.Paths[Lookup No Match Output]"
-          TopLeft="380.5,315">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="63,46"
-              Start="0,0"
-              End="63,38.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19"
-                    Point2="0,23"
-                    Point3="4,23" />
-                  <mssgle:LineSegment
-                    End="59,23" />
-                  <mssgle:CubicBezierSegment
-                    Point1="59,23"
-                    Point2="63,23"
-                    Point3="63,27" />
-                  <mssgle:LineSegment
-                    End="63,38.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-24.30638671875,28,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task Aspen\Aspen OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task Aspen\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[BPS].[Parent]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task Aspen\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
