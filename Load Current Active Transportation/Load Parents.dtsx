@@ -11,10 +11,22 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Load Parents"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{A3A69694-19FB-4D26-938D-4CF48173D208}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{F287C07F-112B-413B-A416-961D8177BF1F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{62081925-CAEE-455E-BC72-070B70506F72}"
+      DTS:ObjectName="BPSTempSQL.bpsstu">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BPSTempSQL;Initial Catalog=bpsstu;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -2296,17 +2308,17 @@ where [refTable].[parStdId] = ? and [refTable].[parParentUniqueId] = ?</property
 
 ,('NONBPSCSM' + CAST(n.studentno as VARCHAR(10))) as parParentUniqueId
 
-,n.parentfirst as parFirstName
+,dbo.NameToProper(n.parentfirst) as parFirstName
 
-,n.parentlast as parLastSurname
+,dbo.NameToProper(n.parentlast) as parLastSurname
 
 ,n.lastupdate as parLastModifiedDate
 
 FROM 
 
- MYBPSSQL1.bpsstu.dbo.nonbpscsm n
+ bpsstu.dbo.nonbpscsm n
 
-JOIN MYBPSSQL1.MyBPS.dbo.MyBPSConfig c
+JOIN MyBPS.dbo.MyBPSConfig c
 
 ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'
 
@@ -2338,8 +2350,8 @@ order by n.studentno</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task MyBPS\MyBPS_Source.Connections[OleDbConnection]"
-                  connectionManagerID="{A098AC70-FB5E-48E8-97FF-31352C16EA10}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MyBPSSQL1.bpsstu]"
+                  connectionManagerID="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
+                  connectionManagerRefId="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2420,13 +2432,13 @@ order by n.studentno</property>
                       refId="Package\Data Flow Task MyBPS\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[parFirstName]"
                       codePage="1252"
                       dataType="str"
-                      length="12"
+                      length="100"
                       name="parFirstName" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task MyBPS\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[parLastSurname]"
                       codePage="1252"
                       dataType="str"
-                      length="13"
+                      length="100"
                       name="parLastSurname" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task MyBPS\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[parLastModifiedDate]"
@@ -2457,14 +2469,14 @@ order by n.studentno</property>
                       refId="Package\Data Flow Task MyBPS\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[parFirstName]"
                       codePage="1252"
                       dataType="str"
-                      length="12"
+                      length="100"
                       lineageId="Package\Data Flow Task MyBPS\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[parFirstName]"
                       name="parFirstName" />
                     <outputColumn
                       refId="Package\Data Flow Task MyBPS\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[parLastSurname]"
                       codePage="1252"
                       dataType="str"
-                      length="13"
+                      length="100"
                       lineageId="Package\Data Flow Task MyBPS\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[parLastSurname]"
                       name="parLastSurname" />
                     <outputColumn
@@ -3220,7 +3232,9 @@ order by n.studentno</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3290,7 +3304,9 @@ order by n.studentno</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
