@@ -11,11 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MyBPS_Student"
   DTS:PackageType="5"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{42F5BCF9-9631-4BBA-84D2-708E91BAF8EF}">
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{856D4DF5-1DE0-4174-9C49-CBDD71EB11DC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{23B16B74-D21B-4F05-B151-EAA5E3B52FA7}"
+      DTS:ObjectName="BPSTempSQL.bpsstu">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BPSTempSQL;Initial Catalog=bpsstu;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[BPSWorks.RMUWorkArea]"
       DTS:CreationName="OLEDB"
@@ -424,6 +434,10 @@
                       dataType="str"
                       length="20"
                       name="stuSchIdNext" />
+                    <externalMetadataColumn
+                      refId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input].ExternalColumns[stuStdIdPrimary]"
+                      dataType="i4"
+                      name="stuStdIdPrimary" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1089,8 +1103,8 @@ where [refTable].[STD_LocalID] = ?</property>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
-lastname AS STD_FamilyName
-,firstname AS STD_GivenName
+[dbo].[NameToProper](lastname) AS STD_FamilyName
+,[dbo].[NameToProper](firstname) AS STD_GivenName
 ,dob AS STD_BirthDate
 ,grade AS STD_GradeLevel
 ,phone AS STD_PhoneNumber
@@ -1110,8 +1124,8 @@ lastname AS STD_FamilyName
 	)
 ,n.sasid AS stuStateAssignedId
 ,n.sch AS stuSchIdCurrent
-FROM MYBPSSQL1.bpsstu.dbo.nonbpscsm n
-JOIN MYBPSSQL1.MyBPS.dbo.MyBPSConfig c
+FROM bpsstu.dbo.nonbpscsm n
+JOIN MyBPS.dbo.MyBPSConfig c
 ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'
 order by STD_LocalID</property>
                 <property
@@ -1139,8 +1153,8 @@ order by STD_LocalID</property>
               <connections>
                 <connection
                   refId="Package\MyBPS_Source\MyBPS_Source.Connections[OleDbConnection]"
-                  connectionManagerID="{A098AC70-FB5E-48E8-97FF-31352C16EA10}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MyBPSSQL1.bpsstu]"
+                  connectionManagerID="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
+                  connectionManagerRefId="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1306,13 +1320,13 @@ order by STD_LocalID</property>
                       refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_FamilyName]"
                       codePage="1252"
                       dataType="str"
-                      length="30"
+                      length="100"
                       name="STD_FamilyName" />
                     <externalMetadataColumn
                       refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_GivenName]"
                       codePage="1252"
                       dataType="str"
-                      length="20"
+                      length="100"
                       name="STD_GivenName" />
                     <externalMetadataColumn
                       refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output].ExternalColumns[STD_BirthDate]"
@@ -1388,14 +1402,14 @@ order by STD_LocalID</property>
                       refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_FamilyName]"
                       codePage="1252"
                       dataType="str"
-                      length="30"
+                      length="100"
                       lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_FamilyName]"
                       name="STD_FamilyName" />
                     <outputColumn
                       refId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_GivenName]"
                       codePage="1252"
                       dataType="str"
-                      length="20"
+                      length="100"
                       lineageId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Error Output].Columns[STD_GivenName]"
                       name="STD_GivenName" />
                     <outputColumn
@@ -2593,14 +2607,14 @@ order by STD_LocalID</property>
               startId="Package\MyBPS_Source\MyBPS_Source.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\MyBPS_Source.Paths[Sort Output]"
-              endId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input]"
-              name="Sort Output"
-              startId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output]" />
-            <path
-              refId="Package\MyBPS_Source.Paths[Sort Output1]"
               endId="Package\MyBPS_Source\BPS_Student.Inputs[OLE DB Destination Input]"
               name="Sort Output"
               startId="Package\MyBPS_Source\Insert_Student.Outputs[Sort Output]" />
+            <path
+              refId="Package\MyBPS_Source.Paths[Sort Output1]"
+              endId="Package\MyBPS_Source\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Sort Output"
+              startId="Package\MyBPS_Source\Update_Student.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2631,57 +2645,35 @@ order by STD_LocalID</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166,42"
-          Id="Package\MyBPS_Source\OLE DB Command"
-          TopLeft="209,456" />
-        <NodeLayout
           Size="113,42"
           Id="Package\MyBPS_Source\Lookup"
           TopLeft="352,244" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\MyBPS_Source\Update_Student"
+          TopLeft="215,337" />
         <NodeLayout
           Size="171,42"
           Id="Package\MyBPS_Source\Student-Conversion"
           TopLeft="322,160" />
         <NodeLayout
+          Size="166,42"
+          Id="Package\MyBPS_Source\OLE DB Command"
+          TopLeft="209,456" />
+        <NodeLayout
           Size="149,42"
           Id="Package\MyBPS_Source\Insert_Student"
           TopLeft="479,338" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\MyBPS_Source\BPS_Student"
-          TopLeft="490,455" />
         <NodeLayout
           Size="149,42"
           Id="Package\MyBPS_Source\MyBPS_Source"
           TopLeft="340,78" />
         <NodeLayout
-          Size="155,42"
-          Id="Package\MyBPS_Source\Update_Student"
-          TopLeft="215,337" />
+          Size="139,42"
+          Id="Package\MyBPS_Source\BPS_Student"
+          TopLeft="490,455" />
         <EdgeLayout
           Id="Package\MyBPS_Source.Paths[Sort Output1]"
-          TopLeft="556.5,380">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,75"
-              Start="0,0"
-              End="0,67.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,67.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\MyBPS_Source.Paths[Sort Output]"
           TopLeft="292.25,379">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2694,6 +2686,28 @@ order by STD_LocalID</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MyBPS_Source.Paths[Sort Output]"
+          TopLeft="556.5,380">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2845,6 +2859,14 @@ order by STD_LocalID</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\MyBPS_Source\MyBPS_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\MyBPS_Source\BPS_Student">
     <Properties>
       <Property>
@@ -2854,14 +2876,6 @@ order by STD_LocalID</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\MyBPS_Source\MyBPS_Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
