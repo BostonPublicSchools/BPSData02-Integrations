@@ -1,27 +1,39 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="1/25/2019 1:28:59 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="084-140697-003"
   DTS:CreatorName="ADMINDOM\X05112"
-  DTS:DTSID="{D3715A27-5A82-493F-9542-70B0226AF751}"
+  DTS:DTSID="{0B5E3FE0-41BC-4707-804B-8FEAD54AF445}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
   DTS:LocaleID="1033"
   DTS:ObjectName="MyBPSUpdateInactiveStudents"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{29995322-4513-49C2-87E0-3E25AEE82DCB}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{DD46F3E1-DFC5-4AD5-877B-5EE9FFD81353}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{75B1CF25-217B-465E-BCE3-A57EC4D3EF10}"
+      DTS:ObjectName="BPSTempSQL.bpsstu">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BPSTempSQL;Initial Catalog=bpsstu;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Prod_MyBPS"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{a1033ae6-fb58-4463-8f78-a9d7d83bcc71}"
+      DTS:DTSID="{2CDF353F-0EE4-42C0-8602-AB8DB362B031}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Prod_MyBPS"
@@ -29,8 +41,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{10A668DA-CB66-4990-9E95-F72E24982194}"
-          SQLTask:SqlStatementSource="Update S&#xA;&#xA;SET S.STD_Type='Inactive'&#xA;from [BPSDATA-03].BPSInterface.BPS.Student S&#xA;&#xA;WHERE  S.stuISNonBPS=1&#xA;&#xA;and S.STD_LocalID NOT IN &#xA;(&#xA;SELECT DISTINCT CAST(studentno AS VARCHAR(10)) AS STD_LocalID&#xA;    &#xA;FROM MYBPSSQL1.bpsstu.dbo.nonbpscsm n&#xA;    JOIN MYBPSSQL1.MyBPS.dbo.MyBPSConfig c&#xA;        ON n.SchYear = c.Text&#xA;           AND c.[Key] = 'CurrentSchoolYear'&#xA;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{75B1CF25-217B-465E-BCE3-A57EC4D3EF10}"
+          SQLTask:SqlStatementSource="Update S&#xA;&#xA;SET S.STD_Type='Inactive'&#xA;from [BPSDATA-03].BPSInterface.BPS.Student S&#xA;&#xA;WHERE  S.stuISNonBPS=1&#xA;&#xA;and S.STD_LocalID NOT IN &#xA;(&#xA;SELECT DISTINCT CAST(studentno AS VARCHAR(10)) AS STD_LocalID&#xA;    &#xA;FROM BPSTempSQL.bpsstu.dbo.nonbpscsm n&#xA;    JOIN BPSTempSQL.MyBPS.dbo.MyBPSConfig c&#xA;        ON n.SchYear = c.Text&#xA;           AND c.[Key] = 'CurrentSchoolYear'&#xA;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -38,7 +50,7 @@
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:Disabled="True"
-      DTS:DTSID="{ad05e1e7-1071-45e2-91af-d8656b7c8d48}"
+      DTS:DTSID="{59F94DF9-D6FA-40D0-BA4C-917E8B415A88}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Stag_Mybps"
@@ -55,7 +67,7 @@
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:Disabled="True"
-      DTS:DTSID="{d3d56082-976a-4a16-a5c1-eaa8fd33eb58}"
+      DTS:DTSID="{C2B5040B-A199-45FF-BD89-E842B4DAC401}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Test_Mybps"
