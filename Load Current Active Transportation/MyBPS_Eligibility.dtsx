@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/5/2018 11:51:02 AM"
@@ -7,15 +7,25 @@
   DTS:CreatorName="ADMINDOM\X05112"
   DTS:DTSID="{C0C8A063-B215-4013-B40E-7FD579BA8F04}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
   DTS:LocaleID="1033"
   DTS:ObjectName="MyBPS_Eligibility"
   DTS:PackageType="5"
-  DTS:VersionBuild="81"
-  DTS:VersionGUID="{5AB1ACB1-D784-4D6A-985C-D6780FEE373A}">
+  DTS:VersionBuild="82"
+  DTS:VersionGUID="{75164B76-2E7A-41AA-8C02-5B4926453A1E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C77FD874-0E29-435B-867F-C41562B31E76}"
+      DTS:ObjectName="BPSTempSQL.bpsstu">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BPSTempSQL;Initial Catalog=bpsstu;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
       DTS:CreationName="FLATFILE"
@@ -139,7 +149,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT StdID as SteStdID,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT StdID as SteStdID,
               STD_LocalID
 FROM BPS.STUDENT 
 WHERE stuIsNonBPS=1</property>
@@ -530,7 +540,7 @@ WHERE stuIsNonBPS=1</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1059,13 +1069,13 @@ WHERE stuIsNonBPS=1</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Transportation].[StudentTransportationEligibility]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Transportation].[StudentTransportationEligibility]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Transportation].[StudentTransportationEligibility]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Transportation].[StudentTransportationEligibility]) [refTable]
 where [refTable].[steStudentLocalId] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -1703,7 +1713,7 @@ where [refTable].[steStudentLocalId] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Convert(varchar(10),n.STUDENTNO) as steStudentLocalId
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Convert(varchar(10),n.STUDENTNO) as steStudentLocalId
 
 ,getdate() as steLastUpdated
 
@@ -1735,13 +1745,13 @@ END AS steEligibility
 
 ,'BPS' as steProvider
 ,1 as SteIscurrent
-from MYBPSSQL1.bpsstu.dbo.nonbpscsm n
+from bpsstu.dbo.nonbpscsm n
 
-JOIN MYBPSSQL1.MyBPS.dbo.MyBPSConfig c
+JOIN MyBPS.dbo.MyBPSConfig c
 
 ON n.SchYear = c.Text AND c.[Key] = 'CurrentSchoolYear'
 
-left join MYBPSSQL1.bpsstu.dbo.tpasstracking t 
+left join bpsstu.dbo.tpasstracking t 
 on t.studentno=n.studentno and t.TpassLocation= n.sch
 and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
                 <property
@@ -1769,8 +1779,8 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
               <connections>
                 <connection
                   refId="Package\MyBPS_Eligibility\MyBPS_Source.Connections[OleDbConnection]"
-                  connectionManagerID="{A098AC70-FB5E-48E8-97FF-31352C16EA10}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MyBPSSQL1.bpsstu]"
+                  connectionManagerID="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
+                  connectionManagerRefId="Package.ConnectionManagers[BPSTempSQL.bpsstu]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2271,7 +2281,7 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC [Transportation].[Update_EligibilityfromMyBPS] ?,?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC [Transportation].[Update_EligibilityfromMyBPS] ?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2589,7 +2599,7 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT StdID as SteStdID,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT StdID as SteStdID,
               STD_LocalID
 FROM BPS.STUDENT 
 WHERE stuIsNonBPS=1</property>
@@ -3271,7 +3281,7 @@ WHERE stuIsNonBPS=1</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3509,13 +3519,13 @@ WHERE stuIsNonBPS=1</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Transportation].[StudentTransportationEligibility]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Transportation].[StudentTransportationEligibility]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Transportation].[StudentTransportationEligibility]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Transportation].[StudentTransportationEligibility]) [refTable]
 where [refTable].[steStudentLocalId] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -4153,7 +4163,7 @@ where [refTable].[steStudentLocalId] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Convert(varchar(10),n.STUDENTNO) as steStudentLocalId
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Convert(varchar(10),n.STUDENTNO) as steStudentLocalId
 
 ,getdate() as steLastUpdated
 
@@ -4431,7 +4441,7 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4870,9 +4880,9 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
           Id="Package\MyBPS_Eligibility\Lookup"
           TopLeft="221,462" />
         <NodeLayout
-          Size="107,42"
-          Id="Package\MyBPS_Eligibility\Insert"
-          TopLeft="354,558" />
+          Size="163,42"
+          Id="Package\MyBPS_Eligibility\Update_ELigibility"
+          TopLeft="64,655" />
         <NodeLayout
           Size="116,42"
           Id="Package\MyBPS_Eligibility\BPSSort"
@@ -4882,29 +4892,29 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
           Id="Package\MyBPS_Eligibility\Eligibility_Insert"
           TopLeft="334,670" />
         <NodeLayout
-          Size="113,42"
-          Id="Package\MyBPS_Eligibility\Update"
-          TopLeft="90,549" />
-        <NodeLayout
           Size="130,42"
           Id="Package\MyBPS_Eligibility\Merge Join"
           TopLeft="212,213" />
-        <NodeLayout
-          Size="199,42"
-          Id="Package\MyBPS_Eligibility\Convert Derived Students"
-          TopLeft="182,383" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\MyBPS_Eligibility\MyBPSSort"
-          TopLeft="68,124" />
         <NodeLayout
           Size="149,42"
           Id="Package\MyBPS_Eligibility\MyBPS_Source"
           TopLeft="56,28" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\MyBPS_Eligibility\Update_ELigibility"
-          TopLeft="64,655" />
+          Size="113,42"
+          Id="Package\MyBPS_Eligibility\Update"
+          TopLeft="90,549" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\MyBPS_Eligibility\MyBPSSort"
+          TopLeft="68,124" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\MyBPS_Eligibility\Convert Derived Students"
+          TopLeft="182,383" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\MyBPS_Eligibility\Insert"
+          TopLeft="354,558" />
         <NodeLayout
           Size="140,42"
           Id="Package\MyBPS_Eligibility\BPSInterface"
@@ -4913,6 +4923,72 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
           Size="177,42"
           Id="Package\MyBPS_Eligibility\ConcatinatedStudent"
           TopLeft="186,296" />
+        <EdgeLayout
+          Id="Package\MyBPS_Eligibility.Paths[Data Conversion Output]"
+          TopLeft="279.5,425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MyBPS_Eligibility.Paths[Sort Output3]"
+          TopLeft="146,591">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MyBPS_Eligibility.Paths[Sort Output2]"
+          TopLeft="409.25,600">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\MyBPS_Eligibility.Paths[Sort Output1]"
           TopLeft="443,163">
@@ -5141,95 +5217,16 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\MyBPS_Eligibility.Paths[Data Conversion Output]"
-          TopLeft="279.5,425">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37"
-              Start="0,0"
-              End="0,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\MyBPS_Eligibility.Paths[Sort Output3]"
-          TopLeft="146,591">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,64"
-              Start="0,0"
-              End="0,56.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\MyBPS_Eligibility.Paths[Sort Output2]"
-          TopLeft="409.25,600">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,70"
-              Start="0,0"
-              End="0,62.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\MyBPS_Eligibility\Eligibility_Insert">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\MyBPS_Eligibility\Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5247,7 +5244,20 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\MyBPS_Eligibility\BPSInterface">
+    design-time-name="Package\MyBPS_Eligibility\Eligibility_Insert">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MyBPS_Eligibility\MyBPS_Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5255,7 +5265,7 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\MyBPS_Eligibility\MyBPS_Source">
+    design-time-name="Package\MyBPS_Eligibility\BPSInterface">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5697,20 +5707,12 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\MyBPS_Eligibility 1\MyBPS_Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\MyBPS_Eligibility 1\Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5720,8 +5722,16 @@ and isnull(t.DeactivateCode,'')='' and t.schyear=n.schyear</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MyBPS_Eligibility 1\MyBPS_Source">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
