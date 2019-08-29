@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{1D2434F2-254C-4598-942E-9195C43C9343}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{B3B2E726-B4E7-47D8-902A-6394AE27EC1F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -42,7 +42,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="\\bpsdata-03\d$\BPSPassDeactivation03182019.txt">
+          DTS:ConnectionString="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation08282019.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -141,7 +141,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="BPSData03">
       <DTS:VariableValue
-        DTS:DataType="8">\\bpsdata-03\d$\</DTS:VariableValue>
+        DTS:DataType="8">\\bpsdata-03\d$\BPSPass\</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -773,7 +773,7 @@ AND C.TRS_FIELDB_002 = 'BPS';</property>
           SendMailTask:Subject="BPS Pass Deactivations"
           SendMailTask:MessageSource="BPS Pass Deactivations - include both the serial and sequence numbers " xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="\\bpsdata-03\d$\BPSPassDeactivation03182019.txt" />
+            SendMailTask:FileName="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation08282019.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
