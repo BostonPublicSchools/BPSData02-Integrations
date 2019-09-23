@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSDeactivation"
   DTS:PackageType="5"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{B3B2E726-B4E7-47D8-902A-6394AE27EC1F}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{38B313E4-A34E-4533-BF63-EC8BC537A2F4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -42,7 +42,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation08282019.txt">
+          DTS:ConnectionString="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation09232019.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -768,12 +768,12 @@ AND C.TRS_FIELDB_002 = 'BPS';</property>
         <SendMailTask:SendMailTaskData
           SendMailTask:SMTPServer="{EA833243-0609-4EED-B6C0-C2CBAB22C596}"
           SendMailTask:From="do-not-reply@bostonpublicschools.org"
-          SendMailTask:To="studentpassprogram@mbta.com;mdepina@mbta.com"
+          SendMailTask:To="studentpassprogram@mbta.com;mdepina@mbta.com;kgrogan@mbta.com"
           SendMailTask:CC="AppDevTransport@bostonpublicschools.org;AppDevAdmin@bostonpublicschools.org;mchan@bostonpublicschools.org"
           SendMailTask:Subject="BPS Pass Deactivations"
           SendMailTask:MessageSource="BPS Pass Deactivations - include both the serial and sequence numbers " xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation08282019.txt" />
+            SendMailTask:FileName="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation09232019.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
