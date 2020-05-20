@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\048932"
   DTS:DTSID="{E7D587FA-2874-4265-82DC-1336A8FE3B06}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
   DTS:LocaleID="1033"
   DTS:ObjectName="BPSDeactivation"
   DTS:PackageType="5"
   DTS:VersionBuild="51"
-  DTS:VersionGUID="{38B313E4-A34E-4533-BF63-EC8BC537A2F4}">
+  DTS:VersionGUID="{8C6BFE68-82C9-4626-94AD-4794F08AEE97}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -42,7 +42,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation09232019.txt">
+          DTS:ConnectionString="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation05192020.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -184,7 +184,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -507,7 +507,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  DISTINCT
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  DISTINCT
 C.TRS_ID AS BPSID ,
 C.TRS_FIELDB_001 AS SerialNumber ,
 ISNULL(( SELECT TOP 1
@@ -662,7 +662,8 @@ AND C.TRS_FIELDB_002 = 'BPS';</property>
               contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Destination"
               localeId="1033"
-              name="ffdBPSPassDeactivation">
+              name="ffdBPSPassDeactivation"
+              version="1">
               <properties>
                 <property
                   dataType="System.Boolean"
@@ -773,7 +774,7 @@ AND C.TRS_FIELDB_002 = 'BPS';</property>
           SendMailTask:Subject="BPS Pass Deactivations"
           SendMailTask:MessageSource="BPS Pass Deactivations - include both the serial and sequence numbers " xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
           <SendMailTask:Attachments
-            SendMailTask:FileName="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation09232019.txt" />
+            SendMailTask:FileName="\\bpsdata-03\d$\BPSPass\BPSPassDeactivation05192020.txt" />
         </SendMailTask:SendMailTaskData>
       </DTS:ObjectData>
     </DTS:Executable>

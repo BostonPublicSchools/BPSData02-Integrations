@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <SSIS:Parameters xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
   <SSIS:Parameter
     SSIS:Name="DatabaseName">
@@ -37,16 +37,16 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">TESTDATA-03</SSIS:Property>
+        SSIS:Name="Value">BPSDATA-03</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
   </SSIS:Parameter>
   <SSIS:Parameter
-    SSIS:Name="MailToLine">
+    SSIS:Name="FolderPath">
     <SSIS:Properties>
       <SSIS:Property
-        SSIS:Name="ID">{3f709e88-f7ec-4a97-a687-bcfd70e36a00}</SSIS:Property>
+        SSIS:Name="ID">{33f8de7f-0c68-4b94-a56c-b7e42e7330e1}</SSIS:Property>
       <SSIS:Property
         SSIS:Name="CreationName"></SSIS:Property>
       <SSIS:Property
@@ -58,16 +58,16 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">studentpassprogram@mbta.com;mdepina@mbta.com</SSIS:Property>
+        SSIS:Name="Value">\\BPSROUTES04\RMU</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
   </SSIS:Parameter>
   <SSIS:Parameter
-    SSIS:Name="MailCCLine">
+    SSIS:Name="DiffFileName">
     <SSIS:Properties>
       <SSIS:Property
-        SSIS:Name="ID">{e26f6f48-e8a6-45ab-b629-00b021c65c41}</SSIS:Property>
+        SSIS:Name="ID">{d40bb294-85d5-46f5-9e4d-9fdad1c82c9e}</SSIS:Property>
       <SSIS:Property
         SSIS:Name="CreationName"></SSIS:Property>
       <SSIS:Property
@@ -79,7 +79,28 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">AppDevTransport@bostonpublicschools.org;AppDevAdmin@bostonpublicschools.org</SSIS:Property>
+        SSIS:Name="Value">BPSTransportationExportDiff_NextYear.txt</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="FullFileName">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{a01a7c87-317f-4bff-90e3-0171c6f8b80f}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">BPSTransportationExportFull_NextYear.txt</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
