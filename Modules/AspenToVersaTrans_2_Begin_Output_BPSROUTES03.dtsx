@@ -11,10 +11,492 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_Zonar_2_Begin_Output_BPSROUTES03"
   DTS:PackageType="5"
-  DTS:VersionBuild="205"
-  DTS:VersionGUID="{0F1E376A-3E91-452F-B3EC-CA7AA387E79C}">
+  DTS:VersionBuild="208"
+  DTS:VersionGUID="{44082C20-85BC-4F1A-9778-E97D59E4B1A5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E1AA5CFF-63B3-427E-8024-1FA602946FA8}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"\\\\BPSROUTES04\\RMU\\" + (DT_STR, 4, 1252) YEAR(GETDATE()) +  RIGHT("0" + (DT_STR, 2, 1252)  MONTH(GETDATE()), 2) + RIGHT("0" + (DT_STR, 2, 1252) DAY(GETDATE()), 2) + "BPSTransportationExportFullBProgram.txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x0009_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\BPSROUTES04\RMU\20200806BPSTransportationExportFullBProgram.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StudentNo"
+              DTS:DTSID="{632B98F6-B5B8-42A0-89B8-656DE46EC265}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LastName"
+              DTS:DTSID="{640A6B2E-65A6-4C07-94FD-B1756C1DCE5D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FirstName"
+              DTS:DTSID="{17B34109-BD99-4610-BAD3-71CFF5200156}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MiddleName"
+              DTS:DTSID="{3111D568-5927-4217-A04D-8CBB7A354257}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Grade"
+              DTS:DTSID="{AE18CEC0-95D1-40F2-B64D-E79B3E9D141B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="sch"
+              DTS:DTSID="{C8A1404D-2525-4C70-A1D0-BBCE708697C9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="streetno"
+              DTS:DTSID="{83B04A26-76C2-4077-98BC-98A1DBC0F1A6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="street"
+              DTS:DTSID="{4E85204E-792D-486F-98C2-1DF0CE1FD537}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="apt"
+              DTS:DTSID="{F9ACC73E-ACF3-4EA5-B897-6A1D665C0746}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="city"
+              DTS:DTSID="{FF95EB0A-A438-4B20-91D8-EFD863C55719}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state"
+              DTS:DTSID="{AABAE6E0-7631-409E-A778-8C62DD3E8113}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="9"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="zip"
+              DTS:DTSID="{2589E598-36C9-4DB6-B982-274AF18B3D30}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DOB"
+              DTS:DTSID="{FA739957-6B88-4B2B-9DAE-0A236D92AD9D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="parent1phones"
+              DTS:DTSID="{6952374C-E63C-4F69-AB38-E320ED4B9788}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="parent2phones"
+              DTS:DTSID="{EA019DC3-9498-444A-B32D-95C8216DCBC4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="emergencycontactphones"
+              DTS:DTSID="{8B91F9C9-AB83-4C06-BB2A-A52AF437D5FD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="parent1name"
+              DTS:DTSID="{EF183157-554D-47F9-8E98-736DE2E826CE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="parent2name"
+              DTS:DTSID="{0D258A15-285C-49C1-A6EC-629F26F9E49F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="emergencycontactname"
+              DTS:DTSID="{443A2A80-D16E-48A2-9629-A72DF1BF528B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="sex"
+              DTS:DTSID="{B355334F-6B9E-4736-8969-3D4141D9F44D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="program"
+              DTS:DTSID="{F2E25711-AA55-49DC-9F9B-916DEF68133F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PickupHouseNumber"
+              DTS:DTSID="{3A2B260A-FB64-4EB5-9C45-85C06A5B37D2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PickupStreetname"
+              DTS:DTSID="{D22DBB42-1A05-4B17-8763-9602E2ADD9A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PickupApartmentNumber"
+              DTS:DTSID="{17DA996E-122D-4B11-839A-81C4DCD1E703}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PickupCity"
+              DTS:DTSID="{D8CEF081-A127-422C-853F-A241F3407649}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PickupState"
+              DTS:DTSID="{A6DC359C-875A-47BA-B98E-036751A7AEB4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Pickupzip"
+              DTS:DTSID="{3FD37736-8E9E-4120-80D7-5A7E335F6868}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DropOffHouseNumber"
+              DTS:DTSID="{9D2A56A7-9759-415F-8394-FA1FEBAD16A3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="80"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DropOffStreetname"
+              DTS:DTSID="{391CE67A-14BB-4C4A-AC15-7C4FE6057E18}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DropOffApartmentNumber"
+              DTS:DTSID="{B57FACAD-AAAB-4D8C-B06E-3AD5F419C1F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DropOffCity"
+              DTS:DTSID="{070D0F8F-73E0-4E76-AB98-0B585937BB33}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DropOffState"
+              DTS:DTSID="{CF3CD04C-CB76-4EE2-BC4D-89706ED0925D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DropOffzip"
+              DTS:DTSID="{CF2C9C27-2E12-435C-ADE0-4FFD1F915030}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MedicaData"
+              DTS:DTSID="{1329E740-6224-4F99-A126-0F8F925B7D6D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="sncode"
+              DTS:DTSID="{1BD9BCC2-9BF6-4D40-A1A1-4F02DF1A1E87}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="bilingual"
+              DTS:DTSID="{797DA241-0546-4D5A-8BB1-E2D64BDAC9A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="aw"
+              DTS:DTSID="{0963F2F6-8943-4826-9E9B-FC9750755730}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="voced"
+              DTS:DTSID="{23AB78BB-694A-4B53-9291-D31AB93D2181}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="theme"
+              DTS:DTSID="{5DE2CEC5-DD1B-4A81-92CE-B15B52791305}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="monitor"
+              DTS:DTSID="{EB7B8C20-AC8F-4A0D-9020-8FE4EC5DF30D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="hzone"
+              DTS:DTSID="{9DFEDADF-F276-4EB6-BDD2-F128911AFFD3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="zone"
+              DTS:DTSID="{B2B9CB0C-4665-4805-8ED6-54611F3CFD48}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="geo"
+              DTS:DTSID="{F9DCA557-8ADA-4AC2-8E0E-8E572D700805}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="hphone"
+              DTS:DTSID="{C456993A-514D-45D8-8047-5D399B16E229}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BufferZone"
+              DTS:DTSID="{24C9ED2A-C65F-445C-B075-38AC9156F8DF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HomeRoom"
+              DTS:DTSID="{B133521A-41D2-4D3F-BF8C-654DD9E8B446}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IsWithDrawn"
+              DTS:DTSID="{DA2F731A-B278-496F-A152-3E611CB1869D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ishomeless"
+              DTS:DTSID="{76128951-0D47-496A-B20A-EFAD3E131DE2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IsProtectedAddress"
+              DTS:DTSID="{46F4B5AC-129E-4821-B315-827E4898ACA6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TapCardID"
+              DTS:DTSID="{6B9B1CEC-D324-4238-9C03-9171AE3C33CF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ctdFamilyId"
+              DTS:DTSID="{3BF524FE-D850-406F-990C-C5B807C90CBF}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -3502,12 +3984,12 @@ WHERE   NOT program = '00'
               </inputs>
             </component>
             <component
-              refId="Package\dftAspen_DataExportFull\ffsExportFull B Program"
+              refId="Package\dftAspen_DataExportFull\ffsExportFull 1"
               componentClassID="Microsoft.FlatFileDestination"
               contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Flat File Destination"
               localeId="1033"
-              name="ffsExportFull B Program">
+              name="ffsExportFull 1">
               <properties>
                 <property
                   dataType="System.Boolean"
@@ -3525,683 +4007,734 @@ WHERE   NOT program = '00'
               </properties>
               <connections>
                 <connection
-                  refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Connections[FlatFileConnection]"
-                  connectionManagerID="{88791F00-CD38-4170-A85B-E59A66A44332}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Transporation RMU]"
+                  refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input]"
+                  refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input]"
                   hasSideEffects="true"
                   name="Flat File Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[StudentNo]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[StudentNo]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="StudentNo"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[StudentNo]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[StudentNo]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[StudentNo]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[LastName]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[LastName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="LastName"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[LastName]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[LastName]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[LastName]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[FirstName]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[FirstName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="FirstName"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[FirstName]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[FirstName]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[FirstName]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[MiddleName]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[MiddleName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="MiddleName"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[MiddleName]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[MiddleName]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[MiddleName]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[Grade]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[Grade]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="Grade"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[Grade]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[Grade]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[Grade]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[sch]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[sch]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="sch"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[sch]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[sch]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[sch]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[streetno]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[streetno]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="streetno"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[streetno]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[streetno]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[streetno]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[street]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[street]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="street"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[street]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[street]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[street]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[apt]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[apt]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="apt"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[apt]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[apt]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[apt]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[city]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[city]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="city"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[city]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[city]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[city]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[state]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[state]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="4"
                       cachedName="state"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[state]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[state]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[state]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[zip]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[zip]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="9"
                       cachedName="zip"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[zip]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[zip]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[zip]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[DOB]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[DOB]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="DOB"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DOB]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DOB]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[DOB]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[parent1phones]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[parent1phones]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="parent1phones"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[parent1phones]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[parent1phones]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[parent1phones]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[parent2phones]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[parent2phones]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="parent2phones"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[parent2phones]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[parent2phones]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[parent2phones]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[emergencycontactphones]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[emergencycontactphones]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="emergencycontactphones"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[emergencycontactphones]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[emergencycontactphones]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[emergencycontactphones]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[parent1name]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[parent1name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="parent1name"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[parent1name]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[parent1name]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[parent1name]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[parent2name]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[parent2name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="parent2name"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[parent2name]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[parent2name]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[parent2name]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[emergencycontactname]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[emergencycontactname]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="emergencycontactname"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[emergencycontactname]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[emergencycontactname]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[emergencycontactname]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[sex]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[sex]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="sex"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[sex]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[sex]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[sex]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[program]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[program]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="4"
                       cachedName="program"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[program]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[program]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[program]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[PickupHouseNumber]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[PickupHouseNumber]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="PickupHouseNumber"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupHouseNumber]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupHouseNumber]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[PickupHouseNumber]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[PickupStreetname]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[PickupStreetname]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="PickupStreetname"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupStreetname]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupStreetname]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[PickupStreetname]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[PickupApartmentNumber]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[PickupApartmentNumber]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="PickupApartmentNumber"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupApartmentNumber]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupApartmentNumber]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[PickupApartmentNumber]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[PickupCity]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[PickupCity]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="PickupCity"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupCity]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupCity]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[PickupCity]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[PickupState]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[PickupState]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="PickupState"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupState]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupState]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[PickupState]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[Pickupzip]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[Pickupzip]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="Pickupzip"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[Pickupzip]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[Pickupzip]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[Pickupzip]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[DropOffHouseNumber]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[DropOffHouseNumber]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="DropOffHouseNumber"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffHouseNumber]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffHouseNumber]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[DropOffHouseNumber]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[DropOffStreetname]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[DropOffStreetname]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="80"
                       cachedName="DropOffStreetname"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffStreetname]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffStreetname]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[DropOffStreetname]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[DropOffApartmentNumber]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[DropOffApartmentNumber]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="DropOffApartmentNumber"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffApartmentNumber]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffApartmentNumber]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[DropOffApartmentNumber]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[DropOffCity]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[DropOffCity]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="DropOffCity"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffCity]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffCity]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[DropOffCity]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[DropOffState]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[DropOffState]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="DropOffState"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffState]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffState]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[DropOffState]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[DropOffzip]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[DropOffzip]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="DropOffzip"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffzip]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffzip]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[DropOffzip]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[MedicaData]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[MedicaData]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="MedicaData"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[MedicaData]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[MedicaData]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[MedicaData]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[sncode]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[sncode]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="sncode"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[sncode]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[sncode]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[sncode]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[bilingual]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[bilingual]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="bilingual"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[bilingual]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[bilingual]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[bilingual]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[aw]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[aw]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="aw"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[aw]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[aw]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[aw]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[voced]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[voced]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="voced"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[voced]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[voced]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[voced]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[theme]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[theme]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="theme"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[theme]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[theme]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[theme]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[monitor]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[monitor]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="monitor"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[monitor]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[monitor]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[monitor]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[hzone]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[hzone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="hzone"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[hzone]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[hzone]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[hzone]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[zone]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[zone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="zone"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[zone]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[zone]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[zone]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[geo]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[geo]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="geo"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[geo]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[geo]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[geo]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[hphone]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[hphone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="60"
                       cachedName="hphone"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[hphone]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[hphone]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[hphone]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[BufferZone]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[BufferZone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="BufferZone"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[BufferZone]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[BufferZone]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[BufferZone]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[HomeRoom]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[HomeRoom]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="HomeRoom"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[HomeRoom]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[HomeRoom]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[HomeRoom]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[IsWithDrawn]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[IsWithDrawn]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="IsWithDrawn"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[IsWithDrawn]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[IsWithDrawn]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[IsWithDrawn]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[ishomeless]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[ishomeless]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="ishomeless"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[ishomeless]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[ishomeless]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[ishomeless]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[IsProtectedAddress]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[IsProtectedAddress]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="IsProtectedAddress"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[IsProtectedAddress]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[IsProtectedAddress]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[IsProtectedAddress]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[TapCardID]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[TapCardID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="TapCardID"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[TapCardID]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[TapCardID]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[TapCardID]" />
                     <inputColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].Columns[ctdFamilyId]"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].Columns[ctdFamilyId]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="ctdFamilyId"
-                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[FamilyId]"
+                      externalMetadataColumnId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[ctdFamilyId]"
                       lineageId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output].Columns[ctdFamilyId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[StudentNo]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[StudentNo]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="StudentNo" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[LastName]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
                       length="60"
                       name="LastName" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[FirstName]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
                       length="60"
                       name="FirstName" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[MiddleName]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[MiddleName]"
+                      codePage="1252"
+                      dataType="str"
                       length="60"
                       name="MiddleName" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[Grade]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[Grade]"
+                      codePage="1252"
+                      dataType="str"
                       length="2"
                       name="Grade" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[sch]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[sch]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="sch" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[streetno]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[streetno]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="streetno" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[street]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[street]"
+                      codePage="1252"
+                      dataType="str"
                       length="100"
                       name="street" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[apt]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[apt]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="apt" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[city]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
                       length="30"
                       name="city" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[state]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
                       length="4"
                       name="state" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[zip]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[zip]"
+                      codePage="1252"
+                      dataType="str"
                       length="9"
                       name="zip" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DOB]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DOB]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="DOB" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[parent1phones]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[parent1phones]"
+                      codePage="1252"
+                      dataType="str"
                       length="60"
                       name="parent1phones" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[parent2phones]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[parent2phones]"
+                      codePage="1252"
+                      dataType="str"
                       length="60"
                       name="parent2phones" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[emergencycontactphones]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[emergencycontactphones]"
+                      codePage="1252"
+                      dataType="str"
                       length="50"
                       name="emergencycontactphones" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[parent1name]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[parent1name]"
+                      codePage="1252"
+                      dataType="str"
                       length="100"
                       name="parent1name" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[parent2name]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[parent2name]"
+                      codePage="1252"
+                      dataType="str"
                       length="100"
                       name="parent2name" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[emergencycontactname]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[emergencycontactname]"
+                      codePage="1252"
+                      dataType="str"
                       length="60"
                       name="emergencycontactname" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[sex]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[sex]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="sex" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[program]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[program]"
+                      codePage="1252"
+                      dataType="str"
                       length="4"
                       name="program" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupHouseNumber]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupHouseNumber]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="PickupHouseNumber" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupStreetname]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupStreetname]"
+                      codePage="1252"
+                      dataType="str"
                       length="30"
                       name="PickupStreetname" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupApartmentNumber]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupApartmentNumber]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="PickupApartmentNumber" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupCity]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupCity]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="PickupCity" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[PickupState]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[PickupState]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="PickupState" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[Pickupzip]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[Pickupzip]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="Pickupzip" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffHouseNumber]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffHouseNumber]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="DropOffHouseNumber" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffStreetname]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffStreetname]"
+                      codePage="1252"
+                      dataType="str"
                       length="80"
                       name="DropOffStreetname" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffApartmentNumber]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffApartmentNumber]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="DropOffApartmentNumber" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffCity]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffCity]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="DropOffCity" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffState]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffState]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="DropOffState" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[DropOffzip]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[DropOffzip]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="DropOffzip" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[MedicaData]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[MedicaData]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="MedicaData" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[sncode]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[sncode]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="sncode" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[bilingual]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[bilingual]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="bilingual" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[aw]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[aw]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="aw" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[voced]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[voced]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="voced" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[theme]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[theme]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="theme" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[monitor]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[monitor]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="monitor" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[hzone]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[hzone]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="hzone" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[zone]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[zone]"
+                      codePage="1252"
+                      dataType="str"
                       length="20"
                       name="zone" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[geo]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[geo]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="geo" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[hphone]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[hphone]"
+                      codePage="1252"
+                      dataType="str"
                       length="60"
                       name="hphone" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[BufferZone]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[BufferZone]"
+                      codePage="1252"
+                      dataType="str"
                       length="1"
                       name="BufferZone" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[HomeRoom]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[HomeRoom]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="HomeRoom" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[IsWithDrawn]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[IsWithDrawn]"
+                      codePage="1252"
+                      dataType="str"
                       length="2"
                       name="IsWithDrawn" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[ishomeless]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[ishomeless]"
+                      codePage="1252"
+                      dataType="str"
                       length="2"
                       name="ishomeless" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[IsProtectedAddress]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[IsProtectedAddress]"
+                      codePage="1252"
+                      dataType="str"
                       length="2"
                       name="IsProtectedAddress" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[TapCardID]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[TapCardID]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
                       name="TapCardID" />
                     <externalMetadataColumn
-                      refId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input].ExternalColumns[FamilyId]"
-                      dataType="wstr"
+                      refId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input].ExternalColumns[ctdFamilyId]"
+                      codePage="1252"
+                      dataType="str"
                       length="10"
-                      name="FamilyId" />
+                      name="ctdFamilyId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4215,7 +4748,7 @@ WHERE   NOT program = '00'
               startId="Package\dftAspen_DataExportFull\CurrentTransportationDailyAProgram.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\dftAspen_DataExportFull.Paths[OLE DB Source Output1]"
-              endId="Package\dftAspen_DataExportFull\ffsExportFull B Program.Inputs[Flat File Destination Input]"
+              endId="Package\dftAspen_DataExportFull\ffsExportFull 1.Inputs[Flat File Destination Input]"
               name="OLE DB Source Output"
               startId="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram.Outputs[OLE DB Source Output]" />
           </paths>
@@ -6563,37 +7096,25 @@ UNION ALL
         <NodeLayout
           Size="261,42"
           Id="Package\dftAspen_DataExportFull\CurrentTransportationDailyBProgram"
-          TopLeft="386,13" />
+          TopLeft="383,14" />
         <NodeLayout
-          Size="196,42"
-          Id="Package\dftAspen_DataExportFull\ffsExportFull B Program"
-          TopLeft="434,158" />
+          Size="137,42"
+          Id="Package\dftAspen_DataExportFull\ffsExportFull 1"
+          TopLeft="438,192" />
         <EdgeLayout
           Id="Package\dftAspen_DataExportFull.Paths[OLE DB Source Output1]"
-          TopLeft="516.5,55">
+          TopLeft="510,56">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="15.5,103"
+              EndConnector="0,136"
               Start="0,0"
-              End="15.5,95.5">
+              End="0,128.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,47.5"
-                    Point2="0,51.5"
-                    Point3="4,51.5" />
-                  <mssgle:LineSegment
-                    End="11.5,51.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11.5,51.5"
-                    Point2="15.5,51.5"
-                    Point3="15.5,55.5" />
-                  <mssgle:LineSegment
-                    End="15.5,95.5" />
+                    End="0,128.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6617,7 +7138,7 @@ UNION ALL
     design-time-name="Package\dftFind_Differences">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="149,50"
           Id="Package\dftFind_Differences\ffdDifferences"
@@ -6645,7 +7166,9 @@ UNION ALL
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
