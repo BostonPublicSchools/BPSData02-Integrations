@@ -7,6 +7,10 @@
     DTS:Name="ServerName">@[$Project::ServerName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=BPSDATA-03;Initial Catalog=BPSInterface;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Load Current Active Transportation-{567991DC-DAB6-4D46-8927-7AE9726750D8}084-137984-003.BPSInterface.BPSIntegration;" />
+      DTS:ConnectionString="Data Source=BPSDATA-03;User ID=BPSIntegration;Initial Catalog=BPSInterface;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Load Current Active Transportation-{567991DC-DAB6-4D46-8927-7AE9726750D8}084-137984-003.BPSInterface.BPSIntegration;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA80+25fXORUSJ06LslyQfiQAAAAACAAAAAAADZgAAwAAAABAAAABeWNLB6KnlTSy8lgfr+V7nAAAAAASAAACgAAAAEAAAANERbpJ4d/KFUIbcvbSWwsN4AAAAVrHjJAlyAc4jxwPR+GPSEi6yOyb40GZXB8coWQeb7pZkIcDbREnMiIS6aL+biCZZknxuGg7rUgDQ0rnZ//iVRSSPcO5no0dS3f/LY36SAKR03hN+uDUurxsHjzx3aemGwyQFXWZ4tlt3rSevBN5BOmCjAbNyZ605FAAAAAIk29hwkyX3mRM3C+Rr63D8UvoI</DTS:Password>
+    </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

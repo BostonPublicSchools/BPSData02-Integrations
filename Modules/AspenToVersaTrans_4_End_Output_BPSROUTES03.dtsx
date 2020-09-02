@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/4/2014 11:01:15 AM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="ADMINDOM\114600"
   DTS:DTSID="{7A2FD0E4-1159-478C-9767-1FAF0FBD93CF}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LastModifiedProductVersion="15.0.2000.123"
   DTS:LocaleID="1033"
   DTS:ObjectName="AspenToVersaTrans_4_End_Output_BPSROUTES03"
   DTS:PackageType="5"
-  DTS:VersionBuild="162"
-  DTS:VersionGUID="{271F58E0-7B3A-48DC-906E-73DCCB200EC2}">
+  DTS:VersionBuild="163"
+  DTS:VersionGUID="{D280E764-2B36-4C7D-8645-4E790DCE3F95}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -62,8 +62,8 @@
       <DTS:ObjectData>
         <FileSystemData
           TaskOverwriteDestFile="True"
-          TaskSourcePath="{77D7E6A6-F8FE-480B-B433-5898A9A5A2BD}"
-          TaskDestinationPath="{B52D3A4E-8E84-41BA-9113-ABE7B444263F}" />
+          TaskSourcePath="{1B925833-EA8D-48B8-A44F-B6DF1D152E4C}"
+          TaskDestinationPath="{1B925833-EA8D-48B8-A44F-B6DF1D152E4C}" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -111,7 +111,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="233,42"
+          Size="239,42"
           Id="Package\fstCopyDiffFileToStandardImport"
           TopLeft="27.27358490566,27.349056603774" />
         <NodeLayout
@@ -120,18 +120,30 @@
           TopLeft="70.27358490566,121.650943396226" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="141.02358490566,69.349056603774">
+          TopLeft="146.77358490566,69.349056603774">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,52.301886792452"
+              EndConnector="-8.5,52.301886792452"
               Start="0,0"
-              End="0,44.801886792452">
+              End="-8.5,44.801886792452">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.801886792452" />
+                    End="0,22.150943396226" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.150943396226"
+                    Point2="0,26.150943396226"
+                    Point3="-4,26.150943396226" />
+                  <mssgle:LineSegment
+                    End="-4.5,26.150943396226" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.5,26.150943396226"
+                    Point2="-8.5,26.150943396226"
+                    Point3="-8.5,30.150943396226" />
+                  <mssgle:LineSegment
+                    End="-8.5,44.801886792452" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
